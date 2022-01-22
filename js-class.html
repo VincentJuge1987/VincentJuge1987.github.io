@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>JavaScript - Classes</title>
+<meta name="description" content="JavaScript, data structure, DOM">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>JavaScript</h1>
+                <br />
+                <h2>Classes</h2>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <h2>Fonction vs Méthode</h2>
+                <p>
+                    Un objet peut contenir des fonctions comme valeurs. <br /> Une fonction dans un objet est appelée <span class="keyword">méthode</span>.
+                </p>
+                <textarea class="code-font" data-autojslog="js-object-method" rows="8" cols="50">
+const square = {
+  surface: function(x) { return x * x; }
+};
+const disc = {
+  surface: function(r) { return Math.PI * r * r; }
+};
+console.log(square.surface(3));
+console.log(disc.surface(3));</textarea>
+                <br />
+                <div id="js-object-method" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>this</h2>
+                <p>
+                    Paramètre implicite qui contient l'objet sur lequel <br /> on a appelé une méthode <br /> (l'objet sur lequel on utilise l'opérateur '.').
+                </p>
+                <textarea class="code-font" data-autojslog="js-object-this" rows="7" cols="40">
+const square = {
+  side: 2,
+  surface: function() {
+   return this.side * this.side;
+  }
+};
+console.log(square.surface());</textarea>
+		<br />
+                <div id="js-object-this" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>this et appel de fonction</h2>
+                <p>
+                    Que vaut <span class="keyword">this</span> si on l'appelle comme une fonction&nbsp;?
+                </p>
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-object-this2" rows="6" cols="45">
+const isAdult = function() {
+  return this.age >= 18;
+}
+let person = { age: 32, hasGrownUp: isAdult };
+console.log(person.hasGrownUp());
+console.log(isAdult(person));</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+                <div id="js-object-this2" class="autojslog code-font"></div>
+                <p>
+                    <span class="keyword">isAdult</span> ne prend pas d'argument et <span class="keyword">this</span> vaut <span class="keyword">undefined</span>&nbsp;!
+                </p>
+            </section>
+            <section>
+                <img src="images/js-object/this_is_bullshit.png" alt="This is bullshit!">
+            </section>
+            <section>
+                <h2>Partage de méthodes</h2>
+                <p>
+                    Si on a deux objets, il faut définir <b>surface</b> deux fois, <br /> même si c'est le même code&nbsp;!?
+                </p>
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-object-prototype" rows="10" cols="55">
+const square1 = {
+  side: 1,
+  surface: function() { return this.side * this.side; }
+};
+const square2 = {
+  side: 2,
+  surface: function() { return this.side * this.side; }
+};
+console.log(square1.surface());
+console.log(square2.surface());</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+                <div id="js-object-prototype" class="autojslog code-font"></div>
+                <p>Ça paraît idiot&nbsp;!&nbsp;&nbsp;<span class="sad-image"></span></p>
+            </section>
+            <section>
+                <h1>Les Classes</h1>
+            </section>
+            <section>
+                <h2>Définition d'une classe</h2>
+                <p>Une classe définit un modèle de création d'objets.</p>
+                <p>
+                    Une classe contient des <b>méthodes</b> (fonctions qui agissent sur <span class="keyword">this</span>)
+                    et un <b>constructeur</b> (méthode d'initialisation).
+                </p>
+                <textarea class="code-font" data-autojslog="js6-class3a" rows="10" cols="45">
+class Square {
+  constructor(side) {
+    this.side = side;
+  }
+  surface() {
+    return this.side * this.side;
+  }
+}
+let square = new Square(3);
+console.log(square.surface());</textarea>
+                <br />
+                <div id="js6-class3a" class="autojslog code-font"></div>
+                <p class="small-font">
+                    Par convention, le nom des classes commence <b>toujours</b> par une majuscule.
+                </p>
+            </section>
+            <section>
+                <h2>Le mot-clé New</h2>
+                <p>
+                    <span class="keyword">new</span> permet de créer et d'initialiser des objets qui seront
+                    munis des méthodes listés dans une classe.
+                </p>
+                <textarea class="code-font" data-autojslog="js6-class3b" rows="13" cols="45">
+class Square {
+  constructor(side) {
+    this.side = side;
+    this.numberOfSides = 4;
+  }
+  surface() { return this.side * this.side; }
+  perimeter() {
+    return this.side * this.numberOfSides;
+  }
+}
+let square = new Square(10);
+console.log(square.surface());
+console.log(square.perimeter());</textarea>
+                <br />
+                <div id="js6-class3b" class="autojslog code-font"></div>
+                <p class="small-font">
+                    <b><span class="keyword">new</span> Square</b> crée un objet, initialise celui-ci avec la fonction <b>constructor</b>
+                    de la classe <b>Square</b>, et le munit de toutes les méthodes définies dans la classe <b>Square</b>.
+                </p>
+            </section>
+            <section>
+                <h2>Création d'objets</h2>
+                <p>Deux syntaxes&nbsp;!</p>
+                <dl>
+                    <dt>Avec les accolades&nbsp;:
+                    <dd>
+                        si on n'a que des valeurs, ou un seul objet&nbsp;; <br />
+                        <textarea class="code-font" rows="1" cols="63">
+const foo = { key1: 2, key2: 'hello' };</textarea>
+                    <dt>Avec <span class="keyword">new</span>&nbsp;:
+                    <dd>
+                        si on a plusieurs objets avec des méthodes.
+                        <textarea class="code-font" rows="9" cols="63">
+class Foo {
+  constructor(key1, key2) {
+    this.key1 = key1;
+    this.key2 = key2;
+  }
+  meth1(x) { return ...; }
+}
+const foo = new Foo(2, 'hello');
+foo.meth1(false);</textarea>
+                </dl>
+            </section>
+            <section>
+                <h2>Héritage (1/2)</h2>
+                <p>
+                  Une classe <b>B</b> peut représenter un <b>sous-ensemble</b> (<span class="keyword">extends</span>)
+                  d'une classe <b>A</b>&nbsp;: ses membres ont des capacités <b>étendues</b>.
+                </p>
+                <p class="small-font">
+                  Pour créer un <b>B</b>, on commence par créer un <b>A</b> grâce au mot-clé <span class="keyword">super</span>.
+                </p>
+                <textarea class="small-code-font" data-autojslog="js-object-super" rows="16" cols="65">
+class Rectangle {
+  constructor(side1, side2) {
+    this.side1 = side1;
+    this.side2 = side2;
+  }
+  surface() { return this.side1 * this.side2; }
+  perimeter() { return 2 * (this.side1 + this.side2); }
+}
+class Square extends Rectangle {
+  constructor(side) {
+    super(side, side);
+  }
+}
+const square = new Square(10);
+console.log(square.surface());
+console.log(square.perimeter());</textarea>
+		<br />
+                <div id="js-object-super" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Héritage (2/2)</h2>
+                <p>
+                  On peut ajouter des fonctions <br> et réécrire les fonctions de la classe mère.
+                </p>
+                  
+                </p>
+                <p class="small-font">
+                  Le mot-clé <span class="keyword">super</span> permet d'invoquer une fonction
+                  de la classe mère <br> quand on a réécrit une fonction de même nom.
+                </p>
+                <textarea class="small-code-font" data-autojslog="js-object-super2" rows="16" cols="55">
+class Human {
+  constructor(name) { this.name = name; }
+  hello() { console.log(`Hi! I'm ${this.name}!`); }
+}
+class Student extends Human {
+  constructor(name, field) {
+    super(name);
+    this.field = field;
+  }
+  hobbies() { console.log(`I love ${this.field}!`); }
+  hello() { super.hello(); this.hobbies(); }
+}
+const alice = new Human("Alice");
+const bob = new Student("Bob", "Web programming");
+alice.hello();
+bob.hello();</textarea>
+		<br />
+                <div id="js-object-super2" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>La notation "class" <br> et l'héritage&hellip;</h2>
+                <br />
+                <dl>
+                	<dd>permettent de <b>regrouper</b> dans un même endroit l'initialisation et la manipulation d'un type nommé.</dd>
+                	<dd>&nbsp;</dd>
+		        <dd><b>existent déjà</b> dans plusieurs autres languages <br> (C++, Java, Swift, Rust) et sont donc mieux comprises que la notion de
+                    délégation propre à JavaScript.</dd>
+                </dl>
+            </section>
+<!--            <section>
+                <h2>Exemple</h2>
+                <textarea class="small-code-font" data-autojscanvas="js-object-matrix" data-once rows="24" cols="65">
+const canvas = document.getElementById('js-object-matrix');
+const context = canvas.getContext("2d"); 
+const data = [ 'U', 'G', 'E'];      
+class Snake {
+  constructor(x) {
+    this.x = x;
+    this.y = Math.floor(canvas.height * Math.random());
+  }
+  draw(context) {
+    context.fillStyle = 'rgb(0, 255 , 0)';
+    for(let i = 0; i < data.length; i++) {
+      context.fillText(data[i], 15 * this.x + 2, this.y + 15 * i);
+      context.fillStyle = 'rgb(0, 164, 0)';
+    }
+    this.y = this.y + 10;
+    if (this.y > canvas.height) { this.y = 0; }
+  }
+}
+const snakes = [];
+for(let i = 0; i < 20; i++) { snakes.push(new Snake(i)); }
+window.setInterval(function() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  snakes.forEach(snake => snake.draw(context));
+}, 50);</textarea>
+                <canvas id="js-object-matrix" width="300" height="475"></canvas>
+            </section>-->
+            <section>
+                <h1>Classes prédéfinies</h1>
+            </section>
+            <section>
+                <h2>Classe prédéfinie&nbsp;: tableau</h2>
+                <p>
+                    Pour JavaScript, un tableau (<span class="keyword">array</span>) est un objet&nbsp;; <br />
+		    <span class="keyword">length</span> est une propriété des objets tableaux.
+                </p>
+                <textarea class="code-font" data-autojs="js-object-builtin-array" rows="7" cols="40">
+const array = [1, 2, 4];
+// propriété :
+array.length;
+// méthode :
+array.slice(1);
+const array2 = new Array();
+array2.length;</textarea>
+                <div class="code-font" id="js-object-builtin-array"></div>
+                <p class="small-font">
+                    Le mot-clé <span class="keyword">new</span> permet de créer un objet.
+                <p>
+            </section>
+            <section>
+                <h2>Classe prédéfinie&nbsp;: function</h2>
+                <p>
+                    Pour JavaScript, une fonction (<b>function</b>) est un objet&nbsp;; <br /> <span class="keyword">name</span> 
+		    ou <span class="keyword">length</span> sont des propriétés des objets fonctions.
+                </p>
+                <textarea class="small-code-font" data-autojs="js-object-builtin-function" rows="9" cols="50">
+const add = function(x,y) { return x + y; };
+// propriété :
+add.length;
+// méthode :
+add.toString();
+const fun = new Function("a","b","return a + b;");
+fun(1, 2);
+fun.length;</textarea>
+                <div class="small-code-font" id="js-object-builtin-function"></div>
+                <p class="small-font">
+                    <span class="keyword">length</span> renvoie le nombre de paramètres de la fonction.
+                <p>
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Web et Internet</title>
+<meta name="description" content="Programmation web">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+<link rel="icon" type="image/png" sizes="16x16" href="images/icon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32x32.png">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>Internet et Web</h1>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <!--<section>
+                <h2>Internet?</h2>
+                <blockquote cite="https://en.wikipedia.org/wiki/Internet">&ldquo;The Internet is the global system of interconnected computer
+                    networks that use the Internet protocol suite (TCP/IP) to link billions of devices worldwide.&rdquo;</blockquote>
+                <p class="right">
+                    source: Wikipedia.org - <a href="https://en.wikipedia.org/wiki/Internet">Internet</a>
+                </p>
+            </section>
+            <section>
+                <h2>Internet&nbsp;?</h2>
+                <blockquote cite="https://fr.wikipedia.org/wiki/Internet">&laquo;&nbsp;Internet est un système global de réseaux d'ordinateurs
+                    interconnectés qui utilise la suite de protocoles Internet (TCP/IP) pour lier des milliards de terminaux mondialement.&nbsp;&raquo;</blockquote>
+                <p class="right">
+                    source&nbsp;: Wikipedia.org - <a href="https://fr.wikipedia.org/wiki/Internet">Internet</a>
+                </p>
+            </section>-->
+            <section>
+                <h1>Internet</h1>
+            </section>
+            <section>
+                <h2>Internet Protocol (IP)</h2>
+                <p>Plusieurs protocoles d'échange de données permettant à des machines de communiquer entre elles à travers un réseau de machines.</p>
+                <img src="images/web/internet-routing.png" width="540" height="398" alt="internet routing">
+            </section>
+            <section>
+                <h2>Adresse IP</h2>
+                <p>Adresse unique identifiant une machine sur le réseau internet.</p>
+                <img src="images/web/ip-address.png" width="540" height="398" alt="IP address">
+            </section>
+            <section>
+                <h2>ping</h2>
+                <p>
+                    La commande <span class="keyword">ping</span> permet d'envoyer des paquets ICMP <br /> (de contrôle) à une adresse IP.
+                </p>
+                <pre><code class="hlbash" data-trim>
+$ ping 193.50.159.151
+PING 193.50.159.151 (193.50.159.151) 56(84) bytes of data.
+64 bytes from 193.50.159.151: icmp_seq=1 ttl=53 time=27.2 ms
+64 bytes from 193.50.159.151: icmp_seq=2 ttl=53 time=29.4 ms
+64 bytes from 193.50.159.151: icmp_seq=3 ttl=53 time=28.8 ms
+64 bytes from 193.50.159.151: icmp_seq=4 ttl=53 time=28.4 ms
+^C
+--- 193.50.159.151 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3004 ms
+rtt min/avg/max/mdev = 27.293/28.505/29.422/0.782 ms</code></pre>
+            </section>
+            <section>
+                <h2>Routeur</h2>
+                <p>Matériel connecté à plusieurs machines, <br /> qui sépare différents réseaux IP</p>
+                <img src="images/web/router-chez-soi.jpg" width="478" height="442" alt="router chez soi">
+            </section>
+            <section>
+                <h2>Routage</h2>
+                <p>Pour atteindre une machine distante, les données sont acheminées (routées) de proche en proche.</p>
+                <img src="images/web/internet-routing.png" width="540" height="398" alt="internet routing">
+            </section>
+            <section>
+                <h2>traceroute</h2>
+                <p>
+                    La commande <span class="keyword">traceroute</span> permet de savoir <br /> comment sont routées les données.
+                </p>
+                <pre><code class="hlbash" data-trim>
+$ traceroute 93.184.220.20
+traceroute to 93.184.220.20 (93.184.220.20), 30 hops max, 60 byte packets
+ 1  router.belkin (192.168.2.1)  * 8.856 ms  8.941 ms
+ 2  88.167.50.254 (88.167.50.254)  35.054 ms  35.510 ms  37.737 ms
+ 3  stmaurice-6k-1-a5.routers.proxad.net (213.228.14.254)  40.146 ms  41.482 ms  42.518 ms
+ 4  bzn-crs16-2-be1008.intf.routers.proxad.net (194.149.160.125)  48.989 ms  46.015 ms  49.999 ms
+ 5  th2-9k-3-be1000.intf.routers.proxad.net (194.149.163.90)  51.011 ms  55.204 ms  54.792 ms
+ 6  be4204.ccr21.par04.atlas.cogentco.com (149.11.115.13)  57.950 ms  48.369 ms  51.117 ms
+ 7  ntt.par04.atlas.cogentco.com (130.117.14.166)  26.249 ms  27.425 ms  27.546 ms
+ 8  xe-0-2-0-32.r04.parsfr01.fr.ce.gin.ntt.net (81.25.197.190)  27.131 ms
+    xe-0-2-0-34.r04.parsfr01.fr.ce.gin.ntt.net (81.25.197.238)  26.901 ms  27.719 ms
+ 9  93.184.220.20 (93.184.220.20)  26.546 ms  26.683 ms  25.159 ms</code></pre>
+                <p class="small-font">
+                    On voit que les données ont pris deux chemins à l'étape 8.
+                </p>
+                <p class="small-font">
+                    L'équivalent de <span class="keyword">traceroute</span>
+                    sous Windows est <span class="keyword">tracert</span>.
+                </p>
+            </section>
+            <section>
+                <h2>TCP/IP</h2>
+                <p>Transmission Control Protocol (TCP) fait croire à des machines qu'elles sont connectées directement l'une à l'autre.</p>
+                <p class="small-font">
+                    Pour fonctionner, TCP s'appuie sur IP.
+                </p>
+                <img src="images/web/tcp.png" width="486" height="358" alt="TCP">
+            </section>
+            <section>
+                <h1>DNS</h1>
+            </section>
+            <!--<section>
+                <h2>DNS</h2>
+                <blockquote cite="https://en.wikipedia.org/wiki/DNS">&ldquo;The Domain Name System (DNS) is a hierarchical distributed naming
+                    system for computers, services, or any resource connected to the Internet.&rdquo;</blockquote>
+                <p class="right">
+                    source: Wikipedia.org - <a href="https://en.wikipedia.org/wiki/DNS">DNS</a>
+                </p>
+            </section>
+            <section>
+                <h2>DNS</h2>
+                <blockquote cite="https://fr.wikipedia.org/wiki/Domain_Name_System">&laquo;&nbsp;Le système de nom de domaine (DNS) est un système de nommage
+                    hiérarchique et distribué pour des ordinateurs, services ou n'importe quelle ressource connectée à Internet.&nbsp;&raquo;</blockquote>
+                <p class="right">
+                    source&nbsp;: Wikipedia.org - <a href="https://fr.wikipedia.org/wiki/Domain_Name_System">DNS</a>
+                </p>
+            </section>-->
+            <section>
+                <h2>host</h2>
+                <p>La commande <span class="keyword">host</span> permet de demander au DNS une adresse IP pour un nom de machine.</p>
+                <pre><code class="hlbash" data-trim>
+$ host www.u-pem.fr
+www.u-pem.fr is an alias for typo3-prod.u-pem.fr.
+typo3-prod.u-pem.fr has address 193.50.159.151.
+
+$ host playboy.com
+playboy.com has address 204.74.99.100
+playboy.com mail is handled by 10 mx.la.playboy.com.
+playboy.com mail is handled by 5 mx01.la.playboy.com.</code></pre>
+                <p class="small-font">
+                    L'équivalent de <span class="keyword">host</span> sous Windows est
+                    <span class="keyword">nslookup</span>.
+                </p>
+            </section>
+            <section>
+                <h2>host avec un DNS externe</h2>
+                <p>en utilisant un des DNS de Google 8.8.8.8</p>
+                <pre><code class="hlbash" data-trim>
+$ host www.u-pem.fr 8.8.8.8
+Using domain server:
+Name: 8.8.8.8
+Address: 8.8.8.8#53
+Aliases: 
+
+www.u-pem.fr is an alias for typo3-prod.u-pem.fr.
+typo3-prod.u-pem.fr has address 193.50.159.151</code></pre>
+            </section>
+            <section>
+                <h2>Google DNS</h2>
+                <a href="https://xkcd.com/1361/"> <img src="images/web/xkcd_google_dns.png" width="262" height="383" alt="XKCD - Google DNS">
+                </a>
+                <p>
+                    <a href="https://xkcd.com/1361/"> xkcd: Google Announcement </a>
+                </p>
+            </section>
+            <section>
+                <h1>Web</h1>
+            </section>
+            <!--<section>
+                <h2>Web&nbsp;?</h2>
+                <blockquote cite="https://en.wikipedia.org/wiki/Www">&ldquo;The World Wide Web (WWW) is an open source information space where
+                    documents and other web resources are identified by URLs, interlinked by hypertext links, and can be accessed via the Internet.&rdquo;</blockquote>
+                <p class="right">
+                    source: Wikipedia.org - <a href="https://en.wikipedia.org/wiki/Www">World Wide Web</a>
+                </p>
+            </section>
+            <section>
+                <h2>Web&nbsp;?</h2>
+                <blockquote cite="https://fr.wikipedia.org/wiki/World_Wide_Web">&laquo;&nbsp;La toile mondiale (WWW) est un espace d'information à code source
+                    ouvert où les documents et autres ressources de la toile sont identifiés par des URLs, interconnectés par des liens hypertextes et auxquels
+                    on peut accéder par Internet.&nbsp;&raquo;</blockquote>
+                <p class="right">
+                    source&nbsp;: Wikipedia.org - <a href="https://fr.wikipedia.org/wiki/World_Wide_Web">World Wide Web</a>
+                </p>
+            </section>-->
+            <section>
+                <h2>URL (1/2)</h2>
+                <p>
+                    Uniform Resource Locator <br /> permet d'identifier une ressource sur le Web.
+                </p>
+                <img src="images/web/url.png" alt="URL">
+                <p class="small-font">
+                    C'est la chose que l'on écrit dans la barre de navigation.
+                </p>
+            </section>
+            <section>
+                <h2>URL (2/2)</h2>
+                <p>Identifie à la fois des documents (au format HTML) ou des images, vidéos, etc. sur le Web</p>
+                <img src="images/web/url-image.png" alt="URL Image">
+                <ul>
+                    <li>protocole&nbsp;: http, https</li>
+                    <li>nom de la machine&nbsp;: www.google.fr</li>
+                    <li>URI&nbsp;: /images/branding ...</li>
+                </ul>
+            </section>
+            <section>
+                <h2>HTTP</h2>
+                <p>HyperText Transfer Protocol&nbsp;: Protocole d'échange de documents et d'images au-dessus de TCP</p>
+                <img src="images/web/browser-server.png" width="540" height="398" alt="HTTP/TCP">
+            </section>
+            <section>
+                <h2>netcat (nc)</h2>
+                <p>permet d'envoyer une requête HTTP&nbsp;&nbsp;<span class="happy-image"></span></p>
+                <pre><code class="hlbash" data-trim>
+$ nc -C igm.univ-mlv.fr 80
+GET /ens/ HTTP/1.0
+Host: igm.univ-mlv.fr</code></pre>
+                <pre class="fragment"><code class="hlbash" data-trim>
+HTTP/1.1 200 OK
+Date: Fri, 10 Dec 2021 14:28:58 GMT
+Server: Apache
+Content-Length: 2957
+Connection: close
+Content-Type: text/html; charset=UTF-8
+...</code></pre>
+            </section>
+            <section>
+                <h2>Entête de la réponse HTTP</h2>
+                <p>La première ligne est un code de réponse</p>
+                <pre><code class="http" data-trim>
+HTTP/1.1 200 OK</code></pre>
+                <p>
+                    puis d'informations supplémentaires de la forme <br /><span class="keyword">clé: valeurs</span>
+                </p>
+                <pre><code class="http" data-trim>
+Content-Length: 2957
+Content-Type: text/html; charset=UTF-8</code></pre>
+                <p>
+                    et enfin séparé d'une ligne vide, le contenu <br /> (page web, images, vidéos, etc).
+                </p>
+            </section>
+            <section>
+                <h2>Codes de réponse HTTP</h2>
+                <p class="small-font">
+                    200 OK<br /> 301 Moved Permanently<br /> 400 Bad Request <br />
+                    401 Unauthorized<br /> 404 Not Found 
+                </p>
+                <img src="images/web/404notfound.png" alt="Error 404 Not found" height="300">
+                <p>
+                    <a class="small-font" href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">https://en.wikipedia.org/wiki/List_of_HTTP_status_codes</a>
+                </p>
+            </section>
+            <section>
+                <h2>Content-Length / Content-Type</h2>
+                <p>
+                    <span class="keyword">Content-Length</span> définit la taille du contenu, ou -1.
+                </p>
+                <p>
+                    <span class="keyword">Content-Type</span> définit le type du contenu, texte, image, etc <br /> au format MIME.
+                </p>
+                <pre><code class="http" data-trim>
+Content-Length: 2957
+Content-Type: text/html; charset=UTF-8</code></pre>
+                <span class="small-font">Fichier HTML de 2957 octets encodé en UTF-8</span>
+            </section>
+            <section>
+                <h2>Type MIME</h2>
+                <p>Multipurpose Internet Mail Extensions (MIME) définit l'encodage du Content-Type.</p>
+                <table>
+                    <tr>
+                        <td>text/plain;&nbsp;charset=utf-8</td>
+                        <td>texte simple (encodage UTF8)</td>
+                    </tr>
+                    <tr>
+                        <td>text/html;&nbsp;charset=utf-8</td>
+                        <td>texte au format HTML</td>
+                    </tr>
+                    <tr>
+                        <td>image/jpeg</td>
+                        <td>image JPEG</td>
+                    </tr>
+                    <tr>
+                        <td>video/mp4</td>
+                        <td>video au format MPEG4</td>
+                    </tr>
+                    <tr>
+                        <td>application/msword</td>
+                        <td>contenu lisible par Microsoft Word</td>
+                    </tr>
+                </table>
+		<br />
+                <span class="small-font"> Historiquement, le type MIME a été spécifié pour les mails et réutilisé par HTTP. </span>
+            </section>
+            <section>
+                <h2>HTTP 1.1</h2>
+                <p>
+                    On doit de plus spécifier un <span class="keyword">Host</span> car un serveur <br /> peut héberger plusieurs sites
+                </p>
+                <pre><code class="hlbash" data-trim>
+$ nc -C forax.github.io 80
+GET / HTTP/1.0
+
+HTTP/1.1 404 Not Found
+Server: GitHub.com
+...</code></pre>
+                <pre class="fragment"><code class="hlbash" data-trim>
+$ nc -C forax.github.io 80
+GET / HTTP/1.1
+Host: forax.github.io
+
+HTTP/1.1 200 OK
+Server: GitHub.com
+...</code></pre>
+            </section>
+            <section>
+                <h2>Et pour une image&nbsp;?</h2>
+                <pre><code class="http" data-trim>
+$ nc -C imgs.xkcd.com 80
+GET /comics/google_announcement.png HTTP/1.1
+Host: imgs.xkcd.com</code></pre>
+		<div class="fragment">
+                <pre><code class="http" data-trim>
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=300
+Expires: Mon, 25 Jan 2021 08:06:27 GMT
+Content-Type: image/png
+ETag: "3722984847"
+Last-Modified: Mon, 28 Apr 2014 04:40:03 GMT
+Server: lighttpd/1.4.28
+Content-Length: 19172
+Accept-Ranges: bytes
+Date: Mon, 25 Jan 2021 08:01:28 GMT
+Via: 1.1 varnish
+Age: 16
+Connection: close
+X-Served-By: cache-lcy1135-LCY
+X-Cache: HIT
+X-Cache-Hits: 6
+X-Timer: S1453643891.248729,VS0,VE0
+</code></pre>
+                <p class="small-font"> Fichier PNG de 19172 octets</p></div>
+            </section>
+            <section>
+                <h2>wget</h2>
+                <p>
+                    <span class="keyword">wget</span> permet de télécharger une ressource <br /> à partir d'une URL.
+                </p>
+                <pre><code class="hlbash" data-trim>
+$ wget http://igm.u-pem.fr/index.html
+--2021-01-25 08:54:29--  http://igm.u-pem.fr/index.html
+Resolving igm.u-pem.fr (igm.u-pem.fr)... 193.50.159.151
+Connecting to igm.u-pem.fr (igm.u-pem.fr)|193.50.159.151|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘index.html’</code></pre>
+            </section>
+            <section>
+                <h2>Requêtes HTTP</h2>
+                <img src="images/web/page.png" height="200" class="right" alt="HTTP request">
+                <p>Une page nécessite plusieurs requêtes HTTP.</p>
+                <a href="images/web/page-breakdown.png"><img src="images/web/page-breakdown.png" alt="http page breakdown"></a>
+            </section>
+            <section>
+                <h2>Requêtes HTTP (suite)</h2>
+                <p>Votre site web est trop lent&nbsp;?</p>
+                <a href="images/web/page-e-learning.png"> <img src="images/web/page-e-learning.png" alt="u-pem.elearning.fr" height="500">
+                </a>
+            </section>
+            <section>
+                <h2>HTTPS</h2>
+                <p>Tunnel de sécurité autour de HTTP</p>
+                <p>
+                    Utilise le principe du chiffrement asymétrique entre le client et le serveur.
+                </p>
+                <p class="fragment">La clé publique est recherchée auprès de serveurs (dits serveurs de certificats) donc les clés publiques sont stockées dans
+                    le code du client.</p>
+                <p class="fragment">Pour des questions de performance, le chiffrement asymétrique n'est utilisé que pour échanger une clef symétrique entre
+                    le client et le serveur. Le reste des échanges se fait en utilisant cette clef symétrique.</p>
+            </section>
+<!-- section>
+<h2>Chiffrage asymétrique</h2>
+
+<p>
+clé publique
+clé privée
+</p>
+
+</section>
+
+<section>
+<img src="images/web/https-certificates.png">
+</section>
+
+<section>
+<h2>Certificats</h2>
+<p>
+
+</p>
+</section -->
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>JavaScript - Canvas API</title>
+<meta name="description" content="JavaScript, Canvas API">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+<script> let loadContext = x => document.getElementById('canvas-' + x).getContext("2d"); </script>
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>JavaScript</h1>
+                <br />
+                <h2>Canvas</h2>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <h2>Historique des versions</h2>
+                La spécification est en 2 parties&nbsp;:<br />
+                <ol>
+                    <li>un élément <em>canvas</em></li>
+                    <li>un objet <em>context&nbsp;2D</em></li>
+                </ol>
+                <br />
+                <table>
+                    <tr>
+                        <td><a href="https://www.w3.org/TR/html5/scripting-1.html#the-canvas-element">HTML 5 Canvas</a></td>
+                        <td>2014</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.w3.org/TR/2dcontext/">Context 2D</a></td>
+                        <td>2015</td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <h2>L'API Canvas</h2>
+                <p>permet de dessiner avec JavaScript sur un canvas HTML.</p>
+                <pre>
+                    <code class="html" data-trim>
+&lt;canvas id="canvas-example1"
+        width="300"
+        height="180"&gt;&lt;/canvas&gt;</code></pre>
+                <canvas id="canvas-example1" width="300" height="180"></canvas>
+                <br />
+                <textarea class="code-font" data-autojscanvas="canvas-example1" rows="4" cols="56">
+const canvas = document.getElementById('canvas-example1');
+const context = canvas.getContext("2d");
+context.strokeRect(50, 25, 75, 35);
+context.strokeRect(75, 50, 100, 60);</textarea>
+                <p class="small-font">Un canvas est vu comme une image sur laquelle on peut dessiner.</p>
+            </section>
+            <section>
+                <h2>Le context 2D</h2>
+                <p>
+                    On récupère l'élément Canvas par son nom <br /> puis on demande le contexte de dessin 2D pour dessiner.
+                </p>
+                <br />
+                <canvas id="canvas-example2" width="300" height="180"></canvas>
+                <br />
+                <textarea class="code-font" data-autojscanvas="canvas-example2" rows="2" cols="40">
+context.fillStyle = "tomato";
+context.fillRect(100, 50, 100, 100);</textarea>
+                <p class="small-font">
+                    Il existe aussi un context 3D, défini par la specification <a href="https://www.khronos.org/registry/webgl/specs/latest/">WebGL</a>.
+                </p>
+            </section>
+            <section>
+                <h2>Les coordonnées</h2>
+                <p>Le point (x = 0, y = 0) est en haut à gauche.</p>
+                <p class="small-font">
+                    x&nbsp;: coordonnée sur l'axe horizontal (vers la droite) <br /> y&nbsp;: coordonnée sur l'axe vertical (vers le bas)
+                </p>
+                <canvas id="canvas-example3" width="300" height="180"></canvas>
+                <br />
+                <textarea class="code-font" data-autojscanvas="canvas-example3" rows="2" cols="40">
+context.fillStyle = "violet";
+context.fillRect(0, 0, 100, 100);</textarea>
+                <br />
+            </section>
+            <section>
+                <h2>L'état du context</h2>
+                <p>La façon d'afficher dépend de l'état de propriétés du <span class="keyword">context</span>.</p>
+                <canvas id="canvas-example4" width="300" height="180"></canvas>
+                <br />
+                <textarea class="code-font" data-autojscanvas="canvas-example4" rows="4" cols="40">
+context.strokeStyle = "blue";
+context.strokeRect(150, 25, 100, 100);
+context.strokeStyle = "red";
+context.strokeRect(100, 50, 100, 100);</textarea>
+                <p>
+                    Par exemple, l'affichage de la couleur de l'intérieur d'un rectangle dépend de la propriété <span class="keyword">stokeStyle</span>.
+                </p>
+            </section>
+            <section>
+                <h2>Couleur</h2>
+                <p>
+                    Les couleurs sont les mêmes que les <a href="css.html#style-color">couleurs de CSS</a>.
+                </p>
+                <canvas id="canvas-color" width="300" height="180"></canvas>
+                <br />
+                <textarea class="code-font" data-autojscanvas="canvas-color" rows="4" cols="40">
+context.fillStyle = "rgb(255, 0, 0)";
+context.fillRect(25, 50, 100, 100);
+context.fillStyle = "#00A0A0";
+context.fillRect(150, 50, 100, 100);</textarea>
+                <br />
+            </section>
+            <section>
+                <h2>Gradient linéaire</h2>
+                <p>
+                    On définit un gradient linéaire par deux points (x1,&nbsp;y1) (x2,&nbsp;y2) puis plusieurs couleurs 
+		    (<span class="keyword">color stops</span>) sur une échelle
+                    entre 0 et 1.
+                </p>
+                <div class="left-float">
+                    <canvas id="canvas-color2" width="250" height="250"></canvas>
+                </div>
+                <div>
+                    <textarea class="code-font right-float" data-autojscanvas="canvas-color2" rows="8" cols="45">
+const gradient = context.createLinearGradient(
+                   50, 50,
+                   200, 200);
+gradient.addColorStop(0, "rgb(255, 0, 0)");
+gradient.addColorStop(0.75, "white");
+gradient.addColorStop(1, "blue");
+context.fillStyle = gradient;
+context.fillRect(50, 50, 150, 150);</textarea>
+                </div>
+                <p class="clear"></p>
+            </section>
+            <section>
+                <h2>Gradient circulaire</h2>
+                <p>On définit un gradient circulaire par 2 cercles (x1,&nbsp;y1,&nbsp;r1) (x2,&nbsp;y2,&nbsp;r2).</p>
+                <div class="left-float">
+                    <canvas id="canvas-color3" width="250" height="250"></canvas>
+                </div>
+                <div>
+                    <textarea class="code-font right-float" data-autojscanvas="canvas-color3" rows="8" cols="45">
+const gradient = context.createRadialGradient(
+                   125, 125, 10,
+                   130, 130, 50);
+gradient.addColorStop(0, "#A0FF00");
+gradient.addColorStop(0.75, "#00A064");
+gradient.addColorStop(1, "#00A064");
+context.fillStyle = gradient;
+context.fillRect(50, 50, 150, 150);</textarea>
+                </div>
+                <p class="clear"></p>
+            </section>
+            <section>
+                <h2>opérations sur un canvas</h2>
+                <ul>
+                    <li>Afficher un texte</li>
+                    <li>Afficher une figure simple</li>
+                    <li>Afficher des figures complexes</li>
+                    <li>Afficher une image</li>
+                    <li>Gestion des événements</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Afficher un texte</h2>
+                <p>
+                    <span class="keyword">stroke</span> = trait <br /> 
+		    <span class="keyword">fill</span> = remplissage
+                </p>
+                <canvas id="canvas-text" width="300" height="180"></canvas>
+                <br />
+                <textarea class="code-font" data-autojscanvas="canvas-text" rows="5" cols="40">
+context.strokeStyle = "gray";
+context.fillStyle = "red";
+context.font = "40px Arial";
+context.strokeText("Hello World", 20, 50);
+context.fillText("Hello World", 20, 100);</textarea>
+                <p class="small-font">On peut faire des effets d'ombre en dessinant avec un décalage d'1 ou 2 pixels.</p>
+            </section>
+            <section>
+                <h2>Afficher un rectangle</h2>
+                <p>
+                    <span class="keyword">stroke</span> = trait <br /> 
+		    <span class="keyword">fill</span> = remplissage
+                </p>
+                <canvas id="canvas-rect" width="300" height="180"></canvas>
+                <br />
+                <textarea class="code-font" data-autojscanvas="canvas-rect" rows="4" cols="40">
+context.strokeStyle = "blue";
+context.strokeRect(50, 50, 100, 50);
+context.fillStyle = "red";
+context.fillRect(100, 75, 100, 50);</textarea>
+                <br />
+            </section>
+            <section>
+                <h2>Afficher une ligne</h2>
+                <p>
+                    <span class="keyword">moveTo</span> déplace le crayon,
+		    <span class="keyword">lineTo</span> place une ligne, <br />
+		    <span class="keyword">beginPath</span> indique le début d'un chemin,
+		    <span class="keyword">stroke</span> dessine.
+                </p>
+                <canvas id="canvas-line" width="300" height="180"></canvas>
+                <br />
+                <textarea class="code-font" data-autojscanvas="canvas-line" rows="7" cols="40">
+context.strokeStyle = "orange";
+context.lineWidth = 7;
+context.beginPath();
+context.moveTo(50, 50);
+context.lineTo(150, 150);
+context.lineTo(250, 50);
+context.stroke();</textarea>
+                <br />
+            </section>
+            <section>
+                <h2>Style d'une ligne</h2>
+                <br />
+                <canvas id="canvas-line2" width="300" height="180"></canvas>
+                <br />
+                <textarea class="code-font" data-autojscanvas="canvas-line2" rows="9" cols="40">
+context.strokeStyle = "fuchsia";
+context.lineWidth = 7;
+context.lineCap = "round";
+context.lineJoin = "bevel";
+context.beginPath();
+context.moveTo(50, 50);
+context.lineTo(150, 150);
+context.lineTo(250, 50);
+context.stroke();</textarea><dl class="small-font right-float">
+                    <dt class="keyword">lineWidth:</dt>
+                    <dd>épaisseur du trait</dd>
+                    <dt><span class="keyword">lineCap:</span> butt | round | square</dt>
+                    <dd>bout des lignes</dd>
+                    <dt><span class="keyword">lineJoin:</span> bevel | round | miter</dt>
+                    <dd>jointure entre les lignes</dd>
+                </dl>
+                <p class="clear"></p>
+            </section>
+            <section>
+                <h2>Afficher un cercle/ellipse</h2>
+                <p>
+                    <span class="keyword">arc</span>(x, y, radius, startAngle, endAngle) <br /> <span class="small-font">Les angles sont en radians&nbsp;!</span>
+                </p>
+                <canvas id="canvas-arc" width="260" height="180"></canvas>
+                <textarea class="code-font" data-autojscanvas="canvas-arc" rows="9" cols="46">
+context.font = "14px arial";
+for(let i = 0; i < 4; i++) {
+  context.strokeText((i + 1) + " PI / 2", 
+		     45 + 50 * i, 27 + 45 * i);
+  context.beginPath();
+  context.arc(10 + 50 * i, 20 + 45 * i,
+	      20, 0, (i + 1) * Math.PI / 2);
+  context.stroke();
+}</textarea>
+                <p class="small-font">Le point d'angle 0 est au centre à droite et on tourne dans le sens des aiguilles d'une montre.</p>
+            </section>
+            <section>
+                <h2>Tableau de pixels</h2>
+                <p><span class="keyword">getImageData()</span> renvoie un tableau de pixels.</p>
+                <canvas id="canvas-image-data" class="left-float" width="250" height="180"></canvas>
+                <p>
+                    <textarea class="code-font right-float" data-autojscanvas="canvas-image-data" rows="15" cols="51">
+const imageData = context.getImageData(
+		  0, 0, canvas.width, canvas.height);
+const array = imageData.data;
+for(let y = 0; y < canvas.height; y++) {
+  for(let x = 0; x < canvas.width; x++) {
+    const i = (x + y * canvas.width) * 4;
+    array[i]   = Math.floor(255 * x / canvas.width);
+		    // red
+    array[i+1] = 128; // green
+    array[i+2] = Math.floor(255 * y / canvas.height);
+		    // blue
+    array[i+3] = 255; // alpha
+  }
+}
+context.putImageData(imageData, 0, 0);</textarea>
+                </p>
+		<br class="clear"/>
+                <p class="small-font">Chaque pixel est composé de quatre cases rouge, verte, bleue, alpha (opacité).</p>
+            </section>
+            <section>
+                <h2>Tableau de pixels (2)</h2>
+                <p><span class="keyword">putImageData()</span> copie le tableau de pixels dans le canvas.</p>
+                <canvas id="canvas-image-data2" class="left-float" width="250" height="180"></canvas>
+                <p>
+                    <textarea class="code-font right-float" data-autojscanvas="canvas-image-data2" rows="14" cols="51">
+const imageData = context.getImageData(
+		  0, 0, canvas.width, canvas.height);
+const array = imageData.data;
+for(let i = 0; i < array.length; i = i + 4) {
+  let y = i / 4 / canvas.width;
+  let x = i / 4 % canvas.width;
+  array[i]   = Math.floor(255 * x / canvas.width);
+		    // red
+  array[i+1] = 128; // green
+  array[i+2] = Math.floor(255 * y / canvas.height);
+		    // blue
+  array[i+3] = 255; // alpha
+}
+context.putImageData(imageData, 0, 0);</textarea>
+                </p>
+		<br class="clear" />
+                <p class="small-font">Version avec une seule boucle</p>
+            </section>
+            <section>
+                <h2>Afficher une image (1/3)</h2>
+                <p>
+                    Il faut que l'image soit chargée avant de pouvoir la dessiner&nbsp; <br /> si l'image est déjà dans la page, pas de problème&hellip;
+                </p>
+                <canvas id="canvas-image" width="250" height="180"></canvas>
+                <img id="image-html5" src="images/js-canvas/html5.png" class="right-float" style="margin: 35px 0px 0px 0px" alt="HTML-5">
+                <p class="clear"></p>
+                <textarea class="code-font" data-autojscanvas="canvas-image" rows="4" cols="53">
+const image = document.getElementById("image-html5");
+for(let i = 0; i < 3; i++) {
+  context.drawImage(image, 10 + i * 75, 10 + i * 30);
+}</textarea>
+                <br />
+            </section>
+            <section>
+                <h2>Afficher une image (2/3)</h2>
+                <p>
+                    Si l'image n'est pas chargée, <b>image.<span class="keyword">onload</span></b> est appelée lorsque l'image est chargée.
+                </p>
+                <canvas id="canvas-image2" width="250" height="180"></canvas>
+                <br />
+                <textarea class="code-font" data-autojscanvas="canvas-image2" rows="8" cols="53">
+const image = new Image();
+const letUsDrawTheImages = function() {
+  for(let i = 0; i < 3; i++) {
+    context.drawImage(image, 10 + i * 75, 70 - i * 30);
+  }
+}
+image.onload = letUsDrawTheImages;
+image.src = "images/js-canvas/html5.png";</textarea>
+                <br />
+            </section>
+            <section>
+                <h2>Afficher une image (3/3)</h2>
+                <p>
+                    On peut spécifier <span class="keyword">onload</span> en utilisant une closure,
+ce qui évite de devoir trouver un nom à la fonction.
+                </p>
+                <canvas id="canvas-image3" width="250" height="180"></canvas>
+                <br />
+                <textarea class="code-font" data-autojscanvas="canvas-image3" rows="7" cols="66">
+const image = new Image();
+image.onload = function() {
+  for(let i = 0; i < 3; i++) {
+    context.drawImage(image, 10 + i * 75, 20 + Math.abs(i - 1) * 30);
+  }
+};
+image.src = "images/js-canvas/html5.png";</textarea>
+                <p class="small-font">
+                    C'est une closure car les variables <b>context</b> et <b>image</b> sont prises du scope englobant&nbsp;!
+                </p>
+            </section>
+<!--            <section>
+                <h2>Événements</h2>
+            </section>
+            <section>
+                <h2>Événements clavier</h2>
+                <p>
+                    La fonction <b>window.<span class="keyword">onkeydown</span></b> 
+		    est appelée lorsque l'on appuie sur une touche, <b>windows.<span class="keyword">onkeyup</span></b>
+		    lorsque l'on relâche la touche.
+                </p>
+                <textarea class="code-font left" data-autojscanvas="canvas-key" rows="13" cols="48">
+context.font = "16px arial";
+let y = 20;
+function action(name) {
+  context.fillText(name, 50, y);
+  y = y + 20;
+  if (y > canvas.height)  {
+     y = 20;
+     context.clearRect(0, 0,
+	canvas.width, canvas.height);
+  }
+}
+window.onkeydown = function() { action('down'); };
+window.onkeyup = function() { action('up'); };</textarea>
+                <canvas id="canvas-key" class="right-float" width="250" height="210"></canvas>
+                <p class="small-font clear">Appuyer sur une touche.</p>
+            </section>
+            <section>
+                <h2>Plusieurs écouteurs clavier</h2>
+                <p>
+                    La fonction <b>window.<span class="keyword">addEventListener</span></b> 
+		    permet d'ajouter une action sans détruire les actions précédemment enregistrées.
+                </p>
+                <textarea class="code-font" data-autojscanvas="canvas-key2" data-once rows="11" cols="45">
+function draw(color) {
+  context.fillStyle = color;
+  context.fillRect(130, y - 20, 40, 40);
+}
+let y = 0;
+window.addEventListener('keydown', function() {
+  draw('white');
+  y = y + 5;
+  if (y > canvas.height) { y = 0; }
+  draw('gold');
+});</textarea>&nbsp;
+                <canvas id="canvas-key2" width="310" height="210"></canvas>
+                <p class="small-font">Appuyer sur une touche.</p>
+            </section>
+            <section>
+                <h2>Récupérer les touches</h2>
+                <p>
+                    <span class="keyword">keyCode</span> permet de récupérer le code (plus ou moins ASCII) de la touche.
+                </p>
+                <textarea class="code-font left" data-autojscanvas="canvas-key3" data-once rows="13" cols="50">
+function draw(x, color) {
+  context.fillStyle = color;
+  context.fillRect(x - 20, 80, 40, 40);
+}
+let x = 150;
+draw(x, 'dodgerblue');
+window.addEventListener('keydown', function(event) {
+  draw(x, 'white');
+  let e = event.keyCode;
+  if (e == 84)  { x = x + 5; }      // key 't'
+  else if (e == 82) { x = x - 5; }  // key 'r'
+  draw(x, 'dodgerblue');
+});</textarea>
+                <canvas id="canvas-key3" class="right-float" width="260" height="210"></canvas>
+                <p class="small-font clear">Utiliser les touches 'r' et 't' pour bouger le carré.</p>
+            </section>
+            <section>
+                <h2>&Eacute;vénements souris</h2>
+                <p>
+                    <span class="keyword">onmousedown</span>, <span class="keyword">onmousemove</span>, <span class="keyword">onmouseup</span> 
+		    sont appelées lorsque l'on utilise la souris sur un élément.
+                </p>
+                <textarea class="code-font left" data-autojscanvas="canvas-mouse" rows="7" cols="50">
+context.font = "16px arial";
+context.strokeStyle = 'black';
+canvas.onmousedown = function(event) {
+  let text = event.offsetX + ', ' + event.offsetY;
+  context.fillText(text, event.offsetX,
+				    event.offsetY);
+};</textarea>
+                <canvas id="canvas-mouse" class="right-float" width="260" height="200"></canvas>
+                <p class="clear">
+                    La fonction recoit un événement (<b>event</b>) contenant les coordonnées (<span class="keyword">offsetX</span> et <span class="keyword">offsetY</span>).
+                </p>
+            </section>
+            <section>
+                <h2>&Eacute;vénements souris (2)</h2>
+                <p>
+                    <span class="keyword">onmousemove</span> est appelée lorsque l'on bouge la souris. <br /> Si l'on veut détecter si l'on bouge en appuyant, <br /> il faut un
+                    booléen supplémentaire.
+                </p>
+                <textarea class="code-font left" data-autojscanvas="canvas-mouse2" data-once rows="16" cols="50">
+let drag = false;
+context.strokeStyle = 'violet';
+canvas.onmousedown = function(event) {
+  drag = true;
+  context.beginPath();
+  context.moveTo(event.offsetX, event.offsetY);
+};
+canvas.onmousemove = function(event) {
+  if (drag) {
+    context.lineTo(event.offsetX, event.offsetY);
+    context.stroke();
+  }
+};
+canvas.onmouseup = function() {
+  drag = false;
+};</textarea>
+                <canvas id="canvas-mouse2" class="right-float" width="260" height="210"></canvas>
+            </section>
+            <section>
+                <h2>setTimeout</h2>
+                <p>
+                    <b><span class="keyword">setTimeout</span>(action, temps)</b> permet de déclencher une action après un temps d'attente (en ms).
+                </p>
+                <textarea class="code-font" data-autojscanvas="canvas-timer" rows="6" cols="40">
+context.fillStyle = "silver";
+context.fillRect(100, 50, 100, 100);
+window.setTimeout(function() {
+  context.fillStyle = "lightblue";
+  context.fillRect(100, 50, 100, 100);
+}, 5000);</textarea>
+                <canvas id="canvas-timer" width="300" height="200"></canvas>
+                <br />
+            </section>
+            <section>
+                <h2>setTimeout (2)</h2>
+                <p>
+                    On peut appeler <span class="keyword">setTimeout()</span> plusieurs fois avec la même fonction.
+                </p>
+                <textarea class="code-font" data-autojscanvas="canvas-timer2" data-once rows="9" cols="40">
+let colors = [ 'silver', 'lightblue'];
+let index = 0;
+let fun = function() {
+  context.fillStyle = colors[index];
+  context.fillRect(100, 50, 100, 100);
+  index = 1 - index;
+  window.setTimeout(fun, 2000);
+};
+fun();</textarea>&nbsp;
+                <canvas id="canvas-timer2" width="300" height="200"></canvas>
+                <br />
+            </section>
+            <section>
+                <h2>setInterval</h2>
+                <p>
+                    <b>window.<span class="keyword">setInterval</span></b> permet de rappeler une fonction à intervalles réguliers.
+                </p>
+                <textarea class="small-code-font" data-autojscanvas="canvas-timer3" data-once rows="13" cols="55">
+function draw(color) {
+  context.fillStyle = color;
+  context.fillRect(x, y, 10, 10);
+}
+let x = 0; let y = 0; let dx = 1; let dy = 1;
+let animate = function() {
+  draw('white');
+  x = x + dx; y = y + dy;
+  if (x == 0 || x == canvas.width - 10) { dx = -dx; }
+  if (y == 0 || y == canvas.height - 10) { dy = -dy; }
+  draw('red');
+};
+window.setInterval(animate, 12);</textarea>
+                <canvas id="canvas-timer3" width="260" height="210"></canvas>
+                <br />
+            </section>
+            <section>
+                <h2>requestAnimationFrame</h2>
+                <p>demande une animation dès que possible.</p>
+                <textarea class="small-code-font" data-autojscanvas="canvas-timer4" data-once rows="20" cols="60">
+function point(x, y) { return { x: x, y: y, dx: 1, dy: 1 }; }
+function draw(p1, p2, color) {
+  context.strokeStyle = color;
+  context.beginPath();
+  context.moveTo(p1.x, p1.y); context.lineTo(p2.x, p2.y);
+  context.stroke();
+}
+let move = function(p) {
+  p.x = p.x + p.dx; p.y = p.y + p.dy;
+  if (p.x == 0 || p.x == canvas.width) { p.dx = -p.dx; }
+  if (p.y == 0 || p.y == canvas.height) { p.dy = -p.dy; }
+};
+let p1 = point(50, 50); let p2 = point(200, 150);
+let animate = function() {
+  draw(p1, p2, 'white');
+  move(p1); move(p2);
+  draw(p1, p2, 'blue');
+  window.requestAnimationFrame(animate);
+};
+window.requestAnimationFrame(animate);</textarea>
+                <canvas id="canvas-timer4" width="310" height="210"></canvas>
+                <br />
+            </section>-->
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="plugin/autoeval/autoeval.js"></script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Responsive Design</title>
+<meta name="description" content="Responsive design">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+</head>
+<body id="responsive">
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>Responsive Web Design</h1>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <h2>Responsive Web Design</h2>
+                <p>Repose sur 3 idées&nbsp;:</p>
+                <ul>
+                    <li>Media Queries CSS&nbsp;;
+                    <li>On place les éléments sur une grille fluide (grid)&nbsp;;
+                    <li>Images flexibles en unités relatives (em ou %).
+                </ul>
+                <p>&nbsp;</p>
+                <p>
+                    Devient une réalité suite au <a href="https://en.wikipedia.org/wiki/Mobilegeddon">Google Mobilegeddon</a>.
+                </p>
+            </section>
+            <section>
+                <h2>Autres termes</h2>
+                <dl>
+                    <dt>Mobile first</dt>
+                    <dd>On développe le site web pour mobile et on tripatouille le CSS pour qu'il s'adapte aux écrans d'ordinateur.</dd>
+                    <dt>Progressive enhancement</dt>
+                    <dd>On affiche les données importantes d'abord, on charge progressivement avec des scripts supplémentaires pour offrir de
+                        l'interactivité.</dd>
+                </dl>
+            </section>
+            <section>
+                <h2>CSS3 Media Queries</h2>
+                <table>
+                    <tr>
+                        <td><a href="https://www.w3.org/TR/css3-mediaqueries/">Media Queries</a></td>
+                        <td>juin 2012</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.w3.org/TR/mediaqueries-4/">Media Queries level 4</a></td>
+                        <td>sept 2017</td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <h2>Sélecteur @media</h2>
+                <p>
+                    Le sélecteur
+                    <span class="keyword">@media</span>
+                    permet d'appliquer des règles CSS différentes en fonction par exemple de la taille de la zone d'affichage (viewport).
+                </p>
+                <div class="relative">
+                  <iframe id="rwd1" class="resize_anim" src="images/responsive/media-query1.html" width="500" height="100"></iframe>
+                  <div id="rwd1_button" class="resize_button"></div>
+                </div>
+                <br />
+                <textarea class="code-font" data-autostyle="rwd1" rows="8" cols="45">
+body {
+  background-color: silver;
+}
+@media screen and (min-width: 480px) {
+  body {
+    background-color: tan;
+  }
+}</textarea>
+            </section>
+            <section>
+                <h2>Type d'afficheurs</h2>
+                <p>@media est suivi d'un type d'afficheur parmi
+                <ol>
+                    <li><span class="keyword">all</span>&nbsp;: tous types d'afficheurs (par défaut)&nbsp;;
+                    <li><span class="keyword">screen</span>&nbsp;: page affichée à l'écran&nbsp;;
+                    <li><span class="keyword">print</span>&nbsp;: page imprimée&nbsp;;
+                    <li><span class="keyword">speech</span>&nbsp;: page lue, pour les malvoyants.
+                </ol>
+                </p>
+                <textarea class="code-font" rows="6" cols="55">
+@media screen {
+  body { background-color: black; }
+}
+@media printer {
+  body { background-color: white; }
+}</textarea>
+                </small>
+            </section>
+            <section>
+                <h2>min-width et max-width</h2>
+                <p>
+                    <span class="keyword">min-width</span> indique la taille minimum (<b>min</b>) &nbsp;:
+                    <span class="small-font"><br />le sélecteur s'applique si la taille courante est &ge; <b>min</b>&nbsp;;</span> <br />
+                    <span class="keyword">max-width</span> indique la taille maximum (<b>max</b>) &nbsp;:
+                    <span class="small-font"><br />le sélecteur s'applique si la taille courante est &le; <b>max</b>&nbsp;.</span>
+                </p>
+                <div class="relative">
+                  <iframe id="rwd3" class="resize_anim" src="images/responsive/media-query3.html" width="500" height="100"> </iframe>
+                  <div id="rwd3_button" class="resize_button"></div>
+                </div>
+                  <textarea class="code-font" data-autostyle="rwd3" rows="7" cols="55">
+body { background-color: silver; }
+@media screen and (min-width: 450px)  {
+  body { background-color: lightblue; }
+}
+@media screen and (max-width: 250px)  {
+  body { background-color: tomato; }
+}</textarea>
+            </section>
+            <section>
+                <h2>Composition de @media query</h2>
+                <p>
+                    On utilise <span class="keyword">and</span> pour appliquer plusieurs critères. <br /> 
+                    On utilise <span class="keyword">not</span> pour inverser les critères.
+                </p>
+                <div class="relative">
+                <iframe id="rwd4" class="resize_anim" src="images/responsive/media-query4.html" width="500" height="100"> </iframe>
+                  <div id="rwd4_button" class="resize_button"></div>
+                </div>
+                    <textarea class="code-font" data-autostyle="rwd4" rows="4" cols="60">
+body { background-color: silver; }
+@media screen and (min-width: 250px) and (max-width: 450px)  {
+  body { background-color: tan; }
+}</textarea>
+            </section>
+            <section>
+                <h2>Ou entre @media queries</h2>
+                <p>
+                    Pour faire l'équivalent du <span class="keyword">ou</span>, <br /> on sépare les critères par des virgules.
+                </p>
+                <div class="relative">
+                <iframe id="rwd2" class="resize_anim" src="images/responsive/media-query2.html" width="500" height="100"> </iframe>
+                  <div id="rwd2_button" class="resize_button"></div>
+                </div>
+                    <textarea class="code-font" data-autostyle="rwd2" rows="4" cols="60">
+body { background-color: silver; }
+@media screen and (max-width: 250px), (min-width: 450px)  {
+  body { background-color: tan; }
+}</textarea>
+            </section>
+            <section>
+                <h2>Media Query en HTML</h2>
+                <p>On peut indiquer le media dans la balise <span class="keyword">link</span><br />
+                mais, en pratique, on le fait pas, car le browser chargerait tous les fichiers avant d'appliquer le bon.</p>
+                    <textarea class="small-code-font" rows="2" cols="80">
+<link rel="stylesheet" media="screen and (min-width: 1200px)" href="wide.css">
+<link rel="stylesheet" media="screen and (max-width: 600px)" href="small.css"></textarea>
+            </section>
+            <section>
+                <h2>Affichage sur mobile&nbsp;?</h2>
+                <p>
+                    Sur mobile on ne veut pas de barre de défilement horizontale, donc on fixe la largeur du <b>viewport</b>.
+                </p>
+                    <textarea class="code-font" rows="1" cols="70">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</textarea>
+                <p class="small-font"><span class="keyword">initial-scale</span> est le facteur de zoom.</p>
+            </section>
+            <section>
+                <h2>Grille fluide</h2>
+            </section>
+            <section>
+                <h2>Affichage sur mobile&nbsp;?</h2>
+                <p>On affiche chaque div avec une largeur de 100%.</p>
+                <div class="relative">
+                <iframe id="grid1" class="resize_anim" src="images/responsive/rwd-page0.html" width="600" height="200"> </iframe>
+                  <div id="grid1_button" class="resize_button"></div>
+                </div>
+                    <textarea class="code-font" data-autostyle="grid1" rows="8" cols="68">
+* {
+  box-sizing: border-box;  /* les tailles sont celles de la boite ! */
+}
+.title {
+  background-color: tan;
+  width: 100%;
+}</textarea>
+                <p class="small-font">
+                    Ne pas oublier de contrôler le <b>viewport</b> avec la balise meta&nbsp;!
+                </p>
+            </section>
+            <section>
+                <h2>HTML d'une grille simple</h2>
+                <p><span class="keyword">col-1</span> est une case qui prend une colonne, 
+                  <br /> <span class="keyword">col-2</span> est une case qui prend deux colonnes.
+                </p>
+                <div class="relative">
+                <iframe id="grid2" class="resize_anim" src="images/responsive/minigrid.html" width="600" height="200"> </iframe>
+                  <div id="grid2_button" class="resize_button"></div>
+                </div>
+                    <textarea class="code-font" rows="10" cols="50">
+&lt;div class="row"&gt;
+  &lt;div class="col-2 title"&gt;Titre&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-1 fact"&gt;div avec col-1&lt;/div&gt;
+  &lt;div class="col-1 fact"&gt;div avec col-1&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-2 story"&gt;div avec col-2&lt;/div&gt;
+&lt;/div&gt;</textarea>
+            </section>
+            <section>
+                <h2>CSS d'une grille simple</h2>
+                <div class="relative">
+                <iframe id="grid3" class="resize_anim" src="images/responsive/minigrid.html" width="600" height="200"> </iframe>
+                  <div id="grid3_button" class="resize_button"></div>
+                </div>
+                    <textarea class="code-font" data-autostyle="grid3" rows="8" cols="55">
+* {box-sizing: border-box; }
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.col-1 { width: 50%; float: left; padding: 15px; }
+.col-2 { width: 100%; float: left; padding: 15px; }</textarea>
+            </section>
+            <section>
+                <h2>Faire une grille simple</h2>
+                <p>
+                    Dans chaque case de la grille, <br /> on met un <b>div</b> qui contient le texte.
+                </p>
+                <div class="relative">
+                <iframe id="grid4" class="resize_anim" src="images/responsive/minigrid2.html" width="600" height="200"> </iframe>
+                  <div id="grid4_button" class="resize_button"></div>
+                </div>
+                    <textarea class="small-code-font" rows="10" cols="70">
+&lt;div class="row"&gt;
+  &lt;div class="col-2"&gt; &lt;div class="title"&gt;Titre&lt;/div&gt; &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-1"&gt; &lt;div class="fact"&gt;div avec col-1&lt;/div&gt; &lt;/div&gt;
+  &lt;div class="col-1"&gt;&lt;div class="fact"&gt;div avec col-1&lt;/div&gt; &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-2"&gt; &lt;div class="story"&gt;div avec col-2&lt;/div&gt; &lt;/div&gt;
+&lt;/div&gt;</textarea>
+            </section>
+            <section>
+                <h2>Avec une media-query</h2>
+                <div class="relative">
+                <iframe id="grid5" class="resize_anim" src="images/responsive/minigrid3.html" width="600" height="200"> </iframe>
+                  <div id="grid5_button" class="resize_button"></div>
+                </div>
+                    <textarea class="code-font" data-autostyle="grid5" rows="9" cols="55">
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+  width: 100%;
+}
+@media only screen and (min-width: 400px) {
+  .col-1 { width: 50%; }
+  .col-2 { width: 100%; }
+}</textarea>
+            </section>
+            <section>
+                <h2>Une vraie grille</h2>
+                <p>Souvent, les grilles ont 12 tailles de colonne&hellip;</p>
+                    <textarea class="code-font" rows="12" cols="35">
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}</textarea>
+                <p class="small-font">
+                    mais le <a href="images/responsive/rwd-page3.html">principe</a> est le même.
+                </p>
+            </section>
+            <section>
+                <h2>D'autres façons de faire des grilles</h2>
+                <p>qui permettent surtout un meilleur alignement vertical</p>
+                <dl>
+                    <dt>
+                        <a href="https://www.w3.org/TR/css-flexbox-1/">flexbox</a>
+                    </dt>
+                    <dd>ne marche que sur un seul axe.&nbsp;&nbsp;<span class="sad-image"></span></dd>
+                    <dt>
+                        <a href="https://www.w3.org/TR/css-grid-1/">grid</a>
+                    </dt>
+                    <dd>supporté seulement récemment sur macOS/iOS.</dd>
+                </dl>
+            </section>
+            <section>
+                <h2>Textes et Images Flexibles</h2>
+            </section>
+            <section>
+                <h2>Texte Flexible</h2>
+                <p>
+                    <span class="keyword">vw</span>&nbsp;: pourcentage en fonction de la largeur du viewport.
+                    <br />
+                    <span class="keyword">vh</span>&nbsp;: pourcentage en fonction de la hauteur du viewport.
+                </p>
+                <div class="relative">
+                <iframe id="flexible1" class="resize_anim" src="images/responsive/flexible-text.html" width="500" height="250"> </iframe>
+                  <div id="flexible1_button" class="resize_button"></div>
+                </div>
+                    <textarea class="code-font" data-autostyle="flexible1" rows="3" cols="45">
+.heading1 { font-size: 10vw; }
+.heading2 { font-size: 8vw; }
+.heading3 { font-size: 6vw; }</textarea>
+                <p class="small-font">
+                    Cela évite d'essayer de calculer la taille de la fonte en px, pt ou em.
+                </p>
+            </section>
+            <section>
+                <h2>Image Flexible</h2>
+                <p>
+                    <span class="keyword">width</span> agrandit/rétrécit l'image pour qu'elle tienne en largeur. <br />
+                    <span class="keyword">max-width</span> rétrécit l'image pour qu'elle tienne en largeur.
+                </p>
+                <div class="relative">
+                <iframe id="flexible2" class="resize_anim" src="images/responsive/flexible-image.html" width="500" height="250"> </iframe>
+                  <div id="flexible2_button" class="resize_button"></div>
+                </div>
+                    <textarea class="code-font" data-autostyle="flexible2" rows="4" cols="45">
+.lena {
+  /*width: 100%; */
+  max-width: 100%;
+}</textarea>
+            </section>
+            <section>
+                <h2>Image Multi-Taille</h2>
+                <p>
+                    La balise HTML5 <span class="keyword">picture</span> accepte aussi les media-queries.
+                </p>
+                <div class="relative">
+                <iframe id="flexible3" class="resize_anim" src="images/responsive/flexible-image2.html" width="500" height="250"> </iframe>
+                  <div id="flexible3_button" class="resize_button"></div>
+                </div>
+                    <textarea class="code-font" rows="5" cols="60">
+<picture>
+  <source srcset="lena-small.jpg" media="(max-width: 400px)">
+  <source srcset="lena.jpg">
+  <img src="lena.jpg" alt="Lena">
+</picture></textarea>
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

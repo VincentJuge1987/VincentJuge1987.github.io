@@ -1,0 +1,320 @@
+<!doctype html>	
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>JavaScript</title>
+<meta name="description" content="JavaScript">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>Fonctions</h1>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <h2>Pourquoi des fonctions&nbsp;?</h2>
+                <p>
+                    Pour éviter de dupliquer le code, <br /> on déclare des fonctions (avec le mot-clé <span class="keyword">function</span>).
+                </p>
+                <p class="small-font">
+                    <b>name</b> est un paramètre qui prend successivement les valeurs "bob" puis "kathy".
+                </p>
+                <textarea class="code-font" data-autojslog="js-function" rows="5" cols="40">
+const hello = function(name) {
+  console.log(`hello ${name}!`);
+};
+hello("bob");
+hello("kathy");</textarea>
+                <br />
+                <div id="js-function" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Fonction et valeur de retour</h2>
+                <p>
+                    Une fonction peut avoir une valeur de retour que l'on renvoie avec le mot-clé <span class="keyword">return</span>.
+                </p>
+                <textarea class="code-font" data-autojslog="js-function2" rows="5" cols="36">
+const addOne = function(x) {
+  return x + 1;
+};
+console.log(addOne(3));
+console.log(addOne('bob'));</textarea>
+                <br />
+                <div id="js-function2" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Fonction et return</h2>
+                <p>
+                    Si on omet le <span class="keyword">return</span>, la valeur de retour est <span class="keyword">undefined</span>.
+                </p>
+                <textarea class="code-font" data-autojslog="js-function3" rows="4" cols="36">
+const addOne = function(x) {
+  x + 1;    // oups&nbsp;!
+};
+console.log(addOne(3));</textarea>
+                <br />
+                <div id="js-function3" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Paramètres et arguments</h2>
+                <p>
+                    Lors de l'appel, s'il y a trop d'arguments, ils seront ignorés&nbsp;; s'il n'y a pas assez d'arguments, 
+		    les paramètres auront la valeur <span class="keyword">undefined</span>.
+                </p>
+                <textarea class="code-font" data-autojslog="js-function-param" rows="5" cols="36">
+const fun = function(x, y) {
+  console.log(`${x} et ${y}`);
+};
+fun('1', '2', '3');
+fun('1');</textarea>
+                <br />
+                <div id="js-function-param" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Notation flèche (1/2)</h2>
+                <p>
+                    On peut utiliser les syntaxes
+                    <br/>
+                    (arguments) => expression
+                    <br/>
+                    (arguments) => { instructions }
+                </p>
+                <div style="float: left">
+                    <textarea class="code-font" data-autojslog="js-arrow" rows="10" cols="35">
+const f = function(a, b) {
+  return a + b;
+};
+console.log(f(40, 7));
+const g = (a, b) => a + b;
+console.log(g(40, 7));</textarea>
+                    <br />
+                    <div id="js-arrow" class="autojslog code-font"></div>
+                </div>
+                <div style="float: right">
+                    <textarea class="code-font" data-autojslog="js-arrow2" rows="10" cols="35">
+const f = function(a, b) {
+  console.log(`${a} + ${b}`);
+  return a + b;
+};
+console.log(f(40, 7));
+const g = (a, b) => {
+  console.log(`${a} + ${b}`);
+  return a + b;
+};
+console.log(g(40, 7));</textarea>
+                    <br />
+                    <div id="js-arrow2" class="autojslog code-font"></div>
+                </div>
+            </section>
+            <section>
+                <h2>Notation flèche (2/2)</h2>
+                <p>
+                    Si on a un seul argument, on peut omettre les parenthèses&nbsp;:
+                    <br/>
+                    argument => expression
+                    <br/>
+                    argument => { instructions }
+                </p>
+                <textarea class="code-font" data-autojslog="js-arrow3" rows="4" cols="40">
+const f = () => 7;
+const g = x => x + 7;
+const h = (u, v) => u * v + 7;
+console.log(f() + g(1) + h(2, 3));</textarea>
+                <br />
+                <div id="js-arrow3" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h1>Jouer avec les fonctions</h1>
+            </section>
+            <section>
+                <h2>Fonction comme valeur</h2>
+                <p>
+                    Les fonctions sont des variables de type <span class="keyword">function</span>.
+                </p>
+                <textarea class="code-font" data-autojslog="js-function4" rows="4" cols="36">
+const addOne = x => x+1;
+console.log(typeof addOne);
+const plusOne = addOne;
+console.log(plusOne(3));</textarea>
+                <br />
+                <div id="js-function4" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Attention à l'égalité&nbsp;!</h2>
+                <textarea class="code-font" data-autojslog="js-function8" rows="5" cols="36">
+const f = x => x+1;
+const g = x => x+1;
+const h = f;
+console.log(f == g);
+console.log(f == h);</textarea>
+                <br />
+                <div id="js-function8" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Fonction qui prend une fonction en argument</h2>
+                <p>Une fonction peut prendre une fonction en paramètre.</p>
+                <textarea class="code-font" data-autojslog="js-function5" rows="9" cols="36">
+const doItTwice = (f, x) => {
+  console.log(f(f(x)));
+};
+const plus2 = v => v + 2;
+const times2 = v => v * 2;
+doItTwice(plus2, 1);
+doItTwice(plus2, "1");
+doItTwice(times2, 1);
+doItTwice(times2, "1");</textarea>
+                <br />
+                <div id="js-function5" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Fonction récursive</h2>
+                <p>Les fonctions en JavaScript peuvent être récursives.</p>
+                <textarea class="code-font" data-autojslog="js-fun-rec" rows="8" cols="42">
+const factorial =
+  x => (x == 1 ? 1 : x * factorial(x - 1));
+console.log(factorial(3));
+console.log(factorial(21));
+console.log(factorial(22));
+console.log(factorial(171));
+console.log(factorial(0));
+console.log(factorial(1));</textarea>
+                <br />
+                <div id="js-fun-rec" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Imbrication de fonctions</h2>
+                <p>
+                    Une fonction peut elle-même contenir une fonction locale.
+                </p>
+                <textarea class="code-font" data-autojslog="js-fun-enclosed" rows="5" cols="42">
+const printHello = s => {
+  const hello = v => `Hello ${v} !`;
+  console.log(hello(s));
+};
+printHello("Bob");</textarea>
+                <br />
+                <div id="js-fun-enclosed" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Closure</h2>
+                <p>
+                    Une fonction locale peut accéder aux variables de la fonction englobante.
+                </p>
+                <textarea class="code-font" data-autojslog="js-fun-enclosed2" rows="5" cols="42">
+const printHello = s => {
+  const hello = () => `Hello ${s} !`;
+  console.log(hello());
+};
+printHello("Bob");</textarea>
+                <br />
+                <div id="js-fun-enclosed2" class="autojslog code-font"></div>
+                <p>
+                    Une fonction qui utilise les variables englobantes est appelée <span class="keyword">closure</span>.
+                </p>
+            </section>
+            <section>
+                <h1>Fonctions prédéfinies</h1>
+            </section>
+            <section>
+                <h2>String vers number</h2>
+                <p>
+                    <span class="keyword">parseInt()</span> et <span class="keyword">parseFloat()</span>
+		    permettent la conversion de <span class="keyword">string</span> vers <span class="keyword">number</span>.
+		    <br/>
+		    <span class="keyword">toString()</span> fait le contraire.
+                </p>
+                <textarea class="code-font" data-autojs="js-math3" rows="6" cols="25">
+parseInt("123");
+parseFloat("123.5");
+var v = 78;
+v.toString();
+parseInt("hello");
+parseInt("21.3");</textarea>
+                <div id="js-math3" class="code-font"></div>
+                <p class="small-font"><span class="keyword">toString()</span> est une fonction que l'on applique sur une valeur&nbsp;: on appelle cela une <b>méthode</b>.</p>
+            </section>
+            <section>
+                <h2>Math</h2>
+                <p>
+                    <span class="keyword">Math</span> contient les fonctions pour le calcul flottant.
+                </p>
+                <textarea class="code-font" data-autojs="js-math" rows="7" cols="25">
+Math.max(3, 7);
+Math.min(3, 7);
+Math.floor(3.6);
+Math.abs(-7);
+Math.PI;
+Math.cos(Math.PI);
+Math.sin(Math.PI / 2);</textarea>
+                <div id="js-math" class="code-font"></div>
+                <p class="small-font">
+                    <span class="keyword">Math</span> permet de ranger les fonctions en évitant qu'elles polluent l'environement global.
+                </p>
+            </section>
+            <section>
+                <h2>Random</h2>
+                <p>
+                    <span class="keyword">Math.random()</span> permet d'obtenir une valeur pseudo-aléatoire entre 0 et 1.
+                </p>
+                <textarea class="code-font" data-autojs="js-math2" rows="4" cols="36">
+Math.random();
+Math.random();
+Math.random() * 10;
+Math.floor(Math.random() * 10);</textarea>
+                <div id="js-math2" class="code-font"></div>
+                <br />
+            </section>
+            <section>
+                <h2>Dans le navigateur</h2>
+                <dl>
+                    <dt><span class="keyword">console.log</span>(message)</dt>
+                    <dd>affiche un message sur la console du navigateur</dd>
+                    <dt><span class="keyword">alert</span>(message)</dt>
+                    <dd>affiche un message dans une popup</dd>
+                    <dt><span class="keyword">document.write</span>(html)</dt>
+                    <dd>permet de changer le texte HTML de la page</dd>
+                </dl>
+		<br /><br />
+                <textarea class="code-font" data-autojslog="js-browser" rows="3" cols="36">
+console.log('hello');
+//alert('hello');
+//document.write('<h1>hello</h1>');</textarea>
+                <br />
+                <div id="js-browser" class="autojslog code-font"></div>
+                <br />
+            </section>
+            <!--<section>
+                <h2>JJS, Node.js</h2>
+                <p>
+                    <span class="keyword">jjs</span> ou <span class="keyword">node.js</span> permet d'exécuter un script JavaScript hors du navigateur.
+                </p>
+                <p>
+                    La méthode <span class="keyword">print</span> permet de faire l'affichage.
+                </p>
+                <textarea class="code-font" rows="2" cols="20">
+print('hello');</textarea>
+                <br />
+                <p class="small-font">
+                    Attention, <span class="keyword">print()</span> dans un navigateur demande la fenêtre d'impression sur l'imprimante&nbsp;!
+                </p>
+            </section>-->
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

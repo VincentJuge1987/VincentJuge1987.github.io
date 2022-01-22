@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>JavaScript - Objet &amp; DOM</title>
+<meta name="description" content="JavaScript, data structure, DOM">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>JavaScript</h1>
+                <br />
+                <h2>Document Object Model</h2>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <div id="dom-example">
+                    <h2>Arbre DOM</h2>
+                    <p>
+                        L'API <b>DOM</b> permet de manipuler l'arbre correspondant <br /> à une page HTML en JavaScript.
+                    </p>
+                    <textarea class="code-font" data-autojs="js-dom1" rows="8" cols="54">
+document.toString();
+const element = document.getElementById("dom-example");
+element.toString();
+element.tagName;
+element.attributes[0].name;
+element.attributes[0].value;
+element.children[0].tagName;
+element.children[1].tagName;</textarea>
+                    <div class="code-font" id="js-dom1"></div>
+                    <p class="small-font">Le document (racine), les éléments, les attributs des éléments, le texte à l'intérieur des éléments sont des
+                        n&oelig;uds de l'arbre.</p>
+                </div>
+            </section>
+            <section>
+                <h2>Children / childNodes</h2>
+                <p>Il y a deux façons d'obtenir les enfants d'un élement&nbsp;:</p>
+                <dl id="dom-example2">
+                    <dt>element.<span class="keyword">children</span></dt>
+                    <dd>renvoie uniquement les sous-éléments</dd>
+                    <dt>element.<span class="keyword">childNodes</span></dt>
+                    <dd>renvoie les éléments, avec les textes et les commentaires</dd>
+                </dl>
+                <textarea class="code-font" data-autojs="js-dom2" rows="8" cols="54">
+const element = document.getElementById("dom-example2");
+element.tagName;
+const child = element.children[0];
+child.toString();
+child.tagName;
+const text = child.childNodes[0];
+text.toString();
+text.nodeValue;</textarea>
+                <div class="code-font" id="js-dom2"></div>
+                <p></p>
+            </section>
+            <section>
+                <div id="dom-example3">
+                    <h2>API DOM</h2>
+                    <p>
+                        <span class="keyword">children</span> et 
+			<span class="keyword">childNodes</span> renvoient des
+			HTMLCollection mais <br />
+		        <b>PAS</b> des tableaux&nbsp;:
+			seuls <span class="keyword">length</span> et
+			<b>[ ]</b> fonctionnent.
+                    </p>
+                    <textarea class="code-font" data-autojslog="js-dom3" rows="8" cols="55">
+const element = document.getElementById("dom-example3");
+const array = [...element.children];
+console.log(element.children.toString());
+console.log(element.children.length);
+console.log(element.children[0].tagName);
+console.log(element.children.forEach);
+console.log(element.children.forEach);
+console.log(array.forEach);</textarea><br>
+                    <div class="autojslog code-font" id="js-dom3"></div>
+                    <p class="small-font">Mais on peut récupérer une collection dans un tableau grâce à l'opérateur <span class="keyword">spread</span>.</p>
+                </div>
+            </section>
+            <section>
+                <h2>Chercher des éléments</h2>
+                <dl id="dom-example4">
+                    <dt>document.<span class="keyword">getElementById</span>(id)</dt>
+                    <dd>
+                        renvoie élément par son <b>id</b>
+                    </dd>
+                    <dt>document.<span class="keyword">getElementsByClassName</span>(classname)</dt>
+                    <dd>renvoie les éléments ayant la classe</dd>
+                    <dt>document.<span class="keyword">querySelectorAll</span>(css_selector)</dt>
+                    <dd>renvoie les éléments par un sélecteur CSS</dd>
+                </dl>
+                <textarea class="code-font" data-autojs="js-dom4" rows="4" cols="58">
+const cs = document.getElementsByClassName("bad-container");
+cs.length;
+const dts = document.querySelectorAll("dl#dom-example4 dt");
+dts.length;</textarea>
+                <div class="code-font" id="js-dom4"></div>
+                <p></p>
+            </section>
+            <section>
+                <h2>Changer le contenu d'un élément</h2>
+                <dl>
+                    <dt>element.<span class="keyword">innerHTML</span></dt>
+                    <dd>accepte le contenu HTML</dd>
+                    <dt>element.<span class="keyword">innerText</span></dt>
+                    <dd>uniquement pour le contenu texte</dd>
+                </dl>
+		<br />
+		<br />
+                <div style="color: pink">
+                    <div class="small-font" id="dom-content1"></div>
+                    <div class="small-font" id="dom-content2"></div>
+                </div>
+		<br />
+                <textarea class="code-font" data-autojslog="js-dom-content" rows="4" cols="60">
+const div1 = document.getElementById("dom-content1");
+div1.innerHTML = "<b>" + new Date() + "</b>";
+const div2 = document.getElementById("dom-content2");
+div2.innerText = "<b>" + new Date() + "</b>";</textarea>
+                <div id="js-dom-content" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>&Eacute;vénement onclick</h2>
+                <p>
+                    Il est possible d'enregistrer des événements <br /> sur des éléments.
+                </p>
+                <div id="dom-div" style="background-color: pink; border: 2px solid silver; width: 200px; position: relative; left: 10px">&nbsp;</div>
+                <p>
+                    <button type="button" id="dom-button">Click Me!</button>
+                </p>
+                <textarea class="code-font" data-autojslog="js-dom-event" rows="6" cols="60">
+const div = document.getElementById("dom-div");
+const button = document.getElementById("dom-button");
+button.onclick = function() {
+  console.log(div.style.left);
+  div.style.left = 30 + parseInt(div.style.left) + "px";
+};</textarea>
+                <p class="small-font">
+                    <b>element.<span class="keyword">style</span></b> permet d'accéder au style d'un élément.
+                </p>
+                <div id="js-dom-event" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Champs de texte</h2>
+                <p>
+                    La balise <span class="keyword">input</span> permet à l'utilisateur de saisir des données.
+                </p>
+                <pre><code>&lt;input type=&quot;text&quot; id=&quot;dom-input-text&quot;&gt;&lt;/input&gt;</code></pre>
+                <p>
+                    <input type="text" id="dom-input-text" />
+                </p>
+                <div id="dom-input-text-div"></div>
+                <textarea class="code-font" data-autojslog="js-dom-inputtext" rows="5" cols="60">
+const div = document.getElementById("dom-input-text-div");
+const inputText = document.getElementById("dom-input-text");
+inputText.onkeyup = function() {
+  div.innerText = inputText.value;
+};</textarea>
+                <div id="js-dom-inputtext" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Ajouter de nouveaux éléments</h2>
+                <p>
+                    <b>document.<span class="keyword">createElement</span></b> permet de créer un élément. <br /> <b>parent.<span class="keyword">appendChild</span>(element)</b> ajoute un élément.
+                </p>
+                <textarea class="code-font" data-autojslog="js-dom-event2" rows="6" cols="60">
+const div = document.getElementById("dom-new");
+const button = document.getElementById("dom-new-button");
+button.onclick = function() {
+  let element = document.createElement("div");
+  div.appendChild(element);
+};</textarea>
+                <p>
+                    <button type="button" id="dom-new-button">Add a box&nbsp;!</button>
+                </p>
+                <div id="dom-new"></div>
+                <br />
+                <p class="small-font"></p>
+                <div id="js-dom-event2" class="autojslog code-font"></div>
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

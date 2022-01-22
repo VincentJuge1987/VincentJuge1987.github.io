@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>JavaScript - REST - Promesse</title>
+<meta name="description" content="JavaScript, REST, Promise">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>JavaScript</h1>
+                <br />
+                <h2>REST</h2>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <h2>Idée</h2>
+                <p>
+                    On réutilise le protocole HTTP pour faire <br /> les appels à des services&nbsp;:
+                </p>
+                <ul>
+                    <li>client-serveur</li>
+                    <li>à interface uniforme</li>
+                    <li>sans état, avec mise en cache &amp; avec code à la demande</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Interface uniforme</h2>
+                <ul>
+                    <li>On nomme des resources en utilisant des URIs.
+                    <li>On utilise des méthodes HTTP comme action&nbsp;:<br />
+                    <span class="keyword">GET</span>,
+                    <span class="keyword">PUT</span>,
+                    <span class="keyword">POST</span>,
+                    <span class="keyword">DELETE</span>.
+                    <li>La façon dont sont stockées les données est indépendante de la représentation&nbsp;!
+                    <li>On utilise XML et/ou JSON comme format de transport.
+                </ul>
+            </section>
+            <section>
+                <h2>Exemple</h2>
+                <p>
+                    On va utiliser une addresse de base <b>api.foo.bar.com</b>. <br /> On souhaite utiliser l'URI <b>users</b>
+                    pour accéder aux utilisateurs.
+                    Pour créer, lister, mettre à jour ou supprimer des utilisateurs, on utilisera donc l'adresse <b>http://api.foo.bar.com/users</b>.
+                </p>
+            </section>
+            <section>
+                <h2>Utilisation des actions</h2>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>GET</td>
+                        <td>PUT</td>
+                        <td>POST</td>
+                        <td>DELETE</td>
+                    </tr>
+                    <tr>
+                        <td>/users/</td>
+                        <td>liste les utilisateurs</td>
+                        <td>remplace les utilisateurs</td>
+                        <td>crée un nouvel utilisateur</td>
+                        <td>détruit les utilisateurs</td>
+                    </tr>
+                    <tr>
+                        <td>/users/bob</tt>
+                        <td>récupère les propriétés d'un utilisateur</td>
+                        <td>met à jour un utilisateur</td>
+                        <td></td>
+                        <td>supprime un utilisateur</td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <h1>REST côté serveur</h1>
+            </section>
+            <section>
+                <h2>Exemple avec <span class="keyword">express.js</span></h2>
+                <p>
+                    <span class="keyword">express.js</span> est une bibliothèque qui permet de créer
+                    des points d'entrée (<b>endpoint</b>) REST en JavaScript. <br /> Elle utilise le
+                    &laquo;&nbsp;serveur&nbsp;&raquo; <span class="keyword">node.js</span>.
+                </p>
+            </section>
+            <section>
+                <h2>Exemple avec <span class="keyword">express.js</span></h2>
+                <pre><code class="js" data-trim>         
+let express = require('express');
+let app = express();
+
+app.get('/users', (req, res) =&gt; {
+  res.send('Hello World!');
+});
+
+app.listen(3000);</code></pre>
+                <p class="small-font">
+                    On crée un endpoint sur l'URI <b>/users</b> puis on écoute les clients sur le port TCP 3000
+                    en leur répondant <b>Hello World!</b>.
+                </p>
+            </section>
+            <section>
+                <h2>Créer un endpoint</h2>
+                <p>on utilise les verbes <span class="keyword">get</span>, <span class="keyword">post</span>, 
+                	<span class="keyword">put</span>, <span class="keyword">delete</span> (en minuscules).</p>
+                <pre><code class="js" data-trim>         
+app.post('/users', (req, res) =&gt; {
+  ...
+});</code></pre>
+                <pre><code class="js" data-trim>         
+app.put('/users', (req, res) =&gt; {
+  ...
+});</code></pre>
+                <pre><code class="js" data-trim>         
+app.delete('/users', (req, res) =&gt; {
+  ...
+});</code></pre>
+            </section>
+            <section>
+                <h2>Extraire des paramètres de l'URI</h2>
+                <p>
+                    La propriété <span class="keyword">params</span> de l'objet <b>requête</b> permet d'obtenir les paramètres nommés extraits de l'URI.
+                </p>
+                <pre><code class="js" data-trim>         
+app.get('/users/:id', (req, res) =&gt; {
+  console.log('user id ' + req.params.id);
+});</code></pre>
+                <p class="small-font">
+                    Les paramètres nommés commencent par ':' dans l'URI.
+                </p>
+            </section>
+            <section>
+                <h2>Récupérer les cookies dans la requête</h2>
+                <p>Les cookies sont stockés par le client et envoyés à chaque requête.</p>
+                <pre><code class="js" data-trim>         
+app.get('/users/:id', (req, res) =&gt; {
+  console.log(req.cookies);
+});</code></pre>
+                <p class="small-font">
+                    <span class="keyword">cookies</span> contient tous les cookies valides pour l'URI. 
+                    <br /> 
+                    <span class="keyword">cookies</span> est un dictionnaire dont les clés sont les noms des cookies.
+                </p>
+            </section>
+            <section>
+                <h2>Code de la réponse</h2>
+                <p>
+                    <span class="keyword">status</span> permet d'indiquer le code HTTP de la réponse.
+                </p>
+                <pre><code class="js" data-trim>         
+app.get('/users/:id', (req, res) =&gt; {
+  res.status(404).send('Oops');
+});</code></pre>
+                <p class="small-font">
+                    <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">https://en.wikipedia.org/wiki/List_of_HTTP_status_codes</a>
+                </p>
+            </section>
+            <section>
+                <h2>Envoyer une réponse (texte)</h2>
+                <p>
+                    <span class="keyword">send</span> permet d'envoyer une réponse textuelle.
+                </p>
+                <pre><code class="js" data-trim>         
+app.get('/users/:id', (req, res) =&gt; {
+  res.send('OK !');
+});</code></pre>
+                <p class="small-font">
+                    Le <b>Content-Length</b> est la longeur de la chaine de caractères.
+                    <br />
+                    Si le <span class="keyword">status</span> n'est pas positionné, la valeur est 200.
+                </p>
+            </section>
+            <section>
+                <h2>Envoyer une réponse (fichier)</h2>
+                <p>
+                    <span class="keyword">sendFile</span> permet d'envoyer un fichier en réponse.
+                </p>
+                <pre><code class="js" data-trim>         
+app.get('/users/:id', (req, res) =&gt; {
+  res.sendFile('/absolute/path/to/ok.png');
+});</code></pre>
+                <p class="small-font">
+                    Le <b>Content-Type</b> dépend de l'extension.
+                     <br />
+                 	Le <b>Content-Length</b> est la taille du fichier.
+                </p>
+            </section>
+            <section>
+                <h2>Envoyer une réponse (JSON)</h2>
+                <p>
+                    <span class="keyword">json</span> permet d'envoyer une réponse au format JSON.
+                </p>
+                <pre><code class="js" data-trim>         
+app.get('/users/:id', (req, res) =&gt; {
+  let id = req.params.id;
+  res.json('{ user: ' + id + ' }');
+});</code></pre>
+                <p class="small-font">
+                    Le <b>Content-Type</b> est <b>application/json</b>.
+                </p>
+            </section>
+            <section>
+                <h2>Envoyer des entêtes de réponse</h2>
+                <p>
+                    Sur l'objet réponse, <span class="keyword">set</span> et <span class="keyword">append</span> 
+                    permettent d'ajouter des entêtes de réponse.
+                </p>
+                <pre><code class="js" data-trim>         
+app.get('/users/:id', (req, res) =&gt; {
+  res.set('Set-Cookie', 'foo=bar; Path=/; HttpOnly');
+});</code></pre>
+                <p class="small-font">
+                    <span class="keyword">HttpOnly</span> veut dire pas dans les requêtes AJAX&nbsp;!
+                </p>
+            </section>
+            <section>
+                <h2>Content-Type</h2>
+                <p>
+                    <span class="keyword">type</span> permet d'indiquer le <b>Content-Type</b>.
+                </p>
+                <pre><code class="js" data-trim>         
+app.get('/users/:id', (req, res) =&gt; {
+  res.type('text/html').send('
+    &lt;html&gt;
+      &lt;body&gt;
+        Ok
+      &lt;/body&gt;
+    &lt;/html&gt;
+  ');
+});</code></pre>
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>JavaScript - Objet &amp; DOM</title>
+<meta name="description" content="JavaScript, data structure, DOM">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>JavaScript</h1>
+                <br />
+                <h2>Objet</h2>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <h2>Dictionnaire</h2>
+                <p>
+                    Un dictionnaire en JavaScript se déclare entre <b>{</b> et <b>}</b>. <br /> Une clé et une valeur sont séparées par
+                    <b>:</b>.
+                    <br /> Les couples sont séparés par des virgules.
+                </p>
+                <textarea class="code-font" data-autojs="js-dict1" rows="4" cols="35">
+{'key': 'value' };
+{ wheels: 4, seats: 2 };
+{ color: 'red', align: true };
+{};</textarea>
+                <div class="code-font" id="js-dict1"></div>
+                <p>
+                    En JavaScript, les clés sont forcément des <span class="keyword">string</span>&nbsp;!
+                </p>
+            </section>
+            <section>
+                <h2>Accéder aux valeurs (1/2)</h2>
+                <p>
+                    L'opération '.' (<b>dot</b>) permet d'obtenir la valeur correspondant à une clé.
+                </p>
+                <textarea class="code-font" data-autojs="js-dict-index" rows="4" cols="35">
+const car = { wheels: 4, seats: 2 };
+car.wheels;
+car.seats;
+car.foo;</textarea>
+                <div class="code-font" id="js-dict-index"></div>
+                <p>
+                    Dans le cas où la clé n'existe pas, la valeur est <span class="keyword">undefined</span>.
+                </p>
+            </section>
+            <section>
+                <h2>Accéder aux valeurs (2/2)</h2>
+                <p>
+                    Comme pour les tableaux, il est possible d'utiliser les <b>[</b> <b>]</b> pour obtenir la valeur correspondant à une clé.
+                </p>
+                <textarea class="code-font" data-autojs="js-dict-index2" rows="5" cols="45">
+const car = { driver: "bob", seats: 2 };
+const licenses = { "bob": 1258, "ann": 1498 }; 
+car["seats"];
+licenses[car.driver];
+car["foo"];</textarea>
+                <div class="code-font" id="js-dict-index2"></div>
+                <p>
+                    On utilise <b>.</b> si la clé est constante, <b>[]</b> si la clé est une <span class="keyword">string</span>.
+                </p>
+            </section>
+            <section>
+                <h2>Dictionnaire dynamique</h2>
+                <p>Il est possible de changer la valeur associée à une clé ou d'ajouter un couple clé/valeur.</p>
+                <textarea class="code-font" data-autojs="js-dict-dyn" rows="7" cols="35">
+let basket = { pear: 2 };
+basket.apple;
+basket;
+basket.apple = 4;
+basket.apple;
+basket["banana"] = 5;
+basket;</textarea>
+                <div class="code-font" id="js-dict-dyn"></div>
+                <p></p>
+            </section>
+            <section>
+                <h2>Pas de clé en double&nbsp;!</h2>
+                <p>Le dictionnaire indexe les valeurs par leur clé&nbsp;: il ne peut y avoir qu'une seule valeur pour une clé donnée.</p>
+                <textarea class="code-font" data-autojs="js-dict-key" rows="5" cols="33">
+let dict = { dog: 3, dog: 4 };
+dict.dog = 5;
+dict;
+dict["dog"] = 6;
+dict;</textarea>
+                <div class="code-font" id="js-dict-key"></div>
+                <p></p>
+            </section>
+            <section>
+                <h2>Object vs Dictionary</h2>
+                <p>
+                    En JavaScript, les dictionnaires sont appelés <br>
+                    &laquo;&nbsp;object&nbsp;&raquo; et non &laquo;&nbsp;dictionary&nbsp;&raquo;.
+                </p>
+                <p>
+                    L'affichage par défaut (<span class="keyword">toString()</span>) n'est pas intéressant&nbsp;:<br>
+                    on utilise <b>JSON.<span class="keyword">stringify()</span></b> à la place.
+                </p>
+                <textarea class="code-font" data-autojs="js-dict-object" rows="4" cols="30">
+const obj = { peer: 3 };
+typeof obj;
+obj.toString();
+JSON.stringify(obj);</textarea>
+                <div class="code-font" id="js-dict-object"></div>
+                <p>
+                    <a href="http://json.org/">JSON</a> = JavaScript Object Notation
+                </p>
+            </section>
+            <section>
+                <h2>Déstructuration d'objet</h2>
+                <p>
+                   Comme pour les tableaux, on peut destructurer les valeurs d'un objet
+                   avec la syntaxe <b>let {key1, key2, &hellip;} = object</b>.
+                </p>
+                <textarea class="code-font" data-autojslog="js-object-destructuring" rows="3" cols="40">
+const person = { name: "Ana", age: 42 };
+const {name, age} = person;
+console.log(`Person ${name} ${age}`);</textarea><br>
+                <div class="code-font autojslog" id="js-object-destructuring"></div>
+            </section>
+            <section>
+                <h2>Objet pas primitif (1/2)</h2>
+                <p>
+                    Un objet n'est pas considéré comme un type <span class="keyword">primitif</span>,
+                    <br/>
+                    == compare les addresses en mémoire.
+                </p>
+                <textarea class="code-font" data-autojs="js-dict-equal" rows="6" cols="40">
+const p1 = { name: "Bob", age: 14 };
+const p2 = { name: "Bob", age: 14 };
+const p3 = p1;
+p1 == p2;
+p1 == p3;
+p1.name == p2.name && p1.age == p2.age;</textarea>
+                <div class="code-font" id="js-dict-equal"></div>
+                <p>
+                    Il faut comparer chaque champ&nbsp;!
+                </p>
+            </section>
+            <section>
+                <h2>Objet pas primitif (2/2)</h2>
+                <p>
+                    Les objets sont tous <b>mutables</b>&nbsp;: <br>
+                    attention à l'usage de <span class="keyword">const</span>&nbsp;!
+                </p>
+                <textarea class="code-font" data-autojs="js-dict-modify" rows="5" cols="40">
+const p1 = { name: "Bob", age: 14 };
+const p2 = p1;
+p1.name = "Alice";
+p1 == p2;
+p2.name;</textarea>
+                <div class="code-font" id="js-dict-modify"></div>
+                <p>
+                    L'usage de <span class="keyword">const</span> interdit de réaffecter une variable, <br>
+                    mais autorise la modification de ses champs&nbsp;!
+                </p>
+            </section>
+            <section>
+                <h2>Regrouper des propriétés</h2>
+                <p>Un objet permet de regrouper des propriétés ayant trait à un même concept, ce qui permet de structurer le code.</p>
+                <textarea class="code-font" data-autojslog="js-object-as-struct" rows="7" cols="40">
+const isAdult = function(person) {
+  return person.age >= 21;
+}
+const person1 = { name: "John", age: 23 };
+const person2 = { name: "Jane", age: 18 };
+console.log(isAdult(person1));
+console.log(isAdult(person2));</textarea>
+                <br />
+                <div id="js-object-as-struct" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Tableau d'objets</h2>
+                <p>
+                    Si on veut manipuler plusieurs objets, <br /> on les regroupe dans un tableau.
+                </p>
+                <textarea class="code-font" data-autojslog="js-object-with-array" rows="9" cols="45">
+const isAdult = function(person) {
+  return person.age >= 21;
+}
+const persons = [
+   { name: "John", age: 23 },
+   { name: "Jane", age: 18 }
+];
+const firstAdult = persons.filter(isAdult)[0];
+console.log(firstAdult.name);</textarea>
+                <br />
+                <div id="js-object-with-array" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Le tableau des propriétés</h2>
+                <p>
+                    La fonction <span class="keyword">Object.keys</span> renvoie un tableau des propriétés (clés) d'un objet.
+                </p>
+                <textarea class="code-font" data-autojs="js-object-keys" rows="2" cols="35">
+let letters = { 'a': 1, 'b': 2 };
+Object.keys(letters);</textarea>
+                <div class="code-font" id="js-object-keys"></div>
+                <p></p>
+            </section>
+            <section>
+                <h2>Parcourir un objet (1/2)</h2>
+                <p>On peut pas parcourir un objet directement&nbsp;: il faut parcourir ses propriétés, puis
+		  aller chercher la valeur de chaque propriété.
+                </p>
+                <textarea class="code-font" data-autojslog="js-object-iter" rows="6" cols="40">
+let obj = { 'a': 1, 'b': 2, 'c': 3 };
+let keys = Object.keys(obj);
+for(let i = 0; i < keys.length; i++) {
+  let key = keys[i];
+  console.log(key + " = " + obj[key]);
+}</textarea>
+                <br />
+                <div id="js-object-iter" class="autojslog code-font"></div>
+                <p></p>
+            </section>
+            <section>
+                <h2>Parcourir un objet (2/2)</h2>
+                <p>
+                    Il existe un mot-clé spécial pour parcourir les propriétés des objets&nbsp;:
+		    <span class="keyword">for</span><b>(variable</b>&nbsp;in&nbsp;<b>obj)</b>,
+                    comme en Python.
+                </p>
+                <textarea class="code-font" data-autojslog="js-object-for-in" rows="4" cols="50">
+let obj = { 'a': 1, 'b': 2, 'c': 3 };
+for(property in obj) {
+  console.log(property + " = " + obj[property]);
+}</textarea>
+                <br />
+                <div id="js-object-for-in" class="autojslog code-font"></div>
+                <p class="small-font">
+                    Cette syntaxe est équivalente au code qui utilise <span class="keyword">Object.keys()</span>.
+                </p>
+            </section>
+<!--            <section>
+                <h2>Objet prédéfini&nbsp;: tableau</h2>
+                <p>
+                    Pour JavaScript, un tableau (<span class="keyword">array</span>) est un objet&nbsp;; <br />
+		    <span class="keyword">length</span> est une propriété des objets tableaux.
+                </p>
+                <textarea class="code-font" data-autojs="js-object-builtin-array" rows="7" cols="40">
+let array = [1, 2, 4];
+// propriété :
+array.length;
+// méthode :
+array.slice(1);
+let array2 = new Array();
+array2.length;</textarea>
+                <div class="code-font" id="js-object-builtin-array"></div>
+                <p class="small-font">
+                    Le mot-clé <span class="keyword">new</span> permet de créer un objet.
+                <p>
+            </section>
+            <section>
+                <h2>Objet prédéfini&nbsp;: function</h2>
+                <p>
+                    Pour JavaScript, une function (<b>Function</b>) est un objet&nbsp;; <br /> <span class="keyword">name</span> 
+		    ou <span class="keyword">length</span> sont des propriétés des objets fonctions.
+                </p>
+                <textarea class="small-code-font" data-autojs="js-object-builtin-function" rows="9" cols="50">
+let add = function plus(x,y) { return x + y; };
+// propriétés :
+add.name;
+add.length;
+// méthode :
+add.toString();
+let fun = new Function("a","b","return a + b;");
+fun(1, 2);
+fun.length;</textarea>
+                <div class="small-code-font" id="js-object-builtin-function"></div>
+                <p class="small-font">
+                    <span class="keyword">length</span> renvoie le nombre de paramètres de la fonction.
+                <p>
+            </section>
+            <section>
+                <h2>Fonction vs Méthode</h2>
+                <p>
+                    Un objet peut aussi contenir des fonctions comme valeurs. <br /> Une fonction dans un objet est appelée <span class="keyword">méthode</span>.
+                </p>
+                <textarea class="code-font" data-autojslog="js-object-method" rows="8" cols="50">
+let square = {
+  surface: function(x) { return x * x; }
+};
+let disc = {
+  surface: function(r) { return Math.PI * r * r; }
+};
+console.log(square.surface(3));
+console.log(disc.surface(3));</textarea>
+                <br />
+                <div id="js-object-method" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>this</h2>
+                <p>
+                    Paramètre implicite qui contient l'objet sur lequel <br /> on a appelé une méthode <br /> (l'objet sur lequel on utilise l'opérateur '.').
+                </p>
+                <textarea class="code-font" data-autojslog="js-object-this" rows="7" cols="40">
+let square = {
+  side: 2,
+  surface: function() {
+   return this.side * this.side;
+  }
+};
+console.log(square.surface());</textarea>
+		<br />
+                <div id="js-object-this" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>this et appel de fonction</h2>
+                <p>
+                    Que vaut <span class="keyword">this</span> si on l'appelle comme une fonction&nbsp;?
+                </p>
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-object-this2" rows="7" cols="45">
+"use strict";
+function isAdult() {
+  return this.age >= 18;
+}
+let person = { age: 32, hasGrownUp: isAdult };
+console.log(person.hasGrownUp());
+console.log(isAdult(person));</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+                <div id="js-object-this2" class="autojslog code-font"></div>
+                <p>
+                    <span class="keyword">isAdult</span> ne prend pas d'argument et <span class="keyword">this</span> vaut <span class="keyword">undefined</span>&nbsp;!
+                </p>
+            </section>
+            <section>
+                <img src="images/js-object/this_is_bullshit.png" alt="This is bullshit!">
+            </section>
+            <section>
+                <h2>Partage de méthodes</h2>
+                <p>
+                    Si on a deux objets, il faut définir <b>surface</b> deux fois, <br /> même si c'est le même code&nbsp;!?
+                </p>
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-object-prototype" rows="10" cols="55">
+let square1 = {
+  side: 1,
+  surface: function() { return this.side * this.side; }
+};
+let square2 = {
+  side: 2,
+  surface: function() { return this.side * this.side; }
+};
+console.log(square1.surface());
+console.log(square2.surface());</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+                <div id="js-object-prototype" class="autojslog code-font"></div>
+                <p>Ça paraît idiot&nbsp;!&nbsp;&nbsp;<span class="sad-image"></span></p>
+            </section>
+            <section>
+                <h2>Les Classes</h2>
+            </section>
+            <section>
+                <h2>Définition d'une classe</h2>
+                <p>Une classe définit un modèle de création d'objets.</p>
+                <p>
+                    Une classe contient des <b>méthodes</b> (fonctions qui agissent sur <span class="keyword">this</span>)
+                    et un <b>constructeur</b> (méthode d'initialisation).
+                </p>
+                <textarea class="code-font" data-autojslog="js6-class3a" rows="10" cols="45">
+class Square {
+  constructor(side) {
+    this.side = side;
+  }
+  surface() {
+    return this.side * this.side;
+  }
+}
+let square = new Square(3);
+console.log(square.surface());</textarea>
+                <br />
+                <div id="js6-class3a" class="autojslog code-font"></div>
+                <p class="small-font">
+                    Par convention, le nom des classes commence <b>toujours</b> par une majuscule.
+                </p>
+            </section>
+            <section>
+                <h2>Le mot-clé New</h2>
+                <p>
+                    <span class="keyword">new</span> permet de créer et d'initialiser des objets qui seront
+                    munis des méthodes listés dans une classe.
+                </p>
+                <textarea class="code-font" data-autojslog="js6-class3b" rows="13" cols="45">
+class Square {
+  constructor(side) {
+    this.side = side;
+    this.numberOfSides = 4;
+  }
+  surface() { return this.side * this.side; }
+  perimeter() {
+    return this.side * this.numberOfSides;
+  }
+}
+let square = new Square(10);
+console.log(square.surface());
+console.log(square.perimeter());</textarea>
+                <br />
+                <div id="js6-class3b" class="autojslog code-font"></div>
+                <p class="small-font">
+                    <b><span class="keyword">new</span> Square</b> crée un objet, initialise celui-ci avec la fonction <b>constructor</b>
+                    de la classe <b>Square</b>, et le munit de toutes les méthodes définies dans la classe <b>Square</b>.
+                </p>
+            </section>
+            <section>
+                <h2>Création d'objets</h2>
+                <p>Deux syntaxes&nbsp;!</p>
+                <dl>
+                    <dt>Avec les accolades&nbsp;:
+                    <dd>
+                        si on n'a que des valeurs, ou un seul objet&nbsp;; <br />
+                        <textarea class="code-font" rows="1" cols="63">
+let foo = { key1: 2, key2: 'hello' };</textarea>
+                    <dt>Avec <span class="keyword">new</span>&nbsp;:
+                    <dd>
+                        si on a plusieurs objets avec des méthodes.
+                        <textarea class="code-font" rows="9" cols="63">
+class Foo {
+  constructor(key1, key2) {
+    this.key1 = key1;
+    this.key2 = key2;
+  }
+  meth1(x) { return ...; }
+}
+let foo = new Foo(2, 'hello');
+foo.meth1(false);</textarea>
+                </dl>
+            </section>
+            <section>
+                <h2>La notation "class"&hellip;</h2>
+                <br />
+                <dl>
+                	<dd>permet de <b>regrouper</b> dans un même endroit l'initialisation et la manipulation d'un type nommé.</dd>
+                	<dd>&nbsp;</dd>
+		        <dd><b>existe déjà</b> dans plusieurs autres languages (C++, Java, Swift, Rust) et est donc mieux comprise que la notion de
+                    délégation propre à JavaScript.</dd>
+                </dl>
+            </section>
+            <section>
+                <h2>Exemple</h2>
+                <textarea class="small-code-font" data-autojscanvas="js-object-matrix" data-once rows="24" cols="65">
+let canvas = document.getElementById('js-object-matrix');
+let context = canvas.getContext("2d"); 
+let data = [ 'U', 'P', 'E', 'M' ];      
+class Snake {
+  constructor(x) {
+    this.x = x;
+    this.y = Math.floor(canvas.height * Math.random());
+  }
+  draw(context) {
+    context.fillStyle = 'rgb(0, 255 , 0)';
+    for(let i = 0; i < data.length; i++) {
+      context.fillText(data[i], 15 * this.x + 2, this.y + 15 * i);
+      context.fillStyle = 'rgb(0, 164, 0)';
+    }
+    this.y = this.y + 10;
+    if (this.y > canvas.height) { this.y = 0; }
+  }
+}
+let snakes = [];
+for(let i = 0; i < 20; i++) { snakes.push(new Snake(i)); }
+window.setInterval(function() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  snakes.forEach(function(snake) { snake.draw(context); });
+}, 50);</textarea>
+                <canvas id="js-object-matrix" width="300" height="475"></canvas>
+            </section>
+           <!-- <section>
+                <h2>Définition d'une classe 2/2)</h2>
+                <p>Une classe définit un modèle de création d'objets.</p>
+                <p>
+                    Une classe contient des <b>méthodes</b> (fonctions qui agissent sur <span class="keyword">this</span>)
+                    et un <b>constructeur</b> (méthode d'initialisation).
+                </p>
+                <textarea class="code-font" data-autojslog="js6-class3a" rows="11" cols="45">
+class Square {
+  numberOfSides = 4;
+  constructor(side) { this.side = side; }
+  surface() { return this.side * this.side; }
+  perimeter() {
+    return this.side * this.numberOfSides;
+  }
+}
+let square = new Square(10);
+console.log(square.surface());
+console.log(square.perimeter());
+console.log(numberOfSides);</textarea>
+                <br />
+                <div id="js6-class3a" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Définition d'une classe (2/2)</h2>
+                <p>Encore un exemple&hellip;</p>
+                <textarea class="code-font" data-autojslog="js6-class" rows="14" cols="45">
+class Car {
+  constructor(driver) {
+    this.driver = driver;
+    this.wheels = 4;
+  }
+  driverName() {
+    return this.driver;
+  }
+}
+let car = new Car("bob");
+console.log(car.driverName());
+console.log(car.driver);
+console.log(car.wheels);
+console.log(new Car("alice").driverName());</textarea>
+                <br />
+                <div id="js6-class" class="autojslog code-font"></div>
+            </section>-->
+            <!--<section>
+                <h2>Partage de méthode (2/2)</h2>
+                <p>
+                    Si on a deux objets, il faut définir <b>surface</b> deux fois, <br /> même si c'est le même code&nbsp;!?
+                </p>
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-object-prototype-2" rows="10" cols="60">
+let surface = function() { return this.side * this.side; };
+let square1 = {
+  side: 1
+};
+let square2 = {
+  side: 2
+};
+console.log(square1.surface());
+console.log(square2.surface());
+console.log(surface());</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+                <div id="js-object-prototype-2" class="autojslog code-font"></div>
+                <p>On verra plus tard comment faire ça proprement&nbsp;!</p>
+            </section>
+            <section>
+                <h2>Partage de méthode (astuce)</h2>
+                <p>Lorsque l'on cherche une propriété, si elle n'existe pas sur l'objet, on va chercher dans un objet délégué</p>
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-object-prototype2" rows="9" cols="55">
+let proto = {
+  surface: function() { return this.side * this.side; }
+};
+let square1 = { side: 1 };
+let square2 = { side: 2 };
+Object.setPrototypeOf(square1, proto);
+Object.setPrototypeOf(square2, proto);
+console.log(square1.surface());
+console.log(square2.surface());</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+                <div id="js-object-prototype2" class="autojslog code-font"></div>
+                <p class="small-font">
+                    <span class="keyword">setPrototypeOf</span> permet d'indiquer pour un objet son objet délégué.
+                </p>
+            </section>
+            <section>
+                <h2>Le délégué</h2>
+                <p>L'objet délégué est l'objet dans lequel on va chercher une propriété si celle-ci n'est pas définie sur l'objet courant.</p>
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-object-prototype3" rows="6" cols="55">
+let proto = {
+  surface: function() { return this.side * this.side; }
+};
+let square1 = { side: 1 };
+Object.setPrototypeOf(square1, proto);
+console.log(square1.__proto__ == proto);</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+                <div id="js-object-prototype3" class="autojslog code-font"></div>
+                <p>
+                    On peut obtenir l'objet délégué avec la propriété <span class="keyword">__proto__</span>.
+                </p>
+            </section>
+            <section>
+                <h2>setPrototypeOf</h2>
+                <p>
+                    Attention, changer le délégué d'un objet avec <span class="keyword">setPrototypeOf</span> alors que celui-ci est déjà créé <br /> est souvent très lent&nbsp;!
+                </p>
+                <p>
+                    Firefox écrit même un message <span class="strike">d'insulte</span> d'information <br /> sur la console&nbsp;:
+                </p>
+                <p style="color: red">mutating the [[Prototype]] of an object will cause your code to run very slowly; instead create the object with the
+                    correct initial [[Prototype]] value using Object.create</p>
+            </section>
+            <section>
+                <h2>Document Object Model</h2>
+            </section>
+            <section>
+                <h2>DOM?</h2>
+                <blockquote cite="https://en.wikipedia.org/wiki/Document_Object_Model">&ldquo;The Document Object Model (DOM) is a cross-platform
+                    and language-independent convention for representing and interacting with objects in HTML, XHTML, and XML documents.&rdquo;</blockquote>
+                <p class="right">
+                    source: Wikipedia.org - <a href="https://en.wikipedia.org/wiki/Document_Object_Model">DOM</a>
+                </p>
+            </section>
+            <section>
+                <h2>DOM&nbsp;?</h2>
+                <blockquote cite="https://fr.wikipedia.org/wiki/Document_Object_Model">&laquo;&nbsp;Le modèle objet de document (DOM) est une convention
+                    indépendante d'un language et multi-plateforme pour représenter et interagir avec des objets issus de documents HTML, XHTML et XML.&nbsp;&raquo;</blockquote>
+                <p class="right">
+                    source&nbsp;: Wikipedia.org - <a href="https://fr.wikipedia.org/wiki/Document_Object_Model">DOM</a>
+                </p>
+            </section>
+            <section>
+                <div id="dom-example">
+                    <h2>Arbre DOM</h2>
+                    <p>
+                        L'API <b>DOM</b> permet de manipuler l'arbre correspondant <br /> à une page HTML en JavaScript.
+                    </p>
+                    <textarea class="code-font" data-autojs="js-dom1" rows="8" cols="52">
+document.toString();
+let element = document.getElementById("dom-example");
+element.toString();
+element.tagName;
+element.attributes[0].name;
+element.attributes[0].value;
+element.children[0].tagName;
+element.children[1].tagName;</textarea>
+                    <div class="code-font" id="js-dom1"></div>
+                    <p class="small-font">Le document (racine), les éléments, les attributs des éléments, le texte à l'intérieur des éléments sont des
+                        n&oelig;uds de l'arbre.</p>
+                </div>
+            </section>
+            <section>
+                <h2>Children / childNodes</h2>
+                <p>Il y a deux façons d'obtenir les enfants d'un élement&nbsp;:</p>
+                <dl id="dom-example2">
+                    <dt>element.<span class="keyword">children</span></dt>
+                    <dd>renvoie uniquement les sous-éléments</dd>
+                    <dt>element.<span class="keyword">childNodes</span></dt>
+                    <dd>renvoie les éléments, avec les textes et les commentaires</dd>
+                </dl>
+                <textarea class="code-font" data-autojs="js-dom2" rows="8" cols="55">
+let element = document.getElementById("dom-example2");
+element.tagName;
+let child = element.children[0];
+child.toString();
+child.tagName;
+let text = child.childNodes[0];
+text.toString();
+text.nodeValue;</textarea>
+                <div class="code-font" id="js-dom2"></div>
+                <p></p>
+            </section>
+            <section>
+                <div id="dom-example3">
+                    <h2>API DOM</h2>
+                    <p>
+                        <span class="keyword">children</span> et 
+			<span class="keyword">childNodes</span> renvoient des
+			HTMLCollection mais <br />
+		        <b>PAS</b> des tableaux&nbsp;:
+			seuls <span class="keyword">length</span> et
+			<b>[ ]</b> fonctionnent.
+                    </p>
+                    <textarea class="code-font" data-autojs="js-dom3" rows="7" cols="55">
+let element = document.getElementById("dom-example3");
+element.children.toString();
+element.children.length;
+element.children[0].tagName;
+element.children.forEach(
+  function(e) {console.log(e.tagName);}
+);</textarea>
+                    <div class="code-font" id="js-dom3"></div>
+                    <p class="small-font">L'API est la même quel que soit le language de programmation donc l'API n'est intégrée avec aucun language de
+                        programmation.&nbsp;&nbsp;<span class="sad-image"></span></p>
+                </div>
+            </section>
+            <section>
+                <h2>Chercher des éléments</h2>
+                <dl id="dom-example4">
+                    <dt>document.<span class="keyword">getElementById</span>(id)</dt>
+                    <dd>
+                        renvoie élément par son <b>id</b>
+                    </dd>
+                    <dt>document.<span class="keyword">getElementsByClassName</span>(classname)</dt>
+                    <dd>renvoie les éléments ayant la classe</dd>
+                    <dt>document.<span class="keyword">querySelectorAll</span>(css_selector)</dt>
+                    <dd>renvoie les éléments par un sélecteur CSS</dd>
+                </dl>
+                <textarea class="code-font" data-autojs="js-dom4" rows="4" cols="56">
+let cs = document.getElementsByClassName("bad-container");
+cs.length;
+let dts = document.querySelectorAll("dl#dom-example4 dt");
+dts.length;</textarea>
+                <div class="code-font" id="js-dom4"></div>
+                <p></p>
+            </section>
+            <section>
+                <h2>Changer le contenu d'un élément</h2>
+                <dl>
+                    <dt>element.<span class="keyword">innerHTML</span></dt>
+                    <dd>accepte le contenu HTML</dd>
+                    <dt>element.<span class="keyword">innerText</span></dt>
+                    <dd>uniquement pour le contenu texte</dd>
+                </dl>
+		<br />
+		<br />
+                <div style="color: pink">
+                    <div class="small-font" id="dom-content1"></div>
+                    <div class="small-font" id="dom-content2"></div>
+                </div>
+		<br />
+                <textarea class="code-font" data-autojslog="js-dom-content" rows="4" cols="60">
+let div1 = document.getElementById("dom-content1");
+div1.innerHTML = "<b>" + new Date() + "</b>";
+let div2 = document.getElementById("dom-content2");
+div2.innerText = "<b>" + new Date() + "</b>";</textarea>
+                <div id="js-dom-content" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>&Eacute;vénement onclick</h2>
+                <p>
+                    Il est possible d'enregistrer des événements <br /> sur des éléments.
+                </p>
+                <div id="dom-div" style="background-color: pink; border: 2px solid silver; width: 200px; position: relative; left: 10px">&nbsp;</div>
+                <p>
+                    <button type="button" id="dom-button">Click Me!</button>
+                </p>
+                <textarea class="code-font" data-autojslog="js-dom-event" rows="6" cols="60">
+let div = document.getElementById("dom-div");
+let button = document.getElementById("dom-button");
+button.onclick = function() {
+  console.log(div.style.left);
+  div.style.left = 30 + parseInt(div.style.left) + "px";
+};</textarea>
+                <p class="small-font">
+                    <b>element.<span class="keyword">style</span></b> permet d'accéder au style d'un élément.
+                </p>
+                <div id="js-dom-event" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Champs de texte</h2>
+                <p>
+                    La balise <span class="keyword">input</span> permet à l'utilisateur de saisir des données.
+                </p>
+                <pre><code>&lt;input type=&quot;text&quot; id=&quot;dom-input-text&quot;&gt;&lt;/input&gt;</code></pre>
+                <p>
+                    <input type="text" id="dom-input-text" />
+                </p>
+                <div id="dom-input-text-div"></div>
+                <textarea class="code-font" data-autojslog="js-dom-inputtext" rows="5" cols="60">
+let div = document.getElementById("dom-input-text-div");
+let inputText = document.getElementById("dom-input-text");
+inputText.onkeyup = function() {
+  div.innerText = inputText.value;
+};</textarea>
+                <div id="js-dom-inputtext" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Ajouter de nouveaux éléments</h2>
+                <p>
+                    <b>document.<span class="keyword">createElement</span></b> permet de créer un élément. <br /> <b>parent.<span class="keyword">appendChild</span>(element)</b> ajoute un élément.
+                </p>
+                <textarea class="code-font" data-autojslog="js-dom-event2" rows="6" cols="60">
+let div = document.getElementById("dom-new");
+let button = document.getElementById("dom-new-button");
+button.onclick = function() {
+  let element = document.createElement("div");
+  div.appendChild(element);
+};</textarea>
+                <p>
+                    <button type="button" id="dom-new-button">Add a box&nbsp;!</button>
+                </p>
+                <div id="dom-new"></div>
+                <br />
+                <p class="small-font"></p>
+                <div id="js-dom-event2" class="autojslog code-font"></div>
+            </section>-->
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

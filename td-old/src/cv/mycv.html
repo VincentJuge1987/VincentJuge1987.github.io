@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+     body {
+       font-family: sans-serif;
+     }
+     p {
+       padding: 1.4em;
+     }
+    </style>
+    <script>
+      "use strict";
+      
+      function loaded() {
+        var image = document.getElementById("image");
+        var textfield = document.getElementById("textfield");
+        
+        textfield.addEventListener("input", function(event) {
+          var num = parseInt(textfield.value) % 10;
+          image.src = "cv" + num + ".jpg";
+        });
+     }
+    </script>
+  </head>
+  <body onload="loaded();">
+   <p>
+    Votre numéro d'étudiant
+    <input id="textfield" type="text">
+   </p>
+   <p>
+    Votre CV doit être visuellement ressemblant à
+   <br>
+    <img id="image"
+         width="472"
+         height="666">
+   </p>
+  </body>
+</html>

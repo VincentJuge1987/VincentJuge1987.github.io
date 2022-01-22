@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>JavaScript - Événements</title>
+<meta name="description" content="JavaScript, Canvas API">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+<script> let loadContext = x => document.getElementById('canvas-' + x).getContext("2d"); </script>
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>JavaScript</h1>
+                <br />
+                <h2>Événements</h2>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <h2>Événements clavier</h2>
+                <p>
+                    La fonction <b>window.<span class="keyword">onkeydown</span></b> 
+		    est appelée lorsque l'on appuie sur une touche, <b>window.<span class="keyword">onkeyup</span></b>
+		    lorsque l'on relâche la touche.
+                </p>
+                <p class="small-font">Appuyer sur une touche.</p>
+                <textarea class="code-font" data-onwindow data-autojslog="log-key" rows="2" cols="55">
+window.onkeydown = function() { console.log('down'); };
+window.onkeyup = function() { console.log('up'); };</textarea>
+		<br />
+                <div id="log-key" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Plusieurs écouteurs clavier</h2>
+                <p>
+                    La fonction <b>window.<span class="keyword">addEventListener</span></b> 
+		    permet d'ajouter une action sans détruire les actions précédemment enregistrées.
+                </p>
+                <p class="small-font">Appuyer sur une touche.</p>
+                <textarea class="code-font" data-autojslog="log-key2" rows="3" cols="45">
+window.addEventListener('keyup',
+  function() { console.log('keyup') }
+);</textarea>
+		<br />
+                <div id="log-key2" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Récupérer les touches</h2>
+                <p>
+                    <span class="keyword">keyCode</span> permet de récupérer le code (plus ou moins ASCII) de la touche.
+                </p>
+                <textarea class="code-font left" data-autojslog="log-key3" rows="7" cols="62">
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+window.addEventListener('keydown', function(event) {
+  const e = event.keyCode;
+  if (65 <= e && e <= 90) {
+    console.log(`You pressed key ${alphabet.charAt(e - 65)}`);
+  }
+});</textarea>
+		<br />
+                <div id="log-key3" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>&Eacute;vénements souris (1/2)</h2>
+                <p>
+                    <span class="keyword">onmousedown</span>, <span class="keyword">onmousemove</span>, <span class="keyword">onmouseup</span> 
+		    sont appelées lorsque l'on utilise la souris sur un élément.
+                </p>
+                <textarea id="text-mouse" data-slow class="code-font left" data-autojslog="log-mouse" rows="4" cols="50">
+const area = document.getElementById("text-mouse");
+area.addEventListener('mousedown', function(event) {
+  console.log(`${event.offsetX},${event.offsetY}`);
+});</textarea>
+		<br />
+                <div id="log-mouse" class="autojslog code-font"></div>
+                <p class="clear">
+                    La fonction recoit un événement (<b>event</b>) contenant les coordonnées (<span class="keyword">offsetX</span> et <span class="keyword">offsetY</span>).
+                </p>
+            </section>
+            <section>
+                <h2>&Eacute;vénements souris (2/2)</h2>
+                <p>
+                    <span class="keyword">onmousemove</span> est appelée lorsque l'on bouge la souris, <br>
+                    y compris si on n'appuie pas dessus</span>.
+                </p>
+                <textarea id="text-mouse-2" data-onwindow class="code-font left" data-autojslog="log-mouse2" rows="11" cols="62">
+let position = undefined, distance = 0;
+const dist = (e,f) => position == undefined ? 0 :
+    Math.abs(e.offsetX-f.x) + Math.abs(e.offsetY-f.y);
+const copy = e => { return {x: e.offsetX, y: e.offsetY}; };
+window.onmousedown = 
+  e => { position = copy(e); distance = 0; };
+window.onmousemove =
+  e => { distance += dist(e, position); position = copy(e); };
+window.onmouseup =
+  e => { distance += dist(e, position); console.log(distance);
+         distance = 0; };</textarea>
+		<br />
+                <div id="log-mouse2" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>setTimeout (1/2)</h2>
+                <p>
+                    <b><span class="keyword">setTimeout</span>(action, temps)</b> permet de déclencher une action après un temps d'attente (en ms).
+                </p>
+                <textarea class="code-font" data-autojslog="log-timer" rows="3" cols="40">
+window.setTimeout(function() {
+  console.log("3 seconds later&hellip;");
+}, 3000);</textarea>
+		<br />
+                <div id="log-timer" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>setTimeout (2/2)</h2>
+                <p>
+                    On peut appeler <span class="keyword">setTimeout()</span> plusieurs fois avec la même fonction.
+                </p>
+                <textarea class="code-font" data-autojslog="log-timer2" rows="8" cols="40">
+const colors = [ "Jour", "Nuit"];
+let index = 0;
+const fun = function() {
+  index = 1 - index;
+  console.log(colors[index]);
+  window.setTimeout(fun, 2000);
+};
+fun();</textarea>
+		<br />
+                <div id="log-timer2" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>setInterval</h2>
+                <p>
+                    <b>window.<span class="keyword">setInterval</span></b> permet de rappeler une fonction à intervalles réguliers.
+                </p>
+                <textarea class="code-font" data-autojslog="log-timer3" rows="4" cols="62">
+window.setInterval(
+  function() {
+    console.log("All work and no play makes Jack a dull boy.");
+  }, 1000);</textarea>
+		<br />
+                <div id="log-timer3" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>requestAnimationFrame</h2>
+                <p>demande une animation dès que possible<br>
+                (sans faire planter le navigateur&nbsp;<span class="happy-image"></span>&nbsp;).</p>
+                <textarea class="code-font" data-changelog data-autojslog="log-timer4" data-once rows="10" cols="60">
+let counter = 0;
+const start = new Date().getTime();
+const animate = function() {
+  const jump = new Date().getTime() - start;
+  counter++;
+  console.log(`${counter} function calls in ${jump} ms: ` +
+    `${Math.floor(1000 * counter / jump)} calls per second!`);
+  window.requestAnimationFrame(animate);
+};
+window.requestAnimationFrame(animate);</textarea>
+		<br />
+                <div id="log-timer4" class="autojslog code-font"></div>
+                <br />
+                <p class="small-font">
+                  exécute la fonction demandée avant le prochain rafraîchissement de l'écran
+                </p>
+            </section>
+ <!--           <section>
+                <h2>requestAnimationFrame</h2>
+                <p>demande une animation dès que possible.</p>
+                <textarea class="small-code-font" data-autojscanvas="canvas-timer4" data-once rows="20" cols="60">
+function point(x, y) { return { x: x, y: y, dx: 1, dy: 1 }; }
+function draw(p1, p2, color) {
+  context.strokeStyle = color;
+  context.beginPath();
+  context.moveTo(p1.x, p1.y); context.lineTo(p2.x, p2.y);
+  context.stroke();
+}
+let move = function(p) {
+  p.x = p.x + p.dx; p.y = p.y + p.dy;
+  if (p.x == 0 || p.x == canvas.width) { p.dx = -p.dx; }
+  if (p.y == 0 || p.y == canvas.height) { p.dy = -p.dy; }
+};
+let p1 = point(50, 50); let p2 = point(200, 150);
+let animate = function() {
+  draw(p1, p2, 'white');
+  move(p1); move(p2);
+  draw(p1, p2, 'blue');
+  window.requestAnimationFrame(animate);
+};
+window.requestAnimationFrame(animate);</textarea>
+                <canvas id="canvas-timer4" width="310" height="210"></canvas>
+                <br />
+            </section>-->
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Manipulation de tableaux et opérations filter, map et reduce</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
+  media="print"
+>
+<link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
+<link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+<body>
+  <div class="conteneur">
+    <div class="contenu">
+      <p style="text-align: left;" class="noprint">
+        :: <a href="http://monge.univ-mlv.fr/ens/index.php"> Enseignements </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/index.php"
+        > Licence </a>::<a href="http://monge.univ-mlv.fr/ens/Licence/L1/index.php">
+          L1 </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/L1/2018-2019/index.php"
+        > 2019-2020 </a>::<a
+          href=""
+        > Programmation Web </a>::
+      </p>
+      <hr>
+      <table>
+        <tbody>
+          <tr style="vertical-align: middle;">
+            <td><img class="print" src="css/UGE.png" alt="[LOGO]"
+              height="30"
+            ></td>
+            <td><h1>Manipulation de tableaux et opérations filter, map
+                et reduce</h1></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+
+
+
+      <div>Comme pour les TPs précédents, on vous demande de créer un
+        répertoire tp6 qui contiendra les exercices de cette feuille de TP et de
+        faire un compte rendu de TP en HTML.</div>
+      <br>
+
+      <h3>Exercice 1 - Tableaux</h3>
+      <div>Manipulations simples de tableau</div>
+      <br>
+      <ol>
+        <li>Recopiez la page Web <a
+          href="src/td06/exo1.html"
+        >exo1.html</a> dans votre répertoire <span class="tt">tp6</span>. <br>
+          Expliquez ce que fait le code sans pour autant regarder le code de
+          graph.js. <br> Note&nbsp;: pour tester, vous devez récupérer aussi le
+          fichier <span class="tt">graph.js</span> et le placer correctement par
+          rapport au fichier <span class="tt">exo1.html</span> que vous venez de
+          récupérer (Une piste pour le trouver : regarder la source...)
+        </li>
+        <li>La suite de cet exercice consiste à compléter chaque question
+          en écrivant un code à l'endroit des 'TODO'. <br> On cherche à
+          écrire une fonction <span class="tt">addThree</span> qui prend en
+          paramètre un tableau et retourne un nouveau tableau qui contient le
+          même nombre de cases que le tableau pris en paramètre et dont les
+          valeurs des cases est la valeur de la case de même index du tableau
+          pris en paramètre augmentée de trois. <br> Par exemple, si le
+          tableau initial contient <span class="tt">[11, 21, 5, -13, 2,
+            12, 19, 5]</span>, alors le résultat de l'appel à <span class="tt">addThree</span>
+          doit être un nouveau tableau avec les valeurs <span class="tt">[14,
+            24, 8, -10, 5, 15, 22, 8]</span>. <br> Si cela vous aide, vous pouvez
+          dans un premier temps écrire l'algorithme en pseudo-code, puis dans un
+          deuxième temps, transformez le pseudo-code en JavaScript. <br>
+        </li>
+        <li>En fait, le code que l'on a écrit n'est pas très générique&nbsp;:
+          si l'on doit ajouter 4 à chaque case ou alors multiplier la valeur des
+          cases par 2, il faut dupliquer le code avec un copier/coller et
+          changer l'opération à effectuer. <br> Comme on n'est pas des
+          barbares, on se dit que l'on pourrait réutiliser la même fonction pour
+          tous ces cas. On va pour cela créer une fonction intermédiaire. <br>
+          Donc dans un premier temps, écrivez une fonction <span class="tt">applyForEachElement</span>
+          qui prend deux arguments (un tableau et une fonction) et qui, pour
+          chaque élément du tableau, appelle la fonction en lui donnant
+          l'élement en guise de paramètre. <br> Une fois que <span class="tt">applyForEachElement</span>
+          marche, écrivez une nouvelle version de <span class="tt">addThree</span>,
+          <span class="tt">addThree2</span> qui va utiliser <span class="tt">applyForEachElement</span>,
+          vérifiez que le résultat est identique. <br> Enfin, <span
+          class="tt"
+        >applyForEachElement</span> peut se simplifier en une seul ligne en utilisant
+          la méthode <span class="tt">forEach</span> sur un tableau&nsp;: modifier <span
+          class="tt"
+        >applyForEachElement</span> pour utiliser la méthode <span class="tt">forEach</span>.
+        </li>
+        <li>Que fait la méthode <span class="tt">map</span> si on l'appelle
+          sur un tableau&nbsp;? <br> Comment peut-on l'utiliser pour écrire <span
+          class="tt"
+        >addThree</span>&nbsp;? <br> Écrivez <span class="tt">addThree</span> en
+          utilisant la méthode <span class="tt">map</span> et vérifiez que l'on
+          obtient le même résultat que précédemment.
+        </li>
+        <li>On souhaite afficher les valeurs du tableau trié en utilisant
+          la méthode <span class="tt">sort</span> sur un tableau. <br>
+          Rappelez en quoi la méthode <span class="tt">sort</span> est
+          différente des méthodes <span class="tt">map</span> et <span
+          class="tt"
+        >filter</span>. Si vous ne voyez pas, cherchez quelle est la valeur de retour
+          de <span class="tt">sort</span>. <br> Écrivez la fonction <span
+          class="tt"
+        >sortedArray</span> qui renvoie un nouveau tableau avec les valeurs triées (Attention&nbsp;! Le
+          tableau pris en paramètre ne doit pas être modifié).
+        </li>
+        <li>On veut afficher les valeurs du tableau seulement si celles-ci
+          sont positives ou nulles. <br> Sachant que l'on peut utiliser la méthode <span
+          class="tt"
+        >filter</span> sur un tableau, écrivez la fonction <span class="tt">positiveArray</span>
+          qui renvoie un tableau ne contenant que les valeurs positives ou nulles du
+          tableau pris en paramètre.
+        </li>
+      </ol>
+
+
+      <h3>Exercice 2 - MinMax</h3>
+      <div>
+        On cherche à calculer le minimum et le maximum d'un tableau sans
+        parcourir le tableau plusieurs fois. <br> Avant de commencer,
+        recopiez la page Web <a
+          href="src/td06/exo2.html"
+        >exo2.html</a> dans votre répertoire <span class="tt">tp6</span> .
+      </div>
+      <br>
+      <ol>
+        <li>On cherche à écrire une fonction <span class="tt">minmax</span>
+          qui prend en paramètre un tableau, calcule le minimum et le maximum de
+          ce tableau et renvoie les deux valeurs sous forme d'un nouveau tableau
+          à 2 cases dont la première case est le minimum et la seconde case est
+          le maximum. <br> Pour des questions d'efficacité, on veut que le
+          calcul du minimum et du maximum soit fait lors du même parcours du
+          tableau. <br> Écrivez, dans un premier temps, l'algorithme que
+          vous allez implanter en pseudo-code, puis écrivez le code JavaScript
+          correspondant. <br> Note&nbsp;: il existe les fonctions <span
+          class="tt"
+        >Math.min(a, b)</span> et <span class="tt">Math.max(a, b)</span>.
+        </li>
+        <li>En fait, au lieu d'écrire la boucle à la main, il est possible
+          d'utiliser la méthode <span class="tt">reduce</span> sur un tableau
+          qui permet d'effectuer un même calcul sur chaque valeur. <br>
+          Note&nbsp;: comme ici, on s'intéresse au maximum et au minimum en même
+          temps, la valeur propagée devra contenir ces deux valeurs. <br>
+          Quelle doit être la valeur passée en second paramètre à <span
+          class="tt"
+        >reduce</span>&nbsp;? <br> Quelle doit être la valeur propagée pour chaque
+          case dans le cas où le tableau est <span class="tt">[8, 2, 4,
+            0, 3, 9, 1, 5, 7, 6]</span>&nbsp;? <br> Écrivez le code de <span class="tt">minmax2</span>
+          qui appelle la méthode <span class="tt">reduce</span>. <br> Note&nbsp;:
+          vous pouvez vérifier que les valeurs intermédiaires de la valeur
+          propagée sont bonnes avec <span class="tt">console.log</span>.
+        </li>
+        <li>En fait, retourner un tableau avec 2 cases stockant le minimum
+          et le maximum, n'est pas terrible comme convention, il faut mieux
+          renvoyer un dictionnaire avec les clefs <span class="tt">min</span> et
+          <span class="tt">max</span>. <br> Donnez la syntaxe Javascript
+          qui permet de créer un dictionnaire avec 3 comme valeur de <span
+          class="tt"
+        >min</span> et 7 comme valeur de <span class="tt">max</span>. <br> Enfin,
+          écrivez la fonction <span class="tt">minmax3</span> utilisant des
+          dictionnaires comme valeur propagée à la place d'un tableau à 2 cases.
+        </li>
+      </ol>
+
+
+      <h3>Exercice 3 - Pour les plus balèzes ... [Optionnel]</h3>
+      <div>
+        On peut améliorer le code de l'exercice précédent à deux endroits.<br>
+        Au lieu de tester avec un tableau écrit &laquo;&nbsp;en dur&nbsp;&raquo;, tirer aléatoirement un
+        tableau permettrait de tester avec davantage de tableaux différents. <br>
+        De plus, l'algorithme <span class="tt">minmax</span> écrit précédemment
+        n'est pas le plus efficace. Il existe une version qui fait moins de
+        comparaisons (et qui est bien sûr plus compliquée à écrire). <br> On
+        utilisera pour cela la page Web <a
+          href="src/td06/exo3.html"
+        >exo3.html</a>.
+      </div>
+      <br>
+      <ol>
+        <li>On souhaite pouvoir mélanger les cases d'un tableau dans le but
+          de tester plus de combinaisons. <br> L'idée de l'algorithme de
+          mélange est le suivant : pour chaque case i, on tire un nombre
+          aléatoire entre i et n - 1 (n étant le nombre de cases du tableau) et
+          l'on va permuter (échanger si vous préférez) la case courante avec la
+          case à l'index du nombre que l'on vient de tirer aléatoirement. <br>
+          Si l'on fait cela pour toutes les cases, le tableau sera mélangé
+          (et on peut même s'offrir la joie de démontrer que ce tableau est bien
+          échantillonné uniformément au hasard parmi tous les tableaux
+          possibles). <br>
+          Écrivez dans un premier temps une fonction <span class="tt">swap</span>
+          qui permet d'échanger deux cases du tableau. <br> Puis écrivez la
+          fonction <span class="tt">randomArray</span> qui mélange les valeurs
+          du tableau pris en paramètre. <br> Note&nbsp;: tirer un nombre
+          aléatoire entre 0 (inclus) et n (exclu) en JavaScript se fait de la façon suivante <pre
+            class="full-width"
+          >     function random(n) {
+        return Math.floor(n * Math.random());
+      }
+     </pre>
+        </li>
+        <li>Il est possible de diminuer le nombre de tests fait par la
+          fonction <span class="tt">minmax</span>. En effet, si au lieu de faire
+          évoluer le min et le max pour chaque case du tableau, on commence par
+          lire deux valeurs de cases consécutives, regarder quelle est la plus
+          grande puis la comparer avec le max, dans ce cas, la valeur la plus
+          petite ne doit être comparée qu'avec le min donc chaque case n'a pas
+          besoin d'être comparée et avec le max et avec le min. <br>
+          Écrivez dans un premier temps l'algorithme en pseudo-code. <br>
+          Note&nbsp;: pour éviter de dupliquer le code, on peut écrire le code si une
+          valeur est plus grande que l'autre et dans l'autre cas, permuter les
+          valeurs (attention, les valeurs, pas les cases du tableau) pour se
+          retrouver dans le même cas. <br> Vérifiez que votre algo
+          fonctionne que le nombre de cases soit pair ou impair. <br>
+          Enfin, écrivez la fonction <span class="tt">minmax4</span>.
+        </li>
+      </ol>
+
+      <hr>
+      <div class="copyright noprint">© Université Gustave Eiffel</div>
+    </div>
+  </div>
+</body>
+</html>

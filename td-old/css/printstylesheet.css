@@ -1,0 +1,85 @@
+body{
+	font: Arial, sans-serif;
+	font-size:11pt;
+    color: #444444;
+    margin: 0;
+    padding: 0;
+}
+
+@page{ size:21.0cm 29.0cm; 
+		margin-top:1cm;
+        margin-bottom:1cm;
+        margin-left:1cm;
+        margin-right:1cm  }
+
+div.conteneur{
+   text-align : justify;
+}
+
+div.highlight{
+page-break-inside:avoid;
+}
+
+A
+{ 
+color: #663399; 
+text-decoration: none;
+font-weight: bold;
+}
+
+H1
+{
+  color: #FF9900;
+}
+
+H1.subtitle
+{
+  color: #FF9900;
+}
+
+H2
+{ 
+  color: #993333;
+}
+
+H3
+{
+  color: #999966;
+}
+
+H4
+{
+  font-weight: bold;
+  color: #669999;
+}
+
+div.team {
+border: 3px solid #999966;
+}
+
+
+ul {
+    list-style-image: url(http://igm.univ-mlv.fr/ens/resources/folder_icon.gif);
+}
+
+ol {
+    list-style-image: none;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+
+pre{
+	border : 1px solid #663399;
+        width : 20cm;
+}
+
+.noprint{
+ display:none;
+}
+
+.print{
+ width:100px;
+}

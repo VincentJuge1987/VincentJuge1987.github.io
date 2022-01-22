@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>JavaScript - Programmation fonctionnelle</title>
+<meta name="description" content="javascript, array, functional programming">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>JavaScript</h1>
+                <br />
+                <h2>Prog fonctionnelle</h2>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <h2>forEach</h2>
+                <p>
+                    <b><span class="keyword">forEach</span>(fun)</b> applique la même fonction à chaque valeur. <br /> 
+		    <span class="small-font">C'est comme une boucle, mais sans écrire la boucle
+                       &nbsp;!</span>
+                </p>
+                <br />
+                <textarea class="code-font" data-autojslog="js-array-forEach" rows="2" cols="40">
+const array = [1, 2, 5, 6, 7];
+array.forEach(v => console.log(v));</textarea>
+                <br />
+                <div id="js-array-forEach" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>map</h2>
+                <p>
+                    <b><span class="keyword">map</span>(fun)</b> applique la même fonction à chaque valeur dans un nouveau tableau.
+                </p>
+                <br />
+                <textarea class="code-font" data-autojslog="js-array-map" rows="3" cols="40">
+const array = [1, 2, 5, 6, 7];
+const array2 = array.map(v => 2 * v);
+console.log(array2);</textarea>
+                <br />
+                <div id="js-array-map" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>filter</h2>
+                <p>
+                    <b><span class="keyword">filter</span>(fun)</b> permet d'obtenir un tableau de valeurs respectant une propriété (un <b>prédicat</b>).
+                </p>
+                <br />
+                <textarea class="code-font" data-autojslog="js-array-filter" rows="3" cols="45">
+const array = [1, 2, 5, 6, 7];
+const array2 = array.filter(v => v % 2 == 0);
+console.log(array2);</textarea>
+                <br />
+                <div id="js-array-filter" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>some/every</h2>
+                <p>
+                    <span class="keyword">some</span> renvoie <span class="keyword">true</span> dès qu'une valeur vérifie la propriété. <br />
+		    <span class="keyword">every</span> renvoie <span class="keyword">true</span> si toutes les valeurs vérifient la propriété.
+                </p>
+                <br />
+                <textarea class="code-font" data-autojslog="js-array-some-every" rows="4" cols="45">
+const greaterThan10 = v => v > 10;
+const array = [12, 32, 4];
+console.log(array.some(greaterThan10));
+console.log(array.every(greaterThan10));</textarea>
+                <br />
+                <div id="js-array-some-every" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>et les index&nbsp;?</h2>
+                <p>
+                    Les méthodes <span class="keyword">forEach</span>, <span class="keyword">map</span>, 
+		    <span class="keyword">filter</span>, <span class="keyword">some</span> et
+		    <span class="keyword">every</span> prennent une fonction avec 2 arguments (<b>élément</b>, <b>index</b>)
+                    en paramètres.
+                </p>
+                <br />
+                <textarea class="code-font" data-autojs="js-array-fun-index" rows="5" cols="50">
+const array = [1, 7, 14, 55];
+array.map((e, index) => index);
+array.some((e, index) => (index >= 2 && e <= 15));
+array.filter((e, index) => index >= 2);
+array.every((e, index) => (index >= 2 && e <= 15));</textarea>
+                <div class="code-font" id="js-array-fun-index"></div>
+                <p class="small-font">En JavaScript, une fonction peut prendre moins de paramètres que d'arguments&nbsp;!</p>
+            </section>
+            <section>
+                <h2>reduce</h2>
+                <p>
+                    <b><span class="keyword">reduce</span>(fun, init)</b> résume par une valeur en appliquant une fonction d'agrégation
+		    qui lit le tableau de <b>gauche</b> à <b>droite</b>.
+                </p>
+                <br />
+                <textarea class="code-font" data-autojslog="js-array-reduce" rows="5" cols="40">
+const array = [1, 2, 5, 6, 7];
+const sum = array.reduce(
+  (acc, v) => acc + v,
+  0);
+console.log(sum);</textarea>
+                <br />
+                <div id="js-array-reduce" class="autojslog code-font"></div>
+                <p class="small-font">Le premier argument de <b>fun</b> doit <span class="keyword">toujours</span>
+		  être l'<b>accumulateur</b>&nbsp;! <br/>
+		  </p>
+            </section>
+            <section>
+                <h2>filter/map/reduce</h2>
+                <p>
+                    Il est possible de combiner les opérations&nbsp;: par exemple, compter le nombre de mots commençant par 'b'.
+                </p>
+                <textarea class="code-font" data-autojslog="js-array-fam" rows="6" cols="40">
+const array = ['foo', 'bar', 'baz'];
+const count = array.
+  filter(s => s.charAt(0) == 'b').
+  map(s => 1).
+  reduce((v1, v2) => v1 + v2, 0);
+console.log(count);</textarea>
+                <br />
+                <div id="js-array-fam" class="autojslog code-font"></div>
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

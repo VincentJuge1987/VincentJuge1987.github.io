@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Premiers pas en Javascript</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
+  media="print"
+>
+<link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
+<link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+<body>
+  <div class="conteneur">
+    <div class="contenu">
+      <p style="text-align: left;" class="noprint">
+        :: <a href="http://monge.univ-mlv.fr/ens/index.php"> Enseignements </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/index.php"
+        > Licence </a>::<a href="http://monge.univ-mlv.fr/ens/Licence/L1/index.php">
+          L1 </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/L1/2018-2019/index.php"
+        > 2019-2020 </a>::<a
+          href=""
+        > Programmation Web </a>::
+      </p>
+      <hr>
+      <table>
+        <tbody>
+          <tr style="vertical-align: middle;">
+            <td><img class="print" src="css/UGE.png" alt="[LOGO]"
+              height="30"
+            ></td>
+            <td><h1>Premiers pas en Javascript</h1></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+
+
+      <div>Comme pour les TPs précédents, on vous demande de créer un
+        répertoire tp5 qui contiendra les exercices de cette feuille de TP et de
+        faire un compte rendu de TP en HTML.</div>
+      <br>
+
+      <h3>Exercice 1 - Hello World</h3>
+      <div>Cet exercice montre comment utiliser les outils de
+        developpement présents sur les navigateurs, comme la console.</div>
+      <br>
+      <ol>
+        <li>Recopiez la page Web <a
+          href="src/td05/exo1.html"
+        >exo1.html</a> dans votre répertoire <span class="tt">tp5</span>. <br> Que se
+          passe-t-il lorsque l'on visualise la page ? <br> Comment fait-on
+          pour ouvrir la console avec iceweasel (firefox) ? <br> Même
+          question avec chrome ?
+        </li>
+        <li>Mettez l'ancien code en commentaire. <br>Ecrivez un code
+          permettant d'afficher, toujours dans la console, les chiffres de 0 à 99 inclus
+          (il n'est pas nécessaire de faire une fonction pour l'instant). <br>
+          Note : par pitié, pas de copier/coller !
+        </li>
+        <li>Changez le code pour afficher les chiffres de 0 à 99 sauf les
+          multiples de 3 (c-a-d sauf ceux qui sont divisibles par 3).</li>
+        <li>Commentez l'ancien code et écrire une fonction (que vous
+          nommerez de façon claire et intelligente) prenant un entier en
+          paramètre et affichant sur la console les nombres de 0 à cet entier
+          (non compris). Puis écrivez un code de test de la fonction avec les
+          valeurs 3 et 12.</li>
+      </ol>
+
+
+      <h3>Exercice 2 - Damier</h3>
+      <div>On cherche à faire un damier avec des cases blanches et noires
+        et la diagonale affichée en rouge.</div>
+      <br>
+      <ol>
+        <li>Recopiez la page Web <a
+          href="src/td05/exo2.html"
+        >exo2.html</a> dans votre répertoire <span class="tt">tp5</span>. <br> Expliquez ce
+          que fait la première ligne du script : <pre class="full-width">"use strict";</pre>
+        </li>
+        <li>Expliquez ce que fait l'appel <span class="tt">document.write()</span>.
+        </li>
+        <li>Ajoutez une fonction <span class="tt">drawCheckerLine</span> qui affiche une
+          ligne de 5 cases grâce à la méthode <span class="tt">drawCheckerCell</span>. <br>
+          Note: Le plus simple est de mettre les 5 boites collées à gauche à
+          l'intérieur d'une grosse boite qui correspondra à la ligne.
+        </li>
+        <li>Ajoutez une fonction <span class="tt">drawCheckerBoard</span> pour afficher un
+          carré de 5 cases par 5 cases.
+        </li>
+        <li>Modifiez la fonction <span class="tt">drawCheckerBoard</span> pour que dans la
+          page web, on puisse afficher un carré de 5 par 5 puis un carré de 3
+          par 3. Vérifiez que l'affichage se fait correctement. <br> Note:
+          attention au <span class="tt">float</span> en CSS !
+        </li>
+        <li>Complétez le style de la balise <span class="tt">style</span> du document pour
+          définir une case noire et une case blanche et utilisez ce style pour
+          les cases du damier. <br> Note: une balise HTML peut avoir
+          plusieurs classes CSS ! <br> Astuce: la somme des coordonnées des
+          cases modulo 2 (le reste de la division par 2) vous indique s'il
+          s'agit d'une case blanche ou d'une case noire.
+        </li>
+        <li>Ajoutez un style de case rouge puis ajoutez un dernier
+          paramètre à <span class="tt">drawCheckerBoard</span> pouvant être vrai ou faux. Si le
+          paramètre est vrai, alors il faudra afficher la diagonale en rouge.
+        </li>
+        <li>Testez en affichant la diagonale du premier carré (pas celle du
+          second).</li>
+      </ol>
+
+
+      <h3>Exercice 3 - Pour les plus balèzes... (Optionnel)</h3>
+      <div>
+        Une petite question supplémentaire. <br> On peut améliorer la
+        'beauté' du code, et le rendre un peu plus professionnel, en évitant de
+        passer en paramètre un booléen pour dire s'il faut dessiner ou non la
+        diagonale. <br> L'idée est d'envoyer à la fonction
+        <span class="tt">drawCheckerBoard</span>
+        une fonction d'affichage qui choisi la couleur en fonction d'une
+        coordonnée passé en paramétre. Puis d'appeler
+        <span class="tt">drawCheckerBoard</span>
+        deux fois, une fois avec une fonction qui colore la diagonale et autre
+        une fois avec une fonction qui ne colore pas la diagonale.
+      </div>
+      <br>
+
+      <hr>
+      <div class="copyright noprint">© Université Gustave Eiffel</div>
+    </div>
+  </div>
+</body>
+</html>

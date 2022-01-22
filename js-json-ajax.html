@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>JavaScript - JSON &amp; AJAX</title>
+<meta name="description" content="JavaScript, JSON, AJAX">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>JavaScript</h1>
+                <br />
+                <h2>JSON &amp; AJAX</h2>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <h2>JSON</h2>
+            </section>
+<!--            <section>
+                <h2>JSON?</h2>
+                <blockquote cite="https://en.wikipedia.org/wiki/JSON">&ldquo;JSON (JavaScript Object Notation) is an open-standard format that uses
+                    human-readable text to transmit data objects consisting of attribute–value pairs. It is the most common data format used for asynchronous
+                    browser/server communication.&rdquo;</blockquote>
+                <p class="right">
+                    source: Wikipedia.org - <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>
+                </p>
+            </section>
+            <section>
+                <h2>JSON&nbsp;?</h2>
+                <blockquote cite="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">&laquo;&nbsp;JSON (Notation objet JavaScript) est un
+                    format standard ouvert qui utilise un texte lisible par un humain pour transmettre des données objets sous forme de couples attribut/valeur.
+                    C'est le format d'échange de données le plus couramment utilisé pour la communication asynchrone entre browser et serveur.&nbsp;&raquo;</blockquote>
+                <p class="right">
+                    source&nbsp;: Wikipedia.org - <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">JSON</a>
+                </p>
+            </section>-->
+            <section>
+                <h2>Notation JSON</h2>
+                <p>Sous-ensemble de la notation sur les objets et les tableaux JavaScript qui sert de format d'échange de données</p>
+                <textarea class="code-font" data-autojslog="js-json1" rows="10" cols="40">
+const aquarium = {
+  name: "my-aquarium",
+  fishs: [{
+	name: "guppi",
+  }, {
+	name: "sushi",
+	price: 20
+  }]
+};
+console.log(JSON.stringify(aquarium));</textarea>
+                <div id="js-json1" class="autojslog code-font"></div>
+                <div class="small-font">
+                    Seuls les types primitifs sont supportés&nbsp;: boolean, number, string, array &amp; object. <br /> Les noms des propriétés apparaissent entre "
+                    "&nbsp;!
+                </div>
+            </section>
+            <section>
+                <h2>JSON.parse</h2>
+                <p>La commande <b>JSON.<span class="keyword">parse</span></b> permet de décoder en JavaScript une chaine de caractères comme un objet JSON.</p>
+                <textarea class="code-font" data-autojslog="js-json2" rows="5" cols="57">
+const array = JSON.parse('[1, 2, 4, true]');
+console.log(array);
+const object = JSON.parse('{ "name": "john", "age": 26 }');
+console.log(object);
+JSON.parse('{ name: "john", age: 26 }');  // oops</textarea>
+                <br />
+                <div id="js-json2" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Asynchronous Javascript And XML</h2>
+            </section>
+<!--            <section>
+                <h2>AJAX?</h2>
+                <blockquote cite="https://en.wikipedia.org/wiki/Ajax_%28programming%29">&ldquo;Ajax (also AJAX; short for asynchronous JavaScript
+                    and XML) is a set of web development techniques using many web technologies on the client-side to create asynchronous Web
+                    applications.&rdquo;</blockquote>
+                <p class="right">
+                    source: Wikipedia.org - <a href="https://en.wikipedia.org/wiki/Ajax_%28programming%29">AJAX</a>
+                </p>
+            </section>
+            <section>
+                <h2>AJAX&nbsp;?</h2>
+                <blockquote cite="https://fr.wikipedia.org/wiki/Ajax_(informatique)">&laquo;&nbsp;Ajax (aussi AJAX&nbsp;; acronyme pour JavaScript
+                    asynchrone et XML) est un ensemble de techniques de développement web utilisant plusieurs technologies web côté client dans le but de créer
+                    des applications Web asynchrones.&nbsp;&raquo;</blockquote>
+                <p class="right">
+                    source&nbsp;: Wikipedia.org - <a href="https://fr.wikipedia.org/wiki/Ajax_(informatique)">AJAX</a>
+                </p>
+            </section>-->
+            <section>
+                <h2>AJAX ou AJAP&nbsp;?</h2>
+                <p>AJAX permet de faire, en JavaScript, des requêtes à un serveur en enregistrant une fonction qui sera exécutée plus tard, lorsque les
+                    données du serveur seront disponibles.</p>
+                <p>
+                    Le fait reporter le traitement au moment où les données seront présentes est appelé traitement <b>asynchrone</b>.
+                </p>
+                <p>Dans la réalité, on utilise plutôt JSON que XML comme format de transport, mais on garde le nom AJAX (au lieu de AJAP).</p>
+            </section>
+            <section>
+                <h2>XML ou JSON&nbsp;?</h2>
+                <p>JSON est non structuré et non validable facilement donc il est utilisé pour les transferts de petites données (en ko).</p>
+                <p>XML est plus lourd mais structuré et validable, il est utilisé pour le transfert de données plus importantes (en Mo).</p>
+            </section>
+            <section>
+                <h2>XMLHttpRequest(1/4)</h2>
+                <p>Un objet <span class="keyword">XMLHttpRequest</span> permet de faire une requête AJAX.</p>
+                <textarea class="code-font" data-autojslog="js-ajax" rows="7" cols="60">
+const ajax = new XMLHttpRequest();
+ajax.onreadystatechange = function() {
+  console.log('mon état de connexion a changé');
+};
+ajax.open("GET", "images/js-object/demo.json", true);
+ajax.overrideMimeType("application/json");
+ajax.send();</textarea>
+                <br />
+                <div id="js-ajax" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>XMLHttpRequest (2/4)</h2>
+                <p>
+                    <b><span class="keyword">open</span>(method, url, async?)</b> configure la requête. <br /> <b><span class="keyword">send</span>()</b> envoie la requête.
+                </p>
+                <textarea class="small-code-font" data-autojslog="js-ajax2" rows="11" cols="77">
+const ajax = new XMLHttpRequest();
+ajax.onreadystatechange = function() {
+  console.log(ajax.readyState + ':' + ajax.status + ':' + ajax.responseText);
+};
+console.log("Configuring the request...");
+ajax.open("GET", "images/js-object/demo.json", true);
+console.log("Overriding Mime type...");
+ajax.overrideMimeType("application/json");
+console.log("Sending AJAX request...");
+ajax.send();
+console.log("AJAX request sent.");</textarea>
+                <br />
+                <div id="js-ajax2" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>XMLHttpRequest (3/4)</h2>
+                <p>
+                    <span class="keyword">onreadystatechange</span> est appelée lorsque cet état change. <br />
+                    <span class="keyword">readyState</span> indique l'état de la requête.
+                </p>
+                <textarea class="small-code-font" data-autojslog="js-ajax3" rows="13" cols="75">
+const ajax = new XMLHttpRequest();
+ajax.onreadystatechange = function() {
+  const state = ajax.readyState;
+  const states = ["new", "opened", "headers_received", "loading", "done"];
+  console.log(state + ':' + states[state]);
+};
+console.log("Configuring the request...");
+ajax.open("GET", "images/js-object/demo.json", true);
+console.log("Overriding Mime type...");
+ajax.overrideMimeType("application/json");
+console.log("Sending AJAX request...");
+ajax.send();
+console.log("AJAX request sent.");</textarea>
+                <br />
+                <div id="js-ajax3" class="autojslog small-code-font"></div>
+            </section>
+            <section>
+                <h2>XMLHttpRequest (4/4)</h2>
+                <p>
+                    Si le <span class="keyword">readyState</span> est <b>4</b> et que le <span class="keyword">status</span> est <b>200</b>,
+                     <br /> 
+                     on peut lire le <span class="keyword">responseText</span>.
+                </p>
+                <textarea class="small-code-font" data-autojslog="js-ajax4" rows="13" cols="65">
+const ajax = new XMLHttpRequest();
+ajax.onreadystatechange = function() {
+  if (ajax.readyState == 4) {
+    if (ajax.status == 200) {
+      console.log(ajax.responseText);
+    } else {
+      console.log("error " + ajax.status);
+    } 
+  }
+};
+ajax.open("GET", "images/js-object/demo.json", true);
+ajax.overrideMimeType("application/json");
+ajax.send();</textarea>
+                <br />
+                <div id="js-ajax4" class="autojslog code-font"></div>
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

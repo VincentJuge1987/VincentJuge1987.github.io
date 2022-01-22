@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <style>
+     div.line, div.clear {
+       clear: left;
+     }
+     div.cell {
+       border: 1px solid black;
+       margin: 0px;
+       padding: 15px;
+       float: left;
+     }
+     .white {
+       background-color: white; 
+     }
+     .black {
+       background-color: black; 
+     }
+     .red {
+       background-color: red; 
+     }
+   </style>
+   <script>
+     "use strict";
+   
+     function color(i, j, showDiagonal) {
+       if (showDiagonal && i == j) {
+         return 'red';
+       }
+       if ((i + j) % 2 == 0) {
+         return 'white';
+       } else {
+         return 'black';
+       }
+     }
+     
+     function drawCheckerCell(color) {
+       document.write('<div class="cell ' + color +'"></div>');
+     }
+   
+     function drawCheckerLine(n, line, showDiagonal) {
+       document.write('<div class="line">');
+       for(var i = 0; i < n; i++) {
+         drawCheckerCell(color(i, line, showDiagonal));
+       }
+       document.write('</div>');
+     }
+     
+     function drawCheckBoard(n, showDiagonal) {
+       for(var i = 0; i < n; i++) {
+         drawCheckerLine(n, i, showDiagonal);
+       }
+       document.write('<div class="clear"></div>');
+     }
+   </script>
+ </head>
+ <body>
+  <h2>Damier</h2>
+  <p>
+    Carré de 5x5
+  </p>
+  <script>
+    drawCheckBoard(5, true);
+  </script>
+  <p>
+    Carré de 3x3
+  </p>
+  <script>
+    drawCheckBoard(3, false);
+  </script>
+ </body>
+</html>

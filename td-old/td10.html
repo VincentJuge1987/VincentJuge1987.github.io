@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mon CV en Responsive Web Design</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
+  media="print"
+>
+<link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
+<link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+<body>
+  <div class="conteneur">
+    <div class="contenu">
+      <p style="text-align: left;" class="noprint">
+        :: <a href="http://monge.univ-mlv.fr/ens/index.php"> Enseignements </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/index.php"
+        > Licence </a>::<a href="http://monge.univ-mlv.fr/ens/Licence/L1/index.php">
+          L1 </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/L1/2018-2019/index.php"
+        > 2019-2020 </a>::<a
+          href=""
+        > Programmation Web </a>::
+      </p>
+      <hr>
+      <table>
+        <tbody>
+          <tr style="vertical-align: middle;">
+            <td><img class="print" src="css/UGE.png" alt="[LOGO]"
+              height="30"
+            ></td>
+            <td><h1>Mon CV en Responsive Web Design</h1></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+
+
+      <div>Le but de ce TP est de faire votre CV en utilisant les
+        principes du Responsive Web Design</div>
+      <br>
+
+      <h3>Exercice 1 - Mon super CV</h3>
+      <img src="css/cv6.jpg" alt="Mon super CV">
+      <div>On souhaite faire un CV ressemblant à cette image que vous
+        personaliserez avec vos propres données. On ne vous demande pas
+        exactement le même rendu mais de vous approchez le plus possible de ce
+        rendu.</div>
+      <br>
+      <ol>
+        <li>Utilisez le tag <span class="tt">meta viewport</span> pour ne
+          pas avoir de barre horizontale.
+        </li>
+        <li>Pour votre CV, une grille à 12 cases n'est pas nécessaire donc
+          définissez les règles CSS pour une grille à 6 cases. <br> Note&nbsp;:
+          une grille à 6 cases est une grille à 12 cases dont on prend une case
+          sur deux. <br> Vérifiez que votre CSS fonctionne en créant une
+          grille dont
+          <ul>
+            <li>la première ligne contient une case de 1 colonne et une case
+              de 5 colonnes&nbsp;;</li>
+            <li>la seconde ligne contient deux cases de 3 colonnes chacune.</li>
+          </ul>
+        </li>
+        <li>Modifiez la première case de la première ligne pour mettre
+          votre photo. <br> Note&nbsp;: Vous pouvez vous prendre en photo avec un
+          smartphone ou la webcam de votre poste.
+        </li>
+        <li>Ajoutez, dans la deuxième case de la première ligne, un texte
+          avec votre nom, votre statut d'étudiant ainsi qu'un cours texte vous
+          décrivant. <br> Faites en sorte que la taille de votre nom (la
+          taille de la fonte utilisée) s'adapte à la largeur de la case qui le
+          contient et que le texte soit en gras.
+        </li>
+        <li>Faites en sorte que la couleur de fond de la première ligne soit
+          gris (comme sur l'image ci-dessus).</li>
+        <li>Ajoutez vos expériences dans la première case de la seconde
+          ligne. Le titre &laquo;&nbsp;Expérience&nbsp;&raquo; doit aussi avoir sa taille qui s'adapte à
+          la largeur de la zone d'affichage. <br> Ajoutez votre formation
+          (collèges, lycée) dans la seconde case de la seconde ligne. <br>
+          De même que pour le titre &laquo;&nbsp;Expérience&nbsp;&raquo;, le titre &laquo;&nbsp;Formation&nbsp;&raquo; doit
+          aussi avoir sa taille qui s'adapte à la largeur de la zone
+          d'affichage.
+        </li>
+        <li>Faites en sorte que sur votre smartphone, votre CV s'affiche sur
+          une seule colonne en utilisant le système de <span class="tt">media
+            query</span>. <br> De plus, le texte en dessous de votre nom ne devra
+          pas être en gras si l'affichage est sur une colonne. <br> Attention
+          à bien respecter l'approche "mobile first"&nbsp;!
+        </li>
+        <li>Si vous ne l'avez pas déjà fait, corrigez la taille des titres
+          pour que ceux-ci soient bien proportionnés en cas d'affichage sur une
+          colonne (sur smartphone).</li>
+        <li>Faites en sorte que votre photo prenne toute la largeur de la
+          case qui la contient (au <span class="tt">padding</span> près).
+        </li>
+        <li>Ajoutez des petits drapeaux pour les langues que vous parlez&nbsp;;
+          si vous en avez moins de trois, ajoutez <a
+          href="http://monge.univ-mlv.fr/ens/Licence/L1/2018-2019/progweb/src/td10/klingon.jpg"
+        >le klingon</a>. <br> Note&nbsp;: cette partie doit aussi être une grille
+          d'une ligne sur lequel vous placer les 3 drapeaux. En terme de CSS,
+          vous pouvez réutiliser le même système de grille que la grille qui
+          vous sert à décrire votre CV. <br> Note 2&nbsp;: si vous avez bien fait
+          les choses, sur smartphone, les drapeaux devraient aussi s'afficher un
+          par ligne.
+        </li>
+        <li>Faites en sorte que, lors de l'affichage en mode smartphone, les
+          drapeaux ne fassent que la moitié de la largeur de l'écran.</li>
+        <li>Personnalisez votre CV en ajoutant ce que vous voulez.</li>
+      </ol>
+
+      <hr>
+      <div class="copyright noprint">© Université Gustave Eiffel</div>
+    </div>
+  </div>
+</body>
+</html>

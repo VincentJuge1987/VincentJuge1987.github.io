@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <script>
+     "use strict";
+   
+     function drawTicks(context, n) {
+       context.strokeStyle = "blue";
+       context.lineWidth = 3;
+       context.beginPath();
+         
+       for(var i = 0; i < n; i++) {
+         var alpha = angle(i, n);
+         var x1 = 300 + 210 * Math.cos(alpha);
+         var y1 = 300 + 210 * Math.sin(alpha);
+         var x2 = 300 + 220 * Math.cos(alpha);
+         var y2 = 300 + 220 * Math.sin(alpha);
+         
+         context.moveTo(x1, y1);
+         context.lineTo(x2, y2);
+       }
+       
+       context.stroke();
+     }
+   
+     function drawClock(canvas) {
+       var context = canvas.getContext("2d");
+       context.clearRect(0, 0, 600, 600);
+       drawTicks(context, 24);
+       
+       context.strokeStyle = "blue";
+       context.lineWidth = 3;
+       context.beginPath();
+       context.arc(300, 300, 220, 0, 2 * Math.PI);
+       context.stroke();
+     }
+     
+     function drawNeedle(canvas, angle, ratio, color, thickness) {
+       var x = 300 + ratio * 200 * Math.cos(angle);
+       var y = 300 + ratio * 200 * Math.sin(angle);
+     
+       var context = canvas.getContext("2d");
+       context.strokeStyle = color;
+       context.lineWidth = thickness;
+       context.beginPath();
+       context.moveTo(300, 300);
+       context.lineTo(x, y);
+       context.stroke();
+     }
+   
+     function angle(value, max) {
+       return (value  - max / 4) * (2 * Math.PI) / max;
+     }
+   
+     function refresh(canvas) {
+       var date = new Date();
+       var seconds = date.getSeconds();
+       var minutes = date.getMinutes();
+       var hours = date.getHours();
+       
+       drawClock(canvas);
+       
+       drawNeedle(canvas, angle(hours, 24), 0.7, "black", 4);
+       drawNeedle(canvas, angle(minutes, 60), 1.0, "black", 2);
+       drawNeedle(canvas, angle(seconds, 60), 1.0, "red", 2);
+     }
+     
+     function loaded() {
+       var clock = document.getElementById('clock');
+       window.setInterval(function() { refresh(clock); }, 1000);
+     }
+   </script>
+ </head>
+ <body onload="loaded()">
+  <h2>Horloge</h2>
+  <canvas id="clock"
+          width="600"
+          height="600">
+  </canvas>
+ </body>
+</html>

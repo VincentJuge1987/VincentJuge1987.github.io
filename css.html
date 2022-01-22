@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>CSS</title>
+<meta name="description" content="CSS">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>CSS</h1>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <h2>CSS?</h2>
+                <blockquote cite="https://en.wikipedia.org/wiki/CSS">&ldquo;Cascading Style Sheets (CSS) is a style sheet language used for
+                    describing the presentation of a document written in a markup language.&rdquo;</blockquote>
+                <p class="cite-source">
+                    source: Wikipedia.org - <a href="https://en.wikipedia.org/wiki/CSS">CSS</a>
+                </p>
+            </section>
+            <section>
+                <h2>CSS&nbsp;?</h2>
+                <blockquote cite="https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade">&laquo;&nbsp;La feuille de style en cascade (CSS) est un langage de feuilles
+                    de style utilisé pour décrire la présentation d'un document écrit dans un langage à balises.&nbsp;&raquo;</blockquote>
+                <p class="cite-source">
+                    source&nbsp;: Wikipedia.org - <a href="https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade">CSS</a>
+                </p>
+            </section>
+            <section>
+                <h2>Historique des versions</h2>
+                <table>
+                    <tr>
+                        <td>CSS</td>
+                        <td>1996</td>
+                    </tr>
+                    <tr>
+                        <td>CSS level 2</td>
+                        <td>1998</td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://www.w3.org/TR/CSS21/">CSS level 2 revision 1</a></td>
+                        <td>2011</td>
+                    </tr>
+                    <tr>
+                        <td>CSS 3</td>
+                        <td>Selector(2011), Color(2011), <br /> Media Queries(2012), ...
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>CSS 4</td>
+                        <td>???</td>
+                </table>
+            </section>
+            <section>
+                <h2>L'attribut style</h2>
+                <p id="style-attribute">
+                    L'attribut <b>style</b> permet de changer le style d'une balise, <br /> par exemple pour la colorier <b style="color: orange;">en
+                        orange</b>.
+                </p>
+                <br />
+                <textarea class="code-font" data-autoeval="style-attribute" rows="6" cols="45">
+<p>
+  L'attribut <b>style</b> permet de changer
+  le style d'une balise, <br />
+  par exemple pour la colorier
+  <b style="color: orange;">en orange</b>.
+</p></textarea>
+            </section>
+            <section>
+                <h2>La balise style</h2>
+                <p>
+                    La balise <span class="keyword">style</span> permet de définir des styles qui seront valides pour tout le document.
+                </p>
+                <pre><code class="html" data-trim>
+&lt;html&gt;
+ &lt;head&gt; 
+  &lt;style&gt;
+   strong {
+     color: orange;
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ ...</code></pre>
+                <p>
+                    Toutes les balises <b>strong</b> seront orange.
+                </p>
+            </section>
+            <section>
+                <h2>Le fichier .css</h2>
+                <p>
+                    Pour que plusieurs pages HTML aient le même style, <br /> le style est écrit dans un fichier .css référencé <br /> par les différentes
+                    pages.
+                </p>
+                <br />
+                <pre><code class="html" data-trim>
+&lt;html&gt;
+ &lt;head&gt; 
+  &lt;link rel="stylesheet" type="text/css" href="example.css"&gt;
+ &lt;/head&gt;
+ ...</code></pre>
+            </section>
+            <section>
+                <h2>Id d'élément</h2>
+                <p>Si l'on veut que seule une balise ait un style particulier, on peut donner un identifiant à cette balise.</p>
+                <pre><code class="html" data-trim>
+&lt;ul&gt;
+  &lt;li id="important"&gt;Don't cross the streams !&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                <p>On utilisera '#' et l'id dans le style.</p>
+                <pre><code class="css" data-trim>
+li#important {
+  color: orange;
+}</code></pre>
+            </section>
+            <section>
+                <h2>classe d'élément</h2>
+                <p>On peut aussi vouloir distinguer plusieurs balises. On indique les balises qui appartiennent à une même classe.</p>
+                <pre><code class="html" data-trim>
+&lt;ul&gt;
+  &lt;li&gt;Say hello&lt;/li&gt;
+  &lt;li class="important"&gt;Don't cross the streams !&lt;/li&gt;
+  &lt;li class="important"&gt;To Infinity and Beyond !&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                <p>On utilisera '.' et le nom de la classe dans le style.</p>
+                <pre><code class="css" data-trim>
+li.important {
+  color: orange;
+}</code></pre>
+            </section>
+            <section>
+                <h2>La syntaxe</h2>
+                <p>
+                    Un style est une liste de sélecteurs auxquels <br /> sont associées des propriétés.
+                </p>
+                <pre><code class="css" data-trim>
+selecteur1 {
+  nom1: valeur1;
+  nom2: valeur2;
+}
+
+/* ceci est un commentaire */
+selecteur2 {
+  autre-nom: autre-valeur;
+}</code></pre>
+                <p>'/*' démarre un commentaire, '*/' le finit.</p>
+            </section>
+            <section>
+                <h2>Selecteurs</h2>
+                <table class="small-font">
+                    <tr>
+                        <td>E</td>
+                        <td>éléments de type E</td>
+                    </tr>
+                    <tr>
+                        <td>E1 E2</td>
+                        <td>un élément E1 suivi par E2</td>
+                    </tr>
+                    <tr>
+                        <td>E#myid</td>
+                        <td>élément dont l'<b>id</b> est myid
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>E.myclass</td>
+                        <td>élément dont la <b>class</b> est myclass
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>E[foo]</td>
+                        <td>éléments avec un attribut foo</td>
+                    </tr>
+                    <tr>
+                        <td>E[foo="val"]</td>
+                        <td>élément dont l'attribut foo a la valeur val</td>
+                    </tr>
+                    <tr>
+                        <td>E::first-letter</td>
+                        <td>première lettre d'un texte (pseudo élément)</td>
+                    </tr>
+                    <tr>
+                        <td>E:first-child ou<br />E:last-child
+                        </td>
+                        <td>premier élément ou dernier élément (pseudo classe) <br /> (<a href="http://www.w3.org/TR/css3-selectors/">CSS3 selector</a>)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>a:link, a: visited, a:hover,<br /> a:active
+                        </td>
+                        <td>état d'un lien</td>
+                </table>
+            </section>
+            <section>
+                <h2>Exemple de sélecteurs</h2>
+                <p>
+                    Exemple d'application d'un style à des éléments <br /> et des pseudo-éléments.
+                </p>
+                <iframe id="example-frame" src="images/css/example.html" width="597" height="110"> </iframe>
+                <p>
+                    <textarea class="code-font" data-autostyle="example-frame" rows="9" cols="45">
+p {
+  color: green;
+}
+p::first-line {
+  color: red;
+}
+p::first-letter {
+  color: blue;
+}</textarea>
+                </p>
+                <p>
+                    <small> La première ligne est la première ligne affichée </small>
+                </p>
+            </section>
+            <section>
+                <h2>Cascading Style Sheet</h2>
+                <p>Cascading signifie que si l'on applique un style à un élément, le style est propagé [1] à tous ses sous-éléments.</p>
+                <iframe id="text-frame" src="images/css/hello.html" width="597" height="175"> </iframe>
+                <p>
+                    <textarea class="code-font" data-autostyle="text-frame" rows="6" cols="45">
+body {
+  color: blue;
+}
+li {
+  color: green;
+}</textarea>
+                </p>
+                <p>
+                    <small> [1] ou hérité, si l'on regarde du point de vue des enfants. </small>
+                </p>
+            </section>
+            <section>
+                <h2>CSS (algo 1/2)</h2>
+                <p>
+                    L'algorithme marche en 2 temps&nbsp;:<br /> 1. on applique les sélecteurs dans l'ordre du fichier&nbsp;;
+                </p>
+                <img src="images/css/tree-cascading1.png" width="361" height="241" alt="Applying styles in DOM tree" />
+                <pre><code class="css" data-trim>
+body {
+  color: blue;
+}
+li {
+  color: green;
+}</code></pre>
+            </section>
+            <section>
+                <h2>CSS (algo 2/2)</h2>
+                <p>
+                    L'algorithme marche en 2 temps&nbsp;:<br /> 2. on propage les styles.
+                </p>
+                <img src="images/css/tree-cascading2.png" width="387" height="219" alt="Applying styles in DOM tree" />
+                <pre><code class="css" data-trim>
+body {
+  color: blue;
+}
+li {
+  color: green;
+}</code></pre>
+            </section>
+            <section>
+                <h2>Couleurs</h2>
+                <div id="style-color">
+                    <p style="color: teal">Il y a plusieurs façons d'indiquer une couleur.</p>
+                </div>
+                <ul>
+                    <li>maroon | red | orange | yellow | olive | purple | fuchsia | white | lime | green | navy | blue | aqua | teal | black | silver |
+                        gray
+                    <li>rgb(255, 255, 255)
+                    <li>rgb(100%, 100%, 100%)
+                    <li>#FFFFFF
+                </ul>
+                <p class="small-font">
+                    <a href="http://www.w3.org/TR/css3-color/">CSS3 Color</a> définit encore d'autres façons...
+                </p>
+                <textarea class="code-font" data-autoeval="style-color" rows="3" cols="50">
+<p style="color: teal">
+  Il y a plusieurs façons d'indiquer une couleur.
+</p></textarea>
+            </section>
+            <section>
+                <h2>Unités</h2>
+                <div id="style-color-2">
+                    <p>Il existe plusieurs unités de taille&nbsp;:</p>
+                </div>
+                <table>
+                    <tr>
+                        <td>%</td>
+                        <td>pourcentage de l'écran</td>
+                    </tr>
+                    <tr>
+                        <td>em</td>
+                        <td>proportionnelle à la fonte courante<br /> <small>(16 px avec la fonte par défaut)</small></td>
+                    </tr>
+                    <tr>
+                        <td>px</td>
+                        <td>en pixels</td>
+                    </tr>
+                    <tr>
+                        <td>mm, cm, in, pt</td>
+                        <td>en unités physiques&nbsp;&nbsp;<span class="sad-image"></span></td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <h2>Propriétés par catégorie</h2>
+                <ul>
+                    <li>propriétés des textes &amp; images
+                    <li>propriétés des listes &amp; tables
+                    <li>propriétés des boîtes
+                </ul>
+            </section>
+            <section>
+                <h2>Propriétés des textes &amp; images</h2>
+            </section>
+            <section>
+                <h2>Mise en page du texte</h2>
+                <ul>
+                    <li><span class="keyword">text-decoration:</span> <br/> none | underline | overline | line-through
+                    <li><span class="keyword">text-align:</span> left | right | center | justify
+                    <li><span class="keyword">text-indent:</span> indentation en début de paragraphe
+                    <li><span class="keyword">line-height:</span> hauteur d'une ligne
+                </ul>
+                <br /> <br />
+                <iframe id="text-paragraph" src="images/css/text-paragraph.html" width="597" height="100"> </iframe>
+                <br />
+                <p>
+                    <textarea class="code-font" data-autostyle="text-paragraph" rows="5" cols="45">
+p {
+  text-align: left;
+  text-indent: 1em;
+  line-height: 1.2em;
+}</textarea>
+                </p>
+            </section>
+            <section>
+                <h2>Familles de Police</h2>
+                <p>Noms génériques de familles de police qui marchent indépendamment des polices installés sur le client</p>
+                <br />
+                <table>
+                    <tr>
+                        <th>Nom générique</th>
+                        <th>Exemples de polices</th>
+                    </tr>
+                    <tr style="font-family: sans-serif;">
+                        <td><a href="https://en.wikipedia.org/wiki/Sans_serif">sans serif</a></td>
+                        <td><span style="font-family: 'Arial';">Arial</span>, <span style="font-family: 'Helvetica';">Helvetica</span></td>
+                    </tr>
+                    <tr style="font-family: serif;">
+                        <td><a href="https://en.wikipedia.org/wiki/Serif">serif</a></td>
+                        <td><span style="font-family: 'Times Roman';">Times Roman</span>, <span style="font-family: 'Garamond';">Garamond</span></td>
+                    </tr>
+                    <tr style="font-family: monospace;">
+                        <td><a href="https://en.wikipedia.org/wiki/Monospaced_font">monospace</a></td>
+                        <td><span style="font-family: 'Courier';">Courier</span>, <span style="font-family: 'Lucida Console';">Lucida Console</span></td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <h2>Police de caractères</h2>
+                <ul>
+                    <li><span class="keyword">font-family:</span> noms spécifiques puis nom générique
+                    <li><span class="keyword">font-style:</span> normal | italic | oblique
+                    <li><span class="keyword">font-weight:</span> normal | bold
+                    <li><span class="keyword">font-variant:</span> normal | small-caps
+                    <li><span class="keyword">font-size:</span> en %, pt, px ou em
+                </ul>
+                <br /> <br />
+                <iframe id="text-font" src="images/css/text-font.html" width="790" height="70">
+                </iframe>
+                <br />
+                    <textarea class="code-font" data-autostyle="text-font" rows="6" cols="60">
+p {
+  font-family: "Arial", "Helvetica", "Verdana", sans-serif;
+  font-style: oblique;
+  font-weight: bold;
+  font-size: 1.3em;
+}</textarea>
+            </section>
+            <section>
+                <h2>Image &amp; Alignement Vertical</h2>
+                <dl>
+                    <dt class="keyword">vertical-align:</dt>
+                    <dd>baseline | sub | super | top | text-top | middle | bottom | text-bottom</dd>
+                </dl>
+                <br />
+                <br />
+                <iframe id="text-vertical" src="images/css/text-vertical.html" width="597" height="180"> </iframe>
+                <br />
+                <p>
+                    <textarea class="code-font" data-autostyle="text-vertical" rows="4" cols="45">
+p { font-size: 1.2em; }
+img.ok1 { vertical-align: baseline; }
+img.ok2 { vertical-align: text-top; }
+img.ok3 { vertical-align: middle; }</textarea>
+                </p>
+            </section>
+            <section>
+                <h2>Les liens</h2>
+                <p>
+                    Il existe des <a id="pseudo" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes"> pseudo-classes </a> reflétant l'état
+                    d'un lien.
+                </p>
+                <pre><code class="css" data-trim>
+A:link {  /* lien non visité */
+  color: green;
+}
+A:visited { /* lien visité */
+  color: green;
+}
+A:hover { /* souris au-dessus du lien */
+  color: teal;
+}
+A:active { /* on clique sur le lien */
+  color: red;
+}</code></pre>
+            </section>
+            <section>
+                <h2>Propriétés des listes &amp; tables</h2>
+            </section>
+            <section>
+                <h2>Style des listes</h2>
+                <dl>
+                    <dt class="keyword">list-style-type:</dt>
+                    <dd>none | disc | circle | square | decimal | upper-alpha | lower-alpha | upper-roman | lower-roman</dd>
+                </dl>
+                <br /> <br />
+                <iframe id="style-list" src="images/css/list.html" width="597" height="160"> </iframe>
+                <br />
+                <p>
+                    <textarea class="code-font" data-autostyle="style-list" rows="6" cols="45">
+ol {
+  list-style-type: upper-alpha;
+}
+ul {
+  list-style-type: lower-roman;
+}</textarea>
+                </p>
+            </section>
+            <section>
+                <h2>Bordure des tables</h2>
+                <p>
+                    Il est possible de mettre des bordures et sur la <b>table</b> et sur les <b>td</b> et <b>th</b>.
+                </p>
+                <iframe id="style-table" src="images/css/table.html" width="597" height="200"> </iframe>
+                <br />
+                <p>
+                    <textarea class="code-font" data-autostyle="style-table" rows="6" cols="45">
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid black;
+}</textarea>
+                </p>
+                <p>
+                    <span class="keyword">border-collapse</span> fond plusieurs bordures en une seule.
+                </p>
+            </section>
+            <section>
+                <h2>Largeur/hauteur des tables</h2>
+                <p>
+                    La taille de la table est calculée par son contenu, sauf si on utilise les propriétés <span class="keyword">width</span> et <span
+                        class="keyword">height</span>.
+                </p>
+                <iframe id="style-table2" src="images/css/table2.html" width="597" height="200"> </iframe>
+                <br />
+                <p>
+                    <textarea class="code-font" data-autostyle="style-table2" rows="6" cols="45">
+table {
+  width: 100%;
+  border: 1px solid black;
+}
+th { height: 30px; } 
+td { padding: 3px; }</textarea>
+                </p>
+                <p>
+                    <span class="keyword">padding</span> définit l'espacement entre le texte et la case.
+                </p>
+            </section>
+            <section>
+                <h2>Alignement du texte</h2>
+                <p>
+                    <span class="keyword">text-align:</span> left | center | right <br /> aligne le texte dans les cases.
+                </p>
+                <iframe id="style-table3" src="images/css/table3.html" width="597" height="200"> </iframe>
+                <br />
+                <p>
+                    <textarea class="code-font" data-autostyle="style-table3" rows="7" cols="45">
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th { border-bottom: 1px solid black; }
+.col1 { text-align: center; }
+.col2, .col3 { text-align: right; }</textarea>
+                </p>
+            </section>
+            <section>
+                <h2>Alignement vertical</h2>
+                <p>
+                    <span class="keyword">vertical-align:</span> top | center | bottom <br /> aligne verticalement le texte dans la case.
+                </p>
+                <iframe id="style-table4" src="images/css/table4.html" width="597" height="200"> </iframe>
+                <br />
+                <p>
+                    <textarea class="code-font" data-autostyle="style-table4" rows="8" cols="45">
+table { border-collapse: collapse; }
+th { 
+  height: 40px; 
+  background-color: orange; 
+  vertical-align: center;
+}
+th, td { border-bottom: 1px solid black; }
+.col2, .col3 { text-align: right; }</textarea>
+                </p>
+            </section>
+            <section>
+                <h2>Bandes qui facilitent la lecture</h2>
+                <p>
+                    On utilise la pseudo classe <span class="keyword">:nth-child</span> <br /> avec les valeurs <b>odd</b> ou <b>even</b> sur une ligne (<b>tr</b>).
+                </p>
+                <iframe id="style-table5" src="images/css/table5.html" width="792" height="170"> </iframe>
+                <br />
+                <p>
+                    <textarea class="code-font" data-autostyle="style-table5" rows="6" cols="60">
+table { border-collapse: collapse; }
+tr:nth-child(odd) { background-color: lightgray; }
+// tr:hover { background-color: lightblue; }                                      
+th { background-color: orange; }
+th, td { border-bottom: 1px solid black; }
+.col2, .col3 { text-align: right; }</textarea>
+                </p>
+                <p class="small-font">
+                    Avec le même principe, on peut utiliser la pseudo classe <span class="keyword">:hover</span>.
+                </p>
+            </section>
+            <section>
+                <h2>Propriétés des boîtes</h2>
+            </section>
+            <section>
+                <h2>Inline vs block</h2>
+                <p>Pour l'affichage, les éléments sont séparés en 2 catégories&nbsp;:</p>
+                <ul>
+                    <li>Les <b>inlines</b>, qui, comme du texte, sont <br /> affichés de gauche à droite&nbsp;;
+                    </li>
+                    <li>Les <b>blocks</b> (boîtes), qui prennent toute la largeur <br /> et dont la hauteur est de la somme des <br /> hauteurs des
+                        sous-éléments.
+                    </li>
+                </ul>
+                <br />
+                <p>A et BOLD sont des inlines, P, UL ou LI sont des blocks.</p>
+            </section>
+            <section>
+                <h2>
+                    <a href="https://en.wikipedia.org/wiki/Span_and_div">Span vs div</a>
+                </h2>
+                <p>Balises sans propriété par défaut&nbsp;:</p>
+                <ul>
+                    <li>&lt;span&gt; est un inline&nbsp;;</li>
+                    <li>&lt;div&gt; est un block.</li>
+                </ul>
+                <br />
+                <pre><code class="html" data-trim contenteditable>
+&lt;div class="error"&gt;
+  Une &lt;span class="important"&gt;erreur&lt;/span&gt; s'est produite ...
+&lt;/div&gt;</code></pre>
+            </section>
+            <section>
+                <h2>Couleur &amp; image de fond</h2>
+                <p>
+                    <span class="keyword">background-color</span> spécifie une couleur de fond. <br /> <span class="keyword">background-image</span> spécifie
+                    une image de fond.
+                </p>
+                <iframe id="box-background" src="images/css/box-background.html" width="660" height="170"> </iframe>
+                <pre><code class="html" data-trim contenteditable>
+&lt;div class="box1"&gt;Lorem ipsum dolor sit ...&lt;/div&gt;
+&lt;div class="box2"&gt;Lorem ipsum dolor sit ...&lt;/div&gt;</code></pre>
+                <p>
+                    <textarea data-autostyle="box-background" rows="4" cols="50" class="code-font">
+.box1 { background-color: silver; }
+.box2 {
+  background-image: url("images/css/paper.jpg");
+}</textarea>
+                </p>
+                <br />
+            </section>
+            <section>
+                <h2>CSS Box Model</h2>
+                <p>Le CSS définit 3 propriétés définissant les boîtes autour du contenu.</p>
+                <img src="images/css/box-model.png" width="578" height="293" alt="le modèle de boîte de CSS" />
+                <ul>
+                    <li><span class="keyword">padding:</span> espace à l'intérieur de la boîte&nbsp;;</li>
+                    <li><span class="keyword">border:</span> bordure autour des boîtes&nbsp;;</li>
+                    <li><span class="keyword">margin:</span> espace entre les boîtes.</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Padding &amp; margin</h2>
+                <iframe id="box-model" src="images/css/box-model.html" width="500" height="275"> </iframe>
+                <pre><code class="html" data-trim>
+&lt;div class="box1"&gt;Box1&lt;/div&gt;
+&lt;div class="box2"&gt;Box2&lt;/div&gt;</code></pre>
+                <p>
+                    <textarea class="code-font" data-autostyle="box-model" rows="6" cols="45">
+.box1, .box2 { 
+  margin: 50px;
+  padding: 20px;
+}
+.box1 { background-color: teal; }
+.box2 { background-color: silver; }</textarea>
+                </p>
+            </section>
+            <section>
+                <h2>Bordure</h2>
+                <ul>
+                    <li><span class="keyword">border-color:</span> couleur</li>
+                    <li><span class="keyword">border-style:</span> none|dotted|dashed|solid|double|groove|ridge|inset|outset</li>
+                    <li><span class="keyword">border-width:</span> largeur de bordure</li>
+                </ul>
+                <br />
+                <iframe id="box-border" src="images/css/box-border.html" width="500" height="150"> </iframe>
+                <p>
+                    <textarea class="code-font" data-autostyle="box-border" rows="6" cols="45">
+.box1, .box2 { 
+  background-color: silver;
+  margin: 20px;
+  padding: 10px;
+  border-style: dotted dashed solid double;
+}</textarea>
+                </p>
+            </section>
+            <section>
+                <h2>Texte et boîte flottante</h2>
+                <p>
+                    <span class="keyword">float:</span> left | right <br /> indique que le texte passe autour de la boîte flottante.
+                </p>
+                <iframe id="text-float" src="images/css/text-float.html" width="500" height="250"> </iframe>
+                <p>
+                    <textarea class="code-font" data-autostyle="text-float" rows="5" cols="45">
+.box {
+  background-color: silver; 
+  margin: 10px;
+  padding: 20px;
+  float: left; }</textarea>
+                </p>
+                <p class="small-font">On peut utiliser cette technique pour positionner des boîtes.</p>
+            </section>
+            <section>
+                <h2>Positionnement flottant</h2>
+                <p>
+                    <span class="keyword">float</span> répartit les boîtes à gauche et à droite. <br /> <span class="keyword">clear</span> permet d'arrêter
+                    l'affichage flottant.
+                </p>
+                <iframe id="box-float" src="images/css/box.html" width="500" height="250"> </iframe>
+                <p>
+                    <textarea data-autostyle="box-float" rows="6" cols="55" class="code-font">
+.box-left { background-color: teal; margin: 10px;
+            padding: 20px; float: left; }
+.box-right { background-color: silver; margin: 10px;
+             padding: 20px; float: right; }
+.box-clear { background-color: olive; 
+             padding: 20px; clear: both; }</textarea>
+                </p>
+            </section>
+            <section>
+                <h2>Float et alignement vertical</h2>
+                <p>
+                    Une boîte avec la propriété <span class="keyword">float</span> ne supporte pas l'alignement vertical.
+                </p>
+                <iframe id="box-vertical" src="images/css/box-vertical.html" width="752" height="200"> </iframe>
+                <br />
+                <div class="bad-container">
+                    <textarea class="code-font" data-autostyle="box-vertical" rows="3" cols="57">
+.box { background-color: teal; border: 1px solid black;
+       float: left; vertical-align: bottom; }
+.box-clear { background-color: olive; clear: both; }</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+            </section>
+            <section>
+                <h2>Inline Block</h2>
+                <p>
+                    <span class="keyword">display: inline-block</span> <br /> permet de voir un élément comme un inline <br /> et donc de pourvoir utiliser <span
+                        class="keyword">vertical-align</span>.
+                </p>
+                <iframe id="box-vertical-inline" src="images/css/box-vertical-inline.html" width="752" height="200"> </iframe>
+                <p>
+                    <textarea class="code-font" data-autostyle="box-vertical-inline" rows="3" cols="57">
+.box { background-color: teal; border: 1px solid black; 
+       display: inline-block; vertical-align: bottom; }
+.box-clear { background-color: olive; clear: both; }</textarea>
+                </p>
+                <p class="small-font">Mais attention aux espaces car ils sont gérés comme faisant partie de l'affichage !</p>
+            </section>
+            <section>
+                <h2>Positionnement</h2>
+                <p>
+                    <span class="keyword">position</span> permet de positionner un élément.
+                </p>
+                <div class="inline top">
+                    <iframe id="box-position" src="images/css/box-position.html" width="350" height="200"> </iframe>
+                    <br />
+                    <textarea class="code-font" data-autostyle="box-position" rows="5" cols="25">
+.box {
+  position: relative; 
+  left: 10px;
+  top: 10px;
+}</textarea>
+                </div>&nbsp;&nbsp;
+                <div class="inline small-font top">
+                    <dl>
+                        <dt>static</dt>
+                        <dd>comportement normal</dd>
+                        <dt>fixed</dt>
+                        <dd>par rapport au coin en haut à gauche de la fenêtre</dd>
+                        <dt>relative</dt>
+                        <dd>par rapport à la position habituelle</dd>
+                        <dt>absolute</dt>
+                        <dd>par rapport à la boîte marquée relative</dd>
+                    </dl>
+                </div>
+                <br />
+                <p class="small-font">
+                    Les valeurs de <span class="keyword">left</span>, <span class="keyword">top</span>, <span class="keyword">right</span>, <span
+                        class="keyword">bottom</span> peuvent être négatives.
+                </p>
+            </section>
+            <section>
+                <h2>relative/absolute</h2>
+                <p>
+                    <span class="keyword">absolute</span> permet de placer une boîte par rapport à une boîte relative.
+                </p>
+                <div class="inline">
+                    <iframe id="box-position2" src="images/css/box-position2.html" width="420" height="200"> </iframe>
+                    <br />
+                    <textarea class="code-font" rows="5" cols="30">
+&lt;div class="container"&gt;
+   boîte de classe container
+   &lt;div class="valid"&gt;&lt;/div&gt;
+&lt;/div&gt;</textarea>
+                </div>&nbsp;&nbsp;
+                <div class="inline top">
+                    <textarea class="code-font" data-autostyle="box-position2" rows="12" cols="30">
+.container {
+  position: relative;
+  border: 1px solid black;
+  padding: 0px 0px 40px 0px;
+}
+.valid:after {
+  content: url(good.png);
+  position: absolute;
+  z-index: 9999;
+  right: 5px;
+  bottom: 0px;
+}</textarea>
+                </div>
+                <p style="clear: both"></p>
+            </section>
+            <section>
+                <h2>Et pour la partie dynamique&nbsp;?</h2>
+                <p>Et comment on</p>
+                <ul>
+                    <li>clique sur un élément&nbsp;?</li>
+                    <li>change ce qui est affiché dynamiquement&nbsp;?</li>
+                    <li>fait des boucles, des tests, etc.&nbsp;?</li>
+                </ul>
+                <p>
+                    On ne fait <span style="color: red;">pas ça</span> en CSS, on utilise <a href="javascript.html">JavaScript</a> pour cela !
+                </p>
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

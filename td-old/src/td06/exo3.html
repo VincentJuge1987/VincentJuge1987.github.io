@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+ </head>
+ <body>
+  <h2>Random Array</h2>
+  <p>
+    <div id="line"></div>
+    <script>
+      "use strict";
+    
+      function random(n) {
+        return Math.floor(n * Math.random());
+      }
+      
+      //TODO randomArray
+      
+      let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      randomArray(array);
+      
+      let line = document.getElementById('line');
+      line.innerHTML = array;
+   </script>
+  </p>
+  <h2>Min/Max 4: Fury Road</h2>
+  <p>
+   <script>
+      //TODO minmax4
+      
+      let minAndMax4 = minmax4(array);
+      //document.write("min " + minAndMax4[0] + " max " + minAndMax4[1]);
+   </script>
+  </p>
+ </body>
+</html>
