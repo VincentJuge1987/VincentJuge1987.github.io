@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Requêtes AJAX</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet-td.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
+  media="print"
+>
+<link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
+</head>
+<body>
+  <div class="conteneur">
+    <div class="contenu">
+      <p style="text-align: left;" class="noprint">
+        :: <a href="http://monge.univ-mlv.fr/ens/index.php"> Enseignements </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/index.php"
+        > Licence </a>::<a href="http://monge.univ-mlv.fr/ens/Licence/L1/index.php">
+          L1 </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/L1/2021-2022/index.php"
+        > 2021-2022 </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/L1/2021-2022/progweb/index.php"
+        > Programmation Web </a>::
+      </p>
+      <hr>
+      <table>
+        <tbody>
+          <tr style="vertical-align: center;">
+            <td><img class="print" src="css/UGE.png" alt="[LOGO]" height="30"></td>
+            <td><h1>Requêtes AJAX</h1></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+
+
+      <div>Comme pour les TP précédents, on vous demande de créer un
+        répertoire <span class="tt">tp8</span> qui contiendra les exercices de cette feuille de TP et de
+        faire un compte rendu de TP en HTML.</div>
+      <br>
+
+      <h3>Exercice 1&nbsp;: Un panier de fruits</h3>
+      <div>On cherche à afficher le contenu d'un panier de fruit en
+        faisant une requête AJAX puis en modifiant le DOM pour ajouter des
+        lignes à une table HTML.</div>
+      <br>
+      <ol>
+        <li>Recopiez les fichiers <a
+          href="src/td08/exo1.html"
+        >exo1.html</a>, <a
+          href="src/td08/basket.js"
+        >basket.js</a>, <a
+          href="src/td08/fruits.json"
+        >fruits.json</a> et <a
+          href="src/td08/HTTPServer.py"
+        >HTTPServer.py</a>
+        dans votre répertoire <span class="tt">tp8</span>.
+        </li>
+        <li>On cherche à écrire une requête AJAX qui va lire le fichier <a
+          href="src/td08/fruits.json"
+        >fruits.json</a>.
+        <br> Créez un objet <span class="tt">XMLHttpRequest</span>,
+          utilisez la méthode <span class="tt">open()</span> pour créer une
+          requête sur le fichier <span class="tt">fruits.json</span> stocké sur le serveur
+          de l'université (et non pas celui que vous avez copié localement), puis
+          envoyez la requête au serveur avec la méthode <span class="tt">send</span>. <br>
+          Comment faire pour savoir si la requête a réussi ou échoué en
+          utilisant les outils de développement de votre navigateur&nbsp;? <br>
+          Testez si votre requête AJAX fonctionne avec Firefox et avec Chrome.</li>
+        <li>Que se passe-t-il si vous essayez d'envoyer une requête pour récupérer une copie
+          locale du fichier <span class="tt">fruits.json</span>&nbsp;?
+        Si vous avez un message d'erreur, comment pouvez-vous expliquer le contenu de ce message d'erreur&nbsp;?</li>
+        <li>En fonction de votre navigateur et de la version de celui-ci, il se peut que vous n'ayez
+          pas pu accéder au fichier <span class="tt">fruits.json</span>.
+          Pour éviter que ce genre de mésaventures ne se reproduise, vous allez lancer un serveur HTTP minimaliste
+          sur votre propre machine. (Lisez bien toute la question, y compris le paragraphe qui commence par
+          <span class="caution">Attention</span>, avant d'entamer les opérations qui suivent).
+          <br />
+          Pour ce faire, ouvrez un terminal, placez-vous dans le répertoire <span class="tt">tp9</span>,
+          puis lancez la commande <span class="tt">python HTTPServer.py</span>.
+          Vous venez de lancer votre serveur HTTP dans le répertoire <span class="tt">tp9</span>,
+          et alors le fichier <span class="tt">fruits.json</span> est accessible depuis l'URL
+          <a href="http://localhost:8080/fruits.json">http://localhost:8080/fruits.json</a>.
+          <br />
+          <br />
+          <span class="caution">Attention&nbsp;:</span>
+          Si jamais votre ordinateur hébergeait déjà un service qui utilisait le port 8080,
+          vous avez dû voir s'afficher un message d'erreur <span class="tt">Port 8080 already in use</span>.
+          Dans ce cas, vous pouvez remplacer le port 8080 par le port 3000 (ou bien par n'importe quel port&nbsp;:
+          il vous suffit de remplacer 3000 par votre numéro de port préféré) en lançant la commande suivante&nbsp;:
+          <span class="tt">python HTTPServer.py 3000</span>.
+          Le fichier <span class="tt">fruits.json</span> sera accessible depuis l'URL
+          <a href="http://localhost:3000/fruits.json">http://localhost:3000/fruits.json</a>.
+          <br />
+          Note&nbsp;: Si jamais vous avez l'habitude d'utiliser une autre commande ou méthode pour exécuter des scripts
+          python, faites comme d'habitude. L'essentiel étant d'exécuter le script <span class="tt">HTTPServer.py</span>.
+          <br />
+          <br />
+          Vérifiez que vous avez maintenant bien accès au fichier <span class="tt">fruits.json</span> que vous avez stocké localement.
+        </li>
+         <li>Ajoutez une fonction pour écouter les événements <span class="tt">readystatechange</span> 
+          et si la requête a réussi, affichez le résultat de la
+          propriété <span class="tt">responseText</span> dans la console.
+        </li>
+        <li>Transformez la chaine de caractère stockée dans <span class="tt">responseText</span> 
+          au format JSON en objet JavaScript. <br> Quel est le
+          type d'objet JavaScript obtenu&nbsp;?
+        </li>
+        <li>Actuellement, le document <span class="tt">exo1.html</span>
+          contient une table HTML. À l'aide de JavaScript, récupérez l'élément HTML correspondant à cette table,
+          puis modifiez la table pour faire en sorte qu'elle contienne
+          une ligne par fruit et deux colonnes&nbsp;: la première colonne contiendra 
+          le nom du fruit, et l'autre la quantité du
+          fruit.
+        </li>
+        <li>On souhaite maintenant que le span <span class="tt">quantity</span>
+          de la page HTML soit mis à jour avec la somme des quantités de tous
+          les fruits. Comment faire&nbsp;?
+        </li>
+      </ol>
+
+      <h3>Exercice 2&nbsp;: Combien ça coûte&nbsp;?</h3>
+      <div>
+        On cherche à améliorer le code précédent pour calculer le prix du panier
+        (en plus de la quantité de tous les fruits). <br> Pour cela, on va
+        créer un nouveau fichier JSON (<span class="tt">prices.json</span>),
+        contenant le prix d'une orange, d'une banane et d'une poire
+        (et aucune autre information), et qui sera
+        chargé pour calculer le prix d'un panier.
+      </div>
+      <br>
+      <ol>
+        <li>Recopiez la page Web <a
+          href="src/td08/exo2.html"
+        >exo2.html</a> dans votre répertoire <span class="tt">tp9</span> puis
+          recopiez votre fichier <span class="tt">basket.js</span> dans le
+          fichier <span class="tt">basket2.js</span>.
+        </li>
+        <li>Quelle doit être la structure de données décrite dans le
+          fichier <span class="tt">prices.json</span>&nbsp;? <br> Note&nbsp;: vous
+          devez choisir votre structure en fonction de la façon dont vous voulez
+          utiliser vos données <br> Note 2&nbsp;: si vous pensez à un tableau,
+          pensez plus fort&nbsp;! :-)
+        </li>
+        <li>Écrivez le fichier <span class="tt">prices.json</span> sachant
+          que le prix d'une orange est 10 euros, le prix d'une banane est 20
+          euros et le prix d'une poire est 5 euros. <br> Vérifiez que votre
+          fichier respecte bien le format JSON en utilisant le validateur de
+          JSON <a href="http://jsonlint.com/">http://jsonlint.com/</a>.
+        </li>
+        <li>Faites en sorte que le fichier <span class="tt">prices.json</span>
+          soit chargé par une requête AJAX. <br> Note&nbsp;: sachant que l'on
+          charge déjà le fichier <span class="tt">fruits.json</span> avec une
+          requête AJAX, faire en sorte qu'il y ait un seul code de chargement de
+          requête AJAX (en faisant une fonction).
+        </li>
+        <li>Faites en sorte de calculer le prix du panier et de mettre à
+          jour la page Web avec le prix.</li>
+      </ol>
+
+      <h3>Exercice 3&nbsp;: Les promesses n'engagent que ceux qui y croient</h3>
+      <ol>
+        <li>Recopiez la page Web <a
+          href="src/td08/exo3.html"
+        >exo3.html</a> dans votre répertoire <span class="tt">tp8</span> puis
+          recopiez votre fichier <span class="tt">basket2.js</span> dans le
+          fichier <span class="tt">basket3.js</span>.
+        </li>
+        <li>
+          Récupérer l'objet contenu dans le fichier <span class="tt">prices.json</span>
+          à l'aide de la fonction <span class="tt">fetch</span> et de promesses.
+        </li>
+        <li>
+          Faites en sorte de calculer le prix du panier et de mettre à
+          jour la page Web avec le prix, mais en utilisant
+          la fonction <span class="tt">fetch</span> et des promesses.
+        </li>
+      </ol>
+      <hr>
+      <div class="copyright noprint">© Université Gustave Eiffel</div>
+    </div>
+  </div>
+</body>
+</html>

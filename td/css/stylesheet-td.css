@@ -1,0 +1,132 @@
+
+#jsMath_Warning {display: none} 
+
+body{
+    font: 80% Verdana, sans-serif;
+    background-color: #EDE9E6;
+    color: #444444;
+    margin: 0;
+    padding: 0;
+    overflow: -moz-scrollbars-vertical;
+}
+
+div.conteneur{
+   margin: 1em auto 1em auto;
+   width: 80%;
+   border: 1px solid #C4C4C4;
+   background-color: white;
+   text-align : justify;
+}
+
+div.contenu{
+   margin: 1em 1em 1em 1em;
+}
+
+A
+{ 
+color: #171C90; 
+text-decoration: none;
+font-weight: bold;
+}
+
+
+H1
+{
+  font-size: 180%; 
+  color: #171C90;
+}
+
+H1.subtitle
+{
+  font-size: 180%;
+  color: #171C90;
+}
+
+H2
+{ 
+  font-size: 180%;
+  color: #171C90;
+}
+
+H3
+{
+  font-size: 170%;
+  color: #171C90;
+}
+
+H4
+{
+  font-size: 160%;
+  font-weight: bold;
+  color: #171C90;
+}
+
+div.answer {
+margin: 1em 0em 0em 0em;
+}
+
+div.answercontent {
+margin: 1em 1em 1em 1em;
+}
+
+div.team {
+border: 3px solid #999966;
+}
+
+div.teamcontent {
+margin: 1em 1em 1em 1em;
+}
+
+ul {
+    list-style-image: url(http://igm.univ-mlv.fr/ens/resources/folder_icon.gif);
+}
+
+ol {
+    list-style-image: none;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+.tt{
+  font-weight: bold;
+}
+
+code{
+  font-size:120%;
+}
+
+pre code{
+  font-size:100%;
+}
+
+table.full-width {
+    width: 100%; }
+
+pre.full-width {
+    width: 98%;
+}
+
+pre tt{
+  font-weight: bold;
+}
+
+tt{
+  font-weight: bold;
+}
+
+pre{
+	font-size:120%;
+	padding: 1em; 
+	border : 1px solid #663399;
+}
+
+.copyright {
+     text-align: center;
+}
+
+.caution {
+color: red;
+font-weight: bold;
+}

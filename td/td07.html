@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Dessiner sur des Canvas</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet-td.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
+  media="print"
+>
+<link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
+</head>
+<body>
+  <div class="conteneur">
+    <div class="contenu">
+      <p style="text-align: left;" class="noprint">
+        :: <a href="http://monge.univ-mlv.fr/ens/index.php"> Enseignements </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/index.php"
+        > Licence </a>::<a href="http://monge.univ-mlv.fr/ens/Licence/L1/index.php">
+          L1 </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/L1/2021-2022/index.php"
+        > 2021-2022 </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/L1/2021-2022/progweb/index.php"
+        > Programmation Web </a>::
+      </p>
+      <hr>
+      <table>
+        <tbody>
+          <tr style="vertical-align: center;">
+            <td><img class="print" src="css/UGE.png" alt="[LOGO]" height="30"></td>
+            <td><h1>Dessiner sur des Canvas</h1></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+
+      <div>Comme pour les TPs précédents, on vous demande de créer un
+        répertoire tp7 qui contiendra les exercices de cette feuille de TP et de
+        faire un compte-rendu de TP en HTML.</div>
+      <br>
+
+      <h3>Exercice 1&nbsp;: Horloge</h3>
+      <div>Le but de cet exercice est d'utiliser l'API des canvas en
+        réalisant une horloge à aiguilles.</div>
+      <br>
+      <ol>
+        <li>Recopiez la page Web <a
+          href="src/td07/exo1.html"
+        >exo1.html</a>. <br> Que se passe-t-il lorsque l'on la visualise&nbsp;? <br>
+          Note&nbsp;: regardez la console&nbsp;! <br> Expliquez ce que fait la balise
+          &lt;body onload="loaded()"&gt;.
+        </li>
+        <li>Comment faire pour afficher un &laquo;&nbsp;tick&nbsp;&raquo; toutes les secondes en
+          utilisant <span class="tt">setTimeout</span>&nbsp;?
+        </li>
+        <li>En fait, il existe un appel <span class="tt">window.setInterval()</span>
+          qui va appeler la fonction pris en paramètre de façon répétée.
+          Transformez le code pour utiliser <span class="tt">window.setInterval()</span>.
+        </li>
+        <li>Transformez le code pour afficher la date courante (avec <span
+          class="tt"
+        >new Date()</span>) dans la console, au lieu d'afficher simplement le mot &laquo;&nbsp;tick&nbsp;&raquo;.
+        <br> Puis changez encore le code pour afficher
+          l'heure (<span class="tt">getHours()</span>), les minutes (<span
+          class="tt"
+        >getMinutes()</span>) et les secondes (<span class="tt">getSeconds()</span>)
+          sur la console.
+        </li>
+        <li>Retirez les commentaires autour du code en bas du fichier. Que
+          fait ce code&nbsp;? <br> Modifiez-le pour afficher une aiguille
+          indiquant midi (ou 0 minute, ou 0 seconde).
+        </li>
+        <li>Dessinez un cercle de rayon 220 pixels centré dans le canvas.
+          Il servira de cadre à notre horloge. <br>
+          Débrouillez-vous également pour que votre aiguille
+          ne dépasse plus de ce cercle.</li>
+        <li>Indiquez les formules mathématiques qui permettent, pour une
+          valeur de 0 à 60 secondes, de trouver les coordonnées x et y du sommet
+          de l'aiguille.</li>
+        <li>Modifiez le code pour faire bouger la trotteuse (nom de
+          l'aiguille des secondes) en fonction des secondes. <br> Note&nbsp;: <span
+          class="tt"
+        >context.clearRect(...)</span> permet d'effacer le canvas.
+        </li>
+        <li>Modifiez votre code pour afficher la trotteuse en rouge et le
+          cadre en bleu. <br> Réglez à 3 pixels l'épaisseur du trait du
+          cadre.
+        </li>
+        <li>Affichez en plus de la trotteuse, l'aiguille des minutes (la
+          grande aiguille). <br> Note&nbsp;: pitié, ne dupliquez pas le code&nbsp;!
+        </li>
+        <li>Ajoutez l'aiguille des heures, qui doit être d'une longueur
+          inférieure aux deux autres aiguilles (disons 70%), mais plus large,
+          toujours en essayant de &laquo;&nbsp;factoriser&nbsp;&raquo; le code.</li>
+        <li>Ajoutez 12 traits de graduation (&laquo;&nbsp;ticks&nbsp;&raquo;) autour du cadre de
+          l'horloge. Un trait aura une longueur de 5 pixels, par exemple.</li>
+      </ol>
+
+
+      <h3>Exercice 2&nbsp;: Horloges de différentes tailles</h3>
+      <div>
+        On veut faire en sorte d'avoir plusieurs horloges de différentes tailles
+        sur une même page. <br> On utilisera pour cela la page Web
+        <a href="src/td07/exo2.html">exo2.html</a>.
+      </div>
+      <br>
+      <ol>
+        <li>Faites en sorte que la taille de l'horloge puisse varier en
+          fonction de la taille du canvas. <br> Un canvas a une propriété
+          <span class="tt">width</span> et une propriété <span class="tt">height</span>. <br> Dans
+          le cas où la largeur et la hauteur d'un canvas n'est pas la même,
+          prenez la valeur minimum entre les deux et laisser des bandes de
+          chaque coté.
+        </li>
+        <li>Faites en sorte d'avoir une fonction <span class="tt">startClock</span>
+          qui prend en paramètre l'id d'un canvas qui sert d'unique point
+          d'entrée pour faire fonctionner une horloge. <br> Testez avec
+          l'affichage des 2 horloges de tailles différentes (on est d'accord, on
+          peut en ajouter plus&nbsp;!).
+        </li>
+        <li>Question top moumoute&nbsp;: faites en sorte de garantir que les
+          aiguilles des différentes horloges soient synchrones (c'est-à-dire mises à
+          jour toutes en même temps).</li>
+      </ol>
+
+      <hr>
+      <div class="copyright noprint">© Université Gustave Eiffel</div>
+    </div>
+  </div>
+</body>
+</html>

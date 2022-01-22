@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+   <title>Horloge - Exercice 1</title>
+   <meta charset="utf-8">
+   <script>
+     "use strict";
+   
+     const refresh = function() {
+       const date = new Date();
+       /*const s = date.getSeconds();
+       const x = 300 + 220 * Math.sin(s * Math.PI / 30);
+       const y = 300 - 220 * Math.cos(s * Math.PI / 30);
+       const width = context.lineWidth;*/
+       
+       context.clearRect(0,0,600,600);
+       
+       /*
+       context.strokeStyle = "blue";
+       context.lineWidth = 3;
+       context.beginPath();
+       context.arc(300,300,220,0,2 * Math.PI);
+       context.stroke();
+       context.lineWidth = width;
+       
+       context.lineWidth = width;
+       context.strokeStyle = "red";
+       context.beginPath();
+       context.moveTo(300,300);
+       context.lineTo(x,y);
+       context.stroke();
+       */
+       drawCircle(3,220,"blue",12);
+       drawNeedle(5,120,"green",date.getHours(), 12);
+       drawNeedle(3,210,"black",date.getMinutes(), 60);
+       drawNeedle(undefined,220,"red",date.getSeconds(), 60);
+       
+       console.log(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
+     };
+     
+     const fromPolar = function(x,y,length,angle,maxAngle) {
+       const a = x + length * Math.sin(angle * 2 * Math.PI / maxAngle);
+       const b = y - length * Math.cos(angle * 2 * Math.PI / maxAngle);
+       return [a,b];
+     };
+     
+     const drawCircle = function(width, length, color, times) {
+       const oldWidth = context.lineWidth;
+       width = undefined ? oldWidth : width;
+       
+       context.strokeStyle = color;
+       context.lineWidth = width;
+       context.beginPath();
+       context.arc(300,300,length,0,2 * Math.PI);
+       context.stroke();
+       for (let i = 0; i < times; i++) {
+         const [a,b] = fromPolar(300,300,220,i,times);
+         const [A,B] = fromPolar(300,300,215,i,times);
+         context.beginPath();
+         context.moveTo(a,b);
+         context.lineTo(A,B);
+         context.stroke();
+       }
+       context.lineWidth = oldWidth;
+     };
+     
+     const drawNeedle = function(width, length, color, time, maxTime) {
+       const [x,y] = fromPolar(300,300,length,time,maxTime);
+       const oldWidth = context.lineWidth;
+       width = undefined ? oldWidth : width;
+       
+       context.lineWidth = width;
+       context.strokeStyle = color;
+       context.beginPath();
+       context.moveTo(300,300);
+       context.lineTo(x,y);
+       context.stroke();
+       context.lineWidth = oldWidth;
+     };
+     
+     const loaded = function() {
+       //window.setTimeout(refresh, 1000);
+       //window.setTimeout(loaded, 1000);
+       window.setInterval(refresh, 1000);
+     };
+   </script>
+ </head>
+ <body onload="loaded()">
+  <h2>Horloge</h2>
+  <canvas id="clock"
+          width="600"
+          height="600">
+  </canvas>
+  <script>
+     
+     const canvas = document.getElementById('clock');
+     const context = canvas.getContext("2d");
+     
+     /*
+     context.beginPath();
+     //context.moveTo(0, 300);
+     //context.lineTo(600, 300);
+     context.moveTo(300,300);
+     context.lineTo(300,80);
+     context.stroke();
+     
+     context.beginPath();
+     context.arc(300,300,220,0,2 * Math.PI);
+     context.stroke();
+     */
+     
+  </script>
+ </body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Compte-rendu de TP8</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../tp04/compte-rendu.css">
+  </head>
+  <body>
+    <h1 class="centered">Compte-rendu de TP8</h1>
+    <div class="right">
+      Vincent Jugé
+    </div>
+ 
+    <h2>Exercice 1&nbsp;: Un panier de fruits</h2>
+    <ol>
+      <li>
+        Voilà, c'est fait&nbsp;!
+      </li>
+      <li>
+        Comme vu en cours, je lance ma requête AJAX&nbsp;:
+        <pre>
+let ajax = new XMLHttpRequest();
+ajax.onreadystatechange = function() {
+  if (ajax.readyState == 4 && ajax.status == 200) {
+    console.log(ajax.responseText);
+  }
+};
+ajax.open("GET", "http://igm.univ-mlv.fr/~juge/progweb/td/src/td09/fruits.json", true);
+ajax.overrideMimeType("application/json");
+ajax.send();
+</pre>
+        Ainsi, je peux vérifier en regardant dans la console le contenu du fichier que j'ai demandé.
+      </li>
+      <li>
+        La requête AJAX échoue. Voici le message d'erreur que je reçois avec Firefox&nbsp;:
+        <pre>
+Blocage d’une requête multiorigine (Cross-Origin Request) : la politique « Same Origin »
+ne permet pas de consulter la ressource distante située sur file:///.../fruits.json.
+Raison : la requête CORS n’utilise pas http.
+</pre>
+        Avec Chrome, le message d'erreur est analogue.
+        La raison est la même dans les deux cas&nbsp;: les politiques de sécurité des navigateurs
+        leur empêchent d'accéder à des fichiers locaux via des requêtes AJAX.
+        Cette interdiction a pour but de protéger l'utilisateur contre des scripts malicieux
+        qui tenteraient d'accéder à des fichiers stockés sur l'ordinateur de l'utilisateur.
+      </li>
+      <li>
+        Avec le serveur local, tout marche dès lors que l'on lance la requête AJAX
+        <pre>
+ajax.open("GET", "http://localhost:8080/fruits.json", true);
+</pre>
+      </li>
+      <li>
+        J'avais déjà fait le travail, donc je n'ai rien de plus à faire&nbsp;!
+      </li>
+      <li>
+        Il suffit d'écrire
+        <pre>
+  if (ajax.readyState == 4 && ajax.status == 200) {
+    const json = JSON.parse(text);
+    console.log(json);
+    //console.log(ajax.responseText);
+  }
+</pre>
+        à l'intérieur du code de <tt>ajax.onreadystatechange</tt>, et on constate alors que <tt>json</tt> est un tableau de dictionnaires.
+      </li>
+      <li>
+        Il suffit d'appeler une fonction<tt>showJSONInTable(json);</tt> après avoir récupéré mon objet JSON dans une variable <tt>json</tt>, puis
+        d'écrire la fonction<tt>showJSONInTable</tt> comme suit, le but étant d'afficher notre objet dans la table demandée&nbsp;:
+        <pre>
+const showJSONInTable = function(json) {
+  const table = document.getElementById("basket");
+  for(let fruit of json) {
+    const row = document.createElement("tr");
+    const fruitName = document.createElement("td");
+    const fruitQuantity = document.createElement("td");
+    fruitName.innerText = fruit.name;
+    fruitQuantity.innerText = fruit.quantity;
+    row.appendChild(fruitName);
+    row.appendChild(fruitQuantity);
+    table.appendChild(row);
+  }
+};
+</pre>
+      </li>
+      <li>
+        De même, on crée une fonction <tt>showJSONQuantity</tt> dont le but sera de calculer le nombre total de fruits et de l'afficher&nbsp;:
+        <pre>
+const showJSONQuantity = function(json) {
+  const span = document.getElementById("quantity");
+  const quantity = json.reduce((acc, fruit) =&gt; acc + fruit.quantity, 0);
+  span.innerText = quantity;
+};
+</pre>
+      </li>
+    </ol>
+ 
+    <h2>Exercice 2&nbsp;: Combien ça coûte&nbsp;?</h2>
+    <ol>
+      <li>
+        Voilà, c'est fait&nbsp;!
+      </li>
+      <li>
+        On doit utiliser un dictionnaire qui, à chaque nom de fruit, associe le prix du fruit en question.
+      </li>
+      <li>
+        Mon fichier <tt>prices.json</tt> est désormais le suivant&nbsp;:
+        <pre>
+{
+  "orange": 10,
+  "banana": 20,
+  "peer": 5
+}
+</pre>
+        Il s'agit de l'écriture, via <tt>JSON.stringify</tt>, du dictionnaire mentionné à la question précédente.
+      </li>
+      <li>
+        Il s'agit de créer puis de lancer une requête AJAX via une fonction qui prendra une URL en tant qu'argument.
+        En pratique, j'ai directement intégré ce code dans une fonction plus générale, pour répondre à la question suivante.
+      </li>
+      <li>
+        Il nous faut carrément disposer d'un compteur pour savoir combien de requêtes AJAX sont encore en attente.
+        Lorsqu'une requête reçoit sa réponse, elle décrémente le compteur et enregistre son résultat.
+        Puis, lorsque l'on fait passer le compteur à 0, on lance une fonction sur la base des résultats enregistrés par l'ensemble des requêtes.
+        La fonction <tt>launchAndThen</tt> se charge de créer les requêtes et le compteur, et de stocker leurs résultats, puis de lancer
+        la fonction <tt>postAction</tt>, qui consiste à traiter nos résultats. Cette fonction s'appuie elle-même sur une nouvelle fonction <tt>showJSONPrice</tt>,
+        qui a pour but de calculer et d'afficher le prix total du panier de fruits.
+        <pre>
+const launchAndThen = function(then, ...urls) {
+  let pending = urls.length;
+  let responses = urls.map(() =&gt; undefined);
+  for(let i = 0; i &lt; urls.length; i++) {
+    let ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function() {
+      if (ajax.readyState == 4 && ajax.status == 200) {
+        if (responses[i] == undefined) {
+          responses[i] = ajax.responseText;
+          pending--;
+          if (pending == 0) {
+            then(responses);
+          }
+        }
+      }
+    };
+    ajax.open("GET", urls[i], true);
+    ajax.overrideMimeType("application/json");
+    ajax.send();
+  }
+};
+
+const postAction = function(responses) {
+  const fruits = JSON.parse(responses[0]);
+  const prices = JSON.parse(responses[1]);
+  showJSONInTable(fruits);
+  showJSONQuantity(fruits);
+  showJSONPrice(fruits, prices);  
+};
+
+const showJSONPrice = function(fruits, prices) {
+  const span = document.getElementById("price");
+  const price = fruits.reduce((acc, fruit) =&gt; acc + fruit.quantity * prices[fruit.name], 0);
+  span.innerText = price;
+};
+</pre>
+        <br>
+        La fonction que l'on lance alors est
+        <pre>
+launchAndThen(postAction,"http://localhost:8080/fruits.json","http://localhost:8080/prices.json");
+</pre>
+      </li>
+    </ol>
+ 
+    <h2>Exercice 3&nbsp;: Les promesses n'engagent que ceux qui y croient</h2>
+    <ol>
+      <li>
+        Voilà, c'est fait&nbsp;!
+      </li>
+      <li>
+        Il suffit d'adapter directement le code vu en cours, par exemple
+        pour afficher l'objet en question dans la console&nbsp;:
+        <pre>
+const jsonOkOrError = function(response) {
+  if (response.ok) {
+    return response.json();
+  }
+  throw Error(response.statusText);
+};
+fetch('http://localhost:8080/fruits.json')
+  .then(jsonOkOrError)
+  .then(object =$gt; console.log(object));
+</pre>
+      </li>
+      <li>
+        Cette fois-ci, on reprend les fonctions de mise à jour du code HTML,
+        que l'on associe à nos promesses, ce qui nous donne
+        <pre>
+const showJSONInTable = function(json) {
+  const table = document.getElementById("basket");
+  for(let fruit of json) {
+    const row = document.createElement("tr");
+    const fruitName = document.createElement("td");
+    const fruitQuantity = document.createElement("td");
+    fruitName.innerText = fruit.name;
+    fruitQuantity.innerText = fruit.quantity;
+    row.appendChild(fruitName);
+    row.appendChild(fruitQuantity);
+    table.appendChild(row);
+  }
+};
+
+const showJSONQuantity = function(json) {
+  const span = document.getElementById("quantity");
+  const quantity = json.reduce((acc, fruit) =$gt; acc + fruit.quantity, 0);
+  span.innerText = quantity;
+};
+
+const showJSONPrice = function(fruits, prices) {
+  const span = document.getElementById("price");
+  const price = fruits.reduce((acc, fruit) =$gt; acc + fruit.quantity * prices[fruit.name], 0);
+  span.innerText = price;
+};
+
+const jsonOkOrError = function(response) {
+  if (response.ok) {
+    return response.json();
+  }
+  throw Error(response.statusText);
+};
+
+Promise.all([
+  fetch('http://localhost:8080/fruits.json').then(jsonOkOrError),
+  fetch('http://localhost:8080/prices.json').then(jsonOkOrError)])
+  .then(([fruits,prices]) =&gt; {
+    console.log([fruits,prices]);
+    showJSONInTable(fruits);
+    showJSONQuantity(fruits);
+    showJSONPrice(fruits,prices);
+  });
+</pre>
+      </li>
+    </ol>
+  </body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Internet, World Wide Web et HTTP</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet-td.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
+  media="print"
+>
+<link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
+</head>
+<body>
+  <div class="conteneur">
+    <div class="contenu">
+      <p style="text-align: left;" class="noprint">
+        :: <a href="http://monge.univ-mlv.fr/ens/index.php"> Enseignements </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/index.php"
+        > Licence </a>::<a href="http://monge.univ-mlv.fr/ens/Licence/L1/index.php">
+          L1 </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/L1/2021-2022/index.php"
+        > 2021-2022 </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/L1/2021-2022/progweb/index.php"
+        > Programmation Web </a>::
+      </p>
+      <hr>
+      <table>
+        <tbody>
+          <tr style="vertical-align: center;">
+            <td><img class="print" src="css/UGE.png" alt="[LOGO]" height="30"></td>
+            <td><h1>Internet, World Wide Web et HTTP</h1></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+
+      <div>
+        Le but de ce premier TP est double&nbsp;:
+        <ol>
+          <li>
+            comprendre ce qu'est Internet, le Web et
+            comment on peut interagir avec une machine distante à l'aide du
+            plusieurs outils (clients) comme netcat (la commande <span class="tt">nc</span>)
+            ou un navigateur Web (browser)&nbsp;;
+          </li>
+          <li>
+            créer sa première page web.
+          </li>
+        </ol>
+      </div>
+      <br/>
+      <div>
+        Le compte-rendu de ce TP devra être déposé sur la plateforme de elearning d'ici au
+        <span class="tt">samedi 29/01 à 22:00</span> au plus tard.
+      </div>
+      <br>
+      <div>
+        Cette semaine comme toutes celles qui suivront, il est fortement recommandé de
+        commencer par lire l'intégralité du sujet (ou au moins de l'exercice en cours)
+        avant de répondre au question&nbsp;: cela vous permettra de mieux comprendre là
+        où les exercices vont vous emmener&nbsp;!
+        <br><br>
+        Par ailleurs, si vous avez TP le jeudi ou le vendredi, il est aussi recommandé
+        de lire les sujets de TP à la maison avant la séance, et de commencer à faire
+        les questions jusqu'à ce que cela devienne difficile, pour être prêts à profiter
+        de la présence de vos enseignants pendant la séance de TP&nbsp;!
+      </div>
+      <br/>
+      <div>Cette version du TP est spécialement adaptée aux élèves dont le système d'exploitation
+        est <span class="tt">Linux</span> ou <span class="tt">Mac OS</span>. Une autre version
+        est disponible si votre ordinateur utilise le système d'exploitation
+        <a href="td01-win.html"><span class="tt">Windows</span></a>.
+      </div>
+      <br>
+
+      <h3>Exercice 0&nbsp;: On sort un papier et un crayon</h3>
+      <div>
+        C'est certes facile, mais tous les ans, certains élèves n'y parviennent pas&hellip;
+      </div>
+
+      <h3>Exercice 1&nbsp;: On commence tranquillement&nbsp;!</h3>
+      <div>
+        Dans un premier temps, vous allez créer un espace sur votre compte où
+        vous stockerez les TPs ainsi que les comptes rendus correspondants. <br>
+        Bien sûr, pas de clickodrome, vous êtes grands, donc vous allez utiliser
+        un terminal pour organiser les données.
+      </div>
+      <br>
+      <ol>
+        <li>Ouvrez un terminal puis créez un répertoire "progweb" dans
+          votre répertoire personnel (home directory). <br> <i>Rappel :</i> la
+          commande <span class="tt">mkdir</span> permet de créer un répertoire
+          et <span class="tt">cd</span> permet de se déplacer dans les
+          répertoires.
+        </li>
+        <li>Créez à l'intérieur du répertoire "progweb" un répertoire <span class="tt">tp1</span>.
+        </li>
+        <li>À l'intérieur du répertoire "tp1", lancez la commande suivante
+          <pre class="full-width">gedit compte-rendu-tp1.html &amp;</pre>
+          Ce fichier vous servira de compte-rendu de TP.
+          <br>
+          Si vous êtes sur MacOS et si <span class="tt">gedit</span> n'est pas installé,
+          vous pouvez utiliser un éditeur alternatif, à condition de ne pas enregistrer votre document sous un format
+          <i>enrichi</i>.
+          Par exemple, vous pouvez utiliser <span class="tt">TextEdit</span> via la commande
+          <span class="tt">open -a TextEdit compte-rendu-tp1.html</span> puis indiquer que vous voulez
+          sauvegarder votre document au format <span class="tt">Plain text</span>, comme indiqué
+          <a href="https://cdn-60c35131c1ac185aa47dd21e.closte.com//wp-content/uploads/2018/12/textedit-preferences.png">ici</a>.
+        </li>
+        <li>Un compte-rendu consiste à expliquer ce que vous avez fait pour
+          traiter chaque question (une phrase par question est souvent
+          suffisante). <br> Complétez le compte-rendu avec une explication
+          de tout ce que vous avez fait depuis le début du TP.
+        </li>
+      </ol>
+      <div>
+        Pour chaque TP de programmation Web, nous vous demanderons de rédiger
+        un compte-rendu au fur et à mesure que vous faites le TP. Si vous ne
+        finissez pas un TP lors d'une séance, il vous est demandé de le finir
+        par vous-même et de le déposer sur la page elearning du cours. <br>
+        Chaque compte-rendu devra être écrit en HTML.
+        C'est d'ailleurs le sujet de l'exercice 2.
+      </div>
+      <br>
+      
+      <h3>Exercice 2&nbsp;: Document HTML de base</h3>
+      <ol>
+        <li>Recopiez dans votre fichier de compte rendu le squelette de
+          document HTML suivant : <pre class="full-width">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Compte-rendu de TP1&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Compte-rendu de TP1&lt;/h1&gt;
+    &lt;p&gt;
+      Votre nom ici&nbsp;!
+    &lt;/p&gt;
+    &lt;h2&gt;Exercice 0&nbsp;: On sort un papier et un crayon&lt;/h2&gt;
+    &lt;p&gt;
+      Voilà, c'est fait&nbsp;!
+    &lt;/p&gt;
+    &lt;h2&gt;Exercice 1&nbsp;: On commence tranquillement&nbsp;!&lt;/h2&gt;
+    &lt;p&gt;
+      &hellip;
+    &lt;/p&gt;
+    &lt;h2&gt;Exercice 2&amp;nbsp;: Document HTML de base&lt;/h2&gt;
+    &lt;h3&gt;À quoi servent les tags h1, h2 et h3&nbsp;?&lt;/h3&gt;
+    &lt;p&gt;
+      &hellip;
+    &lt;/p&gt;
+    &lt;h3&gt;À quoi sert le tag p&nbsp;?&lt;/h3&gt;
+    &lt;p&gt;
+      &hellip;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre> <br> Remplacez ensuite "Votre nom ici !" par votre nom. <br>
+          Utilisez un navigateur Web pour afficher le résultat <br> Si le
+          résultat ne s'affiche pas correctement (entre autres l'accent de
+          "À quoi sert le tag p&nbsp;?"), que manque-t-il comme information à la balise <b>head</b>
+          pour que le fichier s'affiche correctement&nbsp;?
+          <br>
+          Le résultat devrait ressembler à <a href="src/td01/CR1.html">ceci</a>, mais avec des informations supplémentaires.
+        </li>
+        <li>À quoi servent les tags <span class="tt">h1</span>,
+          <span class="tt">h2</span> et <span class="tt">h3</span>&nbsp;?
+        </li>
+        <li>
+          À quoi sert le tag <span class="tt">p</span> ?
+        </li>
+        <li>
+          Remplacez les &hellip; des sections "Exercice 1" et "Exercice 2" par le texte que vous
+          aviez écrit à ces deux exercices.
+        </li>
+      </ol>
+      <div>
+        Dans la suite, nous vous demandons d'ajouter de nouvelles
+        sections (une par exercice du TP) et de compléter votre compte-rendu.
+      </div>
+      <br>
+          
+      <h3>Exercice 3&nbsp;: Uniform Resource Locator</h3>
+      <div>On cherche à savoir où est hébergée une page d'actualités sportives.</div>
+      <br>
+      <ol>
+        <li>Ouvrez un navigateur Web et allez à l'URL suivante: <pre
+            class="full-width"
+          >http://www.w3.org/standards/</pre>
+          Quel est le nom de la machine à laquelle vous accédez ? <br>
+          Quel est le nom de domaine auquel vous accédez ?
+        </li>
+        <li>Si l'on exécute <pre class="full-width">host w3.org</pre>
+          À quoi correspond la première ligne de la réponse ? <br> À quoi
+          correspond la deuxième ligne de la réponse ?
+        </li>
+        <li>Dans le navigateur Web, dans la barre contenant l'URL,
+          remplacez le nom de la machine par son adresse IP pour vérifier que
+          cela fonctionne toujours. <br> À votre avis, pourquoi
+          utilise-t-on des noms pour les machines plutôt que des adresses IP ?
+        </li>
+        <li>Exécutez la commande <span class="tt">traceroute</span> sur
+          cette adresse IP. <br> Qu'affiche cette commande ? <br> 
+          Comment s'appelle le réseau sur lequel est connectée l'université (ou votre domicile) ? <br>
+          Quels sont les autres réseaux qui sont traversés ?
+        </li>
+        <li>
+          Première actualité sportive du jour : le parcours du Tour de France 2022 a été dévoilé&nbsp;!
+          Pour le découvrir, on souhaite consulter la page
+          <span class="tt">https://www.letour.fr/fr/actus/2021/parcours-2022-generation-baston/1299958</span>.
+          <br> Utiliser la commande <span class="tt">host</span> pour
+          récupérer l'adresse IP correspondant à cette machine.
+        </li>
+        <li>On cherche maintenant à revivre la victoire de l'équipe de France lors de la
+          coupe du monde de football masculin, en 2018. Pour ce faire, on souhaite consulter
+          la page <span class="tt">https://www.lequipe.fr/Football/Actualites/La-france-decroche-sa-deuxieme-coupe-du-monde-apres-une-finale-animee-contre-la-croatie/923054</span>.
+          <br> Utiliser la commande <span class="tt">host</span> pour
+          récupérer l'adresse IP correspondant à cette machine. <br>
+          Que se passe-t-il si on essaye d'accéder cette page dans le navigateur
+          en remplaçant le nom de la machine par l'adresse IP trouvée
+          précédemment ? <br> Et si on remplaçait <span class="tt">www.lequipe.fr</span> par
+          <span class="tt">www.letour.fr</span> au début de l'URL ? Expliquer pourquoi.
+        </li>
+      </ol>
+
+      <h3>Exercice 4&nbsp;: Service HTTP</h3>
+      <div>On a vu en cours comment utiliser <span class="tt">netcat</span> (commande <span class="tt">nc</span> suivie de l'option <span class="tt">-C</span> pour éviter les problèmes d'encodage) pour appeler un
+        service sur une machine distante. Nous allons pouvoir utiliser la même
+        technique pour interroger un serveur Web.</div>
+      <br>
+      <ol>
+        <li>Utilisez <span class="tt">nc</span> pour vous connecter au
+          serveur Web de la machine <span class="tt">monge.univ-mlv.fr</span> en
+          utilisant le port TCP correspondant au protocole HTTP puis tapez la
+          requête suivante et appuyez deux fois sur "Entrée" : <pre
+            class="full-width"
+          >GET /ens/ HTTP/1.0</pre>
+          Quel est le port TCP correspondant au protocole HTTP ? <br/>
+          Quel est le <span class="tt">header</span> (l'en-tête, en
+          français) de la réponse ? <br> <i>Note :</i> le serveur envoie une
+          réponse composée de deux parties, séparées par une ligne vide :
+          <ol>
+            <li>le <span class="tt">header</span>, qui est ce qui nous
+              intéresse pour le moment,
+            </li>
+            <li>une page HTML, à laquelle nous nous intéresserons plus
+              tard.</li>
+          </ol>
+        </li>
+        <li>À quoi correspondent les 3 valeurs sur la première ligne de
+          l'en-tête ?</li>
+        <li>Quel est le nom du serveur Web ?</li>
+        <li>À quoi correspond la valeur de <span class="tt">Content-Type</span>
+          ?
+        </li>
+        <li>À quoi correspond la valeur de <span class="tt">Content-Length</span>
+          ?
+        </li>
+        <li>Faites la même analyse mais avec la requête <pre
+            class="full-width"
+          >GET /ens/toto.txt HTTP/1.0</pre>
+        </li>
+        <li>Enfin, faites la même analyse avec la requête <pre
+            class="full-width"
+          >GET /index.html HTTP/1.0</pre> À quoi correspond la valeur de <span class="tt">Location</span> ?
+        </li>
+        <li>
+          Que se passe-t-il lorsque je lance la commande <span class="tt">wget monge.univ-mlv.fr/index.html</span>&nbsp;?
+          <br>
+          Expliquer la signification des lignes qui apparaissent sur la ligne de commande.
+        </li>
+      </ol>
+      <hr>
+      <div class="copyright noprint">© Université Gustave Eiffel</div>
+    </div>
+  </div>
+</body>
+</html>

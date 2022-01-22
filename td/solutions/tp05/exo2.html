@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+ </head>
+ <body>
+  <h2>Min/Max</h2>
+  <p>
+   <script>
+      "use strict";
+      
+      const minmax = array => {
+        let [min,max] = [array[0],array[0]];
+        for (let value of array) {
+          [min,max] = [Math.min(min,value),Math.max(max,value)];
+        }
+        return [min,max];
+      };
+      
+      const array = [8, 2, 4, 0, 3, 9, 1, 5, 7, 6];
+      const minAndMax = minmax(array);
+      document.write("min " + minAndMax[0] + " max " + minAndMax[1]);
+   </script>
+  </p>
+  <h2>Min/Max: Spread</h2>
+  <p>
+   <script>
+      "use strict";
+      
+      const minmax2 = array => [Math.min(...array),Math.max(...array)];
+      const minAndMax2 = minmax2(array);
+      document.write("min " + minAndMax2[0] + " max " + minAndMax2[1]);
+   </script>
+  </p>
+  <h2>Min/Max 3: The Road Warrior</h2>
+  <p>
+   <script>
+      const minmax3 = array => array.reduce(
+        ([a,b],c) => [Math.min(a,c),Math.max(b,c)],
+        [array[0],array[0]]
+      );
+      
+      const minAndMax3 = minmax3(array);
+      document.write("min " + minAndMax3[0] + " max " + minAndMax3[1]);
+   </script>
+  </p>
+  <h2>Min/Max 4: Beyond Thunderdome</h2>
+  <p>
+   <script>
+      const minmax4 = array => array.reduce(
+        (acc,value) => {return {min: Math.min(acc.min,value),max: Math.max(acc.max,value)};},
+        {min: array[0],max: array[0]}
+      );
+      
+      const minAndMax4 = minmax4(array);
+      document.write("min " + minAndMax4.min + " max " + minAndMax4.max);
+   </script>
+  </p>
+ </body>
+</html>

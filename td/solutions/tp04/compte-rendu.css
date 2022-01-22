@@ -1,0 +1,55 @@
+* {
+  font-family: 'Garamond', sans-serif;
+  background-color: #222;
+  color: white;
+}
+h1 {
+  font-size:24pt;
+}
+h2 {
+  width: 100%;
+  border-top: solid 3px;
+  border-color: #42affa;
+  padding-top:5px;
+  font-size:18pt;
+}
+h3 {
+  font-size:16pt;
+}
+h1, h2 {
+  color: #42affa;
+  text-align: center;
+}
+a {
+  color: #42affa;
+  font-weight: bold;
+}
+a:hover {
+  color: teal;
+}
+ol {
+  list-style-type: decimal;
+}
+pre {
+  width: 50%;
+  background-color: #DDDDDD;
+  font-weight: bold;
+  font-size: 110%;
+  color: black;
+  font-family: monospace;
+  border: solid 3px;
+  padding: 10px;
+}
+tt {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 125%;
+  color: red;
+}
+.right {
+  width: 100%;
+  text-align: right;
+}
+.right::before {
+  content: "par";
+}

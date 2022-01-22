@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Compte-rendu de TP6</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../tp04/compte-rendu.css">
+  </head>
+  <body>
+    <h1 class="centered">Compte-rendu de TP6</h1>
+    <div class="right">
+      Vincent Jugé
+    </div>
+ 
+    <h2>Exercice 1&nbsp;: Memory</h2>
+    <ol>
+      <li>
+        Voilà, c'est fait&nbsp;!
+      </li>
+      <li>
+        Cette fonction est le <tt>constructeur</tt> de la classe <tt>MemoryGame</tt>,
+        et sert à créer et à initialiser un nouvel objet de cette classe.
+        Dans le code de <tt>memory.html</tt>, elle est appelée via l'instruction
+        <pre>
+     let game = new MemoryGame(array, "blank.png");
+</pre>
+      </li>
+      <li>
+        Mon constructeur s'écrit désormais
+        <pre>
+  constructor(images, blank) {
+    this.images = images;
+    this.blank = blank;
+  }
+</pre>
+        et la méthode <tt>build</tt> s'écrit ensuite
+        <pre>
+  build = function(div) {
+    div.innerHTML = this.images.length;
+  }
+</pre>
+      </li>
+      <li>
+        La fonction <tt>shuffleCards</tt> crée un tableau de longueur <tt>2 length</tt>,
+        ce qui sera pratique pour représenter les <tt>2 length</tt> cartes que contiendra
+        le jeu de Memory. Pour stocker ce tableau, il suffit d'ajouter la ligne
+        <pre>
+    this.positions = shuffleCards(images.length);
+</pre>
+        dans le constructeur, puis de modifier la méthode <tt>build</tt>, qui est désormais
+        <pre>
+  build = function(div) {
+    //div.innerHTML = this.images.length;
+    for(let i = 0; i < this.positions.length; i++) {
+      const child = document.createElement("div");
+      const img = document.createElement("img");
+      img.src = this.blank;
+      child.appendChild(img);
+      div.appendChild(child);
+    }
+  }
+</pre>
+      </li>
+      <li>
+        Juste après avoir construit mon objet <tt>img</tt>, dans la fonction <tt>build</tt>,
+        j'ajoute désormais la ligne
+        <pre>
+      img.onclick = () =&gt; console.log(`${i}:${this.positions[i]}`);
+</pre>
+      </li>
+      <li>
+        Il me suffit de changer l'effet de la fonction <tt>img.onclick</tt>, ce qui me donne le code
+        <pre>
+      img.onclick = () =&gt; img.src = `lego${this.positions[i]+1}.png`;
+</pre>
+      </li>
+      <li>
+        J'ajoute un champs <tt>visible</tt>, qui est un tableau
+        de booléens&nbsp;; un champ <tt>images</tt>, qui est un tableau d'éléments HTML contenant
+        des images&nbsp;; un champ <tt>partner</tt>, qui contient un entier.
+        <br>
+        Le booléen <tt>visible[i]</tt> indique si la carte en position <tt>i</tt>
+        est actuellement visible ou cachée.
+        L'élément HTML <tt>images[i]</tt> est l'image visible en position <tt>i</tt>.
+        L'entier <tt>partner</tt> vaut <tt>undefined</tt> si un nombre pair de cartes sont visibles,
+        et vaut <tt>i</tt> si, à part l'image en position <tt>i</tt>, les cartes visibles
+        peuvent être appariées, chaque paire de cartes montrant la même figurine.
+        <br>
+        Cela revient à insérer le code
+        <pre>
+    this.visible = this.positions.map(() => false);
+    this.images = this.positions.map(() => document.createElement("img"));
+    this.lastPosition = undefined;
+</pre>
+        dans le constructeur.
+        <br>
+        Il y a évidemment plein d'autres manières de procéder, 
+        qui donneront lieu à des codes différents.
+        <br>
+        Le code de <tt>build</tt> devient alors
+        <pre>
+  build = function(div) {
+    for(let i = 0; i < this.positions.length; i++) {
+      let child = document.createElement("div");
+      this.images[i].src = this.blank;
+      this.images[i].onclick = () => this.click(i);
+      child.appendChild(this.images[i]);
+      div.appendChild(child);
+    }
+  }
+</pre>
+        Définir ainsi le code de <tt>onclick</tt> me permet d'écrire cette fonction
+        à un autre endroit de mon code, ce qui rendra l'ensemble plus lisible.
+        <br>
+        Le code de ma fonction <tt>click</tt>, qui s'appuie elle-même sur une fonction
+        auxiliaire <tt>show</tt>, est enfin défini comme&nbsp;:
+        <pre>
+  click = function(i) {
+    if (this.visible[i]) {
+      return;
+    }
+    if (this.positions[this.partner] == this.positions[i]) {
+      this.show(i, true);
+      this.partner = undefined;
+    } else if (this.partner == undefined) {
+      this.show(i, true);
+      this.partner = i;
+    } else {
+      this.show(i, false);
+      this.show(this.partner, false);
+      this.partner = undefined;
+    }
+  }
+  
+  show = function(i, bool) {
+    this.visible[i] = bool;
+    this.images[i].src = bool ? `lego${this.positions[i]+1}.png` : this.blank;
+  }
+</pre>
+      </li>
+      <li>
+        J'ajoute un champ booléen <tt>wait</tt>, qui vaut <tt>true</tt> si le jeu est
+        en attente, ce qui arrive si et seulement si je viens d'afficher momentanément une
+        image que je devrai bientôt cacher, et vaut <tt>false</tt> sinon.
+        Cela revient à ajouter l'instruction
+        <pre>
+    this.wait = false;
+</pre>
+        dans le constructeur, puis à modifier la méthode <tt>click</tt> comme suit&nbsp;:
+        <pre>
+  click = function(i) {
+    if (this.wait || this.visible[i]) {
+      return;
+    }
+    if (this.positions[this.partner] == this.positions[i]) {
+      this.show(i, true);
+      this.partner = undefined;
+    } else if (this.partner == undefined) {
+      this.show(i, true);
+      this.partner = i;
+    } else {
+      this.wait = true;
+      this.show(i, true);
+      const game = this;
+      window.setTimeout(() => {
+          game.show(i, false);
+          game.show(game.partner, false);
+          game.partner = undefined;
+          game.wait = false;
+        }, 500);
+    }
+  }
+</pre>
+      </li>
+      <li>
+        Puisqu'on a le droit de copier-coller le code obtenu avec tant de peine au TP précédent,
+        pourquoi se gêner&nbsp;? Le nouveau code de la fonction <tt>shuffleCards</tt> est donc&nbsp;:
+        <pre>
+const shuffleCards = function(length) {
+  let cards = [];
+  const random = n => Math.floor(n * Math.random());
+  const swap = (array,i,j) => {[array[i],array[j]] = [array[j],array[i]];};
+  const randomArray = function(array) {
+    for(let i = 0; i < array.length; i++) {
+      swap(array,i,i + random(array.length - i));
+    }
+  };
+  for(let i = 0; i < length; i++) {
+    cards.push(i);
+    cards.push(i);
+  }
+  randomArray(cards);
+  return cards;
+};
+</pre>
+      </li>
+    </ol>
+  </body>
+</html>

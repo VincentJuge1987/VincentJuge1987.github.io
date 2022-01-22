@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Programmation d'un jeu</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
+  media="print"
+>
+<link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
+<link rel="stylesheet" type="text/css" href="../css/custom.css">
+</head>
+<body>
+  <div class="conteneur">
+    <div class="contenu">
+      <p style="text-align: left;" class="noprint">
+        :: <a href="http://monge.univ-mlv.fr/ens/index.php"> Enseignements </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/index.php"
+        > Licence </a>::<a href="http://monge.univ-mlv.fr/ens/Licence/L1/index.php">
+          L1 </a>::<a
+          href="http://monge.univ-mlv.fr/ens/Licence/L1/2018-2019/index.php"
+        > 2019-2020 </a>::<a
+          href=""
+        > Programmation Web </a>::
+      </p>
+      <hr>
+      <table>
+        <tbody>
+          <tr style="vertical-align: middle;">
+            <td><img class="print" src="css/UGE.png" alt="[LOGO]"
+              height="30"
+            ></td>
+            <td><h1>Programmation d'un jeu</h1></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+
+
+      <div>Le but de ce TP est de programmer un jeu. Contrairement au TP
+        précédent, ce TP dure 2 séances et il ne vous est pas demandé de faire
+        un compte rendu de TP.</div>
+      <br>
+
+      <h3>Exercice 1 - Lost in Space</h3>
+      <div>
+        Dans un futur pas si éloigné que cela, la Terre et l'ensemble des
+        planètes du système solaire ont été colonisées par une race
+        extra-terrestre. Vous êtes le seul humain à avoir réussi à vous
+        hisser à bord d'un vaisseau extra-terrestre à forme triangulaire.
+        <br/>
+        Pour vous arrêter, les extra-terestres ont décidé d'envoyer
+        300 vaisseaux à votre rencontre. 
+        <br/> 
+        Cependant, avant de
+        partir, vous avez bricolé un peu votre vaisseau en lui ajoutant à
+        l'avant un canon qui tire des boules d'énergie.
+      </div>
+      <br>
+      <div>
+        Contrairement aux TP précédent, le but de ce TP est que vous arriviez à
+        décomposer un problème en fonctions et objets simples. Il n'y a donc pas
+        de questions à suivre dans l'ordre.
+        <br/> De plus, comme le sujet
+        offre pas mal de liberté, certains points spécifiques ne sont pas
+        discutés dans les règles ci-dessous et sont donc laissés à votre libre
+        interprétation. Il serait donc étonnant d'avoir deux TPs implantant
+        exactement les mêmes règles.
+        <br/>
+        Dans le cas de code commun (même
+        partiel) entre deux personnes de ce TP, le TP sera évalué à 0 (nous
+        utilisons les logiciels JPlague et MOSS pour la détection de code
+        commun).
+        <br/>
+        Voici les deux fichiers qui vont vous servir de base
+        de travail <a href="src/td11/lost_in_space.html">lost_in_space.html</a> et
+        <a href="src/td11/lost_in_space.js">lost_in_space.js</a>. 
+        <br/> 
+        Voici les règles&nbsp;:
+      </div>
+      <br>
+      <ol>
+        <li>Au début du jeu, le vaisseau, que vous pilotez avec les touches
+          haut, bas, gauche et droite, se trouve en bas de l'écran au centre
+          horizontalement, avec son canon pointé vers le haut de l'écran. Les
+          vaisseaux extra-terrestres se trouvent à gauche et à droite de l'écran
+          (autant de chaque coté) et vont dans la direction opposée&nbsp;: ceux à
+          droite vont à gauche et vice-versa. De plus, ils descendent un petit
+          peu vers le bas, pour aller tranquillement rentrer en collision avec
+          le vaisseau que vous pilotez.</li>
+        <li>Lorsqu'un vaisseau extra-terrestre touche le haut ou le bas de
+          l'écran, il rebondit et gagne 10% en vitesse à chaque rebond.
+          <br/>
+          Lorsqu'il touche la gauche ou la droite de l'écran, c'est à vous de
+          décider ce qui se passe.</li>
+        <li>Votre nombre de balles est infini. Lorsque vous tirez (avec la
+          barre d'espace), la balle part avec la même vitesse que votre vaisseau
+          vers l'avant&nbsp;: si mon vaisseau se déplace à une vitesse <span class="tt">v</span>
+          par rapport au canvas, la balle par à une vitesse <span class="tt">v</span> par rapport
+          au vaisseau, c'est-à-dire <span class="tt">2v</span> par rapport au canvas.
+          <br/>
+          <span class="keyword">Attention&nbsp;!</span>
+          Si vous accélerez vers une balle, vous pouvez
+          vous tuer vous-même. A chaque tour de la boucle principale du jeu, une
+          balle garde 99 % de sa vitesse. De plus, la durée de vie des balles
+          leur permet de parcourir une distance correspondant à la moitié de
+          la hauteur du canvas.</li>
+        <li>Les aliens, affichés en vert foncé, ne peuvent pas mourir
+          lorsqu'ils se rentrent dedans. Par contre, ils meurent si une balle les atteint.
+          <br/> 
+          Pour détecter les collisions, on
+          considère un carré de 5 pixels par 5 pixels, centré sur le vaisseau et
+          entourant celui-ci. Un vaisseau ou une balle entre en collision avec
+          le vaisseau si elle entre dans ce carré.
+        </li>
+        <li>Quelques conseils d'implantation&nbsp;: <br> Le code que vous
+          devez produire doit utiliser les syntaxes introduites avec JavaScript
+          2015, la notation <span class="tt">class</span>, les mot clés <span
+          class="tt"
+        >let</span> et <span class="tt">const</span>, etc. <br> Vous devez avoir
+          des objets représentant un vaisseau, une balle, etc. <br>
+          Lorsqu'un vaisseau meurt, il est plus rapide de dire qu'il est mort
+          puis dans un second temps de nettoyer le tableau en supprimant tous
+          les vaisseaux morts plutôt que de les supprimer un par un à chaque
+          fois que l'on détecte qu'un vaisseau est mort (cf cours d'AP2).
+        </li>
+      </ol>
+
+      <hr>
+      <div class="copyright noprint">© Université Gustave Eiffel</div>
+    </div>
+  </div>
+</body>
+</html>

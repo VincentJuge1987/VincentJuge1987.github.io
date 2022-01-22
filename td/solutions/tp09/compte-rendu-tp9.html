@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Compte-rendu de TP9</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../tp04/compte-rendu.css">
+  </head>
+  <body>
+    <h1 class="centered">Compte-rendu de TP9</h1>
+    <div class="right">
+      Vincent Jugé
+    </div>
+ 
+    <h2>Exercice 1&nbsp;: Mon super CV</h2>
+    <ol>
+      <li>
+        Une fois insérée la balise demandée, mon code HTML ressemble à
+        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Mon super CV&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;link rel="stylesheet" type="text/css" href="cv.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+      </li>
+      <li>
+        Comme dans le cours, je dois penser à écrire
+        <pre>
+* {
+  box-sizing: border-box;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.col-1 {width: 16.66%;}
+.col-2 {width: 33.33%;}
+.col-3 {width: 50%;}
+.col-4 {width: 66.66%;}
+.col-5 {width: 83.33%;}
+.col-6 {width: 100%;}
+</pre>
+        dans le fichier de style. La première ligne sert à ce que les tailles indiquées
+        soient celles des boîtes en incluant leur bordure.
+        Puis la classe <tt>row</tt> sera celle des lignes que je subdiviserai en colonnes
+        de largeurs diveres.
+        Enfin, par défaut, toutes mes colonnes sont alignées à gauche.
+        <br>
+        Mon code HTML est désormais
+        <pre>
+  &lt;body&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-1"&gt;1 colonne&lt;/div&gt;
+      &lt;div class="col-5"&gt;5 colonnes&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-3"&gt;3 colonnes&lt;/div&gt;
+      &lt;div class="col-3"&gt;3 colonnes&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+</pre>
+      </li>
+      <li>
+        J'ai décidé d'insérer directement la photographie qui se trouve sur ma page web
+        professionnelle. J'ai donc écrit
+        <pre>
+        &lt;img src="https://igm.univ-mlv.fr/~juge/misc/photo.jpg" alt="Photographie" width="100%"&gt;
+</pre>
+        dans la case concernée.
+      </li>
+      <li>
+        J'ai inséré mon nom dans une balise <tt>h1</tt> puis
+        j'ai ajouté le style
+        <pre>
+h1 {
+  font-weight: bold;
+  font-size: 7vw;
+}
+</pre>
+      </li>
+      <li>
+        J'ai ajouté le style
+        <pre>
+.row:first-child {background-color: gray;}
+</pre>
+      </li>
+      <li>
+        J'ai inséré les titres dans des balises <tt>h2</tt> puis
+        j'ai ajouté le style
+        <pre>
+h2 {font-size: 5vw;}
+</pre>
+        Ce faisant, le code HTML de ma deuxième ligne est désormais
+        <pre>
+    &lt;div class="row"&gt;
+      &lt;div class="col-3"&gt;
+        &lt;h2&gt;Expériences&lt;/h2&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Cours d'informatique&lt;/li&gt;
+          &lt;li&gt;Comédie musicale&lt;/li&gt;
+          &lt;li&gt;Armée&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class="col-3"&gt;
+        &lt;h2&gt;Formation&lt;/h2&gt;
+          &lt;ul&gt;
+            &lt;li&gt;Doctorat à Paris 7 (maintenant Université de Paris)&lt;/li&gt;
+            &lt;li&gt;Post-doctorat à l'ÉNS Cachan (maintenant ÉNS Paris-Saclay)&lt;/li&gt;
+            &lt;li&gt;Maître de conférences à l'UPEM (maintenant UGE)&lt;/li&gt;
+          &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+      </li>
+      <li>
+        Je prévois le CSS par défaut pour les mobiles, et j'ai une version @media-queries pour les écrans larges.
+        Voici ce que cela me donne&nbsp;:
+        <pre>
+h1 {
+  font-size: 7vw;
+  font-weight: normal;
+}
+h2 {
+  font-size: 5vw;
+  font-weight: normal;
+}
+
+@media only screen and (min-width: 600px) {
+  .col-1 {width: 16.66%;}
+  .col-2 {width: 33.33%;}
+  .col-3 {width: 50%;}
+  .col-4 {width: 66.66%;}
+  .col-5 {width: 83.33%;}
+  .col-6 {width: 100%;}
+  h1, h2 {font-weight: bold;}
+}
+</pre>
+      </li>
+      <li>
+        J'ajoute tout simplement l'information de style suivante&nbsp;:
+        <pre>
+img {width: 100%;}
+</pre>
+      </li>
+      <li>
+        En-dessous de la liste qui suit le sous-titre <tt>Formation</tt>, j'écris le code HTML
+        <pre>
+        &lt;h2&gt;Langues parlées&lt;/h2&gt;
+        &lt;div class="col-2"&gt;
+          &lt;img src="france.png" alt="Français"&gt;
+        &lt;/div&gt;
+        &lt;div class="col-2"&gt;
+          &lt;img src="uk.png" alt="Anglais"&gt;
+        &lt;/div&gt;
+        &lt;div class="col-2"&gt;
+          &lt;img src="klingon.jpg" alt="Klingon"&gt;
+        &lt;/div&gt;
+</pre>
+      </li>
+      <li>
+        J'ajoute les informations de style suivantes&nbsp;:
+        <pre>
+.col-2 img {width: 50%;}
+@media only screen and (min-width: 600px) {
+  .col-2 img {width: 100%;}
+}
+</pre>
+      </li>
+      <li>
+        Mon CV est déjà parfait comme cela&nbsp;!
+      </li>
+    </ol>
+  </body>
+</html>

@@ -1,1 +1,0 @@
-/home/vincent/Documents/LaTeX/MdC/Cours/Programmation Web - L1/2022/progweb/

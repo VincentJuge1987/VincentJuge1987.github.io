@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Compte-rendu de TP7</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../tp04/compte-rendu.css">
+  </head>
+  <body>
+    <h1 class="centered">Compte-rendu de TP7</h1>
+    <div class="right">
+      Vincent Jugé
+    </div>
+ 
+    <h2>Exercice 1&nbsp;: Horloge</h2>
+    <ol>
+      <li>
+        On voit s'afficher un titre dont le contenu est "Horloge".
+        Puis, quand on ouvre la console, on y voit écrit "tick&nbsp;!".
+        <br>
+        La balise &lt;body onload="loaded()"&gt; permet de lancer la fonction <tt>loaded()</tt>
+        une fois que le <tt>body</tt> de notre page web a été intégralement affiché dans le
+        navigateur.
+      </li>
+      <li>
+        Il suffit d'écrire le code suivant dans la fonction <tt>loaded</tt>&nbsp;:
+        <pre>
+       window.setTimeout(refresh, 1000);
+       window.setTimeout(loaded, 1000);
+</pre>
+      </li>
+      <li>
+        À la place du code précédent, on écrit maintenant
+        <pre>
+       window.setInterval(refresh, 1000);
+</pre>
+      </li>
+      <li>
+        Cette fois-ci, je change le code de <tt>refresh</tt>, qui est maintenant
+        <pre>
+       const date = new Date();
+       console.log(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
+</pre>
+      </li>
+      <li>
+        Ce code affiche une ligne horizontale, située au milieu de la zone de dessin.
+        Pour lui faire afficher une aiguille qui montre 0 heure, je le réécris comme&nbsp;:
+        <pre>
+     context.moveTo(300,300);
+     context.lineTo(300,0);
+</pre>
+        au lieu des deux lignes <tt>context&hellip;</tt> auparavant présentes.
+      </li>
+      <li>
+        Le nouveau code utilisé pour afficher mon aiguille est
+        <pre>
+     context.moveTo(300,300);
+     context.lineTo(300,80);
+</pre>
+        Puis je trace mon cercle en écrivant, plus bas,
+        <pre>
+     context.beginPath();
+     context.arc(300,300,220,0,2 * Math.PI);
+     context.stroke();
+</pre>
+      </li>
+      <li>
+        Les coordonnées de l'aiguille, au bout de <tt>s</tt> secondes, sont
+        <tt>x = 300 + 220 * Math.sin(s * Math.PI / 30)</tt> et
+        <tt>y = 300 - 220 * Math.cos(s * Math.PI / 30)</tt>.
+        En effet, quand <tt>s</tt> passe de 0 à 60, l'argument de mes fonctions trigonométriques
+        doit passer de 0 et 2 * Math.PI.
+      </li>
+      <li>
+        Je commente maintenant toute la deuxième partie de mon code Javascript, devenue
+        caduque, puis je modifie en profondeur le code de la fonction <tt>refresh</tt>, qui devient
+        <pre>
+       const date = new Date();
+       const s = date.getSeconds();
+       const x = 300 + 220 * Math.sin(s * Math.PI / 30);
+       const y = 300 - 220 * Math.cos(s * Math.PI / 30);
+       
+       context.clearRect(0,0,600,600);
+       context.beginPath();
+       context.arc(300,300,220,0,2 * Math.PI);
+       context.stroke();
+       context.beginPath();
+       context.moveTo(300,300);
+       context.lineTo(x,y);
+       context.stroke();
+       
+       console.log(`${date.getHours()}:${date.getMinutes()}:${s}`);
+</pre>
+      </li>
+      <li>
+        Pour changer l'épaisseur du trait quand j'affiche le cadre mais pas la trotteuse,
+        je suis obligé de sauvegarder l'épaisseur du trait courante avant de la modifier
+        puis de la réinitialiser.
+        J'ajoute donc les bouts de code suivants&nbsp;:
+        <pre>
+       const width = context.lineWidth;
+
+       context.strokeStyle = "blue";
+       context.lineWidth = 3;
+       // je trace le cadre
+       ...
+       context.lineWidth = width;
+       context.strokeStyle = "red";
+       // je trace la trotteuse
+</pre>
+      </li>
+      <li>
+        Pour afficher aussi l'aiguille des minutes, je crée une fonction
+        <pre>
+     const drawNeedle = function(width, length, color, time) {
+       const x = 300 + length * Math.sin(time * Math.PI / 30);
+       const y = 300 - length * Math.cos(time * Math.PI / 30);
+       const oldWidth = context.lineWidth;
+       width = undefined ? oldWidth : width;
+       
+       context.lineWidth = width;
+       context.strokeStyle = color;
+       context.beginPath();
+       context.moveTo(300,300);
+       context.lineTo(x,y);
+       context.stroke();
+       context.lineWidth = oldWidth;
+     };
+</pre>
+        qui me permet d'afficher une aiguille d'une largeur, longueur, couleur donnée,
+        et qui correspond à un certain nombre de minutes ou secondes.
+        Le code de <tt>refresh</tt> devient alors
+        <pre>
+     const refresh = function() {
+       const date = new Date();
+       const width = context.lineWidth;
+       
+       context.clearRect(0,0,600,600);
+       
+       context.strokeStyle = "blue";
+       context.lineWidth = 3;
+       context.beginPath();
+       context.arc(300,300,220,0,2 * Math.PI);
+       context.stroke();
+       context.lineWidth = width;
+       
+       drawNeedle(3,210,"black",date.getMinutes());
+       drawNeedle(undefined,220,"red",date.getSeconds());
+       
+       console.log(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
+     };
+</pre>
+      </li>
+      <li>
+        Cette fois-ci, j'inclus dans <tt>drawNeedle</tt> un argument qui me donne la valeur
+        maximale possible pour l'argument <tt>time</tt>.
+        Mon nouveau code est alors
+        <pre>
+     const refresh = function() {
+       ...
+       
+       drawNeedle(5,120,"green",date.getHours(), 12);
+       drawNeedle(3,210,"black",date.getMinutes(), 60);
+       drawNeedle(undefined,220,"red",date.getSeconds(), 60);
+       
+       console.log(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
+     };
+     
+     const drawNeedle = function(width, length, color, time, maxTime) {
+       const x = 300 + length * Math.sin(time * 2 * Math.PI / maxTime);
+       const y = 300 - length * Math.cos(time * 2 * Math.PI / maxTime);
+       const oldWidth = context.lineWidth;
+       width = undefined ? oldWidth : width;
+       
+       context.lineWidth = width;
+       context.strokeStyle = color;
+       context.beginPath();
+       context.moveTo(300,300);
+       context.lineTo(x,y);
+       context.stroke();
+       context.lineWidth = oldWidth;
+     };
+</pre>
+        Techniquement, le <tt>maxTime</tt> donné pour l'affichage des heures n'est pas le bon,
+        mais ça ne change rien au résultat obtenu car mes fonctions trigonométriques sont
+        2 PI périodiques.
+      </li>
+      <li>
+        Là, on voit bien qu'il serait plus pratique d'avoir une fonction qui nous calcule
+        directement des coordonnées cartésiennes à partir d'un point de base et de coordonnées
+        polaires du vecteur entre le point de base et le point qui nous intéresse.
+        C'est l'objet de la fonction
+        <pre>
+     const fromPolar = function(x,y,length,angle,maxAngle) {
+       const a = x + length * Math.sin(angle * 2 * Math.PI / maxAngle);
+       const b = y - length * Math.cos(angle * 2 * Math.PI / maxAngle);
+       return [a,b];
+     };
+</pre>
+        Puis on insère la création du cadre dans une nouvelle fonction, comme suit&nbsp;:
+        <pre>
+     const drawCircle = function(width, length, color, times) {
+       const oldWidth = context.lineWidth;
+       width = undefined ? oldWidth : width;
+       
+       context.strokeStyle = color;
+       context.lineWidth = width;
+       context.beginPath();
+       context.arc(300,300,length,0,2 * Math.PI);
+       context.stroke();
+       for (let i = 0; i &lt; times; i++) {
+         const [a,b] = fromPolar(300,300,220,i,times);
+         const [A,B] = fromPolar(300,300,215,i,times);
+         context.beginPath();
+         context.moveTo(a,b);
+         context.lineTo(A,B);
+         context.stroke();
+       }
+       context.lineWidth = oldWidth;
+     };
+</pre>
+        Je m'en sers également pour réécrire <tt>drawNeedle</tt>, comme suit&nbsp;:
+        <pre>
+     const drawNeedle = function(width, length, color, time, maxTime) {
+       const [x,y] = fromPolar(300,300,length,time,maxTime);
+       const oldWidth = context.lineWidth;
+       width = undefined ? oldWidth : width;
+       
+       context.lineWidth = width;
+       context.strokeStyle = color;
+       context.beginPath();
+       context.moveTo(300,300);
+       context.lineTo(x,y);
+       context.stroke();
+       context.lineWidth = oldWidth;
+     };
+</pre>
+        Le code de la fonction <tt>refresh</tt> est alors beaucoup plus succinct et lisible&nbsp;:
+        <pre>
+     const refresh = function() {
+       const date = new Date();
+       
+       context.clearRect(0,0,600,600);
+       drawCircle(3,220,"blue",12);
+       
+       drawNeedle(5,120,"green",date.getHours(), 12);
+       drawNeedle(3,210,"black",date.getMinutes(), 60);
+       drawNeedle(undefined,220,"red",date.getSeconds(), 60);
+       
+       console.log(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
+     };
+</pre>
+      </li>
+    </ol>
+ 
+    <h2>Exercice 2&nbsp;: Horloges de différentes tailles</h2>
+    <ol>
+      <li>
+        Je réponds à cette question en même temps qu'à la question suivante.
+      </li>
+      <li>
+        On commence par récupérer l'élément HTML et le contexte d'affichage 2D dans lesquels on va dessiner.
+        Puis on donne des paramètres supplémentaires à nos fonctions de dessin&nbsp;: le contexte d'affichage et les dimensions du dessin.
+        <i>In fine</i>, voici le code obtenu&nbsp;:
+        <pre>
+     const startClock = function(clockId) {
+       const clock = document.getElementById(clockId);
+       const context = clock.getContext("2d");
+       const w = clock.width;
+       const h = clock.height;
+       window.setInterval(() => drawClock(context, w, h), 1000);
+     };
+       
+     const drawClock = function(context, x, y) {
+       context.clearRect(0,0,x,y);
+       const size = (x < y ? x : y) / 2;
+       const date = new Date();
+
+       drawCircle(context,x/2,y/2,3,size-10,"blue",12);
+       drawNeedle(context,x/2,y/2,5,size/2,"green",date.getHours(), 12);
+       drawNeedle(context,x/2,y/2,3,size-20,"black",date.getMinutes(), 60);
+       drawNeedle(context,x/2,y/2,undefined,size-10,"red",date.getSeconds(), 60);
+     };
+
+     const drawCircle = function(context, x, y, width, length, color, points) {
+       const oldWidth = context.lineWidth;
+       width = undefined ? oldWidth : width;
+       
+       context.strokeStyle = color;
+       context.lineWidth = width;
+       context.beginPath();
+       context.arc(x,y,length,0,2 * Math.PI);
+       context.stroke();
+       for (let i = 0; i < points; i++) {
+         const [a,b] = fromPolar(x,y,length,i,points);
+         const [A,B] = fromPolar(x,y,length-5,i,points);
+         context.beginPath();
+         context.moveTo(a,b);
+         context.lineTo(A,B);
+         context.stroke();
+       }
+       context.lineWidth = oldWidth;
+     };
+     
+     const drawNeedle = function(context, x, y, width, length, color, time, maxTime) {
+       const [u,v] = fromPolar(x,y,length,time,maxTime);
+       const oldWidth = context.lineWidth;
+       width = undefined ? oldWidth : width;
+       
+       context.lineWidth = width;
+       context.strokeStyle = color;
+       context.beginPath();
+       context.moveTo(x,y);
+       context.lineTo(u,v);
+       context.stroke();
+       context.lineWidth = oldWidth;
+     };
+     
+     const fromPolar = function(x,y,length,angle,maxAngle) {
+       const a = x + length * Math.sin(angle * 2 * Math.PI / maxAngle);
+       const b = y - length * Math.cos(angle * 2 * Math.PI / maxAngle);
+       return [a,b];
+     };
+</pre>
+      </li>
+      <li>
+        Il s'agit maintenant d'avoir une seule fonction qui redessinera <tt>toutes</tt> les horloges,
+        et que l'on appellera une fois par seconde.
+        En pratique, cela nous invite à représenter chaque horloge comme un objet, et à stocker ces horloges
+        dans un tableau. Tout ceci nous donne le code ci-dessous.
+        <pre>
+     const launch = function(...clocks) {
+       window.setInterval(() => {
+         const date = new Date();
+         for(let clock of clocks) {
+           clock.drawClock(date.getHours(), date.getMinutes(), date.getSeconds());
+         }
+       }, 1000);
+     };
+     
+     class Clock{
+       constructor(clockId) {
+         const clock = document.getElementById(clockId);
+         this.context = clock.getContext("2d");
+         this.w = clock.width;
+         this.h = clock.height;
+         this.x = clock.width / 2;
+         this.y = clock.height / 2;
+         this.dimension = Math.min(this.x,this.y) - 10;
+       }
+       
+       drawNeedle = function(width, lengthRatio, color, angle, maxAngle) {
+         const [u,v] = fromPolar(this.x,this.y,this.dimension * lengthRatio,angle,maxAngle);
+         const oldWidth = this.context.lineWidth;
+         width = undefined ? oldWidth : width;
+       
+         this.context.lineWidth = width;
+         this.context.strokeStyle = color;
+         this.context.beginPath();
+         this.context.moveTo(this.x,this.y);
+         this.context.lineTo(u,v);
+         this.context.stroke();
+         this.context.lineWidth = oldWidth;
+       }
+       
+       drawCircle = function(width, lengthRatio, color, points) {
+         const oldWidth = this.context.lineWidth;
+         const length = this.dimension * lengthRatio;
+         width = undefined ? oldWidth : width;
+       
+         this.context.strokeStyle = color;
+         this.context.lineWidth = width;
+         this.context.beginPath();
+         this.context.arc(this.x,this.y,length,0,2 * Math.PI);
+         this.context.stroke();
+         for (let i = 0; i < points; i++) {
+           const [a,b] = fromPolar(this.x,this.y,length,i,points);
+           const [A,B] = fromPolar(this.x,this.y,length-5,i,points);
+           this.context.beginPath();
+           this.context.moveTo(a,b);
+           this.context.lineTo(A,B);
+           this.context.stroke();
+         }
+         this.context.lineWidth = oldWidth;
+       }
+       
+       drawClock = function(hours,minutes,seconds) {
+         this.context.clearRect(0,0,this.w,this.h);
+         this.drawCircle(3,1,"blue",12);
+         this.drawNeedle(5,0.5,"green",hours, 12);
+         this.drawNeedle(3,0.8,"black",minutes, 60);
+         this.drawNeedle(undefined,0.9,"red",seconds, 60);
+       }
+     }
+   
+     const startClock = function(clockId) {
+       return new Clock(clockId);
+     };
+     
+     const fromPolar = function(x,y,length,angle,maxAngle) {
+       const a = x + length * Math.sin(angle * 2 * Math.PI / maxAngle);
+       const b = y - length * Math.cos(angle * 2 * Math.PI / maxAngle);
+       return [a,b];
+     };
+</pre>
+        Puis, plus bas dans le document, on écrit désormais
+        <pre>
+    launch(startClock('clock1'),startClock('clock2'));
+</pre>
+      </li>
+    </ol>
+    
+  </body>
+</html>
