@@ -24,7 +24,7 @@
                     Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
                 </p>
             </section>
-            <section>
+            <!--<section>
                 <h2>CSS?</h2>
                 <blockquote cite="https://en.wikipedia.org/wiki/CSS">&ldquo;Cascading Style Sheets (CSS) is a style sheet language used for
                     describing the presentation of a document written in a markup language.&rdquo;</blockquote>
@@ -39,7 +39,7 @@
                 <p class="cite-source">
                     source&nbsp;: Wikipedia.org - <a href="https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade">CSS</a>
                 </p>
-            </section>
+            </section>-->
             <section>
                 <h2>Historique des versions</h2>
                 <table>
@@ -127,7 +127,7 @@ li#important {
 }</code></pre>
             </section>
             <section>
-                <h2>classe d'élément</h2>
+                <h2>Classe d'élément (1/2)</h2>
                 <p>On peut aussi vouloir distinguer plusieurs balises. On indique les balises qui appartiennent à une même classe.</p>
                 <pre><code class="html" data-trim>
 &lt;ul&gt;
@@ -139,6 +139,24 @@ li#important {
                 <pre><code class="css" data-trim>
 li.important {
   color: orange;
+}</code></pre>
+            </section>
+            <section>
+                <h2>Classe d'élément (2/2)</h2>
+                <p>Une classe peut concerner plusieurs balises, et une balise peut avoir plusieurs classes.</p>
+                <pre><code class="html" data-trim>
+&lt;ul&gt;
+  &lt;li class="order"&gt;Say hello&lt;/li&gt;
+  &lt;li class="important order"&gt;Don't cross the streams !&lt;/li&gt;
+  &lt;li class="important"&gt;To Infinity and Beyond !&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                <p>On utilisera '.' et le nom de la classe dans le style.</p>
+                <pre><code class="css" data-trim>
+li.important {
+  color: orange;
+}
+.order {
+  font-weight: bold;
 }</code></pre>
             </section>
             <section>
@@ -321,6 +339,7 @@ li {
                     <li>propriétés des listes &amp; tables
                     <li>propriétés des boîtes
                 </ul>
+                <p class="fragment"><span class="keyword">&#9888;&nbsp;Catalogue&nbsp;!&nbsp;&#9888;</span></p>
             </section>
             <section>
                 <h2>Propriétés des textes &amp; images</h2>
