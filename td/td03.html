@@ -127,9 +127,9 @@
           recopier le titre et le montant des recettes pour les 5 plus gros succès
           (il y a des flèches pour trier) pour les mettre dans une table dont nous allons
           changer l'aspect. <br> Donc dans un premier temps, créez la table
-          HTML en utilisant les balises <span class="tt">table</span>, <span
-          class="tt"
-        >th</span> et <span class="tt">td</span> dans votre compte-rendu.
+          HTML dans votre compte-rendu, par exemple en utilisant des balises telles que
+          <span class="tt">table</span>, <span class="tt">tr</span><span
+          class="tt">th</span>, <span class="tt">td</span> &hellip;
         </li>
         <li>Faites en sorte que la table occupe toute la largeur du compte
           rendu.</li>
@@ -138,7 +138,8 @@
             caps</span>).
         </li>
         <li>Aérez la table avec la propriété <span class="tt">padding</span>
-          pour que le texte ne soit pas collé aux bordures.
+          pour que le texte ne soit pas collé aux bordures des cases
+          (qui sont invisibles a priori, mais que vous pouvez toujours rendre visibles si ça vous aide).
         </li>
         <li>Faites en sorte que les valeurs du tableau soient alignées à gauche,
           sauf celles de la dernière colonne, qui doivent être centrées.</li>
@@ -166,7 +167,8 @@
           correctement lorsque vous visualisez le document. <br> Note 1&nbsp;: On
 	  rappelle que le
           fichier <b>exo2.html</b> ne doit être modifié que en
-          ajoutant des classes aux boîtes, la structure du document doit rester
+          ajoutant des classes aux boîtes, et des informations de style,
+          la structure du document doit rester
           la même. <br> Note 2&nbsp;: Le fichier <a
           href="src/td03/resultat-exo2.png"
         >resultat-exo2.png</a> correspond à l'affichage que l'on souhaite avoir à la fin
@@ -191,8 +193,10 @@
           rapport à la boîte qui les contient. <br> Jouez de plus avec la
           propriété <b>padding</b> pour avoir un espacement convenable.
         </li>
-        <li>Espacez les unes des autres les boîtes contenant les images
-          avec la propriété <b>margin</b>.
+        <li>Espacez les unes des autres les six boîtes contenant les images
+          avec la propriété <b>margin</b>. <br>
+          Attention&nbsp;: on ne veut pas ajouter de marge aux six boîtes ne contenant pas d'image,
+          par exemple les six boîtes contenantles titres des images.
         </li>
         <li>Faites en sorte que les images à l'intérieur des boîtes aient
           une bordure de trois pixels de largeur de couleur <b>#aaaaaa</b>.
@@ -218,7 +222,7 @@
         fichier <a
           href="src/td03/resultat-exo3.png"
         >resultat-exo3.png</a> correspond à l'affichage que l'on souhaite avoir à
-        la fin de cet exercice et de l'exercice 3.
+        la fin de cet exercice.
         Vous travaillerez à partir du fichier <a href="src/td03/exo3.html">exo3.html</a>.
       </div>
       <br>
