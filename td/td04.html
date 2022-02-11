@@ -67,7 +67,12 @@
 
       <h3>Exercice 2&nbsp;: Damier</h3>
       <div>On cherche à faire un damier avec des cases blanches et noires
-        et la diagonale affichée en rouge.</div>
+        et la diagonale affichée en rouge.
+        <br>
+        <span class="caution">Attention&nbsp;:</span> Chaque fois que l'on souhaitera donner
+        un style spécifique à tel ou tel élément HTML, on lui donnera une classe on un ID
+        et on créera le sélecteur CSS correspondant&nbsp;: écrire des informations de
+        style en dur dans une balise HTML, c'est une méthode de sauvages&nbsp;!</div>
       <br>
       <ol>
         <li>Recopiez la page Web <a
@@ -102,6 +107,10 @@
         <span class="tt">drawCheckerBoard</span> et réécrivez-la pour ajouter un dernier
           paramètre à <span class="tt">drawCheckerBoard</span> pouvant être vrai ou faux. Si le
           paramètre est vrai, alors il faudra afficher la diagonale en rouge.
+          <br>
+          Au cours de ce processus, vous pourrez être amené à commenter les code des fonctions
+          <span class="tt">drawCheckerCell</span> et/ou <span class="tt">drawCheckerLine</span>
+          pour leur ajouter des paramètres additionnels que vous aurez jugés pertinents.
         </li>
         <li>Testez en affichant la diagonale du premier carré (pas celle du
           second).</li>
@@ -121,15 +130,24 @@
           sur ce nouveau document <span class="tt">exo3.html</span>.
         </li>
         <li>
+          Assurez vous que la fonction <span class="tt">drawCheckerCell</span>
+          prenne un argument, qui sera la couleur de la case correspondante.
+          <br>
+          Par exemple, si j'appelle <span class="tt">drawCheckerCell(5, "red")</span>,
+          on dessinera une case de classe <span class="tt">"red"</span>, qui aura vocation
+          à être dessinée en rouge comme indiqué dans les informations de style du document.
+        </li>
+        <li>
           Redéfinissez la fonction <span class="tt">drawCheckerLine</span> pour que,
           outre la longueur de la ligne qu'elle doit dessiner, le deuxième argument que
           prend cette fonction soit non plus le numéro de la ligne correspondante,
           mais une fonction d'affichage qui associera à chaque entier <span class="tt">j</span>
           la couleur de la case n°<span class="tt">j</span> sur cette ligne.
           <br>
-          Par exemple, si j'appelle <span class="tt">drawCheckerLine(0, fun)</span>,
-          la couleur de la case n°2 de la ligne que l'on dessinera sera donnée par
-          <span class="tt">fun(2)</span>.
+          Par exemple, si j'appelle <span class="tt">drawCheckerLine(5, fun)</span>,
+          on dessinera 5 cases de couleurs <span class="tt">fun(0)</span>,
+          <span class="tt">fun(1)</span>, <span class="tt">fun(2)</span>, <span class="tt">fun(3)</span>
+          et <span class="tt">fun(4)</span>.
         </li>
         <li>
           Redéfinissez la fonction <span class="tt">drawCheckerBoard</span> pour que,
@@ -139,6 +157,10 @@
           mais une fonction d'affichage qui associera à paire <span class="tt">(i,j)</span>
           la couleur de la case en ligne <span class="tt">i</span> et colonne
           <span class="tt">j</span>.
+          <br>
+          Par exemple, si j'appelle <span class="tt">drawCheckerBoard(3, fun)</span>,
+          on dessinera 3&times;3 cases, et la case en ligne 1 et colonne 2 sera de couleur
+          <span class="tt">fun(1,2)</span>.
         </li>
         <li>
           Définissez une fonction <span class="tt">diagonalColor</span> dont le seul
