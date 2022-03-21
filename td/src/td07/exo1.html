@@ -5,11 +5,11 @@
    <script>
      "use strict";
    
-     function refresh() {
+     const refresh = function() {
        console.log("tick !");
      }
      
-     function loaded() {
+     const loaded = function() {
        window.setTimeout(refresh, 1000);
      }
    </script>
@@ -22,8 +22,8 @@
   </canvas>
   <script>
      /*
-     var canvas = document.getElementById('clock');
-     var context = canvas.getContext("2d");
+     const canvas = document.getElementById('clock');
+     const context = canvas.getContext("2d");
      
      context.beginPath();
      context.moveTo(0, 300);
