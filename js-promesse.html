@@ -32,8 +32,8 @@
                     Une <span class="keyword">Promise</span> est la promesse d'une valeur (ou erreur) à venir.
                 </p>
                 <textarea class="code-font" data-autojslog="js6-promise" rows="10" cols="55">
-let promise = new Promise((resolve, reject) => {
-  let value = Math.random();   // juste pour l'exemple
+const promise = new Promise((resolve, reject) => {
+  const value = Math.random();   // juste pour l'exemple
   if (value < 0.5) {
     resolve("It works");
   } else {
@@ -48,9 +48,9 @@ promise.then(value => console.log(value))
             <section>
                 <h2>Promesse &amp; AJAX à la main</h2>
                 <textarea class="small-code-font" data-autojslog="js6-promise-ajax" rows="20" cols="55">
-function ajaxPromise(doc) {
+const ajaxPromise = function(doc) {
   return new Promise((resolve, reject) => {
-    let ajax = new XMLHttpRequest();
+    const ajax = new XMLHttpRequest();
     ajax.onreadystatechange = () => {
       if (ajax.readyState == 4) { 
       	if(ajax.status == 200) {
@@ -127,7 +127,7 @@ fetch("images/js-canvas/html5.png")
      throw Error(response.statusText);
    })
   .then(blob => {
-    let objectURL = URL.createObjectURL(blob);
+    const objectURL = URL.createObjectURL(blob);
     image.src = objectURL;
   })
   .catch(err => console.log(err.message));</textarea>
@@ -160,7 +160,7 @@ Promise.all([
             <section>
                 <h2>Promise.all</h2>
                 <p>
-                    Attention&nbsp;! Si on enchaine des appels à
+                    Attention&nbsp;! Si on enchaîne des appels à
                     <b><span class="keyword">Promise.all</span>()</b>,
                     <br /> on peut créer des goulots d'étranglement.
                 </p>

@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 <link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
-<script> let loadContext = x => document.getElementById('canvas-' + x).getContext("2d"); </script>
+<script> const loadContext = x => document.getElementById('canvas-' + x).getContext("2d"); </script>
 </head>
 <body>
     <div class="reveal">
@@ -299,8 +299,8 @@ const imageData = context.getImageData(
 		  0, 0, canvas.width, canvas.height);
 const array = imageData.data;
 for(let i = 0; i < array.length; i = i + 4) {
-  let y = i / 4 / canvas.width;
-  let x = i / 4 % canvas.width;
+  const y = i / 4 / canvas.width;
+  const x = i / 4 % canvas.width;
   array[i]   = Math.floor(255 * x / canvas.width);
 		    // red
   array[i+1] = 128; // green
@@ -366,202 +366,6 @@ image.src = "images/js-canvas/html5.png";</textarea>
                     C'est une closure car les variables <b>context</b> et <b>image</b> sont prises du scope englobant&nbsp;!
                 </p>
             </section>
-<!--            <section>
-                <h2>Événements</h2>
-            </section>
-            <section>
-                <h2>Événements clavier</h2>
-                <p>
-                    La fonction <b>window.<span class="keyword">onkeydown</span></b> 
-		    est appelée lorsque l'on appuie sur une touche, <b>windows.<span class="keyword">onkeyup</span></b>
-		    lorsque l'on relâche la touche.
-                </p>
-                <textarea class="code-font left" data-autojscanvas="canvas-key" rows="13" cols="48">
-context.font = "16px arial";
-let y = 20;
-function action(name) {
-  context.fillText(name, 50, y);
-  y = y + 20;
-  if (y > canvas.height)  {
-     y = 20;
-     context.clearRect(0, 0,
-	canvas.width, canvas.height);
-  }
-}
-window.onkeydown = function() { action('down'); };
-window.onkeyup = function() { action('up'); };</textarea>
-                <canvas id="canvas-key" class="right-float" width="250" height="210"></canvas>
-                <p class="small-font clear">Appuyer sur une touche.</p>
-            </section>
-            <section>
-                <h2>Plusieurs écouteurs clavier</h2>
-                <p>
-                    La fonction <b>window.<span class="keyword">addEventListener</span></b> 
-		    permet d'ajouter une action sans détruire les actions précédemment enregistrées.
-                </p>
-                <textarea class="code-font" data-autojscanvas="canvas-key2" data-once rows="11" cols="45">
-function draw(color) {
-  context.fillStyle = color;
-  context.fillRect(130, y - 20, 40, 40);
-}
-let y = 0;
-window.addEventListener('keydown', function() {
-  draw('white');
-  y = y + 5;
-  if (y > canvas.height) { y = 0; }
-  draw('gold');
-});</textarea>&nbsp;
-                <canvas id="canvas-key2" width="310" height="210"></canvas>
-                <p class="small-font">Appuyer sur une touche.</p>
-            </section>
-            <section>
-                <h2>Récupérer les touches</h2>
-                <p>
-                    <span class="keyword">keyCode</span> permet de récupérer le code (plus ou moins ASCII) de la touche.
-                </p>
-                <textarea class="code-font left" data-autojscanvas="canvas-key3" data-once rows="13" cols="50">
-function draw(x, color) {
-  context.fillStyle = color;
-  context.fillRect(x - 20, 80, 40, 40);
-}
-let x = 150;
-draw(x, 'dodgerblue');
-window.addEventListener('keydown', function(event) {
-  draw(x, 'white');
-  let e = event.keyCode;
-  if (e == 84)  { x = x + 5; }      // key 't'
-  else if (e == 82) { x = x - 5; }  // key 'r'
-  draw(x, 'dodgerblue');
-});</textarea>
-                <canvas id="canvas-key3" class="right-float" width="260" height="210"></canvas>
-                <p class="small-font clear">Utiliser les touches 'r' et 't' pour bouger le carré.</p>
-            </section>
-            <section>
-                <h2>&Eacute;vénements souris</h2>
-                <p>
-                    <span class="keyword">onmousedown</span>, <span class="keyword">onmousemove</span>, <span class="keyword">onmouseup</span> 
-		    sont appelées lorsque l'on utilise la souris sur un élément.
-                </p>
-                <textarea class="code-font left" data-autojscanvas="canvas-mouse" rows="7" cols="50">
-context.font = "16px arial";
-context.strokeStyle = 'black';
-canvas.onmousedown = function(event) {
-  let text = event.offsetX + ', ' + event.offsetY;
-  context.fillText(text, event.offsetX,
-				    event.offsetY);
-};</textarea>
-                <canvas id="canvas-mouse" class="right-float" width="260" height="200"></canvas>
-                <p class="clear">
-                    La fonction recoit un événement (<b>event</b>) contenant les coordonnées (<span class="keyword">offsetX</span> et <span class="keyword">offsetY</span>).
-                </p>
-            </section>
-            <section>
-                <h2>&Eacute;vénements souris (2)</h2>
-                <p>
-                    <span class="keyword">onmousemove</span> est appelée lorsque l'on bouge la souris. <br /> Si l'on veut détecter si l'on bouge en appuyant, <br /> il faut un
-                    booléen supplémentaire.
-                </p>
-                <textarea class="code-font left" data-autojscanvas="canvas-mouse2" data-once rows="16" cols="50">
-let drag = false;
-context.strokeStyle = 'violet';
-canvas.onmousedown = function(event) {
-  drag = true;
-  context.beginPath();
-  context.moveTo(event.offsetX, event.offsetY);
-};
-canvas.onmousemove = function(event) {
-  if (drag) {
-    context.lineTo(event.offsetX, event.offsetY);
-    context.stroke();
-  }
-};
-canvas.onmouseup = function() {
-  drag = false;
-};</textarea>
-                <canvas id="canvas-mouse2" class="right-float" width="260" height="210"></canvas>
-            </section>
-            <section>
-                <h2>setTimeout</h2>
-                <p>
-                    <b><span class="keyword">setTimeout</span>(action, temps)</b> permet de déclencher une action après un temps d'attente (en ms).
-                </p>
-                <textarea class="code-font" data-autojscanvas="canvas-timer" rows="6" cols="40">
-context.fillStyle = "silver";
-context.fillRect(100, 50, 100, 100);
-window.setTimeout(function() {
-  context.fillStyle = "lightblue";
-  context.fillRect(100, 50, 100, 100);
-}, 5000);</textarea>
-                <canvas id="canvas-timer" width="300" height="200"></canvas>
-                <br />
-            </section>
-            <section>
-                <h2>setTimeout (2)</h2>
-                <p>
-                    On peut appeler <span class="keyword">setTimeout()</span> plusieurs fois avec la même fonction.
-                </p>
-                <textarea class="code-font" data-autojscanvas="canvas-timer2" data-once rows="9" cols="40">
-let colors = [ 'silver', 'lightblue'];
-let index = 0;
-let fun = function() {
-  context.fillStyle = colors[index];
-  context.fillRect(100, 50, 100, 100);
-  index = 1 - index;
-  window.setTimeout(fun, 2000);
-};
-fun();</textarea>&nbsp;
-                <canvas id="canvas-timer2" width="300" height="200"></canvas>
-                <br />
-            </section>
-            <section>
-                <h2>setInterval</h2>
-                <p>
-                    <b>window.<span class="keyword">setInterval</span></b> permet de rappeler une fonction à intervalles réguliers.
-                </p>
-                <textarea class="small-code-font" data-autojscanvas="canvas-timer3" data-once rows="13" cols="55">
-function draw(color) {
-  context.fillStyle = color;
-  context.fillRect(x, y, 10, 10);
-}
-let x = 0; let y = 0; let dx = 1; let dy = 1;
-let animate = function() {
-  draw('white');
-  x = x + dx; y = y + dy;
-  if (x == 0 || x == canvas.width - 10) { dx = -dx; }
-  if (y == 0 || y == canvas.height - 10) { dy = -dy; }
-  draw('red');
-};
-window.setInterval(animate, 12);</textarea>
-                <canvas id="canvas-timer3" width="260" height="210"></canvas>
-                <br />
-            </section>
-            <section>
-                <h2>requestAnimationFrame</h2>
-                <p>demande une animation dès que possible.</p>
-                <textarea class="small-code-font" data-autojscanvas="canvas-timer4" data-once rows="20" cols="60">
-function point(x, y) { return { x: x, y: y, dx: 1, dy: 1 }; }
-function draw(p1, p2, color) {
-  context.strokeStyle = color;
-  context.beginPath();
-  context.moveTo(p1.x, p1.y); context.lineTo(p2.x, p2.y);
-  context.stroke();
-}
-let move = function(p) {
-  p.x = p.x + p.dx; p.y = p.y + p.dy;
-  if (p.x == 0 || p.x == canvas.width) { p.dx = -p.dx; }
-  if (p.y == 0 || p.y == canvas.height) { p.dy = -p.dy; }
-};
-let p1 = point(50, 50); let p2 = point(200, 150);
-let animate = function() {
-  draw(p1, p2, 'white');
-  move(p1); move(p2);
-  draw(p1, p2, 'blue');
-  window.requestAnimationFrame(animate);
-};
-window.requestAnimationFrame(animate);</textarea>
-                <canvas id="canvas-timer4" width="310" height="210"></canvas>
-                <br />
-            </section>-->
         </div>
     </div>
     <script src="lib/js/head.min.js"></script>

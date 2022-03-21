@@ -40,7 +40,7 @@
             <section>
                 <h2>Interface uniforme</h2>
                 <ul>
-                    <li>On nomme des resources en utilisant des URIs.
+                    <li>On nomme des ressources en utilisant des URIs.
                     <li>On utilise des méthodes HTTP comme action&nbsp;:<br />
                     <span class="keyword">GET</span>,
                     <span class="keyword">PUT</span>,
@@ -98,8 +98,8 @@
             <section>
                 <h2>Exemple avec <span class="keyword">express.js</span></h2>
                 <pre><code class="js" data-trim>         
-let express = require('express');
-let app = express();
+const express = require('express');
+const app = express();
 
 app.get('/users', (req, res) =&gt; {
   res.send('Hello World!');
