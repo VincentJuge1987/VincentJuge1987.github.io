@@ -32,7 +32,7 @@
         de memory. Le memory se joue avec des paires de carte ayant la même
         image. Au début du jeu, toutes les cartes sont retournées (face non
         visible), puis on choisit deux cartes, que l'on retourne, si les deux
-        cartes ont la même image, on a trouvé une paire, et les 2 cartes restent
+        cartes ont la même image, on a trouvé une paire et les 2 cartes restent
         face visible avec leur image, si les 2 cartes choisies ne correspondent
         pas à la même image, les cartes sont retournées (face non visible). Le
         but du memory est de trouver toutes les paires d'images.</div>
@@ -54,16 +54,16 @@
           pour stocker le tableau des images et l'image de dos de carte. <br>
           Écrivez ensuite le code de la méthode <code>build</code> afin
           que le nombre d'images soit affiché à l'intérieur de la balise div
-          prise en paramètre. <br> Note&nbsp;: les élements du DOM possèdent un
+          prise en paramètre. <br> Note&nbsp;: les éléments du DOM possèdent un
           attribut <code>innerHTML</code>.
         </li>
         <li>Pour notre jeu de memory, nous allons créer des paires de cartes, une
           paire par image. Pour stocker ces cartes, on va créer un tableau <code>cards</code>
           qui va contenir pour chaque carte l'index de l'image correspondante. <br>
           Dans un vrai memory, ce tableau des index des images est permuté lors
-          de la création du jeu&nbsp;; sinon, ce n'est pas très drole. Pour l'instant,
+          de la création du jeu&nbsp;; sinon, ce n'est pas très drôle. Pour l'instant,
           nous allons utiliser la fonction <code>shuffleCards</code>
-          qui vous a été donnée car cela sera plus facile pour la mise au point
+          qui vous a été donnée, car cela sera plus facile pour la mise au point
           du programme. <br> Que fait la fonction <code>shuffleCards</code>,
           et en quoi cela aide-t-il pour la mise au point du programme&nbsp;?
         </li>
@@ -72,7 +72,7 @@
           Modifiez ensuite la méthode <code>build</code> pour afficher
           autant de cartes que de cases du tableau <code>cards</code>
           qu'a renvoyé la fonction <code>shuffleCards</code> (ici, 16 cartes). Chaque carte sera
-          représentée par un div contenant une image (voir le CSS de <code>memory.html</code>). 
+          représentée par une div contenant une image (voir le CSS de <code>memory.html</code>). 
           Pour l'instant, chaque carte affichera le même dos d'image.
         </li>
         <li>On souhaite ajouter une fonction permettant de savoir lorsque
@@ -81,25 +81,25 @@
           quand on clique sur la zone correspondant à cette balise.
           Le code JavaScript à utiliser pour munir un élément <code>elt</code>
           d'une fonction <code>fun()</code> ou bien <code>fun(event)</code>
-          qui sera déclenchée lors d'un clic sera alors
-          <pre class="full-width"><code>elt.onclick = fun;</code></pre> 
+          qui sera déclenchée lors d'un clic sera alors&nbsp;:
+          <pre class="full-width"><code>elt.onclick = fun;</code></pre>
           <br> Comment faire pour savoir sur quelle carte un utilisateur a
-          cliqué&nbsp;? <br> Implantez la solution retenue pour que, lorsque
+          cliqué&nbsp;? <br> Implémentez la solution retenue pour que, lorsque
           l'on clique sur une carte, son index dans le tableau des cartes (entre 0 inclus et 16 exclus) 
           et le numéro de carte correspondante (entre 0 inclus et 8 exclus) soient affichés
-          dans la console du nagivateur.
+          dans la console du navigateur.
         </li>
         <li>On souhaite maintenant pouvoir afficher l'image correspondant à
           une carte lorsque l'on clique sur la carte. <br> Le problème est
           que le tableau des images doit être stocké dans un objet <code>MemoryGame</code> et
           qu'il faut que cet objet soit accessible à la fonction qui est
           exécutée lors d'un clic. <br> Comment faire pour que le tableau
-          des images soit accessible lors d'un clic&nbsp;? <br> Implantez votre
+          des images soit accessible lors d'un clic&nbsp;? <br> Implémentez votre
           solution pour que, lorsque l'on clique sur une carte, l'image
           correspondante s'affiche. <br> Rappel&nbsp;: l'élement DOM
           correspondant à une image possède une propriété src.
         </li>
-        <li>Il faut maintenant implanter la mécanique du jeu. <br>
+        <li>Il faut maintenant implémenter la mécanique du jeu. <br>
           Comme on découvre les cartes, une par une, il faut se souvenir de la
           carte précédente (si elle existe) pour savoir si le jeu est dans l'un
           des états suivants&nbsp;:
@@ -109,8 +109,8 @@
             <li>deux cartes ont été découvertes.</li>
           </ol> <br> Sachant que l'on appelle <code>selection</code> la carte dont on se
           souvient, écrivez en pseudo-code l'algorithme qui prend en paramètre
-          la carte sur laquelle on vient de cliquer et qui implante la mécanique
-          de jeu. <br> Implantez ensuite votre algorithme en JavaScript.
+          la carte sur laquelle on vient de cliquer et qui implémente la mécanique
+          de jeu. <br> Implémentez ensuite votre algorithme en JavaScript.
           <br>
           Comment faire pour ne pas prendre en compte les cartes déjà
           retournées (il y a deux cas)&nbsp;? <br> Modifiez votre programme en
