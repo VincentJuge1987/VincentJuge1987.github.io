@@ -25,7 +25,25 @@
 
       <div>Comme pour les TP précédents, on vous demande de créer un
         répertoire <span class="tt">tp8</span> qui contiendra les exercices de cette feuille de TP et de
-        faire un compte rendu de TP en HTML.</div>
+        faire un compte rendu de TP en HTML.
+        <br/>
+        Comme le TP 4, ce TP est noté. Cela signifie que :
+        <ol>
+        <li> Si vous travaillez avec un camarade, vous <span class="caution">devez</span> l'indiquer et faire votre possible
+        pour écrire votre code et votre compte-rendu séparément&nbsp;: en cas de ressemblance trop grande entre les travaux de
+        deux élèves, et surtout si ceux-ci ne nous ont pas prévenus, il auront chacun 0/20.
+        </li>
+        <li> Votre compte-rendu de TP doit <span class="caution">impérativement</span> être considéré comme valide par le
+        W3C validator.
+        </li>
+        <li> Vos variables doivent <span class="caution">impérativement</span> être crées à l'aide des mots-clés 
+        <span class="tt">let</span> ou <span class="tt">const</span>.
+        </li>
+        <li> Chacune de vos instructions doit <span class="caution">impérativement</span> être terminée par un point-virgule
+        (&nbsp;<span class="tt">;</span>&nbsp;).
+        </li>
+        </ol>
+        </div>
       <br>
 
       <h3>Exercice 1&nbsp;: Un panier de fruits</h3>
@@ -39,37 +57,39 @@
         >exo1.html</a>, <a
           href="src/td08/basket.js"
         >basket.js</a>, <a
-          href="src/td08/fruits.json"
-        >fruits.json</a> et <a
+          href="src/td08/fruitQuantities.json"
+        >fruitQuantities.json</a> et <a
           href="src/td08/HTTPServer.py"
         >HTTPServer.py</a>
         dans votre répertoire <span class="tt">tp8</span>.
+        <br/>
+        Dans la suite, vous devrez surtout modifier le code Javascript de <span class="tt">basket.js</span>.
         </li>
         <li>On cherche à écrire une requête AJAX qui va lire le fichier <a
-          href="src/td08/fruits.json"
-        >fruits.json</a>.
+          href="src/td08/fruitQuantities.json"
+        >fruitQuantities.json</a>.
         <br> Créez un objet <span class="tt">XMLHttpRequest</span>,
           utilisez la méthode <span class="tt">open()</span> pour créer une
-          requête sur le fichier <span class="tt">fruits.json</span> stocké sur le serveur
-          de l'université (et non pas celui que vous avez copié localement), puis
+          requête sur le fichier <span class="tt">fruitQuantities.json</span> stocké sur le serveur
+          Github (et non pas celui que vous avez copié localement), puis
           envoyez la requête au serveur avec la méthode <span class="tt">send</span>. <br>
           Comment faire pour savoir si la requête a réussi ou échoué en
           utilisant les outils de développement de votre navigateur&nbsp;? <br>
           Testez si votre requête AJAX fonctionne avec Firefox et avec Chrome.</li>
         <li>Que se passe-t-il si vous essayez d'envoyer une requête pour récupérer une copie
-          locale du fichier <span class="tt">fruits.json</span>&nbsp;?
+          locale du fichier <span class="tt">fruitQuantities.json</span>&nbsp;?
         Si vous avez un message d'erreur, comment pouvez-vous expliquer le contenu de ce message d'erreur&nbsp;?</li>
         <li>En fonction de votre navigateur et de la version de celui-ci, il se peut que vous n'ayez
-          pas pu accéder au fichier <span class="tt">fruits.json</span>.
+          pas pu accéder au fichier <span class="tt">fruitQuantities.json</span>.
           Pour éviter que ce genre de mésaventures ne se reproduise, vous allez lancer un serveur HTTP minimaliste
           sur votre propre machine. (Lisez bien toute la question, y compris le paragraphe qui commence par
           <span class="caution">Attention</span>, avant d'entamer les opérations qui suivent).
           <br />
-          Pour ce faire, ouvrez un terminal, placez-vous dans le répertoire <span class="tt">tp9</span>,
+          Pour ce faire, ouvrez un terminal, placez-vous dans le répertoire <span class="tt">tp8</span>,
           puis lancez la commande <span class="tt">python HTTPServer.py</span>.
-          Vous venez de lancer votre serveur HTTP dans le répertoire <span class="tt">tp9</span>,
-          et alors le fichier <span class="tt">fruits.json</span> est accessible depuis l'URL
-          <a href="http://localhost:8080/fruits.json">http://localhost:8080/fruits.json</a>.
+          Vous venez de lancer votre serveur HTTP dans le répertoire <span class="tt">tp8</span>,
+          et alors le fichier <span class="tt">fruitQuantities.json</span> est accessible depuis l'URL
+          <a href="http://localhost:8080/fruitQuantities.json">http://localhost:8080/fruitQuantities.json</a>.
           <br />
           <br />
           <span class="caution">Attention&nbsp;:</span>
@@ -78,14 +98,17 @@
           Dans ce cas, vous pouvez remplacer le port 8080 par le port 3000 (ou bien par n'importe quel port&nbsp;:
           il vous suffit de remplacer 3000 par votre numéro de port préféré) en lançant la commande suivante&nbsp;:
           <span class="tt">python HTTPServer.py 3000</span>.
-          Le fichier <span class="tt">fruits.json</span> sera accessible depuis l'URL
-          <a href="http://localhost:3000/fruits.json">http://localhost:3000/fruits.json</a>.
+          Le fichier <span class="tt">fruitQuantities.json</span> sera accessible depuis l'URL
+          <a href="http://localhost:3000/fruitQuantities.json">http://localhost:3000/fruitQuantities.json</a>.
           <br />
           Note&nbsp;: Si jamais vous avez l'habitude d'utiliser une autre commande ou méthode pour exécuter des scripts
           python, faites comme d'habitude. L'essentiel étant d'exécuter le script <span class="tt">HTTPServer.py</span>.
           <br />
           <br />
-          Vérifiez que vous avez maintenant bien accès au fichier <span class="tt">fruits.json</span> que vous avez stocké localement.
+          Vérifiez que vous avez maintenant bien accès au fichier <span class="tt">fruitQuantities.json</span> que vous avez stocké localement,
+          en affichant dans la console un tableau contenant les champs stockés dans <span class="tt">fruitQuantities.json</span>.
+          <br />
+          Note 2&nbsp;: Quelle fonction permet de créer un tel tableau&nbsp;?
         </li>
          <li>Ajoutez une fonction pour écouter les événements <span class="tt">readystatechange</span> 
           et si la requête a réussi, affichez le résultat de la
@@ -121,7 +144,7 @@
       <ol>
         <li>Recopiez la page Web <a
           href="src/td08/exo2.html"
-        >exo2.html</a> dans votre répertoire <span class="tt">tp9</span> puis
+        >exo2.html</a> dans votre répertoire <span class="tt">tp8</span> puis
           recopiez votre fichier <span class="tt">basket.js</span> dans le
           fichier <span class="tt">basket2.js</span>.
         </li>
@@ -139,9 +162,10 @@
         </li>
         <li>Faites en sorte que le fichier <span class="tt">prices.json</span>
           soit chargé par une requête AJAX. <br> Note&nbsp;: sachant que l'on
-          charge déjà le fichier <span class="tt">fruits.json</span> avec une
+          charge déjà le fichier <span class="tt">fruitQuantities.json</span> avec une
           requête AJAX, faire en sorte qu'il y ait un seul code de chargement de
-          requête AJAX (en faisant une fonction).
+          requête AJAX (en faisant une fonction dont l'argument sera l'URL que l'on veut charger,
+          et éventuellement l'endroit où l'on souhaite stocker le résultat de la requête).
         </li>
         <li>Faites en sorte de calculer le prix du panier et de mettre à
           jour la page Web avec le prix.</li>
@@ -157,7 +181,8 @@
         </li>
         <li>
           Récupérer l'objet contenu dans le fichier <span class="tt">prices.json</span>
-          à l'aide de la fonction <span class="tt">fetch</span> et de promesses.
+          sans créer de requête AJAX à la main, mais en s'aidant
+          de la fonction <span class="tt">fetch</span> et de promesses.
         </li>
         <li>
           Faites en sorte de calculer le prix du panier et de mettre à
