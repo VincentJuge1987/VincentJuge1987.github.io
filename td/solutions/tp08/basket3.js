@@ -2,27 +2,27 @@
 
 const showJSONInTable = function(json) {
   const table = document.getElementById("basket");
-  for(let fruit of json) {
+  for(let fruit in json) {
     const row = document.createElement("tr");
     const fruitName = document.createElement("td");
     const fruitQuantity = document.createElement("td");
-    fruitName.innerText = fruit.name;
-    fruitQuantity.innerText = fruit.quantity;
+    fruitName.innerText = fruit;
+    fruitQuantity.innerText = json[fruit];
     row.appendChild(fruitName);
     row.appendChild(fruitQuantity);
     table.appendChild(row);
   }
 };
 
-const showJSONQuantity = function(json) {
+const showJSONQuantity = function(quantities) {
   const span = document.getElementById("quantity");
-  const quantity = json.reduce((acc, fruit) => acc + fruit.quantity, 0);
-  span.innerText = quantity;
+  const sum = Object.keys(quantities).reduce((acc, name) => acc + quantities[name], 0);
+  span.innerText = sum;
 };
 
-const showJSONPrice = function(fruits, prices) {
+const showJSONPrice = function(quantities, prices) {
   const span = document.getElementById("price");
-  const price = fruits.reduce((acc, fruit) => acc + fruit.quantity * prices[fruit.name], 0);
+  const price = Object.keys(quantities).reduce((acc, name) => acc + quantities[name] * prices[name], 0);
   span.innerText = price;
 };
 
@@ -34,7 +34,7 @@ const jsonOkOrError = function(response) {
 };
 
 Promise.all([
-  fetch('http://localhost:8080/fruits.json').then(jsonOkOrError),
+  fetch('http://localhost:8080/fruitQuantities.json').then(jsonOkOrError),
   fetch('http://localhost:8080/prices.json').then(jsonOkOrError)])
   .then(([fruits,prices]) => {
     console.log([fruits,prices]);

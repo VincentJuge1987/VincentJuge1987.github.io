@@ -23,21 +23,21 @@ const launchAndThen = function(then, ...urls) {
 };
 
 const postAction = function(responses) {
-  const fruits = JSON.parse(responses[0]);
+  const quantities = JSON.parse(responses[0]);
   const prices = JSON.parse(responses[1]);
-  showJSONInTable(fruits);
-  showJSONQuantity(fruits);
-  showJSONPrice(fruits, prices);  
+  showJSONInTable(quantities);
+  showJSONQuantity(quantities);
+  showJSONPrice(quantities, prices);  
 };
 
 const showJSONInTable = function(json) {
   const table = document.getElementById("basket");
-  for(let fruit of json) {
+  for(let fruit in json) {
     const row = document.createElement("tr");
     const fruitName = document.createElement("td");
     const fruitQuantity = document.createElement("td");
-    fruitName.innerText = fruit.name;
-    fruitQuantity.innerText = fruit.quantity;
+    fruitName.innerText = fruit;
+    fruitQuantity.innerText = json[fruit];
     row.appendChild(fruitName);
     row.appendChild(fruitQuantity);
     table.appendChild(row);
@@ -46,14 +46,14 @@ const showJSONInTable = function(json) {
 
 const showJSONQuantity = function(json) {
   const span = document.getElementById("quantity");
-  const quantity = json.reduce((acc, fruit) => acc + fruit.quantity, 0);
+  const quantity = Object.keys(json).reduce((acc, name) => acc + json[name], 0);
   span.innerText = quantity;
 };
 
-const showJSONPrice = function(fruits, prices) {
+const showJSONPrice = function(quantities, prices) {
   const span = document.getElementById("price");
-  const price = fruits.reduce((acc, fruit) => acc + fruit.quantity * prices[fruit.name], 0);
+  const price = Object.keys(quantities).reduce((acc, name) => acc + quantities[name] * prices[name], 0);
   span.innerText = price;
 };
 
-launchAndThen(postAction,"http://localhost:8080/fruits.json","http://localhost:8080/prices.json");
+launchAndThen(postAction,"http://localhost:8080/fruitQuantities.json","http://localhost:8080/prices.json");
