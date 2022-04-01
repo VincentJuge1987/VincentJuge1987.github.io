@@ -150,6 +150,12 @@ const showJSONQuantity = function(json) {
         La fonction <tt>launchAndThen</tt> se charge de créer les requêtes et le compteur, et de stocker leurs résultats, puis de lancer
         la fonction <tt>postAction</tt>, qui consiste à traiter nos résultats. Cette fonction s'appuie elle-même sur une nouvelle fonction <tt>showJSONPrice</tt>,
         qui a pour but de calculer et d'afficher le prix total du panier de fruits.
+        <br>
+        Le test <tt>if (responses[i] == undefined)</tt> est utile car ma requête AJAX est susceptible de recevoir plusieurs fois une réponse
+        (qui sera bien sûr la même à chaque fois), et donc d'exécuter plusieurs fois la fonction <tt>ajax.onreadystatechange</tt> même après
+        qu'on a déjà observé que <tt>ajax.readyState == 4</tt> et <tt>ajax.status == 200</tt>.
+        Si on avait omis le test <tt>if (responses[i] == undefined)</tt>, on aurait alors décrémenté deux fois la valeur de <tt>pending</tt>
+        non pas parce que les deux requêtes auraient reçu leurs réponses, mais à cause d'un doublon pour l'une des deux requêtes.
         <pre>
 const launchAndThen = function(then, ...urls) {
   let pending = urls.length;
