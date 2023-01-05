@@ -109,7 +109,10 @@
                 <p>
                     Une variable locale se déclare avec le mot-clé <span class="keyword">let</span>.
                     <br>
-                    <span class="small-font">Il existe aussi un mot-clé <span class="keyword">var</span>, mais on évitera de s'en servir.</span>
+                    <span class="small-font">Il existe aussi un mot-clé <span class="keyword">var</span>, mais on évitera <span class="keyword">à tout prix</span> de s'en servir.
+                    <br>
+                    Il y a également un mot-clé <span class="keyword">const</span> que l'on verra très bientôt.
+                    </span>
                 </p>
                 <p>
                     Une variable peut être initialisée en même temps que la déclaration ou plus tard.
@@ -125,7 +128,7 @@ sum = a + b;</textarea>
             <section>
                 <h2>Instruction et&nbsp;;</h2>
                 <p>
-                    On termine <span class="keyword">toujours</span> une initialisation/déclaration par un&nbsp;';'
+                    On termine <span class="keyword">toujours</span> une initialisation/déclaration par un&nbsp;';'.
                     <br/>
                     <span class="small-font">La syntaxe d'ECMAScript est ambiguë si on omet les &nbsp;';'.</span>
                 </p>
@@ -136,7 +139,34 @@ sum = a + b;</textarea>
                 <p>Si on oublie de déclarer une variable, le programme plante&nbsp;!</p>
                 <textarea class="code-font" data-autojslog="js-variable-nodecl" rows="1" cols="20">
 console.log(a);</textarea>
+                <br>
                 <div class="code-font" id="js-variable-nodecl"></div>
+                <br>
+                <p>Si on tente d'utiliser une variable avant de la déclarer, le programme plante aussi&nbsp;!</p>
+                <textarea class="code-font" data-autojslog="js-variable-nodecl2" rows="1" cols="20">
+console.log(a);
+let a = 3;</textarea>
+                <br>
+                <div class="code-font" id="js-variable-nodecl2"></div>
+            </section>
+            <section>
+                <h2>Variable globale</h2>
+                <p>
+                    Si on déclare une variable sans <span class="keyword">let</span> ou <span class="keyword">const</span>,
+                     elle est stockée dans le document, et donc accessible par tout le monde.
+                </p>
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-var-scope4" rows="4" cols="30">
+evil = "I am evil!";
+console.log(evil);
+let good = "I am good!";
+console.log(good);
+</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+                <div id="js-var-scope4" class="autojslog code-font"></div>
+                <p class="fragment">Les variables globales sont interdites par la convention de Genève&nbsp;!</p>
             </section>
             <section>
                 <h2>Variable non initialisée</h2>
@@ -183,13 +213,15 @@ const b = 42;
                         permet d'obtenir le type à partir d'une valeur.
                     </span>
                 </p>
-                <textarea class="code-font" data-autojs="js-datatype" rows="6" cols="20">
+                <textarea class="code-font" data-autojs="js-datatype" rows="8" cols="20">
 typeof 747;
 typeof -34.6;
 typeof true;
 typeof false;
 typeof 'foo';
-typeof "bar";</textarea>
+typeof "bar";
+let one = 1;
+typeof one;</textarea>
                 <div class="code-font" id="js-datatype"></div>
                 <p>
                     Il y a aussi deux autres types&nbsp;:
@@ -205,7 +237,7 @@ typeof (a => a+1);</textarea>
                 <p>
                     Les opérateurs classiques +, -, *, /, % sur les <span class="keyword">number</span>&nbsp;:
                 </p>
-                <textarea class="code-font" data-autojs="js-operator" rows="8" cols="20">
+                <textarea class="code-font" data-autojs="js-operator" rows="7" cols="20">
 const a = 13;
 const b = 4;
 a + b;
@@ -219,7 +251,7 @@ a % b;</textarea>
                 </p>
             </section>
             <section>
-                <h2>Calcul sur les flottants (1/2)</h2>
+                <h2>Calcul sur les flottants</h2>
                 <p>
                     Les résultats d'un calcul sont arrondis au <br /> flottant le plus proche.
                 </p>
@@ -229,15 +261,6 @@ const b = 0.2;
 a + b - b - a;</textarea>
                 <div class="code-font" id="js-number2"></div>
                 <p>Il y aura <span class="keyword">toujours</span> des erreurs d'arrondi &nbsp;!</p>
-            </section>
-            <section>
-                <h2>Calcul sur les flottants (2/2)</h2>
-                <p>Le calcul sur les flottants est &laquo;&nbsp;sécurisé&nbsp;&raquo; et ne produit jamais d'erreur.</p>
-                <textarea class="code-font" data-autojs="js-number" rows="3" cols="20">
-3 / 0;
--3 / 0;
-0 / 0;</textarea>
-                <div class="code-font" id="js-number"></div>
             </section>
             <section>
                 <h2>Opérateurs de test</h2>
@@ -257,8 +280,8 @@ a >= b;</textarea>
                 </p>
             </section>
             <section>
-                <h2>Tests et flottants</h2>
-                <p>Ne <span class="keyword">jamais</span> faire des test d'égalité sur des flottants&nbsp;:</p>
+                <h2>Tests, flottants et types</h2>
+                <p>Ne <span class="keyword">jamais</span> faire des tests d'égalité sur des flottants&nbsp;:</p>
                 <textarea class="code-font" data-autojs="js-operator9" rows="4" cols="20">
 const a = 0.1;
 const b = 0.2;
@@ -266,26 +289,26 @@ const c = 0.3;
 a + b == c;</textarea>
                 <div class="code-font" id="js-operator9"></div>
                 <p>
-                    Not a Number (<span class="keyword">NaN</span>) est bizarre&nbsp;: <br /> il n'est pas égal à lui-même&nbsp;!
+                    Ne <span class="keyword">jamais</span> faire des tests d'égalité sur des objets de types différents&nbsp;:
                 </p>
-                <textarea class="code-font" data-autojs="js-number-NaN" rows="3" cols="20">
-const x = 0 / 0;
-x == x;
-x != x;</textarea>
-                <div class="code-font" id="js-number-NaN"></div>
+                <textarea class="code-font" data-autojs="js-=-type" rows="3" cols="20">
+const d = 3;
+const e = "3";
+d == e;</textarea>
+                <div class="code-font" id="js-=-type"></div>
             </section>
             <section>
                 <h2>Opérateurs booléens</h2>
                 <p>
-                    Les opérateurs &amp;&amp; et || permettent <br /> de tester plusieurs conditions.
+                    Les opérateurs &amp;&amp; (<span class="keyword">ET</span>) et || (<span class="keyword">OU</span>) permettent <br /> de tester plusieurs conditions.
                 </p>
                 <textarea class="code-font" data-autojs="js-operator3" rows="7" cols="20">
 true && false;
 true && true;
 true || false;
 false || false;
-let a = 3;
-let b = 4;
+const a = 3;
+const b = 4;
 a > 2 && b < 7;</textarea>
                 <div class="code-font" id="js-operator3"></div>
             </section>
@@ -302,7 +325,7 @@ true != false;
                 <div class="code-font" id="js-operator4"></div>
                 <p>=== et !== testent d'abord que le type est identique&nbsp;!</p>
             </section>
-            <section>
+            <!--<section>
                 <h2>&amp;&amp; et || sont paresseux</h2>
                 <p class="small-font">
                     Si la partie gauche d'un <span class="keyword">&amp;&amp;</span> est <span class="keyword">false</span>, la partie droite est pas évaluée. <br />
@@ -316,19 +339,22 @@ true || console.log("|| travaille trop !");
 false || console.log("|| travaille bien !");</textarea>
                 <br />
                 <div id="js-if-lazy" class="autojslog code-font"></div>
-            </section>
+            </section>-->
             <section>
                 <h2>Concaténation de chaînes de caractères</h2>
                 <p>
                     Le + fait la concaténation si l'opérande à gauche ou à droite est une <span class="keyword">string</span>.
                 </p>
-                <textarea class="code-font" data-autojs="js-operator5" rows="5" cols="20">
-'hello ' + 'bob';
+                <textarea class="code-font" data-autojs="js-operator5" rows="6" cols="25">
+const name = 'Bob';
+'hello' + 'Bob';
+'hello' + name;
 'hello' + 3;
-3 + 'hello';
-'hello' + true;
-false + 'hello';</textarea>
+false + 'hello';
+1 + 1 + name + 1 + 1;
+</textarea>
                 <div class="code-font" id="js-operator5"></div>
+                <p>Cela permet d'insérer une expression dans une chaîne de caractères.</p>
             </section>
             <section>
                     <h2>Interpolation de chaînes de caractères</h2>
@@ -345,350 +371,47 @@ const x = 21;
 `result = ${ x * 2 }`;
 "${name}" + `${ x * 2 }`;</textarea>
                     <div class="code-font" id="js-interpolation-2"></div>
-                </section>
-            <section>
-                <h1>Contrôle du flux d'instructions</h1>
             </section>
             <section>
-                <h2>Exécution conditionnelle (1/2)</h2>
-                <p>
-                    <span class="keyword">if</span> permet de demander d'exécuter un morceau de code sous certaines conditions.
-                    <br/>
-                    <span class="keyword">else</span> permet ensuite d'exécuter un bloc si elle ne l'est pas.
-                </p>
-                <textarea class="code-font" data-autojslog="js-if-else" rows="8" cols="35">
-const a = 1;
-const b = a + a;
-if (a > 0) {
-  console.log("a is positive");
-}
-if (b < 0) {
-  console.log("b is negative");
-}</textarea>
-                <br />
-                <div id="js-if-else" class="autojslog code-font"></div>
+                <h1>Interagir avec le navigateur</h1>
             </section>
             <section>
-                <h2>Exécution conditionnelle (2/2)</h2>
-                <p>
-                    <span class="keyword">if</span>&hellip;<span class="keyword">else</span>
-                    permet de demander d'exécuter un morceau de code différent dans chaque cas.
-                </p>
-                <textarea class="code-font" data-autojslog="js-if-else2" rows="7" cols="35">
-const a = 0;
-const b = 1;
-if (a == b) {
-  console.log("a = b");
-} else {
-  console.log("a != b");
-}</textarea>
-                <br />
-                <div id="js-if-else2" class="autojslog code-font"></div>
-            </section>        
-            <section>
-                <h2>Expression conditionnelle</h2>
-                <p>
-                    L'opérateur <span class="keyword">?:</span> permet de faire un
-                    <span class="keyword">if</span>/<span class="keyword">else</span> entre
-                     des expressions.
-                </p>
-                <textarea class="code-font" data-autojslog="js-if-expr" rows="3" cols="60">
-const age = 13;
-const text = age < 21? 'too young !': 'go get your beer';
-console.log(text);</textarea>
-                <br />
-                <div id="js-if-expr" class="autojslog code-font"></div>
-                </section>      
-            <section>
-                <h2>Boucle While</h2>
-                <p>
-                    <span class="keyword">while</span> permet de répéter l'exécution d'un morceau de code (avec des valeurs différentes).
-                </p>
-                <textarea class="code-font" data-autojslog="js-while-loop" rows="5" cols="20">
-let i = 0;
-while(i < 4) {
-  console.log(i);
-  i = i + 1;
-}</textarea>
-                <br />
-                <div id="js-while-loop" class="autojslog code-font"></div>
-            </section>
-            <section>
-                <h2>Boucle For</h2>
-                <p>
-                    <span class="keyword">for</span> permet de répéter l'exécution d'un morceau de code sans oublier l'incrémentation.
-                </p>
-                <textarea class="code-font" data-autojslog="js-for-loop" rows="4" cols="36">
-let i;
-for(i = 0; i < 4; i = i + 1) {
-  console.log(i);
-}</textarea>
-                <br />
-                <div id="js-for-loop" class="autojslog code-font"></div>
-            </section>
-            <section>
-                <h2>Boucle For et initialisation</h2>
-                <p>
-                    Il est possible de faire l'initialisation à l'intérieur du <span class="keyword">for</span>.
-                </p>
-                <textarea class="code-font" data-autojslog="js-for-loop2" rows="3" cols="36">
-for(let i = 0; i < 4; i = i + 1) {
-  console.log(i);
-}</textarea>
-                <br />
-                <div id="js-for-loop2" class="autojslog code-font"></div>
-            </section>
-            <section>
-                <h2>Break</h2>
-                <p>
-                    <span class="keyword">break</span> permet d'arrêter une boucle. <br />
-		    <span class="small-font"><span class="keyword">return</span> permet même de sortir de plusieurs boucles imbriquées.</span>
-                </p>
-                <textarea class="code-font" data-autojslog="js-for-break" rows="6" cols="36">
-for(let i = 0; ; i = i + 1) {
-  if (i == 4) {
-    break;
-  }
-  console.log(i);
-}</textarea>
-                <br />
-                <div id="js-for-break" class="autojslog code-font"></div>
-            </section>
-            <section>
-                <h2>Continue</h2>
-                <p>
-                    <span class="keyword">continue</span> saute le tour de boucle courant et passe à l'incrémentation suivante.
-                </p>
-                <textarea class="code-font" data-autojslog="js-for-continue" rows="6" cols="36">
-for(let i = 0; i < 4; i = i + 1) {
-  if (i % 2 == 0) {
-    continue;
-  }
-  console.log(i);
-}</textarea>
-                <br />
-                <div id="js-for-continue" class="autojslog code-font"></div>
-            </section>
-            <section>
-                <h2>Incrémentation</h2>
-                <p>JavaScript emprunte la syntaxe du C pour les incrémentations</p>
-                <ul class="small-font">
-                    <li>i++ correspond à i = i + 1</li>
-                    <li>i-- correspond à i = i - 1</li>
-                    <li>i+=2 correspond à i = i + 2</li>
-                    <li>i-=2 correspond à i = i - 2</li>
-                </ul>
+                <h2>Console et pop-up</h2>
+                <dl>
+                    <dt><span class="keyword">console.log</span>(message)</dt>
+                    <dd>affiche un message sur la console du navigateur</dd>
+                    <dt><span class="keyword">alert</span>(message)</dt>
+                    <dd>affiche un message dans une fenêtre pop-up</dd>
+                </dl>
 		<br /><br />
-                <textarea class="code-font" data-autojslog="js-for-incrementation" rows="3" cols="36">
-for(let i = 0; i < 4; i++) {
-  console.log(i);
-}</textarea>
+                <textarea class="code-font" data-autojslog="js-browser" rows="2" cols="36">
+console.log('hello');
+alert('hello');</textarea>
                 <br />
-                <div id="js-for-incrementation" class="autojslog code-font"></div>
-            </section>
-            <section>
-                <h2>Bloc d'instructions</h2>
-                <p>
-                    L'indentation ne suffit pas&nbsp;: <br/>
-                    On exigera de vous d'utiliser les <b>{</b> et <b>}</b> après un 
-		    <span class="keyword">if</span>/<span class="keyword">else</span>/<span class="keyword">while</span>/<span class="keyword">for</span>.
-                </p>
-                <div class="bad-container">
-                    <textarea class="code-font" data-autojslog="js-block" rows="6" cols="20">
-const a = 3;
-if (a == 4)
-  console.log('1');
-  console.log('2');</textarea>
-                    <div class="bad-image"></div>
-                </div>
+                <div id="js-browser" class="autojslog code-font"></div>
                 <br />
-                <div id="js-block" class="autojslog code-font"></div>
-                <p class="fragment small-font">
-                    Les <b>{</b> et <b>}</b> ne sont pas nécessaires s'il y a une seule instruction dans le
-                    <span class="keyword">if</span>/<span class="keyword">else</span>/<span class="keyword">while</span>/<span class="keyword">for</span>,
-                    mais les mettre systématiquement évite les <a href="https://en.wikipedia.org/wiki/Goto_fail">bugs</a> idiots.
-                </p>
             </section>
             <section>
-                <h1>Portée des variables</h1>
-            </section>
-            <section>
-                <h2>Portée des variables (1/3)</h2>
-                <p>Les variables déclarées avec le mot-clé <span class="keyword">let</span> et
-                <span class="keyword">const</span>
-                n'existent que jusqu'à la fin du bloc où on les a déclarées.</p>
-                <p class="small-font">Mais on peut redéclarer dans un nouveau bloc
-                une variable déjà déclarée.</p>
-                <div style="float: left">
-                    <div class="bad-container">
-                        <textarea class="code-font" data-autojslog="js-var-scope-1" rows="7" cols="20">
-{
-  let a = 2;
-  const b = 2;
-}
-console.log(a);
-console.log(b);
-</textarea>
-                        <div class="bad-image"></div>
-                    </div>
-                    <br />
-                    <div id="js-var-scope-1" class="autojslog code-font"></div>
+                <h2>Changer le contenu d'un élément HTML</h2>
+                <dl>
+                    <dt>document.<span class="keyword">getElementById</span>(id)</dt>
+                    <dd>sélectionne un élément à partir de son identifiant</dd>
+                    <dt>element.<span class="keyword">innerHTML</span></dt>
+                    <dd>accepte le contenu HTML</dd>
+                    <dt>element.<span class="keyword">innerText</span></dt>
+                    <dd>uniquement pour le contenu texte</dd>
+                </dl>
+                <div style="color: pink">
+                    <div class="small-font" id="dom-content1">&nbsp;</div>
+                    <div class="small-font" id="dom-content2">&nbsp;</div>
                 </div>
-                <div style="float: right">
-                    <div class="bad-container">
-                    <textarea class="code-font" data-autojslog="js-var-scope2" rows="7" cols="20">
-let a = 2;
-{
-  console.log(a);
-  let a = 3;
-}
-console.log(a);
-</textarea>
-                        <div class="bad-image"></div>
-                    </div>
-                    <br />
-                    <div id="js-var-scope2" class="autojslog code-font" style="width: 13em;"></div>
-                </div>
-                <div>
-                    <div class="bad-container">
-                    <textarea class="code-font" data-autojslog="js-var-scope0" rows="7" cols="20">
-let a = 2;
-{
-  let a = 3;
-  console.log(a);
-}
-console.log(a);
-</textarea>
-                        <div class="bad-image"></div>
-                    </div>
-                    <br />
-                    <div id="js-var-scope0" class="autojslog code-font"></div>
-                </div>
-                <br/>
-                <p style="clear: both" class="fragment">Merci de ne <span class="keyword">jamais</span>
-		écrire ce genre d'horreurs&nbsp;!</p>
-            </section>
-            <section>
-                <h2>Portée des variables (2/3)</h2>
-                <p>Les déclarations de variables via le mot-clé <span class="keyword">var</span>
-                sont remontées automatiquement en haut du code.</p>
-                <div style="float: left; margin: 20px">
-                    <div class="bad-container">
-                        <textarea class="code-font" data-autojslog="js-var-scope-3" rows="8" cols="20">
-var a = 3;
-if (a == 3) {
-  var b = 2;
-}
-console.log(b);
-</textarea>
-                        <div class="bad-image"></div>
-                    </div>
-                    <br />
-                    <div id="js-var-scope-3" class="autojslog code-font"></div>
-                </div>
-                <div style="float: right; margin: 20px">
-                    <textarea class="code-font" data-autojslog="js-var-scope-4" rows="8" cols="20">
-var a = 3;
-var b;
-if (a == 3) {
-  b = 2;
-}
-console.log(b);
-</textarea>
-                    <br />
-                    <div id="js-var-scope-4" class="autojslog code-font"></div>
-                </div>
-                <p>Les deux codes sont équivalents&nbsp;!</p>
-                <p style="clear: both" class="fragment small-font">
-                    En pratique, mieux vaut utiliser systmématiquement les mots-clés <span class="keyword">let</span> et <span class="keyword">const</span> plutôt
-                    que <span class="keyword">var</span>.</p>
-            </section>
-            <section>
-                <h2>Portée des variables (3/3)</h2>
-                <p>Limiter une variable à un passage dans sa boucle <span class="keyword">for</span>.</p>
-                <div style="float: left; margin: 20px">
-                    <div class="bad-container">
-                        <textarea class="code-font" data-autojslog="js-var-scope-5" rows="8" cols="20">
-let i = 0;
-while (i < 4) {
-  let j = i;
-  console.log(j);
-  i++;
-}
-</textarea>
-                        <div class="bad-image"></div>
-                    </div>
-                    <br />
-                    <div id="js-var-scope-5" class="autojslog code-font"></div>
-                </div>
-                <div style="float: right; margin: 20px">
-                    <textarea class="code-font" data-autojslog="js-var-scope-6" rows="8" cols="27">
-for(let j = 0; j < 4; j++) {
-  console.log(j);
-}
-</textarea>
-                    <br />
-                    <div id="js-var-scope-6" class="autojslog code-font"></div>
-                </div>
-                <p>Les deux codes sont</p><p class="small-font">(à peu près)</p><p>équivalents&nbsp;!</p>
-                <p style="clear: both" class="fragment small-font">
-                    En pratique, on crée <span class="keyword">toujours</span> ses variables de boucle au début de la boucle.</p>
-            </section>
-            <section>
-                <h2>Portée et variable non initialisée</h2>
-                <p>Il est possible de demander la valeur d'une variable qui sera déclarée plus tard.&nbsp;&nbsp;<span class="sad-image"></span></p>
-                <div class="bad-container">
-                    <textarea class="code-font" data-autojslog="js-var-scope3" rows="2" cols="20">
-console.log(a);
-var a = 3;</textarea>
-                    <div class="bad-image"></div>
-                </div>
-                <br />
-                <div id="js-var-scope3" class="autojslog code-font"></div>
-                <div class="fragment">
-                  <p>
-                    On n'est pas obligé d'écrire ce genre de bêtises&nbsp;!
-                  </p>
-                  <p class="small-font">
-                    Bref, on utilise <span class="keyword">let</span> ou <span class="keyword">const</span>.
-                  </p>
-                </div>
-            </section>
-            <section>
-                <h2>Variable globale</h2>
-                <p>
-                    Si on déclare une variable sans <span class="keyword">let</span> ou <span class="keyword">var</span>,
-                     elle est stockée dans le document, et donc accessible par tout le monde.
-                </p>
-                <div class="bad-container">
-                    <textarea class="code-font" data-autojslog="js-var-scope4" rows="5" cols="36">
-console.log(evil);
-evil = "i'm evil !";
-console.log(evil);
-evil = "i'm evil 2 !";
-console.log(evil);</textarea>
-                    <div class="bad-image"></div>
-                </div>
-                <br />
-                <div id="js-var-scope4" class="autojslog code-font"></div>
-                <p class="fragment">Les variables globales sont interdites par la convention de Genève&nbsp;!</p>
-            </section>
-            <section>
-                <h2>Opérations arithmétiques sur des types différents</h2>
-                <p>Effectuer une opération arithmétique sur des valeurs de types différents donne des résultats surprenants.</p>
-                <div class="bad-container">
-                    <textarea class="code-font" data-autojs="js-wat" rows="5" cols="25">
-"foo" + 1;
-"foo" - 1;
-null > 0;
-null == 0;
-null >= 0;</textarea>
-                    <div class="bad-image"></div>
-                </div>
-                <div id="js-wat" class="code-font"></div>
-                <p class="small-font">
-                    <a href="https://www.destroyallsoftware.com/talks/wat">Wat! de Gary Bernhardt</a>
-                </p>
+		<br />
+                <textarea class="code-font" data-autojslog="js-dom-content" rows="4" cols="60">
+const div1 = document.getElementById("dom-content1");
+div1.innerHTML = "<b>innerHTML</b>";
+const div2 = document.getElementById("dom-content2");
+div2.innerText = "<b>innerText</b>";</textarea>
+                <div id="js-dom-content" class="autojslog code-font"></div>
             </section>
         </div>
     </div>
