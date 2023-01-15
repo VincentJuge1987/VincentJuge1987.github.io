@@ -137,14 +137,14 @@ traceroute to 93.184.220.20 (93.184.220.20), 30 hops max, 60 byte packets
                 <h2>host</h2>
                 <p>La commande <span class="keyword">host</span> permet de demander au DNS une adresse IP pour un nom de machine.</p>
                 <pre><code class="hlbash" data-trim>
-$ host www.u-pem.fr
-www.u-pem.fr is an alias for typo3-prod.u-pem.fr.
-typo3-prod.u-pem.fr has address 193.50.159.151.
+$ host elearning.univ-eiffel.fr
+elearning.univ-eiffel.fr is an alias for rp-edu.univ-eiffel.fr.
+rp-edu.univ-eiffel.fr has address 193.55.63.13
 
-$ host playboy.com
-playboy.com has address 204.74.99.100
-playboy.com mail is handled by 10 mx.la.playboy.com.
-playboy.com mail is handled by 5 mx01.la.playboy.com.</code></pre>
+$ host univ-eiffel.fr
+univ-eiffel.fr has address 193.50.159.150
+univ-eiffel.fr mail is handled by 10 mx1.univ-eiffel.fr.
+univ-eiffel.fr mail is handled by 50 mx2.univ-eiffel.fr.</code></pre>
                 <p class="small-font">
                     L'équivalent de <span class="keyword">host</span> sous Windows est
                     <span class="keyword">nslookup</span>.
@@ -154,14 +154,14 @@ playboy.com mail is handled by 5 mx01.la.playboy.com.</code></pre>
                 <h2>host avec un DNS externe</h2>
                 <p>en utilisant un des DNS de Google 8.8.8.8</p>
                 <pre><code class="hlbash" data-trim>
-$ host www.u-pem.fr 8.8.8.8
+$ host elearning.univ-eiffel.fr 8.8.8.8
 Using domain server:
 Name: 8.8.8.8
 Address: 8.8.8.8#53
 Aliases: 
 
-www.u-pem.fr is an alias for typo3-prod.u-pem.fr.
-typo3-prod.u-pem.fr has address 193.50.159.151</code></pre>
+elearning.univ-eiffel.fr is an alias for rp-edu.univ-eiffel.fr.
+rp-edu.univ-eiffel.fr has address 193.55.63.13</code></pre>
             </section>
             <section>
                 <h2>Google DNS</h2>
@@ -225,7 +225,7 @@ GET /ens/ HTTP/1.0
 Host: igm.univ-mlv.fr</code></pre>
                 <pre class="fragment"><code class="hlbash" data-trim>
 HTTP/1.1 200 OK
-Date: Fri, 10 Dec 2021 14:28:58 GMT
+Date: Sun, 15 Jan 2023 18:29:01 GMT
 Server: Apache
 Content-Length: 2957
 Connection: close
@@ -305,16 +305,16 @@ Content-Type: text/html; charset=UTF-8</code></pre>
                     On doit de plus spécifier un <span class="keyword">Host</span> car un serveur <br /> peut héberger plusieurs sites
                 </p>
                 <pre><code class="hlbash" data-trim>
-$ nc -C forax.github.io 80
+$ nc -C vincentjuge1987.github.io 80
 GET / HTTP/1.0
 
 HTTP/1.1 404 Not Found
 Server: GitHub.com
 ...</code></pre>
-                <pre class="fragment"><code class="hlbash" data-trim>
-$ nc -C forax.github.io 80
+                <pre class="fragment"><code class="hlbash" data-trim>curl 'https://vincentjuge1987.github.io/web.html' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' -H 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' -H 'Accept-Encoding: gzip, deflate, br' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -H 'Sec-Fetch-Dest: document' -H 'Sec-Fetch-Mode: navigate' -H 'Sec-Fetch-Site: none' -H 'Sec-Fetch-User: ?1' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' -H 'TE: trailers'
+$ nc -C vincentjuge1987.github.io 80
 GET / HTTP/1.1
-Host: forax.github.io
+Host: vincentjuge1987.github.io
 
 HTTP/1.1 200 OK
 Server: GitHub.com
@@ -329,22 +329,22 @@ Host: imgs.xkcd.com</code></pre>
 		<div class="fragment">
                 <pre><code class="http" data-trim>
 HTTP/1.1 200 OK
-Cache-Control: public, max-age=300
-Expires: Mon, 25 Jan 2021 08:06:27 GMT
-Content-Type: image/png
-ETag: "3722984847"
-Last-Modified: Mon, 28 Apr 2014 04:40:03 GMT
-Server: lighttpd/1.4.28
+Connection: keep-alive
 Content-Length: 19172
+Server: nginx
+Content-Type: image/png
+Last-Modified: Mon, 28 Apr 2014 04:40:03 GMT
+ETag: "535ddba3-4ae4"
+Expires: Sun, 15 Jan 2023 18:44:30 GMT
+Cache-Control: max-age=300
 Accept-Ranges: bytes
-Date: Mon, 25 Jan 2021 08:01:28 GMT
+Date: Sun, 15 Jan 2023 18:39:30 GMT
 Via: 1.1 varnish
-Age: 16
-Connection: close
-X-Served-By: cache-lcy1135-LCY
-X-Cache: HIT
-X-Cache-Hits: 6
-X-Timer: S1453643891.248729,VS0,VE0
+Age: 0
+X-Served-By: cache-cdg20745-CDG
+X-Cache: MISS
+X-Cache-Hits: 0
+X-Timer: S1673807970.207009,VS0,VE410
 </code></pre>
                 <p class="small-font"> Fichier PNG de 19172 octets</p></div>
             </section>
@@ -355,12 +355,37 @@ X-Timer: S1453643891.248729,VS0,VE0
                 </p>
                 <pre><code class="hlbash" data-trim>
 $ wget https://vincentjuge1987.github.io/web.html
---2022-01-23 12:52:47--  https://vincentjuge1987.github.io/web.html
-Résolution de vincentjuge1987.github.io (vincentjuge1987.github.io)... 2606:50c0:8000::153
-Connexion vers vincentjuge1987.github.io (vincentjuge1987.github.io)|2606:50c0:8000::153|:443... connecté.
-requête HTTP transmise, en attente de la réponse... 200 OK
-Taille : 19120 (19K) [text/html]
-Enregistre : «web.html»</code></pre>
+--2023-01-15 19:41:12--  https://vincentjuge1987.github.io/web.html
+Résolution de vincentjuge1987.github.io (vincentjuge1987.github.io)… 2606:50c0:8003::153, 2606:50c0:8001::153, 2606:50c0:8002::153, ...
+Connexion à vincentjuge1987.github.io (vincentjuge1987.github.io)|2606:50c0:8003::153|:443… connecté.
+requête HTTP transmise, en attente de la réponse… 200 OK
+Taille : 19227 (19K) [text/html]
+Enregistre : ‘web.html’
+
+web.html            100%[===================>]  18,78K  --.-KB/s    ds 0,005s  
+
+2023-01-15 19:41:12 (3,69 MB/s) - ‘web.html’ enregistré [19227/19227]</code></pre>
+            </section>
+            <section>
+                <h2>curl</h2>
+                <p>
+                    <span class="keyword">curl</span> permet de faire une requête en indiquant des options.
+                </p>
+                <pre><code class="hlbash" data-trim>
+$ curl 'https://elearning.univ-eiffel.fr/pluginfile.php/1/theme_remui/slideimage1/1673448987/slider-amphi.jpg'
+-H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0'
+-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+-H 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3'
+-H 'Accept-Encoding: gzip, deflate, br'
+-H 'Connection: keep-alive'
+-H 'Cookie: SERVERID=mdl-node3; MoodleSession=9od810aeg016mlee08usslbeu6'
+-H 'Upgrade-Insecure-Requests: 1'
+-H 'Sec-Fetch-Dest: document'
+-H 'Sec-Fetch-Mode: navigate'
+-H 'Sec-Fetch-Site: cross-site'
+-H 'Pragma: no-cache'
+-H 'Cache-Control: no-cache'
+> slider-amphi.jpg</code></pre>
             </section>
             <section>
                 <h2>Requêtes HTTP</h2>
