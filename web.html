@@ -311,7 +311,7 @@ GET / HTTP/1.0
 HTTP/1.1 404 Not Found
 Server: GitHub.com
 ...</code></pre>
-                <pre class="fragment"><code class="hlbash" data-trim>curl 'https://vincentjuge1987.github.io/web.html' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' -H 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' -H 'Accept-Encoding: gzip, deflate, br' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -H 'Sec-Fetch-Dest: document' -H 'Sec-Fetch-Mode: navigate' -H 'Sec-Fetch-Site: none' -H 'Sec-Fetch-User: ?1' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' -H 'TE: trailers'
+                <pre class="fragment"><code class="hlbash" data-trim>
 $ nc -C vincentjuge1987.github.io 80
 GET / HTTP/1.1
 Host: vincentjuge1987.github.io
@@ -355,15 +355,14 @@ X-Timer: S1673807970.207009,VS0,VE410
                 </p>
                 <pre><code class="hlbash" data-trim>
 $ wget https://vincentjuge1987.github.io/web.html
+
 --2023-01-15 19:41:12--  https://vincentjuge1987.github.io/web.html
 Résolution de vincentjuge1987.github.io (vincentjuge1987.github.io)… 2606:50c0:8003::153, 2606:50c0:8001::153, 2606:50c0:8002::153, ...
 Connexion à vincentjuge1987.github.io (vincentjuge1987.github.io)|2606:50c0:8003::153|:443… connecté.
 requête HTTP transmise, en attente de la réponse… 200 OK
 Taille : 19227 (19K) [text/html]
 Enregistre : ‘web.html’
-
 web.html            100%[===================>]  18,78K  --.-KB/s    ds 0,005s  
-
 2023-01-15 19:41:12 (3,69 MB/s) - ‘web.html’ enregistré [19227/19227]</code></pre>
             </section>
             <section>
@@ -410,21 +409,11 @@ $ curl 'https://elearning.univ-eiffel.fr/pluginfile.php/1/theme_remui/slideimage
                 <p class="fragment">Pour des questions de performance, le chiffrement asymétrique n'est utilisé que pour échanger une clef symétrique entre
                     le client et le serveur. Le reste des échanges se fait en utilisant cette clef symétrique.</p>
             </section>
-<!-- section>
-<h2>Chiffrage asymétrique</h2>
+            <section>
+                <img src="images/web/https-certificates.png">
+            </section>
 
-<p>
-clé publique
-clé privée
-</p>
-
-</section>
-
-<section>
-<img src="images/web/https-certificates.png">
-</section>
-
-<section>
+<!--section>
 <h2>Certificats</h2>
 <p>
 

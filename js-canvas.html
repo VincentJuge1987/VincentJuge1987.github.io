@@ -21,20 +21,20 @@
         <div class="slides">
             <section>
                 <h1>JavaScript</h1>
-                <br />
+                <br>
                 <h2>Canvas</h2>
                 <p>
-                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                    Raconté par <b>Vincent Jugé</b> <br> sur la base d'un cours créé par <b>Rémi Forax</b>
                 </p>
             </section>
             <section>
                 <h2>Historique des versions</h2>
-                La spécification est en 2 parties&nbsp;:<br />
+                La spécification est en 2 parties&nbsp;:<br>
                 <ol>
                     <li>un élément <em>canvas</em></li>
                     <li>un objet <em>context&nbsp;2D</em></li>
                 </ol>
-                <br />
+                <br>
                 <table>
                     <tr>
                         <td><a href="https://www.w3.org/TR/html5/scripting-1.html#the-canvas-element">HTML 5 Canvas</a></td>
@@ -55,7 +55,7 @@
         width="300"
         height="180"&gt;&lt;/canvas&gt;</code></pre>
                 <canvas id="canvas-example1" width="300" height="180"></canvas>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojscanvas="canvas-example1" rows="4" cols="56">
 const canvas = document.getElementById('canvas-example1');
 const context = canvas.getContext("2d");
@@ -66,11 +66,11 @@ context.strokeRect(75, 50, 100, 60);</textarea>
             <section>
                 <h2>Le context 2D</h2>
                 <p>
-                    On récupère l'élément Canvas par son nom <br /> puis on demande le contexte de dessin 2D pour dessiner.
+                    On récupère l'élément Canvas par son nom <br> puis on demande le contexte de dessin 2D pour dessiner.
                 </p>
-                <br />
+                <br>
                 <canvas id="canvas-example2" width="300" height="180"></canvas>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojscanvas="canvas-example2" rows="2" cols="40">
 context.fillStyle = "tomato";
 context.fillRect(100, 50, 100, 100);</textarea>
@@ -82,20 +82,20 @@ context.fillRect(100, 50, 100, 100);</textarea>
                 <h2>Les coordonnées</h2>
                 <p>Le point (x = 0, y = 0) est en haut à gauche.</p>
                 <p class="small-font">
-                    x&nbsp;: coordonnée sur l'axe horizontal (vers la droite) <br /> y&nbsp;: coordonnée sur l'axe vertical (vers le bas)
+                    x&nbsp;: coordonnée sur l'axe horizontal (vers la droite) <br> y&nbsp;: coordonnée sur l'axe vertical (vers le bas)
                 </p>
                 <canvas id="canvas-example3" width="300" height="180"></canvas>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojscanvas="canvas-example3" rows="2" cols="40">
 context.fillStyle = "violet";
 context.fillRect(0, 0, 100, 100);</textarea>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>L'état du context</h2>
                 <p>La façon d'afficher dépend de l'état de propriétés du <span class="keyword">context</span>.</p>
                 <canvas id="canvas-example4" width="300" height="180"></canvas>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojscanvas="canvas-example4" rows="4" cols="40">
 context.strokeStyle = "blue";
 context.strokeRect(150, 25, 100, 100);
@@ -111,13 +111,13 @@ context.strokeRect(100, 50, 100, 100);</textarea>
                     Les couleurs sont les mêmes que les <a href="css.html#style-color">couleurs de CSS</a>.
                 </p>
                 <canvas id="canvas-color" width="300" height="180"></canvas>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojscanvas="canvas-color" rows="4" cols="40">
 context.fillStyle = "rgb(255, 0, 0)";
 context.fillRect(25, 50, 100, 100);
 context.fillStyle = "#00A0A0";
 context.fillRect(150, 50, 100, 100);</textarea>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Gradient linéaire</h2>
@@ -174,11 +174,11 @@ context.fillRect(50, 50, 150, 150);</textarea>
             <section>
                 <h2>Afficher un texte</h2>
                 <p>
-                    <span class="keyword">stroke</span> = trait <br /> 
+                    <span class="keyword">stroke</span> = trait <br> 
 		    <span class="keyword">fill</span> = remplissage
                 </p>
                 <canvas id="canvas-text" width="300" height="180"></canvas>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojscanvas="canvas-text" rows="5" cols="40">
 context.strokeStyle = "gray";
 context.fillStyle = "red";
@@ -190,28 +190,28 @@ context.fillText("Hello World", 20, 100);</textarea>
             <section>
                 <h2>Afficher un rectangle</h2>
                 <p>
-                    <span class="keyword">stroke</span> = trait <br /> 
+                    <span class="keyword">stroke</span> = trait <br> 
 		    <span class="keyword">fill</span> = remplissage
                 </p>
                 <canvas id="canvas-rect" width="300" height="180"></canvas>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojscanvas="canvas-rect" rows="4" cols="40">
 context.strokeStyle = "blue";
 context.strokeRect(50, 50, 100, 50);
 context.fillStyle = "red";
 context.fillRect(100, 75, 100, 50);</textarea>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Afficher une ligne</h2>
                 <p>
                     <span class="keyword">moveTo</span> déplace le crayon,
-		    <span class="keyword">lineTo</span> place une ligne, <br />
+		    <span class="keyword">lineTo</span> place une ligne, <br>
 		    <span class="keyword">beginPath</span> indique le début d'un chemin,
 		    <span class="keyword">stroke</span> dessine.
                 </p>
                 <canvas id="canvas-line" width="300" height="180"></canvas>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojscanvas="canvas-line" rows="7" cols="40">
 context.strokeStyle = "orange";
 context.lineWidth = 7;
@@ -220,13 +220,13 @@ context.moveTo(50, 50);
 context.lineTo(150, 150);
 context.lineTo(250, 50);
 context.stroke();</textarea>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Style d'une ligne</h2>
-                <br />
+                <br>
                 <canvas id="canvas-line2" width="300" height="180"></canvas>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojscanvas="canvas-line2" rows="9" cols="40">
 context.strokeStyle = "fuchsia";
 context.lineWidth = 7;
@@ -249,7 +249,7 @@ context.stroke();</textarea><dl class="small-font right-float">
             <section>
                 <h2>Afficher un cercle/ellipse</h2>
                 <p>
-                    <span class="keyword">arc</span>(x, y, radius, startAngle, endAngle) <br /> <span class="small-font">Les angles sont en radians&nbsp;!</span>
+                    <span class="keyword">arc</span>(x, y, radius, startAngle, endAngle) <br> <span class="small-font">Les angles sont en radians&nbsp;!</span>
                 </p>
                 <canvas id="canvas-arc" width="260" height="180"></canvas>
                 <textarea class="code-font" data-autojscanvas="canvas-arc" rows="9" cols="46">
@@ -316,7 +316,7 @@ context.putImageData(imageData, 0, 0);</textarea>
             <section>
                 <h2>Afficher une image (1/3)</h2>
                 <p>
-                    Il faut que l'image soit chargée avant de pouvoir la dessiner&nbsp; <br /> si l'image est déjà dans la page, pas de problème&hellip;
+                    Il faut que l'image soit chargée avant de pouvoir la dessiner&nbsp; <br> si l'image est déjà dans la page, pas de problème&hellip;
                 </p>
                 <canvas id="canvas-image" width="250" height="180"></canvas>
                 <img id="image-html5" src="images/js-canvas/html5.png" class="right-float" style="margin: 35px 0px 0px 0px" alt="HTML-5">
@@ -326,7 +326,7 @@ const image = document.getElementById("image-html5");
 for(let i = 0; i < 3; i++) {
   context.drawImage(image, 10 + i * 75, 10 + i * 30);
 }</textarea>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Afficher une image (2/3)</h2>
@@ -334,7 +334,7 @@ for(let i = 0; i < 3; i++) {
                     Si l'image n'est pas chargée, <b>image.<span class="keyword">onload</span></b> est appelée lorsque l'image est chargée.
                 </p>
                 <canvas id="canvas-image2" width="250" height="180"></canvas>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojscanvas="canvas-image2" rows="8" cols="53">
 const image = new Image();
 const letUsDrawTheImages = function() {
@@ -344,7 +344,7 @@ const letUsDrawTheImages = function() {
 }
 image.onload = letUsDrawTheImages;
 image.src = "images/js-canvas/html5.png";</textarea>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Afficher une image (3/3)</h2>
@@ -353,7 +353,7 @@ image.src = "images/js-canvas/html5.png";</textarea>
 ce qui évite de devoir trouver un nom à la fonction.
                 </p>
                 <canvas id="canvas-image3" width="250" height="180"></canvas>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojscanvas="canvas-image3" rows="7" cols="66">
 const image = new Image();
 image.onload = function() {

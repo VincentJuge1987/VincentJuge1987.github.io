@@ -21,7 +21,7 @@
             <section>
                 <h1>JavaScript</h1>
                 <p>
-                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                    Raconté par <b>Vincent Jugé</b> <br> sur la base d'un cours créé par <b>Rémi Forax</b>
                 </p>
             </section>
             <!--<section>
@@ -129,7 +129,7 @@ sum = a + b;</textarea>
                 <h2>Instruction et&nbsp;;</h2>
                 <p>
                     On termine <span class="keyword">toujours</span> une initialisation/déclaration par un&nbsp;';'.
-                    <br/>
+                    <br>
                     <span class="small-font">La syntaxe d'ECMAScript est ambiguë si on omet les &nbsp;';'.</span>
                 </p>
                 <p>L'indentation est optionnelle mais <span class="keyword">fortement recommandée</span>.</p>
@@ -164,7 +164,7 @@ console.log(good);
 </textarea>
                     <div class="bad-image"></div>
                 </div>
-                <br />
+                <br>
                 <div id="js-var-scope4" class="autojslog code-font"></div>
                 <p class="fragment">Les variables globales sont interdites par la convention de Genève&nbsp;!</p>
             </section>
@@ -208,7 +208,7 @@ const b = 42;
                 <h2>Types de base</h2>
                 <p>
                     Il existe trois types de base&nbsp;: <span class="keyword">number</span>, 
-		    <span class="keyword">boolean</span> et <span class="keyword">string</span>. <br />
+		    <span class="keyword">boolean</span> et <span class="keyword">string</span>. <br>
 		        <span class="small-font"> L'opérateur <span class="keyword">typeof</span>
                         permet d'obtenir le type à partir d'une valeur.
                     </span>
@@ -247,13 +247,13 @@ a / b;
 a % b;</textarea>
                 <div class="code-font" id="js-operator"></div>
                 <p>
-                    Les nombres sont soit des entiers, <br /> soit des nombres à virgule flottante.
+                    Les nombres sont soit des entiers, <br> soit des nombres à virgule flottante.
                 </p>
             </section>
             <section>
                 <h2>Calcul sur les flottants</h2>
                 <p>
-                    Les résultats d'un calcul sont arrondis au <br /> flottant le plus proche.
+                    Les résultats d'un calcul sont arrondis au <br> flottant le plus proche.
                 </p>
                 <textarea class="code-font" data-autojs="js-number2" rows="3" cols="20">
 const a = 0.1;
@@ -300,7 +300,7 @@ d == e;</textarea>
             <section>
                 <h2>Opérateurs booléens</h2>
                 <p>
-                    Les opérateurs &amp;&amp; (<span class="keyword">ET</span>) et || (<span class="keyword">OU</span>) permettent <br /> de tester plusieurs conditions.
+                    Les opérateurs &amp;&amp; (<span class="keyword">ET</span>) et || (<span class="keyword">OU</span>) permettent <br> de tester plusieurs conditions.
                 </p>
                 <textarea class="code-font" data-autojs="js-operator3" rows="7" cols="20">
 true && false;
@@ -328,7 +328,7 @@ true != false;
             <!--<section>
                 <h2>&amp;&amp; et || sont paresseux</h2>
                 <p class="small-font">
-                    Si la partie gauche d'un <span class="keyword">&amp;&amp;</span> est <span class="keyword">false</span>, la partie droite est pas évaluée. <br />
+                    Si la partie gauche d'un <span class="keyword">&amp;&amp;</span> est <span class="keyword">false</span>, la partie droite est pas évaluée. <br>
 		    Si la partie gauche d'un <span class="keyword">||</span> est
                     <span class="keyword">true</span>, la partie droite est pas évaluée.
                 </p>
@@ -337,7 +337,7 @@ false && console.log("&& travaille trop !");
 true && console.log("&& travaille bien !");
 true || console.log("|| travaille trop !");
 false || console.log("|| travaille bien !");</textarea>
-                <br />
+                <br>
                 <div id="js-if-lazy" class="autojslog code-font"></div>
             </section>-->
             <section>
@@ -361,7 +361,7 @@ false + 'hello';
                     <p>
                       Les anti-quotes (`) permettent de définir une chaîne de caractères
                       contenant des expressions.
-                     <br/>
+                     <br>
                         ${...} introduit une expression.
                     </p>
                     <textarea class="code-font" data-autojs="js-interpolation-2" rows="5" cols="25">
@@ -383,13 +383,13 @@ const x = 21;
                     <dt><span class="keyword">alert</span>(message)</dt>
                     <dd>affiche un message dans une fenêtre pop-up</dd>
                 </dl>
-		<br /><br />
+		<br><br>
                 <textarea class="code-font" data-autojslog="js-browser" rows="2" cols="36">
 console.log('hello');
 alert('hello');</textarea>
-                <br />
+                <br>
                 <div id="js-browser" class="autojslog code-font"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Changer le contenu d'un élément HTML</h2>
@@ -405,7 +405,7 @@ alert('hello');</textarea>
                     <div class="small-font" id="dom-content1">&nbsp;</div>
                     <div class="small-font" id="dom-content2">&nbsp;</div>
                 </div>
-		<br />
+		<br>
                 <textarea class="code-font" data-autojslog="js-dom-content" rows="4" cols="60">
 const div1 = document.getElementById("dom-content1");
 div1.innerHTML = "<b>innerHTML</b>";

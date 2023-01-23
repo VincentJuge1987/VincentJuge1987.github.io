@@ -20,10 +20,10 @@
         <div class="slides">
             <section>
                 <h1>JavaScript</h1>
-                <br />
+                <br>
                 <h2>JavaScript 2015</h2>
                 <p>
-                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                    Raconté par <b>Vincent Jugé</b> <br> sur la base d'un cours créé par <b>Rémi Forax</b>
                 </p>
             </section>
             <section>
@@ -32,19 +32,19 @@
             <section>
                 <h2>Fonction Flèche</h2>
                 <p>Syntaxe plus compacte lorsque l'on définit une fonction anonyme</p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojs="js6-arrowfun" rows="4" cols="45">
 let add1 = function(a, b) { return a + b; };
 add1(2, 3);
 let add2 = (a, b) => a + b;
 add2(2, 3);</textarea>
                 <div class="code-font" id="js6-arrowfun"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Syntaxe des Fonctions Flèches</h2>
                 <p>S'il n'y a qu'un seul paramètre, les parenthèses autour des paramètres ne sont pas obligatoires.</p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojs="js6-arrowfun2" rows="6" cols="45">
 let hello = () => "hello";
 hello();
@@ -53,7 +53,7 @@ identity(3);
 let add = (a, b) => a + b;
 add(4, 5);</textarea>
                 <div class="code-font" id="js6-arrowfun2"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>let, var &amp; const</h2>
@@ -61,20 +61,20 @@ add(4, 5);</textarea>
             <section>
                 <h2>Problèmes de <span class="keyword">var</span> </h2>
                 <p>Les <span class="keyword">var</span> sont remontés en haut des fonctions&nbsp;!</p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojslog="js6-var" rows="2" cols="45">
 console.log(a);   // oups, marche quand même
 var a = 3;</textarea>
-                <br />
+                <br>
                 <div id="js6-var" class="autojslog code-font"></div>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojslog="js6-var2" rows="5" cols="45">
 var array = [];
 for(var i = 0; i < 3; i++) {
   array.push(() => i);
 }
 console.log(array.map(f => f()));</textarea>
-                <br />
+                <br>
                 <div id="js6-var2" class="autojslog code-font"></div>
             </section>
             <section>
@@ -83,20 +83,20 @@ console.log(array.map(f => f()));</textarea>
                     <span class="keyword">let</span> définit une variable de l'endroit où on
                     la déclare jusqu'à la parenthèse fermante du bloc qui la contient.
                 </p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojslog="js6-let" rows="2" cols="45">
 console.log(a);
 let a = 3;</textarea>
-                <br />
+                <br>
                 <div id="js6-let" class="autojslog code-font"></div>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojslog="js6-let2" rows="5" cols="45">
 let array = [];
 for(let i = 0; i < 3; i++) {
   array.push(() => i);
 }
 console.log(array.map(f => f()));</textarea>
-                <br />
+                <br>
                 <div id="js6-let2" class="autojslog code-font"></div>
             </section>
             <section>
@@ -104,17 +104,17 @@ console.log(array.map(f => f()));</textarea>
                 <p>
                     <span class="keyword">const</span> définit une variable dont la valeur ne peut pas changer.
                 </p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojslog="js6-const" rows="2" cols="45">
 const RETRY = 3;
 console.log(RETRY);</textarea>
-                <br />
+                <br>
                 <div id="js6-const" class="autojslog code-font"></div>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojslog="js6-const2" rows="2" cols="45">
 const A = 3;
 const A = 4;</textarea>
-                <br />
+                <br>
                 <div id="js6-const2" class="autojslog code-font"></div>
             </section>
             <section>
@@ -123,7 +123,7 @@ const A = 4;</textarea>
             <section>
                 <h2>Héritage</h2>
                 <p>Définir une classe en étendant des propriétés d'une classe existante</p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojslog="js6-class-inheritance" rows="10" cols="50">
 class A {
   // le constructeur est optionnel
@@ -135,13 +135,13 @@ class B extends A {
 let b = new B();
 console.log(b.hello());
 console.log(b.msg("bob"));</textarea>
-                <br />
+                <br>
                 <div id="js6-class-inheritance" class="autojslog code-font"></div>
             </section>
             <section>
                 <h2>super()</h2>
                 <p><span class="keyword">super()</span> permet d'appeler le constructeur de la super-classe.</p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojslog="js6-class-super" rows="9" cols="50">
 class Abscissa {
   constructor(x) { this.x = x; }
@@ -152,7 +152,7 @@ class Point extends Abscissa {
 }
 let array = [new Abscissa(3), new Point(1, 2)];
 array.map(v => v.str()).forEach(console.log);</textarea>
-                <br />
+                <br>
                 <div id="js6-class-super" class="autojslog code-font"></div>
             </section>
             <section>
@@ -170,13 +170,13 @@ class Point extends Abscissa {
 }
 let array = [new Abscissa(3), new Point(1, 2)];
 array.map(v => v.str()).forEach(console.log);</textarea>
-                <br />
+                <br>
                 <div id="js6-class-super2" class="autojslog code-font"></div>
             </section>
             <section>
                 <h2>Problème de l'héritage</h2>
                 <p>
-                    Si on insère une méthode dans une super-classe, <br /> il faut <b>adapter</b> celle-ci dans toutes les sous-classes.
+                    Si on insère une méthode dans une super-classe, <br> il faut <b>adapter</b> celle-ci dans toutes les sous-classes.
                 </p>
                 <div class="bad-container">
                     <textarea class="code-font" data-autojslog="js6-class-inherit" rows="13" cols="55">
@@ -193,7 +193,7 @@ class Rectangle extends Square {
 var array = [new Square(3), new Rectangle(2, 3)];
 console.log(array.map(e => e.surface()));</textarea><div class="bad-image"></div>
                 </div>
-                <br />
+                <br>
                 <div id="js6-class-inherit" class="autojslog code-font"></div>
             </section>
             <section>
@@ -212,7 +212,7 @@ class Rectangle {
 }
 var array = [new Square(3), new Rectangle(2, 3)];
 console.log(array.map(e => e.surface()));</textarea>
-                <br />
+                <br>
                 <div id="js6-inherit-limit2" class="autojslog code-font"></div>
             </section>
             <section>
@@ -221,7 +221,7 @@ console.log(array.map(e => e.surface()));</textarea>
             <section>
                 <h2>Assignation déstructurée</h2>
                 <p>Il est possible de mettre des '[' ']' en partie gauche d'une assignation pour récupérer les valeurs d'un tableau.</p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojs="js6-destructured" rows="5" cols="30">
 let array = ['a', 'b', 'c' ];
 let [v, w, x] = array;
@@ -229,7 +229,7 @@ v;
 w;
 x;</textarea>
                 <div class="code-font" id="js6-destructured"></div>
-                <br />
+                <br>
                 <p>
                     Attention à ne pas oublier le <span class="keyword">let</span>&nbsp;!
                 </p>
@@ -237,21 +237,21 @@ x;</textarea>
             <section>
                 <h2>Assignation déstructurée (2)</h2>
                 <p>Il est possible d'omettre des variables si on ne veut pas récupérer certaines valeurs.</p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojs="js6-destructured2" rows="4" cols="35">
 let array = ['a', 'b', 'c' ];
 let [v, , w] = array;
 v;
 w;</textarea>
                 <div class="code-font" id="js6-destructured2"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Assignation déstructurée (3)</h2>
                 <p>
-                    On peut aussi séparer la déclaration (<span class="keyword">let</span>...) <br /> de l'assignation déstructurée ([...] = ...)
+                    On peut aussi séparer la déclaration (<span class="keyword">let</span>...) <br> de l'assignation déstructurée ([...] = ...)
                 </p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojs="js6-destructured3" rows="5" cols="35">
 let array = ['a', 'b', 'c' ];
 let v, w;
@@ -259,14 +259,14 @@ let v, w;
 v;
 w;</textarea>
                 <div class="code-font" id="js6-destructured3"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Assignation déstructurée (4)</h2>
                 <p>
                     donc on peut écrire un <span class="keyword">swap</span> facilement&nbsp;:
                 </p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojs="js6-destructured4" rows="5" cols="35">
 let a = 39;
 let b = 45;
@@ -274,12 +274,12 @@ let b = 45;
 a;
 b;</textarea>
                 <div class="code-font" id="js6-destructured4"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Avec une fonction</h2>
                 <p>Cela permet à une fonction de renvoyer plusieurs valeurs&nbsp;:</p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojslog="js6-destructured-fun" rows="8" cols="40">
 function minmax(a, b) {
   if (a < b) {
@@ -289,24 +289,24 @@ function minmax(a, b) {
 }
 let [min, max] = minmax(10, 3);
 console.log(min + " " + max);</textarea>
-                <br />
+                <br>
                 <div id="js6-destructured-fun" class="autojslog code-font"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Avec un objet</h2>
                 <p>
-                  L'assignation déstructurée marche aussi avec les objets <br /> en utilisant '{' et '}' à la place de '[' et ']'.
+                  L'assignation déstructurée marche aussi avec les objets <br> en utilisant '{' et '}' à la place de '[' et ']'.
                 </p>
-                <br />
+                <br>
                 <textarea class="code-font" data-autojslog="js6-destructured-object" rows="4" cols="45">
 let person = { name: "john", age: 12 };
 let {name, age} = person;
 console.log(name);
 console.log(age);</textarea>
-                <br />
+                <br>
                 <div id="js6-destructured-object" class="autojslog code-font"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Ajouts de fonctions utilitaires</h2>
@@ -315,7 +315,7 @@ console.log(age);</textarea>
                 <div id="dom-array-from">
                     <h2>Array.from() &amp; DOM</h2>
                     <p><span class="keyword">Array.from</span> permet de prendre une <span class="keyword">HTMLCollection</span> et de la voir comme un tableau.</p>
-                    <br />
+                    <br>
                     <textarea class="code-font" data-autojs="js6-array-example" rows="3" cols="54">
 let elt = document.getElementById("dom-array-from");
 elt.children.toString();

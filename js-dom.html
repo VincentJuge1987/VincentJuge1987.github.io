@@ -20,17 +20,17 @@
         <div class="slides">
             <section>
                 <h1>JavaScript</h1>
-                <br />
+                <br>
                 <h2>Document Object Model</h2>
                 <p>
-                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                    Raconté par <b>Vincent Jugé</b> <br> sur la base d'un cours créé par <b>Rémi Forax</b>
                 </p>
             </section>
             <section>
                 <div id="dom-example">
                     <h2>Arbre DOM</h2>
                     <p>
-                        L'API <b>DOM</b> permet de manipuler l'arbre correspondant <br /> à une page HTML en JavaScript.
+                        L'API <b>DOM</b> permet de manipuler l'arbre correspondant <br> à une page HTML en JavaScript.
                     </p>
                     <textarea class="code-font" data-autojs="js-dom1" rows="8" cols="54">
 document.toString();
@@ -73,7 +73,7 @@ text.nodeValue;</textarea>
                     <p>
                         <span class="keyword">children</span> et 
 			<span class="keyword">childNodes</span> renvoient des
-			HTMLCollection mais <br />
+			HTMLCollection mais <br>
 		        <b>PAS</b> des tableaux&nbsp;:
 			seuls <span class="keyword">length</span> et
 			<b>[ ]</b> fonctionnent.
@@ -119,13 +119,13 @@ dts.length;</textarea>
                     <dt>element.<span class="keyword">innerText</span></dt>
                     <dd>uniquement pour le contenu texte</dd>
                 </dl>
-		<br />
-		<br />
+		<br>
+		<br>
                 <div style="color: pink">
                     <div class="small-font" id="dom-content1"></div>
                     <div class="small-font" id="dom-content2"></div>
                 </div>
-		<br />
+		<br>
                 <textarea class="code-font" data-autojslog="js-dom-content" rows="4" cols="60">
 const div1 = document.getElementById("dom-content1");
 div1.innerHTML = "<b>" + new Date() + "</b>";
@@ -136,7 +136,7 @@ div2.innerText = "<b>" + new Date() + "</b>";</textarea>
             <section>
                 <h2>&Eacute;vénement onclick</h2>
                 <p>
-                    Il est possible d'enregistrer des événements <br /> sur des éléments.
+                    Il est possible d'enregistrer des événements <br> sur des éléments.
                 </p>
                 <div id="dom-div" style="background-color: pink; border: 2px solid silver; width: 200px; position: relative; left: 10px">&nbsp;</div>
                 <p>
@@ -175,7 +175,7 @@ inputText.onkeyup = function() {
             <section>
                 <h2>Ajouter de nouveaux éléments</h2>
                 <p>
-                    <b>document.<span class="keyword">createElement</span></b> permet de créer un élément. <br /> <b>parent.<span class="keyword">appendChild</span>(element)</b> ajoute un élément.
+                    <b>document.<span class="keyword">createElement</span></b> permet de créer un élément. <br> <b>parent.<span class="keyword">appendChild</span>(element)</b> ajoute un élément.
                 </p>
                 <textarea class="code-font" data-autojslog="js-dom-event2" rows="6" cols="60">
 const div = document.getElementById("dom-new");
@@ -188,7 +188,7 @@ button.onclick = function() {
                     <button type="button" id="dom-new-button">Add a box&nbsp;!</button>
                 </p>
                 <div id="dom-new"></div>
-                <br />
+                <br>
                 <p class="small-font"></p>
                 <div id="js-dom-event2" class="autojslog code-font"></div>
             </section>

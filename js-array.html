@@ -19,16 +19,16 @@
         <div class="slides">
             <section>
                 <h1>JavaScript</h1>
-                <br />
+                <br>
                 <h2>Tableaux</h2>
                 <p>
-                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                    Raconté par <b>Vincent Jugé</b> <br> sur la base d'un cours créé par <b>Rémi Forax</b>
                 </p>
             </section>
             <section>
                 <h2>Tableau</h2>
                 <p>
-                    Un tableau en Javascript se déclare entre <b>[</b> et <b>]</b>. <br /> Les éléments sont séparés par des virgules.
+                    Un tableau en Javascript se déclare entre <b>[</b> et <b>]</b>. <br> Les éléments sont séparés par des virgules.
                 </p>
                 <textarea class="code-font" data-autojs="js-array1" rows="4" cols="30">
 [1, 2, 3];
@@ -42,7 +42,7 @@
                 <h2>Index de tableau</h2>
                 <p>Les cases d'un tableau sont accessibles par un index.</p>
                 <p>
-                    Un accès hors des bornes (0, <span class="keyword">length</span>-1) du tableau <br /> renvoie <span class="keyword">undefined</span>.
+                    Un accès hors des bornes (0, <span class="keyword">length</span>-1) du tableau <br> renvoie <span class="keyword">undefined</span>.
                 </p>
                 <textarea class="code-font" data-autojs="js-array-index" rows="6" cols="30">
 const array = [1, 2, 3];
@@ -63,12 +63,12 @@ array[0];
 array[1] = 'bb8';
 array;</textarea>
                 <div class="code-font" id="js-array-index2"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Boucle sur un tableau (1/2)</h2>
                 <p>
-                    Une boucle <span class="keyword">for</span> de 0 à <span class="keyword">length</span>-1 permet de <br /> parcourir tous les éléments.
+                    Une boucle <span class="keyword">for</span> de 0 à <span class="keyword">length</span>-1 permet de <br> parcourir tous les éléments.
                 </p>
                 <textarea class="code-font" data-autojslog="js-array-loop" rows="7" cols="45">
 const printAll = function(array) {
@@ -78,7 +78,7 @@ const printAll = function(array) {
   }
 };
 printAll([42, true]);</textarea>
-                <br />
+                <br>
                 <div id="js-array-loop" class="autojslog code-font"></div>
             </section>
             <section>
@@ -94,7 +94,7 @@ const printAll = function(array) {
   }
 };
 printAll([42, true]);</textarea>
-                <br />
+                <br>
                 <div id="js-array-of-loop" class="autojslog code-font"></div>
                 <p class="small-font">Cette boucle est plus lisible mais l'index n'est pas disponible !</p>
                 </section>
@@ -107,7 +107,7 @@ const sortPair = function(a,b) {
 };
 console.log(sortPair(0,3));
 console.log(sortPair(4,1));</textarea>
-                <br />
+                <br>
                 <div id="js-array-return" class="autojslog code-font"></div>
             </section>
             <section>
@@ -124,7 +124,7 @@ const logAll = function(text, ...args) {
 };
 logAll("val ", 1, 4);
 logAll("empty");</textarea>
-                <br />
+                <br>
                 <div id="js-array-varargs" class="autojslog code-font"></div>
             </section>
             <section>
@@ -137,7 +137,7 @@ logAll("empty");</textarea>
 const array = [40, 2];
 const min = Math.min(7, ...array);
 console.log(min);</textarea>
-                <br />
+                <br>
                 <div id="js-array-spread" class="autojslog code-font"></div>
             </section>
             <section>
@@ -150,14 +150,14 @@ const array2 = [0, ...array];</textarea>
             </section>
             <section>
                 <h2>Assignation multiple (1/2)</h2>
-                <p>On peut assigner plusieurs variables avec <br/> la syntaxe <b>[var1, var2, &hellip;] = array</b>.</p>
+                <p>On peut assigner plusieurs variables avec <br> la syntaxe <b>[var1, var2, &hellip;] = array</b>.</p>
                 <textarea class="code-font" data-autojslog="js-array-multiple-assign" rows="5" cols="30">
 const array = [40, 2];
 let a;
 let b;
 [a, b] = array;
 console.log(a + b);</textarea>
-                <br />
+                <br>
                 <div id="js-array-multiple-assign" class="autojslog code-font"></div>
             </section>
             <section>
@@ -172,14 +172,14 @@ let first, rest;
 [first, , ...rest] = array;
 console.log(first);
 console.log(rest);</textarea>
-                <br />
+                <br>
                 <div id="js-array-multiple-assign2" class="autojslog code-font"></div>
             </section>
             <section>
                 <h2>Assignation déstructurée</h2>
                 <p>
                     On peut combiner la declaration et l'assignation multiple
-                    <br/>
+                    <br>
                     avec la syntaxe <span class="keyword">let</span>
                     (ou <span class="keyword">const</span>) <b>[var1, var2, &hellip;] = array</b>.
                 </p>
@@ -187,7 +187,7 @@ console.log(rest);</textarea>
 const array = [40, 2];
 const [a, b] = array;
 console.log(a + b);</textarea>
-                <br />
+                <br>
                 <div id="js-array-destructuring" class="autojslog code-font"></div>
             </section>
             <section>
@@ -197,7 +197,7 @@ console.log(a + b);</textarea>
                 <h2>indexOf/lastIndexOf</h2>
                 <p>
                     <b><span class="keyword">indexOf</span>()</b> utilise == pour trouver la <b>première</b> occurence d'un élément et renvoie son index (ou -1). 
-		    <br />
+		    <br>
                     <b><span class="keyword">lastIndexOf</span>()</b> utilise == pour trouver la <b>dernière</b> occurence d'un élément et renvoie son index (ou -1).
                 </p>
                 <textarea class="code-font" data-autojs="js-array-indexof" rows="5" cols="40">
@@ -207,7 +207,7 @@ array.indexOf('z');
 array.lastIndexOf('l');
 array.lastIndexOf('z');</textarea>
                 <div class="code-font" id="js-array-indexof"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>indexOf via une boucle (1/2)</h2>
@@ -225,7 +225,7 @@ const array = ['h', 'e', 'l', 'l', 'o'];
 console.log(indexOf(array, 'e'));
 console.log(indexOf(array, 'l'));
 console.log(indexOf(array, 'z'));</textarea>
-                <br />
+                <br>
                 <div id="js-array-loop3" class="autojslog code-font"></div>
             </section>
             <section>
@@ -233,7 +233,7 @@ console.log(indexOf(array, 'z'));</textarea>
                 <p>
                     Ne <span class="keyword">jamais</span> sortir d'une boucle en changeant un drapeau&nbsp;!
                 </p>
-                <br />
+                <br>
                 <div class="bad-container">
                     <textarea class="code-font" data-autojslog="js-array-loop4" rows="10" cols="60">
 const indexOf = function(array, value) {
@@ -248,7 +248,7 @@ console.log(indexOf(array, 'e'));
 console.log(indexOf(array, 'o'));</textarea>
                     <div class="bad-image"></div>
                 </div>
-                <br />
+                <br>
                 <div class="code-font" id="js-array-loop4" style="color: red"></div>
             </section>
             <section>
@@ -261,20 +261,20 @@ const array = [1, 2, 5, 8];
 array.join(",");
 array.join(" ");</textarea>
                 <div class="code-font" id="js-array-join"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>split</h2>
                 <p>
-                    <b><span class="keyword">split</span>(delimiteur)</b> permet de créer un tableau <br /> à partir d'une chaîne de caratères
-		    en découpant <br /> suivant le délimiteur.
+                    <b><span class="keyword">split</span>(delimiteur)</b> permet de créer un tableau <br> à partir d'une chaîne de caratères
+		    en découpant <br> suivant le délimiteur.
                 </p>
                 <textarea class="code-font" data-autojs="js-array-split" rows="3" cols="30">
 const text = "1, 2, 5, 8";
 text.split(",");
 text.split(", "); </textarea>
                 <div class="code-font" id="js-array-split"></div>
-                <br />
+                <br>
                 <p class="small-font">
                     <b>text.<span class="keyword">split()</span></b> est le dual de <b>array.<span class="keyword">join()</span></b>.
                 </p>
@@ -293,7 +293,7 @@ const range = function(start, end) {
   return array;
 };
 console.log(range(2, 5));</textarea>
-                <br />
+                <br>
                 <div id="js-array-dyn" class="autojslog code-font"></div>
             </section>
             <section>
@@ -310,7 +310,7 @@ const range = function(start, end) {
   return array;
 };
 console.log(range(2, 5));</textarea>
-                <br />
+                <br>
                 <div id="js-array-dyn-2" class="autojslog code-font"></div>
             </section>
             <section>
@@ -328,17 +328,17 @@ stack.push('c');
 const value = stack.pop();
 console.log(value);
 console.log(stack);</textarea>
-                    <br />
+                    <br>
                     <div id="js-array-stack" class="autojslog code-font"></div>
                 </div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>&Eacute;lément en tête</h2>
                 <p>
-                    <b><span class="keyword">shift</span>()</b> décale les éléments vers la gauche <br /> et supprime (et renvoie) le premier élément. <br />
+                    <b><span class="keyword">shift</span>()</b> décale les éléments vers la gauche <br> et supprime (et renvoie) le premier élément. <br>
                     <b><span class="keyword">unshift</span>(elt)</b> décale les éléments sur la
-                    droite <br /> et insère l'élément <b>elt</b> à gauche <br/>
+                    droite <br> et insère l'élément <b>elt</b> à gauche <br>
                     <span class="small-font">(et renvoie la longueur du tableau obtenu)</span>.
                 </p><img src="images/js-array-fun/shift.png" style="display: inline-block; vertical-align: top; margin: 0px 40px 0px 0px;" alt="shift" />
                 <div style="display: inline-block; vertical-align: top;">
@@ -350,7 +350,7 @@ array.unshift('e');
 array;</textarea>
                     <div class="code-font" id="js-array-shift"></div>
                 </div>
-                <br />
+                <br>
                 <p class="small-font">Ces deux méthodes ont un temps d'exécution qui dépend du nombre d'éléments.</p>
             </section>
             <section>
@@ -373,9 +373,9 @@ array.slice(2, 4);</textarea>
             <section>
                 <h2>Suppression/Insertion au milieu</h2>
                 <p>
-                    <b><span class="keyword">splice</span>(start, deleteCount, elements)</b> supprime <br />
+                    <b><span class="keyword">splice</span>(start, deleteCount, elements)</b> supprime <br>
 		    <b>deleteCount</b> éléments
-		    à partir de l'index <b>start</b> <br /> et les remplace par des <b>elements</b>.
+		    à partir de l'index <b>start</b> <br> et les remplace par des <b>elements</b>.
                 </p>
                 <textarea class="code-font" data-autojslog="js-array-splice" rows="6" cols="40">
 let array1 = ['a', 'b', 'c', 'd', 'e'];
@@ -384,7 +384,7 @@ console.log(array1);
 let array2 = ['a', 'b', 'c', 'd', 'e'];
 array2.splice(2, 1, 'c3po', 'd2r2');
 console.log(array2);</textarea>
-                <br />
+                <br>
                 <div id="js-array-splice" class="autojslog code-font"></div>
                 <p class="small-font">
                     Attention à ne pas confondre <span class="keyword">slice</span> et <span class="keyword">splice</span>&nbsp;!
@@ -400,7 +400,7 @@ let array = ['vera', 'bob', 'elena'];
 array.sort();
 array;</textarea>
                 <div class="code-font" id="js-array-sort"></div>
-                <br />
+                <br>
             </section>
             <section>
                 <h2>Trier un tableau (2/2)</h2>
@@ -415,20 +415,20 @@ array;</textarea>
                     <div class="bad-image"></div>
                 </div>
                 <div class="code-font" id="js-array-sort2"></div>
-                <br />
+                <br>
                 <p>Ce n'est pas forcément ce que l'on veut&nbsp;!</p>
             </section>
             <section>
                 <h2>Trier avec une fonction de comparaison</h2>
                 <p>
-                    On utilise une fonction de comparaison <br /> pour paramétrer <b><span class="keyword">sort</span>(fun)</b>&nbsp;!
+                    On utilise une fonction de comparaison <br> pour paramétrer <b><span class="keyword">sort</span>(fun)</b>&nbsp;!
                 </p>
                 <textarea class="code-font" data-autojslog="js-array-sort3" rows="4" cols="35">
 const cmp = (v1, v2) => v1 - v2;
 let array = [1, 10, 2, 100];
 array.sort(cmp);
 console.log(array);</textarea>
-                <br />
+                <br>
                 <div id="js-array-sort3" class="autojslog code-font"></div>
             </section>
             <section>
@@ -437,12 +437,12 @@ console.log(array);</textarea>
 		<dl class="small-font"><dd>une valeur strictement négative si v1 &lt; v2&nbsp; (v1 doit aller à gauche de v2)</dd>
 		  <dd>une valeur strictement positive si v1 &gt; v2&nbsp; (v1 doit aller à droite de v2)</dd>
 		  <dd>0 si v1 = v2.</dd></dl>
-                <br /><textarea class="code-font" data-autojslog="js-array-cmp" rows="4" cols="35">
+                <br><textarea class="code-font" data-autojslog="js-array-cmp" rows="4" cols="35">
 const cmp = (v1, v2) => v2 - v1;
 let array = [1, 10, 2, 100];
 array.sort(cmp);
 console.log(array);</textarea>
-                <br />
+                <br>
                 <div id="js-array-cmp" class="autojslog code-font"></div>
             </section>
             <section>
@@ -454,7 +454,7 @@ console.log(array);</textarea>
 let array = [1, 10, 2, 100];
 array.sort((v1, v2) => v1 - v2);
 console.log(array);</textarea>
-                <br />
+                <br>
                 <div id="js-array-anonfun" class="autojslog code-font"></div>
             </section>
             <section>
@@ -472,7 +472,7 @@ for(let i = 0; i < 3; i++) {
 for(let j = 0; j < 3; j++) {
   array[j]();
 }</textarea>
-                <br />
+                <br>
                 <div id="js-array-closure-loop-bis" class="autojslog code-font"></div>
             </section>
             <section>
@@ -495,7 +495,7 @@ for(let j = 0; j < 3; j++) {
 }</textarea>
                     <div class="bad-image"></div>
                 </div>
-                <br />
+                <br>
                 <div id="js-array-closure-loop2" class="autojslog code-font"></div>
                 </div>
                 <div style="float: right; margin: 20px">
@@ -513,7 +513,7 @@ for(let j = 0; j < 3; j++) {
 }</textarea>
                     <div class="bad-image"></div>
                 </div>
-                <br />
+                <br>
                 <div id="js-array-closure-loop3" class="autojslog code-font"></div>
                 </div>
                 <p class="small-font" style="clear: both">

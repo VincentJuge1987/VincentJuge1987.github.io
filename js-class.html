@@ -20,16 +20,16 @@
         <div class="slides">
             <section>
                 <h1>JavaScript</h1>
-                <br />
+                <br>
                 <h2>Classes</h2>
                 <p>
-                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                    Raconté par <b>Vincent Jugé</b> <br> sur la base d'un cours créé par <b>Rémi Forax</b>
                 </p>
             </section>
             <section>
                 <h2>Fonction vs Méthode</h2>
                 <p>
-                    Un objet peut contenir des fonctions comme valeurs. <br /> Une fonction dans un objet est appelée <span class="keyword">méthode</span>.
+                    Un objet peut contenir des fonctions comme valeurs. <br> Une fonction dans un objet est appelée <span class="keyword">méthode</span>.
                 </p>
                 <textarea class="code-font" data-autojslog="js-object-method" rows="8" cols="50">
 const square = {
@@ -40,13 +40,13 @@ const disc = {
 };
 console.log(square.surface(3));
 console.log(disc.surface(3));</textarea>
-                <br />
+                <br>
                 <div id="js-object-method" class="autojslog code-font"></div>
             </section>
             <section>
                 <h2>this</h2>
                 <p>
-                    Paramètre implicite qui contient l'objet sur lequel <br /> on a appelé une méthode <br /> (l'objet sur lequel on utilise l'opérateur '.').
+                    Paramètre implicite qui contient l'objet sur lequel <br> on a appelé une méthode <br> (l'objet sur lequel on utilise l'opérateur '.').
                 </p>
                 <textarea class="code-font" data-autojslog="js-object-this" rows="7" cols="40">
 const square = {
@@ -56,7 +56,7 @@ const square = {
   }
 };
 console.log(square.surface());</textarea>
-		<br />
+		<br>
                 <div id="js-object-this" class="autojslog code-font"></div>
             </section>
             <section>
@@ -74,7 +74,7 @@ console.log(person.hasGrownUp());
 console.log(isAdult(person));</textarea>
                     <div class="bad-image"></div>
                 </div>
-                <br />
+                <br>
                 <div id="js-object-this2" class="autojslog code-font"></div>
                 <p>
                     <span class="keyword">isAdult</span> ne prend pas d'argument et <span class="keyword">this</span> vaut <span class="keyword">undefined</span>&nbsp;!
@@ -86,7 +86,7 @@ console.log(isAdult(person));</textarea>
             <section>
                 <h2>Partage de méthodes</h2>
                 <p>
-                    Si on a deux objets, il faut définir <b>surface</b> deux fois, <br /> même si c'est le même code&nbsp;!?
+                    Si on a deux objets, il faut définir <b>surface</b> deux fois, <br> même si c'est le même code&nbsp;!?
                 </p>
                 <div class="bad-container">
                     <textarea class="code-font" data-autojslog="js-object-prototype" rows="10" cols="55">
@@ -102,7 +102,7 @@ console.log(square1.surface());
 console.log(square2.surface());</textarea>
                     <div class="bad-image"></div>
                 </div>
-                <br />
+                <br>
                 <div id="js-object-prototype" class="autojslog code-font"></div>
                 <p>Ça paraît idiot&nbsp;!&nbsp;&nbsp;<span class="sad-image"></span></p>
             </section>
@@ -127,7 +127,7 @@ class Square {
 }
 let square = new Square(3);
 console.log(square.surface());</textarea>
-                <br />
+                <br>
                 <div id="js6-class3a" class="autojslog code-font"></div>
                 <p class="small-font">
                     Par convention, le nom des classes commence <b>toujours</b> par une majuscule.
@@ -153,7 +153,7 @@ class Square {
 let square = new Square(10);
 console.log(square.surface());
 console.log(square.perimeter());</textarea>
-                <br />
+                <br>
                 <div id="js6-class3b" class="autojslog code-font"></div>
                 <p class="small-font">
                     <b><span class="keyword">new</span> Square</b> crée un objet, initialise celui-ci avec la fonction <b>constructor</b>
@@ -166,7 +166,7 @@ console.log(square.perimeter());</textarea>
                 <dl>
                     <dt>Avec les accolades&nbsp;:
                     <dd>
-                        si on n'a que des valeurs, ou un seul objet&nbsp;; <br />
+                        si on n'a que des valeurs, ou un seul objet&nbsp;; <br>
                         <textarea class="code-font" rows="1" cols="63">
 const foo = { key1: 2, key2: 'hello' };</textarea>
                     <dt>Avec <span class="keyword">new</span>&nbsp;:
@@ -210,7 +210,7 @@ class Square extends Rectangle {
 const square = new Square(10);
 console.log(square.surface());
 console.log(square.perimeter());</textarea>
-		<br />
+		<br>
                 <div id="js-object-super" class="autojslog code-font"></div>
             </section>
             <section>
@@ -241,12 +241,12 @@ const alice = new Human("Alice");
 const bob = new Student("Bob", "Web programming");
 alice.hello();
 bob.hello();</textarea>
-		<br />
+		<br>
                 <div id="js-object-super2" class="autojslog code-font"></div>
             </section>
             <section>
                 <h2>La notation "class" <br> et l'héritage&hellip;</h2>
-                <br />
+                <br>
                 <dl>
                 	<dd>permettent de <b>regrouper</b> dans un même endroit l'initialisation et la manipulation d'un type nommé.</dd>
                 	<dd>&nbsp;</dd>
@@ -289,7 +289,7 @@ window.setInterval(function() {
             <section>
                 <h2>Classe prédéfinie&nbsp;: tableau</h2>
                 <p>
-                    Pour JavaScript, un tableau (<span class="keyword">array</span>) est un objet&nbsp;; <br />
+                    Pour JavaScript, un tableau (<span class="keyword">array</span>) est un objet&nbsp;; <br>
 		    <span class="keyword">length</span> est une propriété des objets tableaux.
                 </p>
                 <textarea class="code-font" data-autojs="js-object-builtin-array" rows="7" cols="40">
@@ -308,7 +308,7 @@ array2.length;</textarea>
             <section>
                 <h2>Classe prédéfinie&nbsp;: function</h2>
                 <p>
-                    Pour JavaScript, une fonction (<b>function</b>) est un objet&nbsp;; <br /> <span class="keyword">name</span> 
+                    Pour JavaScript, une fonction (<b>function</b>) est un objet&nbsp;; <br> <span class="keyword">name</span> 
 		    ou <span class="keyword">length</span> sont des propriétés des objets fonctions.
                 </p>
                 <textarea class="small-code-font" data-autojs="js-object-builtin-function" rows="9" cols="50">
