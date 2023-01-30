@@ -27,14 +27,14 @@
                 </p>
             </section>
             <section>
-                <div id="dom-example">
+                <div id="dom-1">
                     <h2>Arbre DOM</h2>
                     <p>
                         L'API <b>DOM</b> permet de manipuler l'arbre correspondant <br> à une page HTML en JavaScript.
                     </p>
                     <textarea class="code-font" data-autojs="js-dom1" rows="8" cols="54">
 document.toString();
-const element = document.getElementById("dom-example");
+const element = document.getElementById("dom-1");
 element.toString();
 element.tagName;
 element.attributes[0].name;
@@ -47,45 +47,30 @@ element.children[1].tagName;</textarea>
                 </div>
             </section>
             <section>
-                <h2>Children / childNodes</h2>
-                <p>Il y a deux façons d'obtenir les enfants d'un élement&nbsp;:</p>
-                <dl id="dom-example2">
-                    <dt>element.<span class="keyword">children</span></dt>
-                    <dd>renvoie uniquement les sous-éléments</dd>
-                    <dt>element.<span class="keyword">childNodes</span></dt>
-                    <dd>renvoie les éléments, avec les textes et les commentaires</dd>
-                </dl>
-                <textarea class="code-font" data-autojs="js-dom2" rows="8" cols="54">
-const element = document.getElementById("dom-example2");
+                <h2>Children</h2>
+                <p id="dom-2">element.<span class="keyword">children</span> renvoie les sous-éléments d'un élément HTML</p>
+                <textarea class="code-font" data-autojs="js-dom2" rows="5" cols="54">
+const element = document.getElementById("dom-2");
 element.tagName;
 const child = element.children[0];
 child.toString();
-child.tagName;
-const text = child.childNodes[0];
-text.toString();
-text.nodeValue;</textarea>
+child.tagName;</textarea>
                 <div class="code-font" id="js-dom2"></div>
                 <p></p>
             </section>
             <section>
-                <div id="dom-example3">
+                <div id="dom-3">
                     <h2>API DOM</h2>
                     <p>
-                        <span class="keyword">children</span> et 
-			<span class="keyword">childNodes</span> renvoient des
-			HTMLCollection mais <br>
-		        <b>PAS</b> des tableaux&nbsp;:
-			seuls <span class="keyword">length</span> et
-			<b>[ ]</b> fonctionnent.
+                        <span class="keyword">children</span> renvoie des HTMLCollection mais <br>
+                        <b>PAS</b> des tableaux&nbsp;: on verra bientôt la différence.
                     </p>
-                    <textarea class="code-font" data-autojslog="js-dom3" rows="8" cols="55">
-const element = document.getElementById("dom-example3");
+                    <textarea class="code-font" data-autojslog="js-dom3" rows="7" cols="55">
+const element = document.getElementById("dom-3");
 const array = [...element.children];
 console.log(element.children.toString());
 console.log(element.children.length);
 console.log(element.children[0].tagName);
-console.log(element.children.forEach);
-console.log(element.children.forEach);
 console.log(array.forEach);</textarea><br>
                     <div class="autojslog code-font" id="js-dom3"></div>
                     <p class="small-font">Mais on peut récupérer une collection dans un tableau grâce à l'opérateur <span class="keyword">spread</span>.</p>
@@ -93,7 +78,7 @@ console.log(array.forEach);</textarea><br>
             </section>
             <section>
                 <h2>Chercher des éléments</h2>
-                <dl id="dom-example4">
+                <dl id="dom4">
                     <dt>document.<span class="keyword">getElementById</span>(id)</dt>
                     <dd>
                         renvoie élément par son <b>id</b>
@@ -103,33 +88,25 @@ console.log(array.forEach);</textarea><br>
                     <dt>document.<span class="keyword">querySelectorAll</span>(css_selector)</dt>
                     <dd>renvoie les éléments par un sélecteur CSS</dd>
                 </dl>
-                <textarea class="code-font" data-autojs="js-dom4" rows="4" cols="58">
+                <textarea class="code-font" data-autojs="js-dom4" rows="4" cols="59">
 const cs = document.getElementsByClassName("bad-container");
 cs.length;
-const dts = document.querySelectorAll("dl#dom-example4 dt");
+const dts = document.querySelectorAll("dl#dom4 dt");
 dts.length;</textarea>
                 <div class="code-font" id="js-dom4"></div>
                 <p></p>
             </section>
             <section>
                 <h2>Changer le contenu d'un élément</h2>
-                <dl>
-                    <dt>element.<span class="keyword">innerHTML</span></dt>
-                    <dd>accepte le contenu HTML</dd>
-                    <dt>element.<span class="keyword">innerText</span></dt>
-                    <dd>uniquement pour le contenu texte</dd>
-                </dl>
-		<br>
+                <p> element.<span class="keyword">innerText</span> permet de changer <br>
+                le contenu textuel d'un élément.</p>
 		<br>
                 <div style="color: pink">
-                    <div class="small-font" id="dom-content1"></div>
-                    <div class="small-font" id="dom-content2"></div>
+                    <div class="small-font" id="dom-content"></div>
                 </div>
 		<br>
-                <textarea class="code-font" data-autojslog="js-dom-content" rows="4" cols="60">
-const div1 = document.getElementById("dom-content1");
-div1.innerHTML = "<b>" + new Date() + "</b>";
-const div2 = document.getElementById("dom-content2");
+                <textarea class="code-font" data-autojslog="js-dom-content" rows="2" cols="60">
+const div2 = document.getElementById("dom-content");
 div2.innerText = "<b>" + new Date() + "</b>";</textarea>
                 <div id="js-dom-content" class="autojslog code-font"></div>
             </section>
