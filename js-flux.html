@@ -1,0 +1,285 @@
+<!doctype html>	
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>JavaScript</title>
+<meta name="description" content="JavaScript">
+<meta name="author" content="Remi Forax">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="css/reveal.css">
+<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
+<link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>JavaScript - Contrôle du flux d'instructions</h1>
+                <p>
+                    Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
+                </p>
+            </section>
+            <section>
+                <h2>Exécution conditionnelle (1/2)</h2>
+                <p>
+                    <span class="keyword">if</span> permet de demander d'exécuter un morceau de code sous certaines conditions.
+                </p>
+                <textarea class="code-font" data-autojslog="js-if-else" rows="8" cols="35">
+const a = 1;
+const b = a + a;
+if (a > 0) {
+  console.log("a is positive");
+}
+if (b < 0) {
+  console.log("b is negative");
+}</textarea>
+                <br />
+                <div id="js-if-else" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Exécution conditionnelle (2/2)</h2>
+                <p>
+                    <span class="keyword">if</span>&hellip;<span class="keyword">else</span>
+                    permet de demander d'exécuter un morceau de code différent dans chaque cas.
+                </p>
+                <textarea class="code-font" data-autojslog="js-if-else2" rows="7" cols="35">
+const a = 0;
+const b = 1;
+if (a == b) {
+  console.log("a = b");
+} else {
+  console.log("a != b");
+}</textarea>
+                <br />
+                <div id="js-if-else2" class="autojslog code-font"></div>
+            </section>        
+            <section>
+                <h2>Expression conditionnelle</h2>
+                <p>
+                    L'opérateur <span class="keyword">?:</span> permet de faire un
+                    <span class="keyword">if</span>/<span class="keyword">else</span> entre
+                     des expressions.
+                </p>
+                <textarea class="code-font" data-autojslog="js-if-expr" rows="3" cols="60">
+const age = 13;
+const text = age < 21? 'too young !': 'go get your beer';
+console.log(text);</textarea>
+                <br />
+                <div id="js-if-expr" class="autojslog code-font"></div>
+                </section>      
+            <section>
+                <h2>Boucle While</h2>
+                <p>
+                    <span class="keyword">while</span> permet de répéter l'exécution d'un morceau de code (avec des valeurs différentes).
+                </p>
+                <textarea class="code-font" data-autojslog="js-while-loop" rows="5" cols="20">
+let i = 0;
+while(i < 4) {
+  console.log(i);
+  i = i + 1;
+}</textarea>
+                <br>
+                <div id="js-while-loop" class="autojslog code-font"></div>
+                <br>
+                <p>
+                  Attention à bien s'assurer que l'on finira un jour par sortir de la boucle&nbsp;!
+                </p>
+            </section>
+            <section>
+                <h2>Boucle For</h2>
+                <p>
+                    <span class="keyword">for</span> permet de répéter l'exécution d'un morceau de code sans oublier l'incrémentation.
+                </p>
+                <textarea class="code-font" data-autojslog="js-for-loop" rows="4" cols="36">
+let i;
+for(i = 0; i < 4; i = i + 1) {
+  console.log(i);
+}</textarea>
+                <br />
+                <div id="js-for-loop" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Boucle For et initialisation</h2>
+                <p>
+                    Il est possible de faire l'initialisation à l'intérieur du <span class="keyword">for</span>.
+                </p>
+                <textarea class="code-font" data-autojslog="js-for-loop2" rows="3" cols="36">
+for(let i = 0; i < 4; i = i + 1) {
+  console.log(i);
+}</textarea>
+                <br />
+                <div id="js-for-loop2" class="autojslog code-font"></div>
+            </section>
+            <!-- section>
+                <h2>Break</h2>
+                <p>
+                    <span class="keyword">break</span> permet d'arrêter une boucle. <br />
+		    <span class="small-font"><span class="keyword">return</span> permet même de sortir de plusieurs boucles imbriquées.</span>
+                </p>
+                <textarea class="code-font" data-autojslog="js-for-break" rows="6" cols="36">
+for(let i = 0; ; i = i + 1) {
+  if (i == 4) {
+    break;
+  }
+  console.log(i);
+}</textarea>
+                <br />
+                <div id="js-for-break" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Continue</h2>
+                <p>
+                    <span class="keyword">continue</span> saute le tour de boucle courant et passe à l'incrémentation suivante.
+                </p>
+                <textarea class="code-font" data-autojslog="js-for-continue" rows="6" cols="36">
+for(let i = 0; i < 4; i = i + 1) {
+  if (i % 2 == 0) {
+    continue;
+  }
+  console.log(i);
+}</textarea>
+                <br />
+                <div id="js-for-continue" class="autojslog code-font"></div>
+            </section -->
+            <section>
+                <h2>Incrémentation</h2>
+                <p>JavaScript emprunte la syntaxe du C pour les incrémentations</p>
+                <ul class="small-font">
+                    <li>i++ correspond à i = i + 1</li>
+                    <li>i-- correspond à i = i - 1</li>
+                    <li>i+=2 correspond à i = i + 2</li>
+                    <li>i-=2 correspond à i = i - 2</li>
+                </ul>
+		<br /><br />
+                <textarea class="code-font" data-autojslog="js-for-incrementation" rows="3" cols="36">
+for(let i = 0; i < 4; i++) {
+  console.log(i);
+}</textarea>
+                <br />
+                <div id="js-for-incrementation" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Bloc d'instructions</h2>
+                <p>
+                    L'indentation ne suffit pas&nbsp;: <br/>
+                    On exigera de vous d'utiliser les <b>{</b> et <b>}</b> après un 
+		    <span class="keyword">if</span>/<span class="keyword">else</span>/<span class="keyword">while</span>/<span class="keyword">for</span>.
+                </p>
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-block" rows="6" cols="20">
+const a = 3;
+if (a == 4)
+  console.log('1');
+  console.log('2');</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+                <div id="js-block" class="autojslog code-font"></div>
+                <p class="fragment small-font">
+                    Les <b>{</b> et <b>}</b> ne sont pas nécessaires s'il y a une seule instruction dans le
+                    <span class="keyword">if</span>/<span class="keyword">else</span>/<span class="keyword">while</span>/<span class="keyword">for</span>,
+                    mais les mettre systématiquement évite les <a href="https://en.wikipedia.org/wiki/Goto_fail">bugs</a> idiots.
+                </p>
+            </section>
+            <section>
+                <h1>Portée des variables</h1>
+            </section>
+            <section>
+                <h2>Portée des variables (1/2)</h2>
+                <p>Les variables déclarées avec le mot-clé <span class="keyword">let</span> et
+                <span class="keyword">const</span>
+                n'existent que jusqu'à la fin du bloc où on les a déclarées.</p>
+                <p class="small-font">Mais on peut redéclarer dans un nouveau bloc
+                une variable déjà déclarée.</p>
+                <div style="float: left">
+                    <div class="bad-container">
+                        <textarea class="code-font" data-autojslog="js-var-scope-1" rows="7" cols="20">
+{
+  let a = 2;
+  const b = 2;
+}
+console.log(a);
+console.log(b);
+</textarea>
+                        <div class="bad-image"></div>
+                    </div>
+                    <br />
+                    <div id="js-var-scope-1" class="autojslog code-font"></div>
+                </div>
+                <div style="float: right">
+                    <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-var-scope2" rows="7" cols="20">
+let a = 2;
+{
+  console.log(a);
+  let a = 3;
+}
+console.log(a);
+</textarea>
+                        <div class="bad-image"></div>
+                    </div>
+                    <br />
+                    <div id="js-var-scope2" class="autojslog code-font" style="width: 13em;"></div>
+                </div>
+                <div>
+                    <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-var-scope0" rows="7" cols="20">
+let a = 2;
+{
+  let a = 3;
+  console.log(a);
+}
+console.log(a);
+</textarea>
+                        <div class="bad-image"></div>
+                    </div>
+                    <br />
+                    <div id="js-var-scope0" class="autojslog code-font"></div>
+                </div>
+                <br/>
+                <p style="clear: both" class="fragment">Merci de ne <span class="keyword">jamais</span>
+		écrire ce genre d'horreurs&nbsp;!</p>
+            </section>
+            <section>
+                <h2>Portée des variables (2/2)</h2>
+                <p>Limiter une variable à un passage dans sa boucle <span class="keyword">for</span>.</p>
+                <div style="float: left; margin: 20px">
+                    <div class="bad-container">
+                        <textarea class="code-font" data-autojslog="js-var-scope-5" rows="8" cols="20">
+let i = 0;
+while (i < 4) {
+  let j = i;
+  console.log(j);
+  i++;
+}
+</textarea>
+                        <div class="bad-image"></div>
+                    </div>
+                    <br />
+                    <div id="js-var-scope-5" class="autojslog code-font"></div>
+                </div>
+                <div style="float: right; margin: 20px">
+                    <textarea class="code-font" data-autojslog="js-var-scope-6" rows="8" cols="27">
+for(let j = 0; j < 4; j++) {
+  console.log(j);
+}
+</textarea>
+                    <br />
+                    <div id="js-var-scope-6" class="autojslog code-font"></div>
+                </div>
+                <p>Les deux codes sont</p><p class="small-font">(à peu près)</p><p>équivalents&nbsp;!</p>
+                <p style="clear: both" class="fragment small-font">
+                    En pratique, on crée <span class="keyword">toujours</span> ses variables de boucle au début de la boucle.</p>
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>
