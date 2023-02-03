@@ -20,7 +20,7 @@
             <section>
                 <h1>JavaScript</h1>
                 <br />
-                <h2>Prog fonctionnelle</h2>
+                <h2>Tableaux et programmation fonctionnelle</h2>
                 <p>
                     Raconté par <b>Vincent Jugé</b> <br /> sur la base d'un cours créé par <b>Rémi Forax</b>
                 </p>
@@ -131,6 +131,19 @@ const count = array.
 console.log(count);</textarea>
                 <br />
                 <div id="js-array-fam" class="autojslog code-font"></div>
+            </section>
+            <section id="js-html-collection">
+                <h2>Tableau vs HTMLCollection</h2>
+                <p>
+                  Ces fonctions ne sont pas définies pour les <b>HTMLCollection</b> !
+                </p>
+                <textarea class="code-font" data-autojslog="js-array-fam-2" rows="4" cols="70">
+const section = document.getElementById("js-html-collection");
+const array = [...section.children];
+array.forEach(s => console.log(s.tagName));
+section.children.forEach(s => console.log(s.tagName));</textarea>
+                <br />
+                <div id="js-array-fam-2" class="autojslog code-font"></div>
             </section>
         </div>
     </div>
