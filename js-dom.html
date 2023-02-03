@@ -80,9 +80,7 @@ console.log(array.forEach);</textarea><br>
                 <h2>Chercher des éléments</h2>
                 <dl id="dom4">
                     <dt>document.<span class="keyword">getElementById</span>(id)</dt>
-                    <dd>
-                        renvoie élément par son <b>id</b>
-                    </dd>
+                    <dd>renvoie un élément par son <b>id</b></dd>
                     <dt>document.<span class="keyword">getElementsByClassName</span>(classname)</dt>
                     <dd>renvoie les éléments ayant la classe</dd>
                     <dt>document.<span class="keyword">querySelectorAll</span>(css_selector)</dt>
@@ -94,12 +92,19 @@ cs.length;
 const dts = document.querySelectorAll("dl#dom4 dt");
 dts.length;</textarea>
                 <div class="code-font" id="js-dom4"></div>
-                <p></p>
+                <p class="small-font">
+                  document.<span class="keyword">getElementsByClassName</span>
+                  renvoie une <b>HTMLCollection</b> <br>
+                  document.<span class="keyword">querySelectorAll</span>
+                  renvoie une <b>NodeList</b> (c'est à peu près pareil).
+                </p>
             </section>
             <section>
-                <h2>Changer le contenu d'un élément</h2>
-                <p> element.<span class="keyword">innerText</span> permet de changer <br>
-                le contenu textuel d'un élément.</p>
+                <h2>Contenu textuel d'un élément</h2>
+                <dl>
+                  <dt>element.<span class="keyword">innerText</span></dt>
+                  <dd>renvoie le contenu textuel d'un élément</dd>
+                </dl>
 		<br>
                 <div style="color: pink">
                     <div class="small-font" id="dom-content"></div>
@@ -109,9 +114,37 @@ dts.length;</textarea>
 const div2 = document.getElementById("dom-content");
 div2.innerText = "<b>" + new Date() + "</b>";</textarea>
                 <div id="js-dom-content" class="autojslog code-font"></div>
+                <p class="small-font">
+                  On peut s'en servir pour modifier le contenu textuel de l'élément.
+                  </p>
             </section>
             <section>
-                <h2>&Eacute;vénement onclick</h2>
+                <h2>Caractéristiques d'un élément</h2>
+                <dl id="dom5">
+                  <dt>element.<span class="keyword">id</span></dt>
+                  <dd>renvoie l'ID d'un élément</dd>
+                  <dt>element.<span class="keyword">classList</span></dt>
+                  <dd>renvoie la liste des classes d'un élément</dd>
+                  <dt>element.<span class="keyword">attributes</span></dt>
+                  <dd>renvoie une liste des attributs d'un élément</dd>
+		</dl>
+		<br><br>
+                <textarea class="code-font" data-once data-autojslog="js-dom-content-2" rows="6" cols="80">
+const dom5 = document.getElementById("dom5");
+dom5.classList.add("blue");
+for(let i = 0; i < dom5.attributes.length; i++) {
+  console.log(`${dom5.attributes[i].name}=${dom5.attributes[i].value}`);
+}
+// dom5.attributes[1].value = "red";
+</textarea>
+                <br>
+                <div id="js-dom-content-2" class="autojslog code-font"></div>
+                <p class="small-font">
+                  On ne peut pas réassigner ces listes, mais on peut modifier leurs éléments.
+                  </p>
+            </section>
+            <section>
+<!--                <h2>&Eacute;vénement onclick</h2>
                 <p>
                     Il est possible d'enregistrer des événements <br> sur des éléments.
                 </p>
@@ -148,22 +181,20 @@ inputText.onkeyup = function() {
   div.innerText = inputText.value;
 };</textarea>
                 <div id="js-dom-inputtext" class="autojslog code-font"></div>
-            </section>
+            </section>-->
             <section>
                 <h2>Ajouter de nouveaux éléments</h2>
                 <p>
                     <b>document.<span class="keyword">createElement</span></b> permet de créer un élément. <br> <b>parent.<span class="keyword">appendChild</span>(element)</b> ajoute un élément.
                 </p>
-                <textarea class="code-font" data-autojslog="js-dom-event2" rows="6" cols="60">
+                <textarea class="code-font" data-autojslog="js-dom-event2" rows="7" cols="60">
 const div = document.getElementById("dom-new");
-const button = document.getElementById("dom-new-button");
-button.onclick = function() {
+for (let i = 0; i < 100; i++) {
   const element = document.createElement("div");
+  element.id = `new-${i}`;
+  if (i % 2 == 0) { element.classList.add("blue"); }
   div.appendChild(element);
-};</textarea>
-                <p>
-                    <button type="button" id="dom-new-button">Add a box&nbsp;!</button>
-                </p>
+}</textarea>
                 <div id="dom-new"></div>
                 <br>
                 <p class="small-font"></p>

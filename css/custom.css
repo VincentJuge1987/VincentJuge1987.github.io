@@ -69,10 +69,14 @@ td .vert-center {
   vertical-align: middle; }
 
 .left {
-  text-align: left; }
+  display: block;
+  text-align: left;
+  float: left; }
 
 .right {
-  text-align: right; }
+  display: block;
+  text-align: right;
+  float: right;}
 
 .tt {
   font-family: monospace; }
@@ -141,6 +145,9 @@ div#dom-new div {
   background-color: tomato;
   border: 2px solid silver;
   margin: 20px; }
+  
+div#dom-new div.blue {
+  background-color: #4040FF; }
 
 .strike {
   text-decoration: line-through; }
@@ -166,7 +173,6 @@ div.mybox2 {
 
 div.box4 {
   box-shadow: 2px 2px 2px #3FFFFF; }
-
 
 div.box9,
 div.box9b {
@@ -210,3 +216,6 @@ div.resize_button {
   z-index: 30;
   position: absolute;
   opacity: 0; }
+
+.blue {
+  color: #4040FF; }
