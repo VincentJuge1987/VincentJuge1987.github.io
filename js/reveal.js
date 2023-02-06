@@ -463,7 +463,8 @@
 			'<button class="navigate-left" aria-label="previous slide"><div class="controls-arrow"></div></button>' +
 			'<button class="navigate-right" aria-label="next slide"><div class="controls-arrow"></div></button>' +
 			'<button class="navigate-up" aria-label="above slide"><div class="controls-arrow"></div></button>' +
-			'<button class="navigate-down" aria-label="below slide"><div class="controls-arrow"></div></button>' );
+			'<button class="navigate-down" aria-label="below slide"><div class="controls-arrow"></div></button>' +
+			'<button class="navigate-top navigate-up" aria-label="top slide"><div class="controls-arrow"></div></button>' );
 
 		// Slide number
 		dom.slideNumber = createSingletonNode( dom.wrapper, 'div', 'slide-number', '' );
@@ -488,6 +489,7 @@
 		dom.controlsDown = toArray( document.querySelectorAll( '.navigate-down' ) );
 		dom.controlsPrev = toArray( document.querySelectorAll( '.navigate-prev' ) );
 		dom.controlsNext = toArray( document.querySelectorAll( '.navigate-next' ) );
+		dom.controlsTop = toArray( document.querySelectorAll( '.navigate-top' ) );
 
 		dom.statusDiv = createStatusDiv();
 	}
@@ -1040,6 +1042,7 @@
 			dom.controlsDown.forEach( function( el ) { el.addEventListener( eventName, onNavigateDownClicked, false ); } );
 			dom.controlsPrev.forEach( function( el ) { el.addEventListener( eventName, onNavigatePrevClicked, false ); } );
 			dom.controlsNext.forEach( function( el ) { el.addEventListener( eventName, onNavigateNextClicked, false ); } );
+			dom.controlsTop.forEach( function( el ) { el.addEventListener( eventName, onNavigateTopClicked, false ); } );
 		} );
 
 	}
@@ -1084,6 +1087,7 @@
 			dom.controlsDown.forEach( function( el ) { el.removeEventListener( eventName, onNavigateDownClicked, false ); } );
 			dom.controlsPrev.forEach( function( el ) { el.removeEventListener( eventName, onNavigatePrevClicked, false ); } );
 			dom.controlsNext.forEach( function( el ) { el.removeEventListener( eventName, onNavigateNextClicked, false ); } );
+			dom.controlsTop.forEach( function( el ) { el.removeEventListener( eventName, onNavigateTopClicked, false ); } );
 		} );
 
 	}
@@ -2621,6 +2625,7 @@
 		if( routes.right ) dom.controlsRight.forEach( function( el ) { el.classList.add( 'enabled' ); } );
 		if( routes.up ) dom.controlsUp.forEach( function( el ) { el.classList.add( 'enabled' );	} );
 		if( routes.down ) dom.controlsDown.forEach( function( el ) { el.classList.add( 'enabled' ); } );
+		dom.controlsTop.forEach( function( el ) { el.classList.add( 'enabled' ); } );
 
 		// Prev/next buttons
 		if( routes.left || routes.up ) dom.controlsPrev.forEach( function( el ) { el.classList.add( 'enabled' ); } );
@@ -3839,6 +3844,10 @@
 		cueAutoSlide();
 
 	}
+	
+	function navigateTop() {
+		window.location = "https://vincentjuge1987.github.io";
+	}
 
 	/**
 	 * Checks if the target element prevents the triggering of
@@ -4236,6 +4245,7 @@
 	function onNavigateDownClicked( event ) { event.preventDefault(); onUserInput(); navigateDown(); }
 	function onNavigatePrevClicked( event ) { event.preventDefault(); onUserInput(); navigatePrev(); }
 	function onNavigateNextClicked( event ) { event.preventDefault(); onUserInput(); navigateNext(); }
+	function onNavigateTopClicked( event ) { event.preventDefault(); onUserInput(); navigateTop(); }
 
 	/**
 	 * Handler for the window level 'hashchange' event.

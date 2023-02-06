@@ -302,6 +302,9 @@ body {
     .reveal .controls .navigate-right.highlight {
       -webkit-animation: bounce-right 2s 50 both ease-out;
               animation: bounce-right 2s 50 both ease-out; }
+  .reveal .controls .navigate-top {
+    padding-right: 1.65em;
+    margin-bottom: -1em; }
   .reveal .controls .navigate-up {
     right: 3.2em;
     bottom: 6.4em;
