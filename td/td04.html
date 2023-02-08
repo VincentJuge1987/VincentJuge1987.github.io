@@ -65,12 +65,12 @@
           paramètre et affichant sur la console les nombres divisibles par 2 ou par 3 allant de de 0 à cet entier
           (inclus).
           Puis écrivez un code de test de la fonction avec les
-          valeurs 7, puis 10, et enfin 15. Que se passe-t-il si on teste la fonction avec la valeur -1&nbsp;?</li>
+          valeurs 7 et puis 10. Que se passe-t-il si on teste la fonction avec la valeur -1&nbsp;?</li>
       </ol>
 
       <h3>Exercice 2&nbsp;: Damier</h3>
       <div>On cherche à faire un damier avec des cases blanches et noires
-        et la diagonale affichée en bleu.
+        et la diagonale affichée en marron.
         <br>
         <span class="caution">Attention&nbsp;:</span> Chaque fois que l'on souhaitera donner
         un style spécifique à tel ou tel élément HTML, on lui donnera une classe on un ID
@@ -95,20 +95,20 @@
         </li>
         <li>Complétez le style de la balise <span class="tt">style</span> du document pour
           définir une case noire et une case blanche et utilisez ce style pour
-          les cases du damier. <br> Note&nbsp;: une balise HTML peut avoir
+          les cases de chacun des quatre tableaux (vous êtes libre de commencer par une case blanche ou par une case noire). <br> Note&nbsp;: une balise HTML peut avoir
           plusieurs classes CSS ! <br> Astuce&nbsp;: la somme (ça marche aussi avec la différences, si vous préférez) des coordonnées des
           cases modulo 2 (le reste de la division par 2) vous indique s'il
           s'agit d'une case blanche ou d'une case noire.
         </li>
-        <li>Ajoutez un style de case bleue puis commentez votre code de la fonction
+        <li>Ajoutez un style de case marron puis commentez votre code de la fonction
         <span class="tt">makeSquare</span> et réécrivez-la pour ajouter un dernier
           paramètre à <span class="tt">makeSquare</span>&nbsp;; ce paramètre pouvant être <span class="tt">vrai</span> ou <span class="tt">faux</span>. Si le
-          paramètre est <span class="tt">vrai</span>, alors il faudra afficher la diagonale en bleu.
+          paramètre est <span class="tt">vrai</span>, alors il faudra afficher la diagonale en marron.
           <br>
           Au cours de ce processus, vous pourrez être amené à commenter les codes de vos différentes foncions
           pour leur ajouter des paramètres additionnels que vous aurez jugés pertinents.
         </li>
-        <li>Testez en affichant en bleu la diagonale du premier carré (mais pas celle du
+        <li>Testez en affichant en marron la diagonale du premier carré (mais pas celle du
           second).</li>
       </ol>
 
@@ -127,17 +127,18 @@
         </li>
         <li>
           Faites en sorte que la fonction <span class="tt">makeCell</span>
-          prenne un argument supplémentaire, qui sera la couleur de la case.
+          prenne un argument supplémentaire, qui sera la couleur (<span class="tt">black</span>, <span class="tt">white</span> ou <span class="tt">brown</span>) de la case.
           <br>
-          Par exemple, si j'appelle <span class="tt">makeCell("table-1","blue")</span>,
-          on dessinera une case de classe <span class="tt">"blue"</span>, qui aura vocation
-          à être dessinée en bleu comme indiqué dans les informations de style du document.
+          Par exemple, si j'appelle <span class="tt">makeCell("table-1","brown")</span>,
+          on dessinera une case de classe <span class="tt">"brown"</span>, qui aura vocation
+          à être dessinée en marron comme indiqué dans les informations de style du document.
         </li>
         <li>
           Redéfinissez la fonction <span class="tt">makeSquare</span> pour que,
-          outre la dimension de la grille qu'elle doit dessiner, le deuxième argument que
+          outre l'identifiant du tableau à transformer et la dimension de la grille qu'elle doit
+          dessiner, le troisième argument que
           prend cette fonction soit non plus un booléen qui dira si on doit peindre
-          (ou non) en bleu la diagonale de la grille,
+          (ou non) en marron la diagonale de la grille,
           mais une fonction d'affichage qui associera à paire <span class="tt">(i,j)</span>
           la couleur de la case en ligne <span class="tt">i</span> et colonne
           <span class="tt">j</span>.
@@ -150,7 +151,7 @@
           Définissez une fonction <span class="tt">diagonalColor</span> dont le seul
           argument est un booléen, et telle que l'appel à
           <span class="tt">makeSquare(size, id, diagonalColor(true))</span>
-          transformera la table d'identifiant <span class="tt">id</span> en une grille dont la diagonale sera bleue, tandis que l'appel à
+          transformera la table d'identifiant <span class="tt">id</span> en une grille dont la diagonale sera marron, tandis que l'appel à
           <span class="tt">makeSquare(size, id, diagonalColor(true))</span>
           transformera cette table en une grille dont la diagonale n'aura pas de couleur particulière
           (par rapport aux autres cases de la grille).
