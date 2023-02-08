@@ -143,8 +143,8 @@ for(let i = 0; i < dom5.attributes.length; i++) {
                   On ne peut pas réassigner ces listes, mais on peut modifier leurs éléments.
                   </p>
             </section>
-            <section>
-<!--                <h2>&Eacute;vénement onclick</h2>
+<!--            <section>
+                <h2>&Eacute;vénement onclick</h2>
                 <p>
                     Il est possible d'enregistrer des événements <br> sur des éléments.
                 </p>
@@ -187,9 +187,9 @@ inputText.onkeyup = function() {
                 <p>
                     <b>document.<span class="keyword">createElement</span></b> permet de créer un élément. <br> <b>parent.<span class="keyword">appendChild</span>(element)</b> ajoute un élément.
                 </p>
-                <textarea class="code-font" data-autojslog="js-dom-event2" rows="7" cols="60">
+                <textarea class="code-font" data-autojslog="js-dom-event2" data-once rows="7" cols="60">
 const div = document.getElementById("dom-new");
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 10; i++) {
   const element = document.createElement("div");
   element.id = `new-${i}`;
   if (i % 2 == 0) { element.classList.add("blue"); }
@@ -199,6 +199,27 @@ for (let i = 0; i < 100; i++) {
                 <br>
                 <p class="small-font"></p>
                 <div id="js-dom-event2" class="autojslog code-font"></div>
+            </section>
+            <section>
+            	<h2>Function onload</h2>
+            	<p>L'attribut <span class="keyword">onload</span> de la balise <b>body</b> contient une fonction qui sera appelée quand la page sera entièrement chargée&nbsp;!</p>
+            	<iframe src="images/js-dom/bad.html" width="350" height="50"></iframe>&nbsp;&nbsp;&nbsp;&nbsp;
+            	<iframe src="images/js-dom/good.html" width="350" height="50"></iframe>
+            	<br>
+                <pre><code class="html" data-trim>
+&lt;head&gt;
+ &lt;script&gt;
+  "use strict";
+  const load = function() {
+    const element = document.getElementById("paragraph");
+    element.innerText = "J'ai réussi à changer le DOM.";
+  };
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body onload="load();"&gt;
+ &lt;p id="paragraph"&gt;Je n'ai pas réussi à changer le DOM.&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+         	<p class="small-font">Si le script tente d'accéder à un élément alors qu'il n'a pas encore été chargé, il échouera&nbsp;!</p>
             </section>
         </div>
     </div>

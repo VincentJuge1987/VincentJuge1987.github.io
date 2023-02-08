@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Avec load</title>
+  <style>
+  * {
+    background-color: white;
+  }
+  </style>
+  <script>
+   "use strict";
+   const load = function() {
+     const element = document.getElementById("paragraph");
+     element.innerText = "J'ai réussi à changer le DOM.";
+   };
+   </script>
+ </head>
+ <body onload="load();">
+  <p id="paragraph">Je n'ai pas réussi à changer le DOM.</p>
+ </body>
+</html>
