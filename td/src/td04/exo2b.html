@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Mon super damier</title>
+  <style>
+   table {
+    border-collapse: collapse;
+   }
+   td {
+    background-color: silver;
+    margin: 0px;
+    padding: 15px;
+    border: 1px solid black;
+   }
+  </style>
+  <script>
+   "use strict";
+   window.onload = function() {
+     makeCell("table-1");
+     makeLine(5,"table-2");
+     makeSquare(8,"table-3");
+     makeSquare(3,"table-4");
+   };
+   const makeCell = function(id) {
+     const table = document.getElementById(id);
+     const row = document.createElement("tr");
+     const cell = document.createElement("td");
+     row.appendChild(cell);
+     table.appendChild(row);
+   };
+   const makeLine = function(width, id) {
+     // TODO
+   };
+   const makeSquare = function(size, id) {
+     // TODO
+   };
+   </script>
+ </head>
+ <body>
+  <h2>Damier</h2>
+  <p>
+    Carré de 1x1
+  </p>
+  <table id="table-1"></table>
+  <br>
+  <p>
+    Ligne de 1x5
+  </p>
+  <table id="table-2"></table>
+  <br>
+  <p>
+    Carré de 8x8
+  </p>
+  <table id="table-3"></table>
+  <br>
+  <p>
+    Carré de 3x3
+  </p>
+  <table id="table-4"></table>
+  <br>
+ </body>
+</html>
