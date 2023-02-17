@@ -2,7 +2,7 @@
 <html>
  <head>
    <meta charset="utf-8">
-   <script src="graph.js" type="text/javascript"></script>
+   <title>Exercice 1</title>
    <style>
     div {
      float: left;
@@ -11,61 +11,71 @@
    </style>
    <script>
      "use strict";
+     const array = [11, 21, 5, -13, 2, 12, 19, 5];
+     window.onload = function() {
+       graph('graph1', array);
+       //graph('graph2', addThree(array));
+       //graph('graph3', addThree2(array));
+       //graph('graph4', addThree3(array));
+       //graph('graph5', addThree4(array));
+       //graph('graph6', sortedArray(array));
+       //graph('graph7', positiveArray(array));
+     };
+     
+     const addThree = function(array) {
+       //TODO
+     };
+     
+     const addThree2 = function(array) {
+       //TODO
+     };
+     
+     const addThree3 = function(array) {
+       //TODO
+     };
+     
+     const addThree4 = function(array) {
+       //TODO
+     };
+     
+     const sortedArray = function(array) {
+       //TODO
+     };
+     
+     const positiveArray = function(array) {
+       //TODO
+     };
    </script>
+   <script src="graph.js" type="text/javascript"></script>
  </head>
  <body>
   <div>
    <h2>Simple Array</h2>
    <canvas id="graph1" width="500" height="200"></canvas>
-   <script>
-      const array = [11, 21, 5, -13, 2, 12, 19, 5];
-      graph('graph1', array);
-   </script>
   </div>
   <div>
    <h2>Add 3</h2>
    <canvas id="graph2" width="500" height="200"></canvas>
-   <script>
-      //TODO
-      //graph('graph2', addThree(array));
-   </script>
   </div>
   <div>
    <h2>Add 3 (using a function)</h2>
    <canvas id="graph3" width="500" height="200"></canvas>
-   <script>
-      // TODO
-      //graph('graph3', addThree2(array));
-   </script>
   </div>
   <div>
    <h2>Add 3 (using a three-line function)</h2>
    <canvas id="graph4" width="500" height="200"></canvas>
-   <script>
-      // TODO
-      //graph('graph4', addThree3(array));
-   </script>
   </div>
   <div>
    <h2>add 3 (using map())</h2>
    <canvas id="graph5" width="500" height="200"></canvas>
-   <script>
-      //graph('graph5', addThree4(array));
-   </script>
   </div>
   <div>
    <h2>Sorted</h2>
    <canvas id="graph6" width="500" height="200"></canvas>
-   <script>
-      //graph('graph6', sortedArray(array));
-   </script>
   </div>
   <div>
    <h2>Filtered</h2>
    <canvas id="graph7" width="500" height="200"></canvas>
-   <script>
-      //graph('graph7', positiveArray(array));
-   </script>
   </div>
  </body>
 </html>

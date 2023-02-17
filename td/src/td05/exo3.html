@@ -2,33 +2,40 @@
 <html>
  <head>
    <meta charset="utf-8">
+   <title>Exercice 3</title>
+   <script>
+      "use strict";
+      const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      const random = n => Math.floor(n * Math.random());
+      
+      const show = function(id, fun) {
+        const minMax = minmax(array);
+        const elt = document.getElementById(id);
+        elt.innerText = "min " + minMax[0] + " max " + minMax[1];
+      };
+      
+      window.onload = function() {
+        randomArray(array);
+        const line = document.getElementById('line');
+        // line.innerHTML = array;
+        // show("minmax-5",minmax5);
+      }
+      
+      // const swap = TODO
+      
+      const randomArray = function(array) {
+        //TODO
+      };
+      
+      const minmax5 = function(array) {
+        //TODO
+      };
+   </script>
  </head>
  <body>
   <h2>Random Array</h2>
-  <p>
-    <div id="line"></div>
-    <script>
-      "use strict";
-    
-      const random = n => Math.floor(n * Math.random());
-      
-      //TODO randomArray
-      
-      let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-      //randomArray(array);
-      
-      let line = document.getElementById('line');
-      //line.innerHTML = array;
-   </script>
-  </p>
-  <h2>Min/Max 4: Fury Road</h2>
-  <p>
-   <script>
-      //TODO minmax5
-      
-      //const minAndMax5 = minmax5(array);
-      //document.write("min " + minAndMax5[0] + " max " + minAndMax5[1]);
-   </script>
-  </p>
+  <p id="line"></p>
+  <h2>Min/Max 5: Fury Road</h2>
+  <p id="minmax-5">
  </body>
 </html>

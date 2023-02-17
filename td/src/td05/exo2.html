@@ -1,38 +1,60 @@
-  <p>
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>Exercice 2</title>
    <script>
       "use strict";
-      
-      //TODO minimax
-      
       const array = [8, 2, 4, 0, 3, 9, 1, 5, 7, 6];
-      //const minAndMax = minmax(array);
-      document.write("min " + minAndMax[0] + " max " + minAndMax[1]);
-   </script>
-  </p>
-  <h2>Min/Max: Spread</h2>
-  <p>
-   <script>
-      //TODO minimax2
       
-      //const minAndMax2 = minmax2(array);
-      //document.write("min " + minAndMax2[0] + " max " + minAndMax2[1]);
+      const show = function(id, fun) {
+        const minMax = minmax(array);
+        const elt = document.getElementById(id);
+        elt.innerText = "min " + minMax[0] + " max " + minMax[1];
+      };
+      
+      const showDico = function(id, fun) {
+        const minMax = minmax(array);
+        const elt = document.getElementById(id);
+        elt.innerText = "min " + minMax.min + " max " + minMax.max;
+      };
+      
+      window.onload = function() {
+        // Q1
+        show("minmax-1",minmax);
+        // Q2
+        // show("minmax-2",minmax2);
+        // Q3
+        // show("minmax-3",minmax3);
+        // Q4
+        // showDico("minmax-4",minmax4);
+      };
+      
+      const minmax = function(array) {
+        //TODO
+      };
+      
+      const minmax2 = function(array) {
+        //TODO
+      };
+      
+      const minmax3 = function(array) {
+        //TODO
+      };
+      
+      const minmax4 = function(array) {
+        //TODO
+      };
    </script>
-  </p>
+ </head>
+ <body>
+  <h2>Min/Max 1: The Junior One</h2>
+  <p id="minmax-1"></p>
+  <h2>Min/Max 2: Spread</h2>
+  <p id="minmax-2"></p>
   <h2>Min/Max 3: The Road Warrior</h2>
-  <p>
-   <script>
-      //TODO minimax3
-      
-      //const minAndMax3 = minmax3(array);
-      //document.write("min " + minAndMax3[0] + " max " + minAndMax3[1]);
-   </script>
-  </p>
+  <p id="minmax-3"></p>
   <h2>Min/Max 4: Beyond Thunderdome</h2>
-  <p>
-   <script>
-      //TODO minimax4
-      
-      //const minAndMax4 = minmax4(array);
-      //document.write("min " + minAndMax4.min + " max " + minAndMax4.max);
-   </script>
-  </p>
+  <p id="minmax-4"></p>
+ </body>
+</html>
