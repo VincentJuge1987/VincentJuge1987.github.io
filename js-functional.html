@@ -26,6 +26,317 @@
                 </p>
             </section>
             <section>
+                <h1>Méthodes sur les tableaux</h1>
+            </section>
+            <section>
+                <h2>indexOf/lastIndexOf</h2>
+                <p>
+                    <b><span class="keyword">indexOf</span>()</b> utilise == pour trouver la <b>première</b> occurence d'un élément et renvoie son index (ou -1). 
+		    <br />
+                    <b><span class="keyword">lastIndexOf</span>()</b> utilise == pour trouver la <b>dernière</b> occurence d'un élément et renvoie son index (ou -1).
+                </p>
+                <textarea class="code-font" data-autojs="js-array-indexof" rows="5" cols="40">
+const array = ['h', 'e', 'l', 'l', 'o'];
+array.indexOf('l');
+array.indexOf('z');
+array.lastIndexOf('l');
+array.lastIndexOf('z');</textarea>
+                <div class="code-font" id="js-array-indexof"></div>
+                <br />
+            </section>
+            <section>
+                <h2>indexOf via une boucle (1/2)</h2>
+                <p>Si on trouve le résultat, on peut arrêter la boucle.</p>
+                <textarea class="code-font" data-autojslog="js-array-loop3" rows="12" cols="45">
+const indexOf = function(array, value) {
+  for(let i = 0; i < array.length; i++) {
+    if (array[i] == value) {
+      return i;
+    }
+  }
+  return -1;
+};
+const array = ['h', 'e', 'l', 'l', 'o'];
+console.log(indexOf(array, 'e'));
+console.log(indexOf(array, 'l'));
+console.log(indexOf(array, 'z'));</textarea>
+                <br />
+                <div id="js-array-loop3" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>indexOf via une boucle (2/2)</h2>
+                <p>
+                    Ne <span class="keyword">jamais</span> sortir d'une boucle en changeant un drapeau&nbsp;!
+                </p>
+                <br />
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-array-loop4" rows="10" cols="60">
+const indexOf = function(array, value) {
+  let i = 0;
+  for(let found = false; i < array.length && !found; i++) {
+    found = (array[i] == value);
+  }
+  return (i == array.length) ? -1 : i;
+};
+const array = ['h', 'e', 'l', 'l', 'o'];
+console.log(indexOf(array, 'e'));
+console.log(indexOf(array, 'o'));</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+                <div class="code-font" id="js-array-loop4" style="color: red"></div>
+            </section>
+            <section>
+                <h2>join</h2>
+                <p>
+                    <b><span class="keyword">join</span>(delimiteur)</b> permet de créer une chaîne de caractères avec tous les éléments séparés par un délimiteur.
+                </p>
+                <textarea class="code-font" data-autojs="js-array-join" rows="3" cols="30">
+const array = [1, 2, 5, 8];
+array.join(",");
+array.join(" ");</textarea>
+                <div class="code-font" id="js-array-join"></div>
+                <br />
+            </section>
+            <section>
+                <h2>split</h2>
+                <p>
+                    <b><span class="keyword">split</span>(delimiteur)</b> permet de créer un tableau <br /> à partir d'une chaîne de caratères
+		    en découpant <br /> suivant le délimiteur.
+                </p>
+                <textarea class="code-font" data-autojs="js-array-split" rows="3" cols="30">
+const text = "1, 2, 5, 8";
+text.split(",");
+text.split(", "); </textarea>
+                <div class="code-font" id="js-array-split"></div>
+                <br />
+                <p class="small-font">
+                    <b>text.<span class="keyword">split()</span></b> est le dual de <b>array.<span class="keyword">join()</span></b>.
+                </p>
+            </section>
+            <section>
+                <h2>Tableaux dynamiques (1/2)</h2>
+                <p>
+                    <b><span class="keyword">push</span>()</b> permet d'ajouter un élément à la fin d'un tableau.
+                </p>
+                <textarea class="code-font" data-autojslog="js-array-dyn" rows="8" cols="35">
+const range = function(start, end) {
+  let array = [];
+  for(let i = start; i < end; i++) {
+    array.push(i);
+  }
+  return array;
+};
+console.log(range(2, 5));</textarea>
+                <br />
+                <div id="js-array-dyn" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Tableaux dynamiques (2/2)</h2>
+                <p>
+                    On peut aussi ajouter un élément en case <b>array.<span class="keyword">length</span></b> du tableau <b>array</b>.
+                </p>
+                <textarea class="code-font" data-autojslog="js-array-dyn-2" rows="8" cols="35">
+const range = function(start, end) {
+  let array = [];
+  for(let i = start; i < end; i++) {
+    array[array.length] = i;
+  }
+  return array;
+};
+console.log(range(2, 5));</textarea>
+                <br />
+                <div id="js-array-dyn-2" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Pile</h2>
+                <p>
+                    Il existe également une méthode <b><span class="keyword">pop</span>()</b>
+		    qui retire le dernier élément permettant d'utiliser un tableau comme une pile.
+                </p><img src="images/js-array-fun/stack.png" class="inline top" height="182" style="margin: 0px 40px 0px 0px;" alt="stack" />
+                <div style="display: inline-block; vertical-align: top;">
+                    <textarea class="code-font" data-autojslog="js-array-stack" rows="7" cols="35">
+let stack = [];
+stack.push('a');
+stack.push('b');
+stack.push('c');
+const value = stack.pop();
+console.log(value);
+console.log(stack);</textarea>
+                    <br />
+                    <div id="js-array-stack" class="autojslog code-font"></div>
+                </div>
+                <br />
+            </section>
+            <section>
+                <h2>&Eacute;lément en tête</h2>
+                <p>
+                    <b><span class="keyword">shift</span>()</b> décale les éléments vers la gauche <br /> et supprime (et renvoie) le premier élément. <br />
+                    <b><span class="keyword">unshift</span>(elt)</b> décale les éléments sur la
+                    droite <br /> et insère l'élément <b>elt</b> à gauche <br/>
+                    <span class="small-font">(et renvoie la longueur du tableau obtenu)</span>.
+                </p><img src="images/js-array-fun/shift.png" style="display: inline-block; vertical-align: top; margin: 0px 40px 0px 0px;" alt="shift" />
+                <div style="display: inline-block; vertical-align: top;">
+                    <textarea class="code-font" data-autojs="js-array-shift" rows="5" cols="35">
+let array = ['a', 'b', 'c', 'd'];
+array.shift();
+array;
+array.unshift('e');
+array;</textarea>
+                    <div class="code-font" id="js-array-shift"></div>
+                </div>
+                <br />
+                <p class="small-font">Ces deux méthodes ont un temps d'exécution qui dépend du nombre d'éléments.</p>
+            </section>
+            <section>
+                <h2>Sous-partie d'un tableau</h2>
+                <p>
+                    <b><span class="keyword">slice</span>(start, end)</b> permet d'extraire la sous-partie
+	            [<b>start</b>,&nbsp;<b>end</b>[ d'un tableau sous forme d'un nouveau tableau.
+                </p>
+                <textarea class="code-font" data-autojs="js-array-slice" rows="4" cols="40">
+const array = ['a', 'b', 'c', 'd', 'e'];
+array.slice();
+array.slice(1);
+array.slice(2, 4);</textarea>
+                <div class="code-font" id="js-array-slice"></div>
+                <p class="small-font">
+                    Contrairement aux méthodes précédentes, <span class="keyword">slice</span> ne modifie <b>pas</b> le tableau
+		    sur lequel on appelle la méthode mais renvoie un nouveau tableau.
+                </p>
+            </section>
+            <section>
+                <h2>Suppression/Insertion au milieu</h2>
+                <p>
+                    <b><span class="keyword">splice</span>(start, deleteCount, elements)</b> supprime <br />
+		    <b>deleteCount</b> éléments
+		    à partir de l'index <b>start</b> <br /> et les remplace par des <b>elements</b>.
+                </p>
+                <textarea class="code-font" data-autojslog="js-array-splice" rows="6" cols="40">
+let array1 = ['a', 'b', 'c', 'd', 'e'];
+array1.splice(1, 2);
+console.log(array1);
+let array2 = ['a', 'b', 'c', 'd', 'e'];
+array2.splice(2, 1, 'c3po', 'd2r2');
+console.log(array2);</textarea>
+                <br />
+                <div id="js-array-splice" class="autojslog code-font"></div>
+                <p class="small-font">
+                    Attention à ne pas confondre <span class="keyword">slice</span> et <span class="keyword">splice</span>&nbsp;!
+                </p>
+            </section>
+            <section>
+                <h2>Trier un tableau (1/2)</h2>
+                <p>
+                    La fonction <b><span class="keyword">sort</span>()</b> permet de trier un tableau sur place.
+                </p>
+                <textarea class="code-font" data-autojs="js-array-sort" rows="3" cols="35">
+let array = ['vera', 'bob', 'elena'];
+array.sort();
+array;</textarea>
+                <div class="code-font" id="js-array-sort"></div>
+                <br />
+            </section>
+            <section>
+                <h2>Trier un tableau (2/2)</h2>
+                <p>
+                    Par défaut, les comparaisons se font sur les chaînes de caractères.
+                </p>
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojs="js-array-sort2" rows="3" cols="35">
+let array = [1, 10, 2, 100];
+array.sort();
+array;</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <div class="code-font" id="js-array-sort2"></div>
+                <br />
+                <p>Ce n'est pas forcément ce que l'on veut&nbsp;!</p>
+            </section>
+            <section>
+                <h2>Trier avec une fonction de comparaison</h2>
+                <p>
+                    On utilise une fonction de comparaison <br /> pour paramétrer <b><span class="keyword">sort</span>(fun)</b>&nbsp;!
+                </p>
+                <textarea class="code-font" data-autojslog="js-array-sort3" rows="4" cols="35">
+const cmp = (v1, v2) => v1 - v2;
+let array = [1, 10, 2, 100];
+array.sort(cmp);
+console.log(array);</textarea>
+                <br />
+                <div id="js-array-sort3" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Fonction de comparaison</h2>
+                <p>L'appel à la fonction <b>cmp(v1,v2)</b> doit renvoyer&nbsp;:</p>
+		<dl class="small-font"><dd>une valeur strictement négative si v1 &lt; v2&nbsp; (v1 doit aller à gauche de v2)</dd>
+		  <dd>une valeur strictement positive si v1 &gt; v2&nbsp; (v1 doit aller à droite de v2)</dd>
+		  <dd>0 si v1 = v2.</dd></dl>
+                <br /><textarea class="code-font" data-autojslog="js-array-cmp" rows="4" cols="35">
+const cmp = (v1, v2) => v2 - v1;
+let array = [1, 10, 2, 100];
+array.sort(cmp);
+console.log(array);</textarea>
+                <br />
+                <div id="js-array-cmp" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>Fonction anonyme</h2>
+                <p>
+                    Évidemment, on peut passer notre fonction directement en argument.
+                </p>
+                <textarea class="code-font" data-autojslog="js-array-anonfun" rows="3" cols="35">
+let array = [1, 10, 2, 100];
+array.sort((v1, v2) => v1 - v2);
+console.log(array);</textarea>
+                <br />
+                <div id="js-array-anonfun" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>closure et boucle (1/2)</h2>
+                <p>
+                    On peut mettre des fonctions dans un tableau&hellip;
+                </p>
+                    <textarea class="code-font" data-autojslog="js-array-closure-loop-bis" rows="9" cols="35">
+let array = [];
+for(let i = 0; i < 3; i++) {
+  array.push(
+    () => {console.log(i);}
+  );
+}
+for(let j = 0; j < 3; j++) {
+  array[j]();
+}</textarea>
+                <br />
+                <div id="js-array-closure-loop-bis" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>closure et boucle (2/2)</h2>
+                <p>
+                    mais gare à quiconque utilise <span class="keyword">let</span> trop tôt&nbsp;!
+                </p>
+                <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="js-array-closure-loop3" rows="10" cols="30">
+let array = [];
+let i;
+for(i = 0; i < 3; i++) {
+  array.push(
+    () => {console.log(i);}
+  );
+}
+for(let j = 0; j < 3; j++) {
+  array[j]();
+}</textarea>
+                    <div class="bad-image"></div>
+                </div>
+                <br />
+                <div id="js-array-closure-loop3" class="autojslog code-font"></div>
+                
+                <p class="small-font" style="clear: both">
+                    La même variable <b>i</b> est utilisée par toutes les closures&nbsp;!
+                </p>
+            </section>
+            <section>
                 <h2>forEach</h2>
                 <p>
                     <b><span class="keyword">forEach</span>(fun)</b> applique la même fonction à chaque valeur. <br /> 
