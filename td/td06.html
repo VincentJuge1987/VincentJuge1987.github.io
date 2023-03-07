@@ -67,13 +67,15 @@
           du programme. <br> Que fait la fonction <code>shuffleCards</code>,
           et en quoi cela aide-t-il pour la mise au point du programme&nbsp;?
         </li>
-        <li>Modifiez le constructeur de la classe <code>MemoryGame</code> pour y stocker
-          les positions de chacune des cartes renvoyées par la fonction <code>shuffleCards</code>.
+        <li>Modifiez le constructeur de la classe <code>MemoryGame</code> pour 
+          que la classe contienne également un tableau <code>positions</code> fourni par
+          la fonction <code>shuffleCards</code>.
           Modifiez ensuite la méthode <code>build</code> pour afficher
           autant de cartes que de cases du tableau <code>cards</code>
           qu'a renvoyé la fonction <code>shuffleCards</code> (ici, 16 cartes). Chaque carte sera
           représentée par un div contenant une image (voir le CSS de <code>memory.html</code>). 
-          Pour l'instant, chaque carte affichera le même dos d'image.
+          Pour l'instant, chaque carte affichera le même dos d'image. <br> Rappel&nbsp;: l'élement DOM
+          correspondant à une image possède une propriété src.
         </li>
         <li>On souhaite ajouter une fonction permettant de savoir lorsque
           l'utilisateur a cliqué sur une carte. <br> Note&nbsp;: tout élément
@@ -96,8 +98,7 @@
           exécutée lors d'un clic. <br> Comment faire pour que le tableau
           des images soit accessible lors d'un clic&nbsp;? <br> Implantez votre
           solution pour que, lorsque l'on clique sur une carte, l'image
-          correspondante s'affiche. <br> Rappel&nbsp;: l'élement DOM
-          correspondant à une image possède une propriété src.
+          correspondante s'affiche.
         </li>
         <li>Il faut maintenant implanter la mécanique du jeu. <br>
           Comme on découvre les cartes, une par une, il faut se souvenir de la
