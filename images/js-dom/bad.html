@@ -11,7 +11,11 @@
   <script>
    "use strict";
    const element = document.getElementById("paragraph");
-   element.innerText = "J'ai réussi à changer le DOM.";
+   if (element == undefined) {
+     console.log("Je ne vais pas réussir à changer le DOM de bad.html!");
+   } else {
+     element.innerText = "J'ai réussi à changer le DOM.";
+   }
    </script>
  </head>
  <body>

@@ -9,7 +9,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 <link rel="stylesheet" type="text/css" href="css/reveal.css">
-<link rel="stylesheet" type="text/css" href="css/reveal-control.css">
 <link rel="stylesheet" type="text/css" href="css/theme/black.css" id="theme">
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 <link rel="stylesheet" type="text/css" href="lib/css/zenburn.css">
@@ -108,6 +107,27 @@ window.onmouseup =
          distance = 0; };</textarea>
 		<br />
                 <div id="log-mouse2" class="autojslog code-font"></div>
+            </section>
+            <section>
+                <h2>&Eacute;vénement onclick</h2>
+                <p>
+                    <b>element.<span class="keyword">onmousemove</span></b> est appelée lorsque l'on clique sur un élément.
+                </p>
+                <div id="dom-div" style="background-color: pink; border: 2px solid silver; width: 200px; position: relative; left: 10px">&nbsp;</div>
+                <p>
+                    <button type="button" id="dom-button">Click Me!</button>
+                </p>
+                <textarea class="code-font" data-autojslog="js-dom-event" rows="6" cols="60">
+const div = document.getElementById("dom-div");
+const button = document.getElementById("dom-button");
+button.onclick = function() {
+  console.log(div.style.left);
+  div.style.left = 30 + parseInt(div.style.left) + "px";
+};</textarea>
+                <p class="small-font">
+                    <b>element.<span class="keyword">style</span></b> permet d'accéder au style d'un élément.
+                </p>
+                <div id="js-dom-event" class="autojslog code-font"></div>
             </section>
             <section>
                 <h2>setTimeout (1/2)</h2>

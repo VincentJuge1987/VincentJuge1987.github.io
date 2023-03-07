@@ -10,13 +10,17 @@
   </style>
   <script>
    "use strict";
-   const load = function() {
+   window.onload = function() {
      const element = document.getElementById("paragraph");
-     element.innerText = "J'ai réussi à changer le DOM.";
+     if (element == undefined) {
+       console.log("Je ne vais pas réussir à changer le DOM de good.html!");
+     } else {
+       element.innerText = "J'ai réussi à changer le DOM.";
+     }
    };
    </script>
  </head>
- <body onload="load();">
+ <body>
   <p id="paragraph">Je n'ai pas réussi à changer le DOM.</p>
  </body>
 </html>
