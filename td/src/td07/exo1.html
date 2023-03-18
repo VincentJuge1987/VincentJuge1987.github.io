@@ -2,34 +2,29 @@
 <html>
  <head>
    <meta charset="utf-8">
+   <title>My first clock</title>
    <script>
      "use strict";
-   
+     window.onload = function() {
+       window.setTimeout(refresh, 1000);
+       // drawOnCanvas();
+     };
      const refresh = function() {
        console.log("tick !");
      }
+     const drawOnCanvas = function() {
+       const canvas = document.getElementById('clock');
+       const context = canvas.getContext("2d");
      
-     const loaded = function() {
-       window.setTimeout(refresh, 1000);
-     }
+       context.beginPath();
+       context.moveTo(0, 300);
+       context.lineTo(600, 300);
+       context.stroke();
+     };
    </script>
  </head>
- <body onload="loaded()">
+ <body>
   <h2>Horloge</h2>
-  <canvas id="clock"
-          width="600"
-          height="600">
-  </canvas>
-  <script>
-     /*
-     const canvas = document.getElementById('clock');
-     const context = canvas.getContext("2d");
-     
-     context.beginPath();
-     context.moveTo(0, 300);
-     context.lineTo(600, 300);
-     context.stroke();
-     */
-  </script>
+  <canvas id="clock" width="600" height="600"> </canvas>
  </body>
 </html>

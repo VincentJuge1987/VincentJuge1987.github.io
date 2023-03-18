@@ -76,13 +76,12 @@ window.addEventListener('keydown', function(event) {
                     <span class="keyword">onmousedown</span>, <span class="keyword">onmousemove</span>, <span class="keyword">onmouseup</span> 
 		    sont appelées lorsque l'on utilise la souris sur un élément.
                 </p>
-                <textarea id="text-mouse" data-slow class="code-font left" data-autojslog="log-mouse" rows="4" cols="50">
+                <textarea id="text-mouse" data-slow class="code-font left" data-autojslog="log-mouse" rows="4" cols="52">
 const area = document.getElementById("text-mouse");
 area.addEventListener('mousedown', function(event) {
   console.log(`${event.offsetX},${event.offsetY}`);
 });</textarea>
-		<br />
-                <div id="log-mouse" class="autojslog code-font"></div>
+                <div id="log-mouse" class="autojslog code-font right"></div>
                 <p class="clear">
                     La fonction recoit un événement (<b>event</b>) contenant les coordonnées (<span class="keyword">offsetX</span> et <span class="keyword">offsetY</span>).
                 </p>
@@ -172,10 +171,38 @@ window.setInterval(
                 <div id="log-timer3" class="autojslog code-font"></div>
             </section>
             <section>
+                <h2>setTimeOut / setInterval et arguments</h2>
+                <p>
+                    Pour utiliser donner des paramètres à une fonction appelée avec <span class="keyword">setTimeout</span> ou <span class="keyword">setInterval</span>, on utilise une <b>closure</b>.
+                </p>
+                <div class="left">
+                  <div class="bad-container">
+                    <textarea class="code-font" data-autojslog="log-timer4a" rows="3" cols="35">
+const show = i => console.log(i);
+window.setInterval(
+  show(3), 1000);</textarea>
+                    <div class="bad-image"></div>
+                  </div>
+		  <br />
+                  <div id="log-timer4a" class="autojslog code-font center"></div>
+                </div>
+                <div class="right">
+                  <div class="good-container">
+                    <textarea class="code-font" data-autojslog="log-timer4b" rows="3" cols="35">
+const show = i => console.log(i);
+window.setInterval(
+  () => {show(3);}, 1000);</textarea>
+                    <div class="good-image"></div>
+                  </div>
+		  <br />
+                  <div id="log-timer4b" class="autojslog code-font center"></div>
+                </div>
+            </section>
+            <section>
                 <h2>requestAnimationFrame</h2>
                 <p>demande une animation dès que possible<br>
                 (sans faire planter le navigateur&nbsp;<span class="happy-image"></span>&nbsp;).</p>
-                <textarea class="code-font" data-changelog data-autojslog="log-timer4" data-once rows="10" cols="60">
+                <textarea class="code-font" data-changelog data-autojslog="log-timer5" data-once rows="10" cols="60">
 let counter = 0;
 const start = new Date().getTime();
 const animate = function() {
@@ -187,39 +214,12 @@ const animate = function() {
 };
 window.requestAnimationFrame(animate);</textarea>
 		<br />
-                <div id="log-timer4" class="autojslog code-font"></div>
+                <div id="log-timer5" class="autojslog code-font"></div>
                 <br />
                 <p class="small-font">
                   exécute la fonction demandée avant le prochain rafraîchissement de l'écran
                 </p>
             </section>
- <!--           <section>
-                <h2>requestAnimationFrame</h2>
-                <p>demande une animation dès que possible.</p>
-                <textarea class="small-code-font" data-autojscanvas="canvas-timer4" data-once rows="20" cols="60">
-function point(x, y) { return { x: x, y: y, dx: 1, dy: 1 }; }
-function draw(p1, p2, color) {
-  context.strokeStyle = color;
-  context.beginPath();
-  context.moveTo(p1.x, p1.y); context.lineTo(p2.x, p2.y);
-  context.stroke();
-}
-let move = function(p) {
-  p.x = p.x + p.dx; p.y = p.y + p.dy;
-  if (p.x == 0 || p.x == canvas.width) { p.dx = -p.dx; }
-  if (p.y == 0 || p.y == canvas.height) { p.dy = -p.dy; }
-};
-let p1 = point(50, 50); let p2 = point(200, 150);
-let animate = function() {
-  draw(p1, p2, 'white');
-  move(p1); move(p2);
-  draw(p1, p2, 'blue');
-  window.requestAnimationFrame(animate);
-};
-window.requestAnimationFrame(animate);</textarea>
-                <canvas id="canvas-timer4" width="310" height="210"></canvas>
-                <br />
-            </section>-->
         </div>
     </div>
     <script src="lib/js/head.min.js"></script>

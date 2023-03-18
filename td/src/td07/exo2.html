@@ -4,25 +4,18 @@
    <meta charset="utf-8">
    <script>
      "use strict";
-   
+     window.onload = function() {
+       startClock('clock1');
+       startClock('clock2');
+     };
      const startClock = function(clockId) {
        // TODO
-     }
+     };
    </script>
  </head>
  <body>
   <h2>Horloge 2</h2>
-  <canvas id="clock1"
-          width="200"
-          height="200">
-  </canvas>
-  <canvas id="clock2"
-          width="300"
-          height="400">
-  </canvas>
-  <script>
-    startClock('clock1');
-    startClock('clock2');
-  </script>
+  <canvas id="clock1" width="200" height="200"> </canvas>
+  <canvas id="clock2" width="300" height="400"> </canvas>
  </body>
 </html>

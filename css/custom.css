@@ -78,6 +78,11 @@ td .vert-center {
   text-align: right;
   float: right;}
 
+.center {
+  display: block;
+  text-align: center;
+  width: 100%;}
+
 .tt {
   font-family: monospace; }
 
@@ -112,7 +117,11 @@ div.autojserror {
 
 .bad-container {
   position: relative;
-  display:inline-block; }
+  display: inline-block; }
+
+.good-container {
+  position: relative;
+  display: inline-block; }
 
 .bad-image:after {
   content: url(../images/js/bad.png);
