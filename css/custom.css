@@ -228,3 +228,6 @@ div.resize_button {
 
 .blue {
   color: #4040FF; }
+  
+.hidden {
+  display: none; }

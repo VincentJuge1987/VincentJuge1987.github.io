@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Programmation Web</title>
-<link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
-<link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
-  media="print"
->
-<link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
-<link rel="stylesheet" type="text/css" href="../css/custom.css">
+  <meta charset="UTF-8">
+  <title>Programmation Web</title>
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/printstylesheet.css" media="print">
+  <link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
+  <link rel="stylesheet" type="text/css" href="../css/custom.css">
+   <script>
+     "use strict";
+     const year = 125;
+     const months = [1,2,2,2,3,3,3,3,4]
+     const days = [27,3,10,17,3,17,24,31,7]
+     window.onload = function() {
+       const date = new Date();
+       for(let i = 0; i < 9; i++) {
+         td(`td0${i+1}`,year - date.getYear(), months[i] - (date.getMonth() + 1), days[i] - (date.getDate() + 1));
+       }
+     }
+     const td = function(id, y, m, d) {
+       if (y < 0 || (y == 0 && m < 0) || (y == 0 && m == 0 && d <= 0)) {
+         const elt = document.getElementById(id);
+         elt.classList.toggle("hidden");
+       }
+     }
+   </script>
 </head>
 <body>
   <div class="conteneur">
@@ -67,7 +83,7 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 <br>
 
   <ul>
-    <li>
+    <li class="hidden" id="td01">
 <a href="td01.html">
    Internet, World Wide Web et HTTP 
  </a><br>
@@ -82,7 +98,7 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 
 
     
- <li>
+ <li class="hidden" id="td02">
 <a href="td02.html">
    HTML et CSS 
  </a><br>
@@ -93,7 +109,7 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 		[Mon compte-rendu est trop stylé !]
 	</li>
     
-<!--       <li>
+ <li class="hidden" id="td03">
 <a href="td03.html">
    Feuille de style CSS &amp; boîtes
  </a><br>
@@ -105,7 +121,7 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 	
 		[Faites vous plaisir (Optionnel &mdash; à la maison)]
 	</li>
-        <li>
+        <li class="hidden" id="td04">
 <a href="td04.html">
    Premiers pas en Javascript
  </a><br>
@@ -115,7 +131,7 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 	
 		[On fera en fonction&hellip;]
 	</li>
-        <li>
+        <li class="hidden" id="td05">
 <a href="td05.html">
    Tableaux et filter, map, reduce
  </a><br>
@@ -125,14 +141,14 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 	
 		[Génération aléatoire et calcul rapide]
 	</li>
-	  <li>
+	  <li class="hidden" id="td06">
 <a href="td06.html">
    Manipulation du DOM, Objet JavaScript 
  </a><br>
 		[Memory]
 	  </li>
 
-  <li>
+  <li class="hidden" id="td07">
 <a href="td07.html">
    Dessiner sur des Canvas 
 </a><br>
@@ -145,7 +161,7 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 	
 		[Horloges de différentes tailles]
   </li>
-    <li>
+    <li class="hidden" id="td08">
 <a href="td08.html">
    Requêtes AJAX 
  </a><br>
@@ -155,13 +171,12 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 	
 		[Les promesses n'engagent que ceux qui y croient]
 	</li>
-	   <li>
+	   <li class="hidden" id="td09">
 <a href="td09.html">
    Mon CV en Responsive Web Design
  </a><br>
 		[Mon super CV]
 	   </li>
--->
     </ul>
 
 <h2>Références</h2>
