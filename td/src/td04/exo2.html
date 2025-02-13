@@ -2,62 +2,59 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <title>Mon super damier</title>
-  <style>
-   table {
-    border-collapse: collapse;
-   }
-   td {
-    background-color: silver;
-    margin: 0px;
-    padding: 15px;
-    border: 1px solid black;
-   }
-  </style>
+  <title>Mon tout premier script</title>
   <script>
    "use strict";
-   const load = function() {
-     makeCell("table-1");
-     makeLine(5,"table-2");
-     makeSquare(8,"table-3");
-     makeSquare(3,"table-4");
+   /* Question 1 */
+   const sumSquares = function(n) {
+     // Écrire le corps de la fonction ici.
    };
-   const makeCell = function(id) {
-     const table = document.getElementById(id);
-     const row = document.createElement("tr");
-     const cell = document.createElement("td");
-     row.appendChild(cell);
-     table.appendChild(row);
+   // Écrire les tests ici.
+   
+   /* Question 2 */
+   const silent = function(b) {
+     return b;
+   }
+   const verbose = function(b) {
+     console.log(b);
+     return b;
+   }
+   const question2 = function() {
+     console.log("Test n°2.1");
+     console.log(silent(true) && silent(true) && silent(false) && silent(false));
+     console.log("Test n°2.2");
+     console.log(silent(true) || silent(true) || silent(false) || silent(false));
+     console.log("Test n°2.3");
+     console.log(verbose(true) && verbose(true) && verbose(false) && verbose(false));
+     console.log("Test n°2.4");
+     console.log(verbose(true) || verbose(true) || verbose(false) || verbose(false));
+     console.log("Test n°2.5");
+     silent(true) && silent(true) && silent(false) && silent(false);
+     console.log("Test n°2.6");
+     silent(true) || silent(true) || silent(false) || silent(false);
+     console.log("Test n°2.7");
+     verbose(true) && verbose(true) && verbose(false) && verbose(false);
+     console.log("Test n°2.8");
+     verbose(true) || verbose(true) || verbose(false) || verbose(false);
    };
-   const makeLine = function(width, id) {
-     // TODO
-   };
-   const makeSquare = function(size, id) {
-     // TODO
-   };
-   </script>
+   // question2();
+   
+   /* Question 3 */
+   const double = function(a) {
+     return a + a;
+   }
+   const question3 = function() {
+     console.log("Test n°3.1");
+     console.log(double(3));
+     console.log("Test n°3.2");
+     console.log(double("3"));
+     console.log("Test n°3.3");
+     console.log(double(3+3+"3"));
+   }
+   // question3();
+  </script>
  </head>
- <body onload="load();">
-  <h2>Damier</h2>
-  <p>
-    Carré de 1x1
-  </p>
-  <table id="table-1"></table>
-  <br>
-  <p>
-    Ligne de 1x5
-  </p>
-  <table id="table-2"></table>
-  <br>
-  <p>
-    Carré de 8x8
-  </p>
-  <table id="table-3"></table>
-  <br>
-  <p>
-    Carré de 3x3
-  </p>
-  <table id="table-4"></table>
-  <br>
+ <body>
+  <h2>Premier pas en JavaScript</h2>
  </body>
 </html>

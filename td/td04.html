@@ -25,18 +25,16 @@
       <div>Comme pour les TP précédents, on vous demande de créer un
         répertoire tp4 qui contiendra les exercices de cette feuille de TP et de
         faire un compte rendu de TP en HTML. <br>
-        Ce TP sera noté, mais vous pouvez bien sûr demander de l'aide à vos enseignants&nbsp;:
-        le but de la note est de vous pousser à travailler sérieusement et de vous donner une
-        idée de votre niveau de compréhension du cours. En revanche, tout copier-coller d'un
-        bout de code ou de compte-rendu entre deux élèves sera
-        <span class="caution">très fortement</span> sanctionné.<br>
+        Ce TP sera relu attentivement par votre chargé de TP, qui reviendra vers
+        vous pour vous signaler quelles questions vous avez bien traitées et celles pour
+        lesquelles vous vous êtes trompés.
         Vous avez le droit de lire l'intégralité du sujet du TP pour comprendre où on souhaite
         que vous alliez. <br>
         <span class="caution">Attention&nbsp;:</span> Chaque fois que l'on vous demande
         de réécrire une fonction ou de remplacer votre code par un nouveau code,
         il faudra mettre l'ancien code en commentaire et surtout pas
         le supprimer. Sinon, votre chargé de TP ne sera plus en mesure de vérifier que l'ancien
-        code répondait à la question précédente.
+        code répondait à la question précédente.s
         <br><br>
         </div>
       <br>
@@ -50,122 +48,130 @@
           href="src/td04/exo1.html"
         >exo1.html</a> dans votre répertoire <span class="tt">tp4</span>. <br> Que se
           passe-t-il lorsque l'on visualise la page&nbsp;? <br> Comment fait-on
-          pour ouvrir la console avec Firefox&nbsp;? <br> Et avec Chrome&nbsp;?
+          pour ouvrir la console avec <a href="https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html">Firefox</a>&nbsp;? <br> Et avec <a href="https://developer.chrome.com/docs/devtools/open?hl=fr">Chrome</a>&nbsp;?
         </li>
         <li>Mettez l'ancien code en commentaire. <br>Ecrivez un code
-          permettant d'afficher, toujours dans la console, les nombres de 0 à 2023 inclus
+          permettant d'afficher, toujours dans la console, les nombres de 0 à 2025 inclus
           (il n'est pas nécessaire de faire une fonction pour l'instant). <br>
-          Note : par pitié, pas de copier/coller, d'autant plus que l'on doit afficher 2024 nombres !
+          Note : par pitié, pas de copier/coller, d'autant plus que l'on doit afficher 2026 nombres !
         </li>
         <li>Mettez l'ancien code en commentaire.
         <br> Réécrivez un nouveau code code pour afficher dans la console
-        les nombres <span class="caution">divisibles par 2 ou par 3</span> allant de 0 à 2023 inclus&nbsp;: 0, 2, 3, 4, 6, 8, &hellip;, 2018, 2019, 2020, 2022.</li>
+        les nombres <span class="caution">divisibles par 2 ou par 3</span> allant de 0 à 2023 inclus&nbsp;: 0, 2, 3, 4, 6, 8, &hellip;, 2020, 2022, 2024, 2025.</li>
         <li>Commentez l'ancien code et écrire une fonction (que vous
           nommerez de façon claire et intelligente) prenant un entier en
           paramètre et affichant sur la console les nombres divisibles par 2 ou par 3 allant de de 0 à cet entier
           (inclus).
           Puis écrivez un code de test de la fonction avec les
-          valeurs 7 et puis 10. Que se passe-t-il si on teste la fonction avec la valeur -1&nbsp;?</li>
+          valeurs 7 et puis 10. Que se passe-t-il si on teste la fonction avec la valeur -1&nbsp;?
+        </li>
       </ol>
 
-      <h3>Exercice 2&nbsp;: Damier</h3>
-      <div>On cherche à faire un damier avec des cases blanches et noires
-        et la diagonale affichée en marron.
-        <br>
-        <span class="caution">Attention&nbsp;:</span> Chaque fois que l'on souhaitera donner
-        un style spécifique à tel ou tel élément HTML, on lui donnera une classe on un ID
-        et on créera le sélecteur CSS correspondant&nbsp;: écrire des informations de
-        style en dur dans une balise HTML, c'est une méthode de sauvages&nbsp;!</div>
+      <h3>Exercice 2&nbsp;: Manipulations simples</h3>
+      <div>Ici, nous allons manipuler des objets dont le type est un type de base : number, boolean, string.</div>
       <br>
       <ol>
-        <li>Recopiez la page Web <a
-          href="src/td04/exo2.html"
-        >exo2.html</a> dans votre répertoire <span class="tt">tp4</span>. <br> Expliquez ce
-          que fait la première ligne du script : <pre class="full-width">"use strict";</pre>
+        <li>Recopiez la page Web <a href="src/td04/exo2.html">exo2.html</a> dans votre répertoire <span class="tt">tp4</span>.
+        </li>
+        <li>
+          Dans la section <span class="tt">Question 1</span>, remplir le corps de la fonction <span class="tt">sumSquares</span> de sorte que <span class="tt">sumSquares(n)</span> renvoie la somme des entiers de 0 à n inclus.
+          Par exemple, <span class="tt">sumSquares(3)</span> = 0 + 1 + 2 + 3 = 6.
           <br>
-          <span class="caution">Attention&nbsp;:</span> Si votre console vous indique qu'il y a un problème avec l'utilisation de <span class="tt">&lt;body onload="load();"&gt;</span>, utilisez le document <a
-          href="src/td04/exo2b.html"
-        >exo2b.html</a>	à la place.
+          Afficher ensuite dans la console les valeurs de <span class="tt">sumSquares(n)</span> lorsque <span class="tt">n</span> vaut 3, 10, 10000000, et enfin 100000000.
+          La valeur de <span class="tt">sumSquares(100000000)</span> vous surprend-elle&nbsp;?
+        </li>
+        <li>
+          Décommenter la ligne où l'on appelle la fonction <span class="tt">question2</span>.
           <br>
-          <span class="caution">Attention&nbsp;:</span> La bonne manière de sauver une copie de <span class="tt">exo2.html</span> est de faire un clic droit sur le lien hypertexte puis d'appuyer sur <span class="tt">enregistrer sous</span>. Sinon, vous risquez d'avoir une version qui vous affiche deux cases l'une sur l'autre au lieu d'une seule case (car vous aurez sauvé le code HTML tel que réécrit après une première application du code Javascript sur votre page).
-          href="src/td04/exo2b.html"
-        >exo2b.html</a>	à la place.
+          Que s'affiche-t-il dans la console ? Expliquer chacun des résultats des huits tests que l'on a effectués.
         </li>
-        <li>Expliquez comment faire pour ajouter un enfant ou une classe à un élément, puis expliquer comment fonctionne la fonction <span class="tt">makeCell</span>.
-        </li>
-        <li>Remplissez le contenu de la fonction <span class="tt">makeLine</span> de sorte que l'appel à <span class="tt">makeLine(5, "table-2");</span> transforme la table d'identifiant <span class="tt">"table-2"</span> en un tableau d'une ligne et cinq colonnes.
-        </li>
-        <li>Remplissez le contenu de la fonction <span class="tt">makeSquare</span> de sorte que l'appel à <span class="tt">makeSquare(8, "table-3");</span> transforme la table d'identifiant <span class="tt">"table-3"</span> en un tableau de huit lignes et huit colonnes.
-        </li>
-        <li>Vérifiez que la table d'identifiant <span class="tt">"table-4"</span> est maintenant un tableau de trois lignes et trois colonnes.
-        <br>
-        Si ce n'est pas le cas, reprenez la fonction précédente.
-        </li>
-        <li>Complétez le style de la balise <span class="tt">style</span> du document pour
-          définir une case noire et une case blanche et utilisez ce style pour
-          les cases de chacun des quatre tableaux (vous êtes libre de commencer par une case blanche ou par une case noire). <br> Note&nbsp;: une balise HTML peut avoir
-          plusieurs classes CSS ! <br> Astuce&nbsp;: la somme (ça marche aussi avec la différences, si vous préférez) des coordonnées des
-          cases modulo 2 (le reste de la division par 2) vous indique s'il
-          s'agit d'une case blanche ou d'une case noire.
-        </li>
-        <li>Ajoutez un style de case marron puis commentez votre code de la fonction
-        <span class="tt">makeSquare</span> et réécrivez-la pour ajouter un dernier
-          paramètre à <span class="tt">makeSquare</span>&nbsp;; ce paramètre pouvant être <span class="tt">vrai</span> ou <span class="tt">faux</span>. Si le
-          paramètre est <span class="tt">vrai</span>, alors il faudra afficher la diagonale en marron.
+        <li>
+          Recommenter la ligne où l'on appelle la fonction <span class="tt">question2</span> puis décommenter la ligne où l'on appelle la fonction <span class="tt">question3</span>.
           <br>
-          Au cours de ce processus, vous pourrez être amené à commenter les codes de vos différentes foncions
-          pour leur ajouter des paramètres additionnels que vous aurez jugés pertinents.
+          Que s'affiche-t-il dans la console ? Expliquer chacun des résultats des trois tests que l'on a effectués.
         </li>
-        <li>Testez en affichant en marron la diagonale du premier carré (mais pas celle du
-          second).</li>
       </ol>
 
-      <h3>Exercice 3&nbsp;: On fera en fonction&hellip;</h3>
-      <div>
-        On peut améliorer la
-        "beauté" du code, et le rendre un peu plus professionnel, en évitant de
-        passer en paramètre un booléen pour dire s'il faut dessiner ou non la
-        diagonale. 
+      <h3>Exercice 3&nbsp;: Nombres premiers et PGCD</h3>
+      <div>Le but est ici d'écrire quelques fonctions en rapport avec l'arithmétique, puis de les tester en direct.</div>
+      <br>
       <ol>
-        <li>
-          Copiez-collez le document <span class="tt">exo2.html</span> et nommez
-          <span class="tt">exo3.html</span> votre copie.
-          Ci-dessous, vous effectuerez vos modifications
-          sur ce nouveau document <span class="tt">exo3.html</span>.
+        <li>Recopiez la page Web <a href="src/td04/exo3.html">exo3.html</a> dans votre répertoire <span class="tt">tp4</span>.
         </li>
         <li>
-          Faites en sorte que la fonction <span class="tt">makeCell</span>
-          prenne un argument supplémentaire, qui sera la couleur (<span class="tt">black</span>, <span class="tt">white</span> ou <span class="tt">brown</span>) de la case.
+          En haut de la page Web se trouve une section intitulée <span class="tt">Somme</span>.
+          Vous pouvez y écrire deux entiers, dans deux zones balisées de type <span class="tt">textarea</span>.
           <br>
-          Par exemple, si j'appelle <span class="tt">makeCell("table-1","brown")</span>,
-          on dessinera une case de classe <span class="tt">"brown"</span>, qui aura vocation
-          à être dessinée en marron comme indiqué dans les informations de style du document.
+          Que se passe-t-il quand vous appuyez sur le bouton <span class="tt">C'est parti&nbsp;!</span> situé juste en-dessous&nbsp;?
         </li>
         <li>
-          Redéfinissez la fonction <span class="tt">makeSquare</span> pour que,
-          outre l'identifiant du tableau à transformer et la dimension de la grille qu'elle doit
-          dessiner, le troisième argument que
-          prend cette fonction soit non plus un booléen qui dira si on doit peindre
-          (ou non) en marron la diagonale de la grille,
-          mais une fonction d'affichage qui associera à paire <span class="tt">(i,j)</span>
-          la couleur de la case en ligne <span class="tt">i</span> et colonne
-          <span class="tt">j</span>.
+          Dans cette première section, on calculait la somme de deux entiers, à l'aide d'une fonction nommée <span class="tt">sum</span>.
+          Dans la deuxième section, on souhaite calculer le PGCD de deux entiers.
+          </br>
+          Pour ce faire, remplir le corps de la fonction <span class="tt">pgcd</span> de sorte que <span class="tt">pgcd(a,b)</span> renvoie le PGCD des entiers <span class="tt">a</span> et <span class="tt">b</span>.
           <br>
-          Par exemple, si j'appelle <span class="tt">makeSquare(3, "table-4", col)</span>,
-          on dessinera 3&times;3 cases, et la case en ligne 1 et colonne 2 sera de couleur
-          <span class="tt">col(1,2)</span>.
+          Tester votre fonction en écrivant des entiers dans les deux zones balisées de type <span class="tt">textarea</span>.
         </li>
         <li>
-          Définissez une fonction <span class="tt">diagonalColor</span> dont le seul
-          argument est un booléen, et telle que l'appel à
-          <span class="tt">makeSquare(size, id, diagonalColor(true))</span>
-          transformera la table d'identifiant <span class="tt">id</span> en une grille dont la diagonale sera marron, tandis que l'appel à
-          <span class="tt">makeSquare(size, id, diagonalColor(false))</span>
-          transformera cette table en une grille dont la diagonale n'aura pas de couleur particulière
-          (par rapport aux autres cases de la grille).
+          On souhaite maintenant vérifier si un nombre est premier.
+          On rappelle qu'un entier <span class="tt">n</span> est <span class="caution">premier</span> lorsque <span class="tt">n</span> possède exactement deux diviseurs strictement positifs.
+          </br>
+          Remplir le corps de la fonction <span class="tt">isPrime</span> de sorte que <span class="tt">isPrime(n)</span> renvoie <span class="tt">true</span> si <span class="tt">n</span> est un nombre premier, et <span class="tt">false</span> sinon.
+          <br>
+          Tester votre fonction en écrivant un entier dans la zone balisée de type <span class="tt">textarea</span>.
+        </li>
+        <li>
+          On souhaite enfin afficher la liste des premiers nombres premiers.
+          Remplir le corps de la fonction <span class="tt">listPrimes</span> de sorte que <span class="tt">listPrimes(n)</span> renvoie une chaîne de caractères contenant les écritures décimales des nombres premiers compris entre 2 et <span class="tt">n</span> inclus, séparées par des virgules.
+          <br>
+          Par exemple, <span class="tt">listPrimes(9)</span> renvoie la chaîne de caractères <span class="tt">"2,3,5,7"</span>.
+          <br>
+          Tester votre fonction en écrivant un entier dans la zone balisée de type <span class="tt">textarea</span>.
         </li>
       </ol>
 
+      <h3>Exercice 4&nbsp;: Affichage de formes dans la console</h3>
+      <div>On cherche à afficher des formes simples <span class="caution">dans la console</span>.
+      <br>
+      <ol>
+        <li>Recopiez la page Web <a href="src/td04/exo4.html">exo4.html</a> dans votre répertoire <span class="tt">tp4</span>.
+        </li>
+        <li>On souhaite afficher des croix qui formeront un triangle rectangle isocèle.
+          La fonction <span class="tt">triangleRectangle(n)</span> doit permettre d'afficher un tel triangle de côté <span class="tt">n</span>.
+          <br>
+          Par exemple, <span class="tt">triangleRectangle(4)</span> permet d'afficher les lignes
+          <br>
+          <pre class="full-width tt">.<br>..<br>...<br>....</pre>
+          Remplir le corps de la fonction <span class="tt">triangleRectangle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
+        </li>
+        <li>On souhaite maintenant disposer d'un triangle isocèle dont l'axe de symétrie est vertical.
+          La fonction <span class="tt">triangleIsocèle(n)</span> doit permettre d'afficher un tel triangle de hauteur <span class="tt">n</span> et de base <span class="tt">2n-1</span>.
+          <br>
+          Par exemple, <span class="tt">triangleIsocèle(4)</span> permet d'afficher les lignes
+          <br>
+          <pre class="full-width tt">   .<br>  ...<br> .....<br>.......</pre>
+          Remplir le corps de la fonction <span class="tt">triangleIsocèle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
+        </li>
+        <li>On souhaite ensuite disposer d'un rectangle.
+          La fonction <span class="tt">rectangle(a,b)</span> doit permettre d'afficher un tel rectangle de hauteur <span class="tt">a</span> et de largeur <span class="tt">b</span>, sans compter les cases occupées par les bords du rectangle.
+          <br>
+          Par exemple, <span class="tt">rectangle(4,6)</span> permet d'afficher les lignes
+          <br>
+          <pre class="full-width tt">+------+<br>|      |<br>|      |<br>|      |<br>|      |<br>+------+</pre>
+          Remplir le corps de la fonction <span class="tt">rectangle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">a<span> et <span class="tt">b<span>.
+        </li>
+        <li>On souhaite enfin disposer d'un carré.
+          La fonction <span class="tt">carré(n)</span> doit permettre d'afficher un tel carré de côté <span class="tt">n</span>, sans compter les cases occupées par les bords du carré.
+          <br>
+          Par exemple, <span class="tt">carré(4)</span> permet d'afficher les lignes
+          <br>
+          <pre class="full-width tt">+----+<br>|    |<br>|    |<br>|    |<br>|    |<br>+----+</pre>
+          Remplir le corps de la fonction <span class="tt">carré</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
+        </li>
+        <li>Le corps de la fonction <span class="tt">carré</span> doit prendre au plus une ligne, facile à lire et à comprendre.
+        Si ce n'est pas le cas, commentez votre code et réécrivez la fonction <span class="tt">carré</span> de sorte à satisfaire cette nouvelle contrainte.
+        </li>
+      </ol>
       <hr>
       <div class="copyright noprint">© Université Gustave Eiffel</div>
     </div>
