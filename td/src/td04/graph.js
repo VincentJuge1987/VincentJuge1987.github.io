@@ -38,7 +38,7 @@ const writing = function(but,in1,out,fun,post) {
   };
 };
 
-const load = function() {
+window.onload = function() {
   mapping("button1","area1","area2","area3",sum);
   mapping("button2","area4","area5","area6",pgcd);
   testing("button3","area7","area8",isPrime);

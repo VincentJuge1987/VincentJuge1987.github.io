@@ -34,7 +34,7 @@
         de réécrire une fonction ou de remplacer votre code par un nouveau code,
         il faudra mettre l'ancien code en commentaire et surtout pas
         le supprimer. Sinon, votre chargé de TP ne sera plus en mesure de vérifier que l'ancien
-        code répondait à la question précédente.s
+        code répondait à la question précédente.
         <br><br>
         </div>
       <br>
@@ -68,12 +68,12 @@
 
       <h3>Exercice 2&nbsp;: Manipulations simples</h3>
       <div>Ici, nous allons manipuler des objets dont le type est un type de base : number, boolean, string.</div>
-      <ol>
+      <ol start="0">
         <li>Recopiez la page Web <a href="src/td04/exo2.html">exo2.html</a> dans votre répertoire <span class="tt">tp4</span>.
         </li>
         <li>
-          Dans la section <span class="tt">Question 1</span>, remplir le corps de la fonction <span class="tt">sumSquares</span> de sorte que <span class="tt">sumSquares(n)</span> renvoie la somme des entiers de 0 à n inclus.
-          Par exemple, <span class="tt">sumSquares(3)</span> = 0 + 1 + 2 + 3 = 6.
+          Dans la section <span class="tt">Question 1</span>, remplir le corps de la fonction <span class="tt">sumSquares</span> de sorte que <span class="tt">sumSquares(n)</span> renvoie la somme des carrés des entiers de 0 à n inclus.
+          Par exemple, <span class="tt">sumSquares(3)</span> = 0 &times; 0 + 1 &times; 1 + 2 &times; 2 + 3 &times; 3 = 14.
           <br>
           Afficher ensuite dans la console les valeurs de <span class="tt">sumSquares(n)</span> lorsque <span class="tt">n</span> vaut 3, 10, 10000000, et enfin 100000000.
           La valeur de <span class="tt">sumSquares(100000000)</span> vous surprend-elle&nbsp;?
@@ -92,20 +92,30 @@
 
       <h3>Exercice 3&nbsp;: Nombres premiers et PGCD</h3>
       <div>Le but est ici d'écrire quelques fonctions en rapport avec l'arithmétique, puis de les tester en direct.</div>
-      <ol>
+      <ol start="0">
         <li>Recopiez la page Web <a href="src/td04/exo3.html">exo3.html</a> dans votre répertoire <span class="tt">tp4</span>.
+        </li>
+        <li>
+          Quel message d'avertissement pouvez-vous lire quand vous ouvrez la console&nbsp;?
+          Et que voyez-vous quand vous ouvrez l'onglet « Réseau » de la console de développement Web&nbsp;?
+          <br>
+          Lire attentivement le code source du fichier <span class="tt">exo3.html</span> et téléchargez dans votre répertoire <span class="tt">tp4</span> la ressource qu'il vous manque pour faire fonctionner correctement la page <span class="tt">exo3.html</span>.
         </li>
         <li>
           En haut de la page Web se trouve une section intitulée <span class="tt">Somme</span>.
           Vous pouvez y écrire deux entiers, dans deux zones balisées de type <span class="tt">textarea</span>.
           <br>
           Que se passe-t-il quand vous appuyez sur le bouton <span class="tt">C'est parti&nbsp;!</span> situé juste en-dessous&nbsp;?
+          <br>
+          Quelle ressource devez-vous charger pour 
         </li>
         <li>
           Dans cette première section, on calculait la somme de deux entiers, à l'aide d'une fonction nommée <span class="tt">sum</span>.
           Dans la deuxième section, on souhaite calculer le PGCD de deux entiers.
           </br>
           Pour ce faire, remplir le corps de la fonction <span class="tt">pgcd</span> de sorte que <span class="tt">pgcd(a,b)</span> renvoie le PGCD des entiers <span class="tt">a</span> et <span class="tt">b</span>.
+          <br>
+          On rappelle que le PGCD peut se calculer à l'aide de l'<a href="https://fr.wikipedia.org/wiki/Algorithme_d'Euclide#Algorithme_standard_(par_division_euclidienne)">algorithme d'Euclide</a>.
           <br>
           Tester votre fonction en écrivant des entiers dans les deux zones balisées de type <span class="tt">textarea</span>.
         </li>
@@ -129,7 +139,7 @@
 
       <h3>Exercice 4&nbsp;: Affichage de formes dans la console</h3>
       <div>On cherche à afficher des formes simples <span class="caution">dans la console</span>.
-      <ol>
+      <ol start="0">
         <li>Recopiez la page Web <a href="src/td04/exo4.html">exo4.html</a> dans votre répertoire <span class="tt">tp4</span>.
         </li>
         <li>On souhaite afficher des croix qui formeront un triangle rectangle isocèle.
