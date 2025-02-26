@@ -2,11 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Tableaux et filter, map, reduce</title>
+<title>Boucles et fonctions en Javascript</title>
 <link rel="stylesheet" type="text/css" href="css/stylesheet-td.css" media="screen">
-<link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
-  media="print"
->
+<link rel="stylesheet" type="text/css" href="css/printstylesheet.css" media="print">
 <link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
 </head>
 <body>
@@ -16,7 +14,7 @@
         <tbody>
           <tr style="vertical-align: center;">
             <td><img class="print" src="css/UGE.png" alt="[LOGO]" height="30"></td>
-            <td><h1>Tableaux et filter, map, reduce</h1></td>
+            <td><h1>Boucles et fonctions en Javascript</h1></td>
           </tr>
         </tbody>
       </table>
@@ -27,194 +25,215 @@
         faire un compte rendu de TP en HTML.</div>
       <br>
 
-      <h3>Exercice 1&nbsp;: Tableaux</h3>
-      <div>Manipulations simples de tableau</div>
-      <br>
-      <ol>
-        <li>Recopiez la page Web <a
-          href="src/td05/exo1.html"
-        >exo1.html</a> dans votre répertoire <span class="tt">tp5</span>. <br>
-          Expliquez ce que fait le code sans pour autant regarder le code de
-          <span class="tt">graph.js</span>. <br>
-          Note&nbsp;: pour tester, vous devez récupérer aussi le
-          fichier <span class="tt">graph.js</span> et le placer correctement par
-          rapport au fichier <span class="tt">exo1.html</span> que vous venez de
-          récupérer (Une piste pour le trouver&nbsp;: regarder la source&hellip;)
+      <h3>Exercice 1&nbsp;: Affichage de formes dans la console</h3>
+      <div>On cherche à afficher des formes simples <span class="caution">dans la console</span>.</div>
+      <ol start="0">
+        <li>Recopiez la page Web <a href="src/td05/exo1.html">exo1.html</a> dans votre répertoire <span class="tt">tp5</span>.
         </li>
-        <li>La suite de cet exercice consiste à compléter chaque question
-          en écrivant un code à l'endroit des 'TODO'. <br> On cherche à
-          écrire une fonction <span class="tt">addThree</span> qui prend en
-          paramètre un tableau et retourne un nouveau tableau qui contient le
-          même nombre de cases que le tableau pris en paramètre et dont les
-          valeurs des cases est la valeur de la case de même index du tableau
-          pris en paramètre augmentée de trois. <br> Par exemple, si le
-          tableau initial contient <span class="tt">[11, 21, 5, -13, 2,
-            12, 19, 5]</span>, alors le résultat de l'appel à <span class="tt">addThree</span>
-          doit être un nouveau tableau avec les valeurs <span class="tt">[14,
-            24, 8, -10, 5, 15, 22, 8]</span>. <br> Si cela vous aide, vous pouvez
-          dans un premier temps écrire l'algorithme en pseudo-code, puis dans un
-          deuxième temps, transformez le pseudo-code en JavaScript. <br>
-          <span class="caution">Attention&nbsp;!</span> Votre fonction ne doit pas
-          modifier le tableau d'origine.
+        <li>On souhaite afficher des croix qui formeront un triangle rectangle isocèle.
+          La fonction <span class="tt">triangleRectangle(n)</span> doit permettre d'afficher un tel triangle de côté <span class="tt">n</span>.
+          <br>
+          Par exemple, <span class="tt">triangleRectangle(4)</span> permet d'afficher les lignes
+          <br>
+          <pre class="full-width tt">.<br>..<br>...<br>....</pre>
+          Remplir le corps de la fonction <span class="tt">triangleRectangle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
         </li>
-        <li>En fait, le code que l'on a écrit n'est pas très générique&nbsp;:
-          si l'on doit ajouter 4 à chaque case ou alors multiplier la valeur des
-          cases par 2, il faut dupliquer le code avec un copier/coller et
-          changer l'opération à effectuer. <br> Comme on n'est pas des
-          barbares, on se dit que l'on pourrait réutiliser la même fonction pour
-          tous ces cas. On va pour cela créer une fonction intermédiaire. <br>
-          Donc dans un premier temps, écrivez une fonction <span class="tt">applyForEachElement</span>
-          qui prend deux arguments (un tableau et une fonction) et qui, pour
-          chaque élément du tableau, appelle la fonction en lui donnant
-          l'élement en guise de paramètre. <br> Une fois que <span class="tt">applyForEachElement</span>
-          marche, écrivez une nouvelle version de <span class="tt">addThree</span>,
-          <span class="tt">addThree2</span> qui va utiliser <span class="tt">applyForEachElement</span>,
-          vérifiez que le résultat est identique.
+        <li>On souhaite maintenant disposer d'un triangle isocèle dont l'axe de symétrie est vertical.
+          La fonction <span class="tt">triangleIsocèle(n)</span> doit permettre d'afficher un tel triangle de hauteur <span class="tt">n</span> et de base <span class="tt">2n-1</span>.
+          <br>
+          Par exemple, <span class="tt">triangleIsocèle(4)</span> permet d'afficher les lignes
+          <br>
+          <pre class="full-width tt">   .<br>  ...<br> .....<br>.......</pre>
+          Remplir le corps de la fonction <span class="tt">triangleIsocèle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
+        </li>
+        <li>On souhaite ensuite disposer d'un rectangle.
+          La fonction <span class="tt">rectangle(a,b)</span> doit permettre d'afficher un tel rectangle de hauteur <span class="tt">a</span> et de largeur <span class="tt">b</span>, sans compter les cases occupées par les bords du rectangle.
+          <br>
+          Par exemple, <span class="tt">rectangle(4,6)</span> permet d'afficher les lignes
+          <br>
+          <pre class="full-width tt">+------+<br>|      |<br>|      |<br>|      |<br>|      |<br>+------+</pre>
+          Remplir le corps de la fonction <span class="tt">rectangle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">a<span> et <span class="tt">b<span>.
+        </li>
+        <li>On souhaite enfin disposer d'un carré.
+          La fonction <span class="tt">carré(n)</span> doit permettre d'afficher un tel carré de côté <span class="tt">n</span>, sans compter les cases occupées par les bords du carré.
+          <br>
+          Par exemple, <span class="tt">carré(4)</span> permet d'afficher les lignes
+          <br>
+          <pre class="full-width tt">+----+<br>|    |<br>|    |<br>|    |<br>|    |<br>+----+</pre>
+          Remplir le corps de la fonction <span class="tt">carré</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
+        </li>
+        <li>Le corps de la fonction <span class="tt">carré</span> doit prendre au plus une ligne, facile à lire et à comprendre.
+        Si ce n'est pas le cas, commentez votre code et réécrivez la fonction <span class="tt">carré</span> de sorte à satisfaire cette nouvelle contrainte.
+        </li>
+      </ol>
+
+      <h3>Exercice 2&nbsp;: Affichage de formes dans la console, le retour</h3>
+      <div>
+        On souhaite aboutir au même résultat qu'à l'exercice précédent, mais en utilisant des fonctions <i>ad hoc</i> plutôt que <span class="tt">console.log</span>.
+        <br>
+        Ces fonctions, créées uniquement pour les besoins de ce TP, sont :
+        <ul>
+          <li><span class="tt">print(s)</span>, qui permet d'afficher <span class="caution">un seul caractère</span> (stocké dans une chaîne de caractères <span class="tt">s</span>) dans la console <span class="caution">et ne revient pas à la ligne</span>&nbsp;;</li>
+          <li><span class="tt">newLine()</span>, qui permet de revenir à la ligneligne</span>&nbsp;;</li>
+        </ul>
+        <span class="caution">Attention&nbsp;!</span> Donner comme argument à la fonction <span class="tt">print</span> une chaîne de caractères contenant autre chose qu'un unique caractère déclenchera une erreur.
+        <br>
+        <span class="caution">Attention&nbsp;!</span> Tenter d'appeler directement la fonction <span class="tt">console.log()</span> déclenchera une erreur.
+      </div>
+      <ol start="0">
+        <li>Recopiez la page Web <a href="src/td05/exo2.html">exo2.html</a> dans votre répertoire <span class="tt">tp5</span>.
+        </li>
+        <li>On souhaite afficher des croix qui formeront un triangle rectangle isocèle.
+          La fonction <span class="tt">triangleRectangle(n)</span> doit permettre d'afficher un tel triangle de côté <span class="tt">n</span>.
+          <br>
+          Remplir le corps de la fonction <span class="tt">triangleRectangle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
+          On n'oubliera pas de faire un appel à <span class="tt">newLine()</span> à la fin de <span class="caution">chaque</span> ligne, <span class="caution">y compris la dernière</span>.
+        </li>
+        <li>On souhaite maintenant disposer d'un triangle isocèle dont l'axe de symétrie est vertical.
+          La fonction <span class="tt">triangleIsocèle(n)</span> doit permettre d'afficher un tel triangle de hauteur <span class="tt">n</span> et de base <span class="tt">2n-1</span>.
+          <br>
+          Remplir le corps de la fonction <span class="tt">triangleIsocèle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
+        </li>
+        <li>On souhaite ensuite disposer d'un rectangle.
+          La fonction <span class="tt">rectangle(a,b)</span> doit permettre d'afficher un tel rectangle de hauteur <span class="tt">a</span> et de largeur <span class="tt">b</span>, sans compter les cases occupées par les bords du rectangle.
+          <br>
+          Remplir le corps de la fonction <span class="tt">rectangle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">a<span> et <span class="tt">b<span>.
+        </li>
+        <li>On souhaite enfin disposer d'un carré.
+          La fonction <span class="tt">carré(n)</span> doit permettre d'afficher un tel carré de côté <span class="tt">n</span>, sans compter les cases occupées par les bords du carré.
+          <br>
+          Remplir le corps de la fonction <span class="tt">carré</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
+          Ce corps de fonction doit prendre au plus une ligne, facile à lire et à comprendre.
+        </li>
+      </ol>
+    
+      <h3>Exercice 3&nbsp;: Le lièvre et la tortue</h3>
+      <div>
+        Le lièvre et la tortue font la course&nbsp;: la tortue avance souvent, mais peu à chaque fois, tandis que le lièvre avance rarement, mais beaucoup à chaque fois.
+        On souhaite modéliser leur course en utilisant un <a href="https://fr.wikipedia.org/wiki/D%C3%A9_%C3%A0_vingt_faces">dé à 20 faces</a>&nbsp;:
+        <ul>
+          <li>On lance le dé, et on note <span class="tt">n</span> son résultat&nbsp;;</li>
+          <li>Si <span class="tt">n</span> vaut 14 ou moins, c'est la tortue qui avance de <span class="tt">n</span>&nbsp;;</li>
+          <li>Si, au contraire, <span class="tt">n</span> vaut 15 ou plus, c'est le lièvre qui avance de <span class="tt">n</span>.
+        </ul>
+        Le premier qui franchit la ligne d'arrivée a gagné le droit de voir son histoire immortalisée dans une fable de La Fontaine.
+      </div>
+      <ol start="0">
+        <li>Recopiez la page Web <a href="src/td05/exo3.html">exo3.html</a> dans votre répertoire <span class="tt">tp5</span>.
+        <li>
+          Écrire une fonction <span class="tt">uniforme(borne)</span> qui prend en argument un entier <span class="tt">borne</span> strictement positif et renvoie un entier choisi <a href="https://fr.wikipedia.org/wiki/Loi_uniforme_discr%C3%A8te">uniformément au hasard</a> parmi 1, 2, &hellip;, <span class="tt">borne</span>.
+        </li>
+        <li id="step3">
+          Écrire une fonction <span class="tt">étape()</span> qui simule un lancer de dé et son effet sur les positions du lièvre et de la tortue&nbsp;:
+          <ul>
+            <li>elle lance le dé pour obtenir un entier <span class="tt">n</span> entre 1 et 20&nbsp;;</li>
+            <li>elle renvoie un tableau <span class="tt">résultat</span> de taille 2, tel que <span class="tt">résultat[0]</span> soit l'avancée du lièvre et <span class="tt">résultat[1]</span> soit l'avancée de la tortue <span class="caution">juste après le lancer de dé</span>&nbsp;:
+            ainsi, <span class="tt">résultat</span> vaut <span class="tt">[0,n]</span> si <span class="tt">n</span> vaut 14 ou moins, et <span class="tt">[n,0]</span> si <span class="tt">n</span> vaut 15 ou plus</li>
+          </ul>
         </li>
         <li>
-          Il y a toutes les chances que votre fonction <span class="tt">applyForEachElement</span>
-          contienne une boucle <span class="tt">for</span>. Cependant,
-          on peut éviter d'écrire cette boucle explicitement, en utilisant
-          la méthode <span class="tt">forEach</span> sur un tableau&nbsp;: écrire la fonction <span
-          class="tt"
-        >applyForEachElement2</span> pour utiliser la méthode <span class="tt">forEach</span>,
-        puis l'utiliser pour écrire une nouvelle version de <span class="tt">addThree</span>,
-        nommée <span class="tt">addThree3</span>.
+          Écrire une fonction <span class="tt">course(l)</span> qui simule une course de longueur <span class="tt">l</span> entre le lièvre et la tortue, et renvoie <span class="tt">"lièvre"</span> si le lièvre a gagné la course, ou <span class="tt">"tortue"</span> si la tortue a gagné la course.
         </li>
-        <li>Que fait la méthode <span class="tt">map</span> si on l'appelle
-          sur un tableau&nbsp;? <br> Comment peut-on l'utiliser pour écrire <span
-          class="tt"
-        >addThree</span>&nbsp;? <br> Écrivez <span class="tt">addThree</span> en
-          utilisant la méthode <span class="tt">map</span> et vérifiez que l'on
-          obtient le même résultat que précédemment.
-        </li>
-        <li>On souhaite afficher les valeurs du tableau trié en utilisant
-          la méthode <span class="tt">sort</span> sur un tableau. <br>
-          Rappelez en quoi la méthode <span class="tt">sort</span> est
-          différente des méthodes <span class="tt">map</span> et <span
-          class="tt"
-        >filter</span>. <br> Écrivez la fonction <span
-          class="tt"
-        >sortedArray</span> qui renvoie un nouveau tableau avec les valeurs triées (Attention&nbsp;! Le
-          tableau pris en paramètre ne doit pas être modifié).
-        </li>
-        <li>On veut afficher les valeurs du tableau seulement si celles-ci
-          sont positives ou nulles. <br> Sachant que l'on peut utiliser la méthode <span
-          class="tt"
-        >filter</span> sur un tableau, écrivez la fonction <span class="tt">positiveArray</span>
-          qui renvoie un tableau ne contenant que les valeurs positives ou nulles du
-          tableau pris en paramètre.
-        </li>
-      </ol>
-
-      <h3>Exercice 2&nbsp;: MinMax</h3>
-      <div>
-        On cherche à calculer le minimum et le maximum d'un tableau sans
-        parcourir le tableau plusieurs fois. <br> Avant de commencer,
-        recopiez la page Web <a
-          href="src/td05/exo2.html"
-        >exo2.html</a> dans votre répertoire <span class="tt">tp6</span> .
-      </div>
-      <br>
-      <ol>
-        <li>On cherche à écrire une fonction <span class="tt">minmax</span>
-          qui prend en paramètre un tableau, calcule le minimum et le maximum de
-          ce tableau et renvoie les deux valeurs sous forme d'un nouveau tableau
-          à 2 cases dont la première case est le minimum et la seconde case est
-          le maximum. <br> Pour des questions d'efficacité, on veut que le
-          calcul du minimum et du maximum soit fait lors du même parcours du
-          tableau. <br> Écrivez, dans un premier temps, l'algorithme que
-          vous allez implanter en pseudo-code, puis écrivez le code JavaScript
-          correspondant. <br> Note&nbsp;: il existe les fonctions <span
-          class="tt"
-        >Math.min</span> et <span class="tt">Math.max</span>.
-        </li>
-        <li>Au lieu d'écrire la boucle à la main, on peut vouloir directement
-          utiliser l'opérateur <span class="tt">spread</span> (&hellip;) pour calculer
-          le minimum et le maximum du tableu. <br>
-          Écrivez le code de <span class="tt">minmax2</span>
-          qui utilise cet opérateur. Si l'on utilise cette fonction,
-          combien de fois aura-t-on parcouru le tableau&nbsp;? Cela satisfait-il les
-          contraintes posées en début d'exercice&nbsp;?          
-        </li>
-        <li>Une autre manière de procéder consiste à
-          utiliser la méthode <span class="tt">reduce</span> sur un tableau
-          qui permet d'effectuer un même calcul sur chaque valeur. <br>
-          Note&nbsp;: comme ici, on s'intéresse au maximum et au minimum en même
-          temps, la valeur propagée devra contenir ces deux valeurs. <br>
-          Quelle doit être la valeur passée en second paramètre à <span
-          class="tt"
-        >reduce</span>&nbsp;? <br> Quelle doit être la valeur propagée pour chaque
-          case dans le cas où le tableau est <span class="tt">[8, 2, 4,
-            0, 3, 9, 1, 5, 7, 6]</span>&nbsp;? <br> Écrivez le code de <span class="tt">minmax3</span>
-          qui appelle la méthode <span class="tt">reduce</span>. <br> Note 2&nbsp;:
-          vous pouvez vérifier que les valeurs intermédiaires de la valeur
-          propagée sont bonnes avec <span class="tt">console.log</span>.
-        </li>
-        <li>En fait, retourner un tableau avec 2 cases stockant le minimum
-          et le maximum, n'est pas terrible comme convention, il faut mieux
-          renvoyer un dictionnaire avec les clefs <span class="tt">min</span> et
-          <span class="tt">max</span>. <br> Donnez la syntaxe Javascript
-          qui permet de créer un dictionnaire avec 3 comme valeur de <span
-          class="tt"
-        >min</span> et 7 comme valeur de <span class="tt">max</span>. <br> Enfin,
-          écrivez la fonction <span class="tt">minmax4</span> utilisant des
-          dictionnaires comme valeur propagée à la place d'un tableau à 2 cases.
+        <li>
+          Organiser 10000 courses de longueur 5000. Parmi le lièvre et la tortue, y en a-t-il un qui semble gagner beaucoup plus souvent que l'autre&nbsp;?
           <br>
-          Note&nbsp;: Si vous n'avez pas vu les dictionnaires en cours, vous êtes invités à lire le cours correspondant, mais vous pouvez aussi sauter cette question sans vous sentir trop coupables.
+          <span class="caution">Pour les amateurs de mathématiques&nbsp;:</span> comment aurait-on pu, ne serait-ce qu'intuitivement, prévoir un tel résultat&nbsp;?
         </li>
       </ol>
-
-
-      <h3>Exercice 3&nbsp;: Génération aléatoire et calcul rapide</h3>
+    
+      <h3>Exercice 4&nbsp;: Une fable fonctionnelle</h3>
       <div>
-        On peut améliorer le code de l'exercice précédent à deux endroits.<br>
-        Au lieu de tester avec un tableau écrit &laquo;&nbsp;en dur&nbsp;&raquo;, tirer aléatoirement un
-        tableau permettrait de tester avec davantage de tableaux différents. <br>
-        De plus, l'algorithme <span class="tt">minmax</span> écrit précédemment
-        n'est pas le plus efficace. Il existe une version qui fait moins de
-        comparaisons (et qui est bien sûr plus compliquée à écrire). <br> On
-        utilisera pour cela la page Web <a
-          href="src/td05/exo3.html"
-        >exo3.html</a>.
+        Le lièvre s'ennuie un peu&nbsp;: ses courses avec la tortue se ressemblent toutes&nbsp;!
+        Il souhaite donc tenter deux expériences.
+        <br>
+        Dans la première, on lance <span class="tt">dice</span> dés en même temps, on note <span class="tt">n</span> la somme des résultats des dés, puis la tortue avance de <span class="tt">n</span> si <span class="tt">n</span> est strictement plus petit que 15 &times; <span class="tt">dice</span>, tandis que le lièvre avant de <span class="tt">n</span> sinon.
+        <br>
+        Dans la deuxième expérience, le lièvre joue avec un dé truqué&nbsp;: la probabilité de tomber sur un entier <span class="tt">n</span> donné doit être proportionnel à <span class="tt">prob(n)</span>, où <span class="tt">prob</span> est une fonction à valeurs réelles positives ou nulles.
       </div>
-      <br>
-      <ol>
-        <li>On souhaite pouvoir mélanger les cases d'un tableau dans le but
-          de tester plus de combinaisons. <br> L'idée de l'algorithme de
-          mélange est la suivante&nbsp;: pour chaque case i, on tire un nombre
-          aléatoire entre i et n - 1 (n étant le nombre de cases du tableau) et
-          l'on va permuter (échanger si vous préférez) la case courante avec la
-          case à l'index du nombre que l'on vient de tirer aléatoirement. <br>
-          Si l'on fait cela pour toutes les cases, le tableau sera mélangé
-          (et on peut même s'offrir la joie de démontrer que ce tableau est bien
-          échantillonné uniformément au hasard parmi tous les tableaux
-          possibles). <br>
-          Écrivez dans un premier temps une fonction <span class="tt">swap</span>
-          qui permet d'échanger deux cases du tableau. <br> Puis écrivez la
-          fonction <span class="tt">randomArray</span> qui mélange les valeurs
-          du tableau pris en paramètre. <br> Note&nbsp;: tirer un nombre
-          aléatoire entre 0 (inclus) et n (exclu) en JavaScript se fait avec la fonction suivante&nbsp;: <pre
-            class="full-width"
-          >const random = n => Math.floor(n * Math.random());</pre>
+      <ol start="0">
+        <li>Recopiez la page Web <a href="src/td05/exo3.html">exo4.html</a> dans votre répertoire <span class="tt">tp5</span>.</li>
+      </ol>
+      On tente ici de réaliser la première expérience.
+      <ol start="1">
+        <li>
+          Écrire une fonction <span class="tt">sumd20(dice)</span> qui simule le lancer de <span class="tt">dice</span> dés équilibrés à 20 faces, et renvoie la somme de leurs résultats.
         </li>
-        <li>Il est possible de diminuer le nombre de tests fait par la
-          fonction <span class="tt">minmax</span>. En effet, si au lieu de faire
-          évoluer le min et le max pour chaque case du tableau, on commence par
-          lire deux valeurs de cases consécutives, regarder quelle est la plus
-          grande puis la comparer avec le max, dans ce cas, la valeur la plus
-          petite ne doit être comparée qu'avec le min donc chaque case n'a pas
-          besoin d'être comparée et avec le max et avec le min. <br>
-          Écrivez dans un premier temps l'algorithme en pseudo-code. <br>
-          Note&nbsp;: pour éviter de dupliquer le code, on peut écrire le code si une
-          valeur est plus grande que l'autre et dans l'autre cas, permuter les
-          valeurs (attention, les valeurs, pas les cases du tableau) pour se
-          retrouver dans le même cas. <br> Vérifiez que votre algo
-          fonctionne que le nombre de cases soit pair ou impair. <br>
-          Enfin, écrivez la fonction <span class="tt">minmax5</span>.
+        <li>
+          La tortue décide de changer le seuil à partir duquel le lièvre avancera&nbsp; à l'exercice précédent, ce seuil était le nombre 15.
+          <br>
+          Écrire une fonction <span class="tt">seuil(n,val)</span> qui, étant donnés deux entiers <span class="tt">n</span> et <span class="tt">val</span>, renvoie le tableau <span class="tt">[0,n]</span> si <span class="tt">n</span> &lt; <span class="tt">val</span>, et le tableau <span class="tt">[n,0]</span> sinon.
+        </li>
+        <li>
+          Écrire une fonction <span class="tt">étape2(dice)</span> qui, dans la première expérience, simule le lancer de <span class="tt">dice</span> dés à 20 faces, et l'impact du résultat de ce lancer de dés sur l'avancée du lièvre et de la tortue.
+          <br>
+          Cette fonction doit un tableau <span class="tt">résultat</span> de taille 2, tel que <span class="tt">résultat[0]</span> soit l'avancée du lièvre et <span class="tt">résultat[1]</span> soit l'avancée de la tortue <span class="caution">juste après le lancer de dé</span>.
+        </li>
+        <li>
+          Discuter l'impact des variations du paramètre <span class="tt">dice</span> sur les probabilités de victoire du lièvre et de la tortue.
+        </li>
+      </ol>
+      On se place maintenant dans le cadre de la deuxième expérience.
+      <ol start="5">
+        <li>
+          Écrire une fonction <span class="tt">alea(prob, borne)</span> qui prend en arguments une fonction <span class="tt">prob</span> à valeurs positives ou nulles ainsi qu'un entier <span class="tt">borne</span> strictement positif.
+          Cette fonction renvoie un entier choisi au hasard parmi 1, 2, &hellip;, <span class="tt">borne</span>&nbsp; la probabilité de tomber sur un entier <span class="tt">n</span> donné doit être proportionnel à <span class="tt">prob(n)</span>.
+          <br>
+          On supposera que les nombres <span class="tt">prob(1), prob(2), &hellip;, prob(borne)</span> ne sont pas tous nuls.
+          Si ce n'est pas le cas, ou si l'élève facétieux choisit une fonction <span class="tt">prob</span> qui ne renvoie pas que des réels positifs ou nuls, la fonction <span class="tt">alea</span> a le droit de faire n'importe quoi.
+          <br>
+          Si vous ne voyez pas comment faire, n'hésitez pas à sortir un papier et un crayon, et à regarder ce qui se passe lorsque <span class="tt">borne</span> prend de petites valeurs, par exemple 1, 2 ou 3.
+          <br>
+          Si vous bloquez toujours, appelez votre chargé de TP, montrez-lui ce que vous avez écrit sur votre feuille de papier, et demandez-lui de l'aide.
+          Si vous n'avez rien écrit, il ne vous aidera pas.
+        </li>
+        <li>
+          Comment utiliser cette fonction pour simuler le lancer d'un seul dé équilibré à 20 faces&nbsp;?
+        </li>
+        <li>
+          On voit bien qu'il va falloir réécrire intégralement la fonction <span class="tt">étape2</span>&nbsp;: c'est dommage&nbsp;!
+          Pour ne plus répéter cette erreur, on va écrire directement une fonction <span class="tt">étape3(randomGenerator,moves)</span> qui prend en arguments
+          <ul>
+            <li> une fonction <span class="tt">randomGenerator</span>, qui se compotera comme suit&nbsp;: l'instruction <span class="tt">randomGenerator()</span> renvoie un entier <span class="tt">n</span> strictement positif choisi au hasard&nbsp;;</li>
+            <li> une fonction <span class="tt">moves</span> qui, étant donné un entier <span class="tt">n</span>, renvoie un tableau <span class="tt">résultat</span> contenant l'avancée du lièvre en position 0, et l'avancée de la tortue en position 1.</li>
+          </ul>
+          Par exemple, la fonction <span class="tt">étape</span> de l'exercice précédent peut maintenant se réécrire
+        <pre>
+  const étape = function() {
+    return étape3(() => uniforme(20), n => seuil(n,15));
+  };</pre>
+        </li>
+        <li>
+          Le lièvre souhaite utiliser un dé truqué où la probabilité de tomber sur un entier <span class="tt">n</span> compris entre 1 et 20 sera proportionnelle à <span class="tt">n</span>.
+          En représailles, la tortue décide de choisir le seuil à partir duquel c'est le lièvre qui avance, et en-dessous duquel c'est elle qui avance.
+          <br>
+          Utiliser les fonctions écrites précédemment pour aider la tortue à choisir le plus petit seuil possible qui lui donnera une grande probabilité de victoire.
         </li>
       </ol>
 
+      <span class="hidden">
+      <h3>Exercice 5&nbsp;: There's no magic in this world!</h3>
+      <div>
+        On souhaite comprendre comment les enseignants ont mis en place le cadre d'exécution utilisé à l'exercice précédent&nbsp;:
+        la création des fonctions <span class="tt">print</span> et <span class="tt">newLine</span> et l'interdiction d'utiliser la fonction <span class="tt">console.log</span>.
+        <br>
+        Ici, il n'y a pas de code à écrire, simplement du code à comprendre.
+        Néanmoins, écrire votre propre code pour jouer avec celui que les enseignants ont écrit pourra vous aider à comprendre celui-ci.
+      </div>
+      <ol>
+        <li>Quel script est chargé au début du fichier <a href="src/td05/exo2.html">exo2.html</a>&nbsp;?
+        Recopier ce script dans votre répertoire <span class="tt">tp5</span>.
+        </li>
+        <li>
+          Que font les lignes 6, 12 et 14 de ce script&nbsp;?
+          On pourra utiliser la <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw">documentation</a> du langage Javascript pour comprendre ce que font ces lignes.
+        </li>
+        <li>Comment s'est-on débrouillé pour interdire l'utilisateur d'appeler lui-même la fonction <span class="tt">console.log</span>&nbsp;?</li>
+        <li>Quelle fonction l'utilisateur curieux, qui lirait ce script, pourrait-il utiliser pour afficher lui-même un message dans la console&nbsp;?</li>
+        <li>Comment s'est-on débrouillé pour interdire l'utilisateur de rentrer n'importe quel argument dans la fonction <span class="tt">print</span>&nbsp;?</li>
+        <li>Expliquer, plus généralement, les codes des fonctions <span class="tt">print</span> et <span class="tt">newLine</span>.</li>
+      </ol>
+      </span>
+      
       <hr>
       <div class="copyright noprint">© Université Gustave Eiffel</div>
     </div>
