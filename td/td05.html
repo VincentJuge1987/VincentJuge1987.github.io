@@ -65,49 +65,20 @@
         <li>Le corps de la fonction <span class="tt">carré</span> doit prendre au plus une ligne, facile à lire et à comprendre.
         Si ce n'est pas le cas, commentez votre code et réécrivez la fonction <span class="tt">carré</span> de sorte à satisfaire cette nouvelle contrainte.
         </li>
-      </ol>
-
-      <h3>Exercice 2&nbsp;: Affichage de formes dans la console, le retour</h3>
-      <div>
-        On souhaite aboutir au même résultat qu'à l'exercice précédent, mais en utilisant des fonctions <i>ad hoc</i> plutôt que <span class="tt">console.log</span>.
-        <br>
-        Ces fonctions, créées uniquement pour les besoins de ce TP, sont :
-        <ul>
-          <li><span class="tt">print(s)</span>, qui permet d'afficher <span class="caution">un seul caractère</span> (stocké dans une chaîne de caractères <span class="tt">s</span>) dans la console <span class="caution">et ne revient pas à la ligne</span>&nbsp;;</li>
-          <li><span class="tt">newLine()</span>, qui permet de revenir à la ligneligne</span>&nbsp;;</li>
-        </ul>
-        <span class="caution">Attention&nbsp;!</span> Donner comme argument à la fonction <span class="tt">print</span> une chaîne de caractères contenant autre chose qu'un unique caractère déclenchera une erreur.
-        <br>
-        <span class="caution">Attention&nbsp;!</span> Tenter d'appeler directement la fonction <span class="tt">console.log()</span> déclenchera une erreur.
-      </div>
-      <ol start="0">
-        <li>Recopiez la page Web <a href="src/td05/exo2.html">exo2.html</a> dans votre répertoire <span class="tt">tp5</span>.
-        </li>
-        <li>On souhaite afficher des croix qui formeront un triangle rectangle isocèle.
-          La fonction <span class="tt">triangleRectangle(n)</span> doit permettre d'afficher un tel triangle de côté <span class="tt">n</span>.
+        <li>
+          Dernière mission&nbsp;: on souhaite écrire une variante de la fonction <span class="tt">rectangle</span> en utilisant des fonctions <i>ad hoc</i> plutôt que <span class="tt">console.log</span>&nbsp;; cette variante s'appellera <span class="tt">rectangle2</span>.
           <br>
-          Remplir le corps de la fonction <span class="tt">triangleRectangle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
-          On n'oubliera pas de faire un appel à <span class="tt">newLine()</span> à la fin de <span class="caution">chaque</span> ligne, <span class="caution">y compris la dernière</span>.
-        </li>
-        <li>On souhaite maintenant disposer d'un triangle isocèle dont l'axe de symétrie est vertical.
-          La fonction <span class="tt">triangleIsocèle(n)</span> doit permettre d'afficher un tel triangle de hauteur <span class="tt">n</span> et de base <span class="tt">2n-1</span>.
+          Les fonctions que l'on utilisera, et qui ont été créées uniquement pour les besoins de ce TP, sont&nbsp;:
+          <ul>
+            <li><span class="tt">print(s)</span>, qui permet d'afficher <span class="caution">un seul caractère</span> (stocké dans une chaîne de caractères <span class="tt">s</span>) dans la console <span class="caution">et ne revient pas à la ligne</span>&nbsp;;</li>
+            <li><span class="tt">newLine()</span>, qui permet de revenir à la ligneligne</span>&nbsp;;</li>
+          </ul>
+          <span class="caution">Attention&nbsp;!</span> Donner comme argument à la fonction <span class="tt">print</span> une chaîne de caractères contenant autre chose qu'un unique caractère déclenchera une erreur.
           <br>
-          Remplir le corps de la fonction <span class="tt">triangleIsocèle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
-        </li>
-        <li>On souhaite ensuite disposer d'un rectangle.
-          La fonction <span class="tt">rectangle(a,b)</span> doit permettre d'afficher un tel rectangle de hauteur <span class="tt">a</span> et de largeur <span class="tt">b</span>, sans compter les cases occupées par les bords du rectangle.
-          <br>
-          Remplir le corps de la fonction <span class="tt">rectangle</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">a<span> et <span class="tt">b<span>.
-        </li>
-        <li>On souhaite enfin disposer d'un carré.
-          La fonction <span class="tt">carré(n)</span> doit permettre d'afficher un tel carré de côté <span class="tt">n</span>, sans compter les cases occupées par les bords du carré.
-          <br>
-          Remplir le corps de la fonction <span class="tt">carré</span> de manière adéquate puis la tester avec plusieurs valeurs de <span class="tt">n<span>.
-          Ce corps de fonction doit prendre au plus une ligne, facile à lire et à comprendre.
-        </li>
+          <span class="caution">Attention&nbsp;!</span> Tenter d'appeler directement la fonction <span class="tt">console.log()</span> déclenchera une erreur.
       </ol>
     
-      <h3>Exercice 3&nbsp;: Le lièvre et la tortue</h3>
+      <h3>Exercice 2&nbsp;: Le lièvre et la tortue</h3>
       <div>
         Le lièvre et la tortue font la course&nbsp;: la tortue avance souvent, mais peu à chaque fois, tandis que le lièvre avance rarement, mais beaucoup à chaque fois.
         On souhaite modéliser leur course en utilisant un <a href="https://fr.wikipedia.org/wiki/D%C3%A9_%C3%A0_vingt_faces">dé à 20 faces</a>&nbsp;:
@@ -119,7 +90,7 @@
         Le premier qui franchit la ligne d'arrivée a gagné le droit de voir son histoire immortalisée dans une fable de La Fontaine.
       </div>
       <ol start="0">
-        <li>Recopiez la page Web <a href="src/td05/exo3.html">exo3.html</a> dans votre répertoire <span class="tt">tp5</span>.
+        <li>Recopiez la page Web <a href="src/td05/exo2.html">exo2.html</a> dans votre répertoire <span class="tt">tp5</span>.
         <li>
           Écrire une fonction <span class="tt">uniforme(borne)</span> qui prend en argument un entier <span class="tt">borne</span> strictement positif et renvoie un entier choisi <a href="https://fr.wikipedia.org/wiki/Loi_uniforme_discr%C3%A8te">uniformément au hasard</a> parmi 1, 2, &hellip;, <span class="tt">borne</span>.
         </li>
@@ -141,99 +112,44 @@
         </li>
       </ol>
     
-      <h3>Exercice 4&nbsp;: Une fable fonctionnelle</h3>
+      <h3>Exercice 3&nbsp;: Seuls ceux qui passent les tests compteront&nbsp;!</h3>
       <div>
-        Le lièvre s'ennuie un peu&nbsp;: ses courses avec la tortue se ressemblent toutes&nbsp;!
-        Il souhaite donc tenter deux expériences.
-        <br>
-        Dans la première, on lance <span class="tt">dice</span> dés en même temps, on note <span class="tt">n</span> la somme des résultats des dés, puis la tortue avance de <span class="tt">n</span> si <span class="tt">n</span> est strictement plus petit que 15 &times; <span class="tt">dice</span>, tandis que le lièvre avant de <span class="tt">n</span> sinon.
-        <br>
-        Dans la deuxième expérience, le lièvre joue avec un dé truqué&nbsp;: la probabilité de tomber sur un entier <span class="tt">n</span> donné doit être proportionnel à <span class="tt">prob(n)</span>, où <span class="tt">prob</span> est une fonction à valeurs réelles positives ou nulles.
+        Cet exercice est l'occasion d'écrire des fonctions qui prennent d'autres fonctions en argument, et/ou qui renvoient une fonction.
+        Comme d'habitude, on n'oubliera pas de tester chacune des fonctions que l'on aura écrites.
       </div>
       <ol start="0">
-        <li>Recopiez la page Web <a href="src/td05/exo3.html">exo4.html</a> dans votre répertoire <span class="tt">tp5</span>.</li>
-      </ol>
-      On tente ici de réaliser la première expérience.
-      <ol start="1">
+        <li>Recopiez la page Web <a href="src/td05/exo3.html">exo3.html</a> dans votre répertoire <span class="tt">tp5</span>.
         <li>
-          Écrire une fonction <span class="tt">sumd20(dice)</span> qui simule le lancer de <span class="tt">dice</span> dés équilibrés à 20 faces, et renvoie la somme de leurs résultats.
+          Écrire une fonction <span class="tt">estPair</span> qui, étant donné un entier <span class="tt">k</span>, renvoie <span class="tt">true</span> si <span class="tt">k</span> est pair, et <span class="tt">false</span> sinon.
         </li>
         <li>
-          La tortue décide de changer le seuil à partir duquel le lièvre avancera&nbsp; à l'exercice précédent, ce seuil était le nombre 15.
-          <br>
-          Écrire une fonction <span class="tt">seuil(n,val)</span> qui, étant donnés deux entiers <span class="tt">n</span> et <span class="tt">val</span>, renvoie le tableau <span class="tt">[0,n]</span> si <span class="tt">n</span> &lt; <span class="tt">val</span>, et le tableau <span class="tt">[n,0]</span> sinon.
+          Écrire une fonction <span class="tt">estCarré</span> qui, étant donné un entier <span class="tt">k</span>, renvoie <span class="tt">true</span> si <span class="tt">k</span> est un <a href="https://fr.wikipedia.org/wiki/Carr%C3%A9_parfait">carré parfait</a>, et <span class="tt">false</span> sinon.
         </li>
         <li>
-          Écrire une fonction <span class="tt">étape2(dice)</span> qui, dans la première expérience, simule le lancer de <span class="tt">dice</span> dés à 20 faces, et l'impact du résultat de ce lancer de dés sur l'avancée du lièvre et de la tortue.
-          <br>
-          Cette fonction doit un tableau <span class="tt">résultat</span> de taille 2, tel que <span class="tt">résultat[0]</span> soit l'avancée du lièvre et <span class="tt">résultat[1]</span> soit l'avancée de la tortue <span class="caution">juste après le lancer de dé</span>.
+          Écrire une fonction <span class="tt">comptePairs</span> qui, étant donné un entier <span class="tt">n</span> strictement positif, énumère les entiers de 1 à <span class="tt">n</span>, compte combien d'entre eux sont pairs, et renvoie le résultat de son décompte.
         </li>
         <li>
-          Discuter l'impact des variations du paramètre <span class="tt">dice</span> sur les probabilités de victoire du lièvre et de la tortue.
+          Écrire une fonction <span class="tt">compteCarrés</span> qui, étant donné un entier <span class="tt">n</span> strictement positif, énumère les entiers de 1 à <span class="tt">n</span>, compte combien d'entre eux sont des carrés parfaits, et renvoie le résultat de son décompte.
         </li>
       </ol>
-      On se place maintenant dans le cadre de la deuxième expérience.
-      <ol start="5">
-        <li>
-          Écrire une fonction <span class="tt">alea(prob, borne)</span> qui prend en arguments une fonction <span class="tt">prob</span> à valeurs positives ou nulles ainsi qu'un entier <span class="tt">borne</span> strictement positif.
-          Cette fonction renvoie un entier choisi au hasard parmi 1, 2, &hellip;, <span class="tt">borne</span>&nbsp; la probabilité de tomber sur un entier <span class="tt">n</span> donné doit être proportionnel à <span class="tt">prob(n)</span>.
-          <br>
-          On supposera que les nombres <span class="tt">prob(1), prob(2), &hellip;, prob(borne)</span> ne sont pas tous nuls.
-          Si ce n'est pas le cas, ou si l'élève facétieux choisit une fonction <span class="tt">prob</span> qui ne renvoie pas que des réels positifs ou nuls, la fonction <span class="tt">alea</span> a le droit de faire n'importe quoi.
-          <br>
-          Si vous ne voyez pas comment faire, n'hésitez pas à sortir un papier et un crayon, et à regarder ce qui se passe lorsque <span class="tt">borne</span> prend de petites valeurs, par exemple 1, 2 ou 3.
-          <br>
-          Si vous bloquez toujours, appelez votre chargé de TP, montrez-lui ce que vous avez écrit sur votre feuille de papier, et demandez-lui de l'aide.
-          Si vous n'avez rien écrit, il ne vous aidera pas.
-        </li>
-        <li>
-          Comment utiliser cette fonction pour simuler le lancer d'un seul dé équilibré à 20 faces&nbsp;?
-        </li>
-        <li>
-          On voit bien qu'il va falloir réécrire intégralement la fonction <span class="tt">étape2</span>&nbsp;: c'est dommage&nbsp;!
-          Pour ne plus répéter cette erreur, on va écrire directement une fonction <span class="tt">étape3(randomGenerator,moves)</span> qui prend en arguments
-          <ul>
-            <li> une fonction <span class="tt">randomGenerator</span>, qui se compotera comme suit&nbsp;: l'instruction <span class="tt">randomGenerator()</span> renvoie un entier <span class="tt">n</span> strictement positif choisi au hasard&nbsp;;</li>
-            <li> une fonction <span class="tt">moves</span> qui, étant donné un entier <span class="tt">n</span>, renvoie un tableau <span class="tt">résultat</span> contenant l'avancée du lièvre en position 0, et l'avancée de la tortue en position 1.</li>
-          </ul>
-          Par exemple, la fonction <span class="tt">étape</span> de l'exercice précédent peut maintenant se réécrire
-        <pre>
-  const étape = function() {
-    return étape3(() => uniforme(20), n => seuil(n,15));
-  };</pre>
-        </li>
-        <li>
-          Le lièvre souhaite utiliser un dé truqué où la probabilité de tomber sur un entier <span class="tt">n</span> compris entre 1 et 20 sera proportionnelle à <span class="tt">n</span>.
-          En représailles, la tortue décide de choisir le seuil à partir duquel c'est le lièvre qui avance, et en-dessous duquel c'est elle qui avance.
-          <br>
-          Utiliser les fonctions écrites précédemment pour aider la tortue à choisir le plus petit seuil possible qui lui donnera une grande probabilité de victoire.
-        </li>
-      </ol>
-
-      <span class="hidden">
-      <h3>Exercice 5&nbsp;: There's no magic in this world!</h3>
       <div>
-        On souhaite comprendre comment les enseignants ont mis en place le cadre d'exécution utilisé à l'exercice précédent&nbsp;:
-        la création des fonctions <span class="tt">print</span> et <span class="tt">newLine</span> et l'interdiction d'utiliser la fonction <span class="tt">console.log</span>.
+        Ci-dessus, on a écrit deux fois la même chose, à ceci près qu'on a décompté les entiers pairs dans notre première fonction, et les carrés parfaits dans notre deuxième fonction.
+        Comme <a href="https://fr.wikipedia.org/wiki/Duplication_de_code">la duplication de code</a> est une erreur critique en programmation, il faut revoir les choses.
         <br>
-        Ici, il n'y a pas de code à écrire, simplement du code à comprendre.
-        Néanmoins, écrire votre propre code pour jouer avec celui que les enseignants ont écrit pourra vous aider à comprendre celui-ci.
+        On commente donc les fonctions <span class="tt">comptePairs</span> et <span class="tt">comptePairs</span>, que l'on va réécrire de manière plus professionnelle, en créant une fonction <span class="tt">compte</span> qui prend un argument <span class="tt">test</span> et dont le comportement sera le suivant&nbsp;:
       </div>
-      <ol>
-        <li>Quel script est chargé au début du fichier <a href="src/td05/exo2.html">exo2.html</a>&nbsp;?
-        Recopier ce script dans votre répertoire <span class="tt">tp5</span>.
-        </li>
-        <li>
-          Que font les lignes 6, 12 et 14 de ce script&nbsp;?
-          On pourra utiliser la <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw">documentation</a> du langage Javascript pour comprendre ce que font ces lignes.
-        </li>
-        <li>Comment s'est-on débrouillé pour interdire l'utilisateur d'appeler lui-même la fonction <span class="tt">console.log</span>&nbsp;?</li>
-        <li>Quelle fonction l'utilisateur curieux, qui lirait ce script, pourrait-il utiliser pour afficher lui-même un message dans la console&nbsp;?</li>
-        <li>Comment s'est-on débrouillé pour interdire l'utilisateur de rentrer n'importe quel argument dans la fonction <span class="tt">print</span>&nbsp;?</li>
-        <li>Expliquer, plus généralement, les codes des fonctions <span class="tt">print</span> et <span class="tt">newLine</span>.</li>
+      <ul>
+        <li> L'argument <span class="tt">test</span> sera une fonction qui, à chaque entier <span class="tt">k</span>, associe un booléen (c'est-à-dire <span class="tt">true</span> ou <span class="tt">false</span>)&nbsp;; les fonctions <span class="tt">estPair</span> et <span class="tt">estCarré</span> sont deux exemples de telles fonctions.</li>
+        <li> Le résultat de <span class="tt">compte(test)</span> devra être une fonction qui, étant donné un entier <span class="tt">n</span> strictement positif, énumère les entiers de 1 à <span class="tt">n</span>, compte combien d'entre eux ont été associés au booléen <span class="tt">true</span> par la fonction <span class="tt">test</span>, et renvoie le résultat de son décompte&nbsp;;
+        par exemple, la fonction <span class="tt">comptePairs</span> peut désormais s'écrire <span class="tt">const comptePairs = compte(estPair)</span>.</li>
+      </ul>
+      <ol start="5">
+        <li> Comment réécrire la fonction <span class="tt">compteCarrés</span> à partir des fonctions <span class="tt">test</span> et <span class="tt">estCarré</span>&nbsp;? 
+        Cette réécriture est censée prendre <span class="caution">une seule ligne de code</span>.</li>
+        <li> Écrire la fonction <span class="tt">compte</span>.
+        <br> Bien vérifier que les fonctions <span class="tt">comptePairs</span> et <span class="tt">compteCarrés</span> réécrites à partir de la fonction <span class="tt">compte</span> se comportent comme prévu.</li>
+        <li> Écrire, <span class="caution">en une seule ligne de code</span>, une fonction <span class="tt">compte1mod3</span> qui, étant donné un entier <span class="tt">n</span> strictement positif, énumère les entiers de 1 à <span class="tt">n</span>, compte combien d'entre eux sont congrus à 1 modulo 3, et renvoie le résultat de son décompte. </li>
       </ol>
-      </span>
-      
       <hr>
       <div class="copyright noprint">© Université Gustave Eiffel</div>
     </div>
