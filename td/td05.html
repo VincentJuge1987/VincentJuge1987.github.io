@@ -71,8 +71,10 @@
           Les fonctions que l'on utilisera, et qui ont été créées uniquement pour les besoins de ce TP, sont&nbsp;:
           <ul>
             <li><span class="tt">print(s)</span>, qui permet d'afficher <span class="caution">un seul caractère</span> (stocké dans une chaîne de caractères <span class="tt">s</span>) dans la console <span class="caution">et ne revient pas à la ligne</span>&nbsp;;</li>
-            <li><span class="tt">newLine()</span>, qui permet de revenir à la ligneligne</span>&nbsp;;</li>
+            <li><span class="tt">newLine()</span>, qui permet de revenir à la ligne</span>&nbsp;;</li>
           </ul>
+          On n'oubliera pas de revenir à la ligne après avoir affiché la ligne du bas du rectangle.
+          <br>
           <span class="caution">Attention&nbsp;!</span> Donner comme argument à la fonction <span class="tt">print</span> une chaîne de caractères contenant autre chose qu'un unique caractère déclenchera une erreur.
           <br>
           <span class="caution">Attention&nbsp;!</span> Tenter d'appeler directement la fonction <span class="tt">console.log()</span> déclenchera une erreur.
@@ -141,13 +143,13 @@
       <ul>
         <li> L'argument <span class="tt">test</span> sera une fonction qui, à chaque entier <span class="tt">k</span>, associe un booléen (c'est-à-dire <span class="tt">true</span> ou <span class="tt">false</span>)&nbsp;; les fonctions <span class="tt">estPair</span> et <span class="tt">estCarré</span> sont deux exemples de telles fonctions.</li>
         <li> Le résultat de <span class="tt">compte(test)</span> devra être une fonction qui, étant donné un entier <span class="tt">n</span> strictement positif, énumère les entiers de 1 à <span class="tt">n</span>, compte combien d'entre eux ont été associés au booléen <span class="tt">true</span> par la fonction <span class="tt">test</span>, et renvoie le résultat de son décompte&nbsp;;
-        par exemple, la fonction <span class="tt">comptePairs</span> peut désormais s'écrire <span class="tt">const comptePairs = compte(estPair)</span>.</li>
+        par exemple, la fonction <span class="tt">comptePairs</span> peut désormais se réécrire <span class="tt">const comptePairs2 = compte(estPair)</span>.</li>
       </ul>
       <ol start="5">
-        <li> Comment réécrire la fonction <span class="tt">compteCarrés</span> à partir des fonctions <span class="tt">test</span> et <span class="tt">estCarré</span>&nbsp;? 
+        <li> Comment écrire la fonction <span class="tt">compteCarrés2</span>, qui fait la même chose que <span class="tt">compteCarrés</span>, à partir des fonctions <span class="tt">test</span> et <span class="tt">estCarré</span>&nbsp;? 
         Cette réécriture est censée prendre <span class="caution">une seule ligne de code</span>.</li>
         <li> Écrire la fonction <span class="tt">compte</span>.
-        <br> Bien vérifier que les fonctions <span class="tt">comptePairs</span> et <span class="tt">compteCarrés</span> réécrites à partir de la fonction <span class="tt">compte</span> se comportent comme prévu.</li>
+        <br> Bien vérifier que les fonctions <span class="tt">comptePairs2</span> et <span class="tt">compteCarrés2</span> réécrites à partir de la fonction <span class="tt">compte</span> se comportent comme les fonctions <span class="tt">comptePairs</span> et <span class="tt">compteCarrés</span>.</li>
         <li> Écrire, <span class="caution">en une seule ligne de code</span>, une fonction <span class="tt">compte1mod3</span> qui, étant donné un entier <span class="tt">n</span> strictement positif, énumère les entiers de 1 à <span class="tt">n</span>, compte combien d'entre eux sont congrus à 1 modulo 3, et renvoie le résultat de son décompte. </li>
       </ol>
       <hr>
