@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Manipulation du DOM, objet JavaScript</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet-td.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
+  media="print"
+>
+<link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
+</head>
+<body>
+  <div class="conteneur">
+    <div class="contenu">
+      <table>
+        <tbody>
+          <tr style="vertical-align: center;">
+            <td><img class="print" src="css/UGE.png" alt="[LOGO]" height="30"></td>
+            <td><h1>Manipulation du DOM, objet JavaScript</h1></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+
+      <div>Comme pour les TP précédents, on vous demande de créer un
+        répertoire tp6 qui contiendra les exercices de cette feuille de TP et de
+        faire un compte rendu de TP en HTML.</div>
+      <br>
+
+      <h3>Exercice 1&nbsp;: Memory</h3>
+      <div>Le but de ce premier exercice est d'écrire un programme de jeu
+        de memory. Le memory se joue avec des paires de carte ayant la même
+        image. Au début du jeu, toutes les cartes sont retournées (face non
+        visible), puis on choisit deux cartes, que l'on retourne, si les deux
+        cartes ont la même image, on a trouvé une paire, et les 2 cartes restent
+        face visible avec leur image, si les 2 cartes choisies ne correspondent
+        pas à la même image, les cartes sont retournées (face non visible). Le
+        but du memory est de trouver toutes les paires d'images.</div>
+      <br>
+      <ol>
+        <li>Recopiez l'ensemble <a
+          href="src/td07/td07.zip"
+        >des ressources</a>, c'est-à-dire, la page Web <span class="tt">memory.html</span>,
+          le fichier JavaScript <span class="tt">memory.js</span> ainsi que les
+          images dans votre répertoire <span class="tt">tp7</span>.
+        </li>
+      </ol>
+      <div>
+        Dans la suite, nous allons stocker toutes les informations nécessaires au bon déroulement du jeu dans un objet <span class="tt">game</span>.
+        Parmi les champs de cet objet figureront à la fois les informations statiques, telles que la liste des images, mais également des fonctions
+        décrivant la dynamique du jeu.
+      </div>
+      <ol start="2">
+        <li>Écrivez le code de la fonction <code>create</code>
+          pour stocker le tableau des sources des images et l'image de dos de carte. <br>
+          Écrivez ensuite le code de la méthode <code>build</code> afin
+          que le nombre d'images soit affiché à l'intérieur de la balise div
+          prise en paramètre. <br> Note&nbsp;: les élements du DOM possèdent un
+          attribut <code>innerHTML</code>.
+        </li>
+        <li>Pour notre jeu de memory, nous allons créer des paires de cartes, une
+          paire par image. Pour stocker ces cartes, on va créer un tableau <code>cards</code>
+          qui va contenir pour chaque carte l'index de l'image correspondante. <br>
+          Dans un vrai memory, ce tableau des index des images est permuté lors
+          de la création du jeu&nbsp;; sinon, ce n'est pas très drole. Pour l'instant,
+          nous allons utiliser la fonction <code>shuffleCards</code>
+          qui vous a été donnée car cela sera plus facile pour la mise au point
+          du programme. <br> Que fait la fonction <code>shuffleCards</code>,
+          et en quoi cela aide-t-il pour la mise au point du programme&nbsp;?
+        </li>
+        <li>Modifiez la fonction <code>create</code> pour 
+          que <code>game</code> contienne également un tableau <code>positions</code> fourni par
+          la fonction <code>shuffleCards</code>.
+          Modifiez ensuite la méthode <code>build</code> pour afficher
+          autant de cartes que de cases du tableau <code>cards</code>
+          qu'a renvoyé la fonction <code>shuffleCards</code> (ici, 16 cartes). Chaque carte sera
+          représentée par un div contenant une image (voir le CSS de <code>memory.html</code>). 
+          Pour l'instant, chaque carte affichera le même dos d'image. <br> Rappel&nbsp;: l'élement DOM
+          correspondant à une image possède une propriété src.
+        </li>
+        <li>On souhaite ajouter une fonction permettant de savoir lorsque
+          l'utilisateur a cliqué sur une carte. <br> Note&nbsp;: tout élément
+          est être muni d'une fonction <code>onclick</code> qui permet d'exécuter une fonction
+          quand on clique sur la zone correspondant à cette balise.
+          Le code JavaScript à utiliser pour munir un élément <code>elt</code>
+          d'une fonction <code>fun()</code> ou bien <code>fun(event)</code>
+          qui sera déclenchée lors d'un clic sera alors
+          <pre class="full-width"><code>elt.onclick = fun;</code></pre> 
+          <br> Comment faire pour savoir sur quelle carte un utilisateur a
+          cliqué&nbsp;? <br> Implantez la solution retenue pour que, lorsque
+          l'on clique sur une carte, son index dans le tableau des cartes (entre 0 inclus et 16 exclus) 
+          et le numéro de carte correspondante (entre 0 inclus et 8 exclus) soient affichés
+          dans la console du nagivateur.
+        </li>
+        <li>On souhaite maintenant pouvoir afficher l'image correspondant à
+          une carte lorsque l'on clique sur la carte. <br> Comment faire pour que le tableau
+          des sources des images soit accessible lors d'un clic&nbsp;? Et pour que les images
+          effectivement affichées changent de source si nécessaire&nbsp;? <br> Implantez votre
+          solution pour que, lorsque l'on clique sur une carte, l'image
+          correspondante s'affiche.
+        </li>
+        <li>Il faut maintenant implanter la mécanique du jeu. <br>
+          Comme on découvre les cartes, une par une, il faut se souvenir de la
+          carte précédente (si elle existe) pour savoir si le jeu est dans l'un
+          des états suivants&nbsp;:
+          <ol>
+            <li>on doit découvrir 2 cartes&nbsp;;</li>
+            <li>on doit découvrir 1 carte (l'autre est déjà connue)&nbsp;;</li>
+            <li>deux cartes ont été découvertes.</li>
+          </ol> <br> Sachant que l'on appelle <code>selection</code> la carte dont on se
+          souvient, écrivez en pseudo-code l'algorithme qui prend en paramètre
+          la carte sur laquelle on vient de cliquer et qui implante la mécanique
+          de jeu. <br> Implantez ensuite votre algorithme en JavaScript.
+          <br>
+          Comment faire pour ne pas prendre en compte les cartes déjà
+          retournées (il y a deux cas)&nbsp;? <br> Modifiez votre programme en
+          conséquence.
+        </li>
+        <li>Si les images des deux cartes ne sont pas identiques, on souhaite avoir le temps de
+          voir la face de la seconde carte avant de les retourner face cachée. Pour cela, le
+          plus simple est d'attendre 500 ms avant de retourner les cartes.
+          Comment écrire cela en JavaScript&nbsp;? <br> Note&nbsp;: attention à ce que
+          vous appelez <code>this</code>&nbsp;!
+        </li>
+        <li>Enfin, modifiez <code>shuffleCards</code> pour que
+          le tableau des cartes soit mélangé de façon aléatoire (comme dans la
+          question 1 de l'exercice 3 du TP5).
+        </li>
+      </ol>
+
+      <hr>
+      <div class="copyright noprint">© Université Gustave Eiffel</div>
+    </div>
+  </div>
+</body>
+</html>
