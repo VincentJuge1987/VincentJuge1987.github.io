@@ -4,52 +4,58 @@
    <meta charset="utf-8">
  </head>
  <body>
-  <h2>Random Array</h2>
-  <p>
+  <h2>Tableau à traiter</h2>
+  <div id="array"></div>
    <script>
       "use strict";
+      const array = [8, 2, 4, 0, 3, 9, 1, 5, 7, 6];
+      document.getElementById('array').innerHTML = "[" + array.join(", ") + "]";
+    </script>
+  
+  <h2>Min/Max 1</h2>
+  <div id="minmax1"></div>
+    <script>
       const minmax = function(array) {
         // TODO
       };
-      const array = [8, 2, 4, 0, 3, 9, 1, 5, 7, 6];
-      const minAndMax = minmax(array);
-      //document.write("min " + minAndMax[0] + " max " + minAndMax[1]);
+      const minAndMax1 = minmax(array);
+      document.getElementById('minmax1').innerHTML = "min " + minAndMax1[0] + " max " + minAndMax1[1];
    </script>
-  </p>
+   
   <h2>Min/Max: Spread</h2>
-  <p>
+  <div id="minmax2"></div>
    <script>
       const minmax2 = function(array) {
         // TODO
       };
       const minAndMax2 = minmax2(array);
-      //document.write("min " + minAndMax2[0] + " max " + minAndMax2[1]);
+      document.getElementById('minmax2').innerHTML = "min " + minAndMax2[0] + " max " + minAndMax2[1];
    </script>
-  </p>
-  <p>
-    <div id="line"></div>
+   
+  <h2>Mélange</h2>
+    <div id="random"></div>
     <script>
-      "use strict";
       const random = n => Math.floor(n * Math.random());
-      const randomArray = function(array) {
+      const randomizeArray = function(array) {
         // TODO
       };
       const sortedArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-      randomArray(sortedArray);
+      randomizeArray(sortedArray);
       
-      const line = document.getElementById('line');
-      line.innerHTML = sortedArray;
+      document.getElementById('random').innerHTML = "[" + sortedArray.join(", ") + "]";
    </script>
-  </p>
+   
   <h2>Min/Max 3: Fury Road</h2>
+  <div id="minmax3"></div>
   <p>
    <script>
       const minmax3 = function(array) {
         // TODO
       };
-      //const minAndMax3 = minmax3(array);
-      //document.write("min " + minAndMax3[0] + " max " + minAndMax3[1]);
+      const minAndMax3 = minmax3(array);
+      document.getElementById('minmax3').innerHTML = "min " + minAndMax3[0] + " max " + minAndMax3[1];
    </script>
   </p>
  </body>
 </html>
+
