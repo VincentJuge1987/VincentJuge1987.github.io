@@ -30,15 +30,15 @@
             ou un navigateur Web (browser).
       </div>
       <div>Cette version du TP est spécialement adaptée aux élèves dont le système d'exploitation
-        est <span class="tt">Linux</span> ou <span class="tt">Mac OS</span>. Une autre version
+        est <span class="tt">Windows</span>. Une autre version
         est disponible si votre ordinateur utilise le système d'exploitation
-        <a href="td07-win.html"><span class="tt">Windows</span></a>.
+        <a href="td07.html"><span class="tt">Linux</span></a> ou
+        <a href="td07.html"><span class="tt">Mac OS</span></a>.
       </div>
       <br>
           
       <h3>Exercice 1&nbsp;: Uniform Resource Locator</h3>
       <div>On cherche à savoir où est hébergée la page du cours.</div>
-      <br>
       <ol>
         <li>Ouvrez un navigateur Web et allez à l'URL suivante: <pre
             class="full-width"
@@ -46,7 +46,7 @@
           Quel est le nom de la machine à laquelle vous accédez ? <br>
           Quel est le nom de domaine auquel vous accédez ?
         </li>
-        <li>Si l'on exécute <pre class="full-width">host w3.org</pre>
+        <li>Si l'on exécute <pre class="full-width">nslookup w3.org</pre>
           À quoi correspond la première ligne de la réponse ? <br> À quoi
           correspond la deuxième ligne de la réponse ?<br> Et la troisième ?
         </li>
@@ -55,21 +55,22 @@
           cela fonctionne toujours. <br> Si ça ne marche pas, que se passe-t-il ? Essayez avec google.fr. <br> À votre avis, pourquoi
           utilise-t-on des noms pour les machines plutôt que des adresses IP ?
         </li>
-        <li>Exécutez la commande <span class="tt">traceroute</span> sur
+        <li>Exécutez la commande <span class="tt">tracert</span> sur
           une de ces adresses IP. <br> Qu'affiche cette commande ? <br> 
           Comment s'appelle le réseau sur lequel est connectée l'université (ou votre domicile) ? <br>
-          Quels sont les autres réseaux qui sont traversés ?<br>
-          Si vous êtes sur Mac, il se peut que votre traceroute se coince, cela peut aider d'ajouter l'option -I (par exemple <span class="tt">traceroute -I 8.8.8.8</span>).
+          Quels sont les autres réseaux qui sont traversés ?
         </li>
         <li>
           Tendance du jour&nbsp;: le cours de programmation web a l'air trop bien&nbsp;!
           Pour en savoir plus, on souhaite consulter la page
           <span class="tt">http://vincentjuge1987.github.io/</span>.
-          <br> Utiliser la commande <span class="tt">host</span> pour
+          <br> Utiliser la commande <span class="tt">nslookup</span> pour
           récupérer l'adresse IP correspondant à cette machine.
         </li>
-        <li>On cherche maintenant à voir l'ancienne version du cours, que donnait Rémi Forax, à l'adresse <span class="tt">https://forax.github.io/course/progweb/</span>.
-	  <br>Lancer la commande <span class="tt">host</span> pour
+        </li>
+        <li>On cherche maintenant à voir l'ancienne version du cours, que donnait Rémi Forax. Pour ce faire, on souhaite consulter
+          la page <span class="tt">https://forax.github.io/course/progweb/</span>.
+	  <br>Lancer la commande <span class="tt">nslookup</span> pour
           récupérer l'adresse IP correspondant à cette machine. Qu'observe-t-on ?          
           <br>
           Que se passe-t-il si on essaye d'accéder à cette page dans le navigateur
@@ -80,15 +81,27 @@
       </ol>
 
       <h3>Exercice 2&nbsp;: Service HTTP</h3>
-      <div>On a vu en cours comment utiliser <span class="tt">netcat</span> (commande <span class="tt">nc</span> suivie de l'option <span class="tt">-C</span> pour éviter les problèmes d'encodage) pour appeler un
+      <div>On a vu en cours comment utiliser <span class="tt">netcat</span> (commande <span class="tt">nc</span> suivie de l'option
+        <span class="tt">-C</span> pour éviter les problèmes d'encodage) pour appeler un
         service sur une machine distante. Nous allons pouvoir utiliser la même
         technique pour interroger un serveur Web.</div>
       <br>
       <ol>
-        <li>Utilisez <span class="tt">nc</span> pour vous connecter au
-          serveur Web de la machine <span class="tt">monge.univ-mlv.fr</span> en
-          utilisant le port TCP correspondant au protocole HTTP puis tapez la
-          requête suivante et appuyez deux fois sur "Entrée" : <pre
+        <li>Téléchargez le script python <a href="src/td07/netcat.py">netcat.py</a> pour Windows
+           et enregistrez-le dans votre répertoire <span class="tt">progweb</span>. </li>
+        <li>Vérifiez que vous disposez bien d'un utilitaire <span class="tt">python</span> utilisable
+           en ligne de commande. Pour cela, il suffit de taper <span class="tt">python.exe</span>.
+           Normalement, soit Windows vous proposera de télécharger <span class="tt">python</span>
+           (et alors il faut le faire), soit vous verrez quelque chose comme :
+            <br><br>
+          <img src="src/td07/python.png" height="70" ></img> <br><br>
+           Dans second ce cas, écrivez simplement <span class="tt">exit()</span> puis revenez à la ligne.</li>
+        <li>On souhaite utiliser <span class="tt">netcat</span> pour se connecter au
+          serveur Web de la machine <span class="tt">monge.univ-mlv.fr</span>. Sous Windows, la commande à utiliser
+          est <span class="tt">python.exe&nbsp;netcat.py&nbsp;-C&nbsp;NOM-DE-MACHINE&nbsp;PORT</span>, où <span class="tt">NOM-DE-MACHINE</span> est
+          le nom de la machine à laquelle on souhaite se connecter, et <span class="tt">PORT</span> est le port correspondant
+          au protocole HTTP. <br/> 
+          Une fois <span class="tt">netcat</span> lancé, il faudra taper la requête suivante et appuyer deux fois sur "Entrée" : <pre
             class="full-width"
           >GET /ens/ HTTP/1.0</pre>
           Quel est le port TCP correspondant au protocole HTTP ? <br/>

@@ -1,38 +1,60 @@
 <!DOCTYPE html>
 <html>
- <meta charset="utf-8">
  <head>
-  <style>
-   // TODO
-  </style>
+  <meta charset="utf-8">
+  <title>Mon tout premier script</title>
+  <script>
+   "use strict";
+   /* Question 1 */
+   const sumSquares = function(n) {
+     // Écrire le corps de la fonction ici.
+   };
+   // Écrire les tests ici.
+   
+   /* Question 2 */
+   const silent = function(b) {
+     return b;
+   }
+   const verbose = function(b) {
+     console.log(b);
+     return b;
+   }
+   const question2 = function() {
+     console.log("Test n°2.1");
+     console.log(silent(true) && silent(true) && silent(false) && silent(false));
+     console.log("Test n°2.2");
+     console.log(silent(true) || silent(true) || silent(false) || silent(false));
+     console.log("Test n°2.3");
+     console.log(verbose(true) && verbose(true) && verbose(false) && verbose(false));
+     console.log("Test n°2.4");
+     console.log(verbose(true) || verbose(true) || verbose(false) || verbose(false));
+     console.log("Test n°2.5");
+     silent(true) && silent(true) && silent(false) && silent(false);
+     console.log("Test n°2.6");
+     silent(true) || silent(true) || silent(false) || silent(false);
+     console.log("Test n°2.7");
+     verbose(true) && verbose(true) && verbose(false) && verbose(false);
+     console.log("Test n°2.8");
+     verbose(true) || verbose(true) || verbose(false) || verbose(false);
+   };
+   // question2();
+   
+   /* Question 3 */
+   const double = function(a) {
+     return a + a;
+   }
+   const question3 = function() {
+     console.log("Test n°3.1");
+     console.log(double(3));
+     console.log("Test n°3.2");
+     console.log(double("3"));
+     console.log("Test n°3.3");
+     console.log(double(3+3+"3"));
+   }
+   // question3();
+  </script>
  </head>
  <body>
-   <div>
-    <img src="animal1.jpg">
-    <div>Animal 1</div>
-   </div>
-   <div>
-    <img src="animal2.jpg">
-    <div>Animal 2</div>
-   </div>
-   <div>
-    <img src="animal3.jpg">
-    <div>Animal 3</div>
-   </div>
-   <div>
-    <img src="animal4.jpg">
-    <div>Animal 4</div>
-   </div>
-   <div>
-    <img src="animal5.jpg">
-    <div>Animal 5</div>
-   </div>
-   <div>
-    <img src="animal6.jpg">
-    <div>Animal 6</div>
-   </div>
-  <div class="end">
-   Texte à mettre après.
-  </div>
+  <h2>Premier pas en JavaScript</h2>
  </body>
 </html>

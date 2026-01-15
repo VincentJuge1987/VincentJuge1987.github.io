@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>HTML et CSS</title>
+<title>Feuille de style CSS et boîtes</title>
 <link rel="stylesheet" type="text/css" href="css/stylesheet-td.css" media="screen">
 <link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
   media="print"
@@ -16,162 +16,255 @@
         <tbody>
           <tr style="vertical-align: center;">
             <td><img class="print" src="css/UGE.png" alt="[LOGO]" height="30"></td>
-            <td><h1>HTML et CSS</h1></td>
+            <td><h1>Feuille de style CSS et boîtes</h1></td>
           </tr>
         </tbody>
       </table>
       <hr>
 
-      <p>Le but de ce TP est de se familiariser avec la syntaxe du HTML et du CSS.</p>
-      <br />
+      <div>
+        Le but de ce TP est de jouer avec les feuilles de style et les boîtes CSS. <br>
+        Il vous faudra rendre quatre (ou cinq) documents&nbsp;:
+        <ul>
+	 <li>
+	  Le fichier <b>exo2.html</b>, dont les informations de style
+          seront contenues entre les balises <b>style</b> de l'en-tête.
+	 </li>
+	 <li>
+	  Le fichier <b>exo3.html</b>, dont les informations de style
+          seront contenues entre les balises <b>style</b> de l'en-tête.
+	 </li>
+	 <li>
+	  Le fichier <b>compte-rendu-tp2.html</b>, où vous expliquerez
+          ce que vous avez fait pendant le TP (ça vous permet de bien
+	  mieux retenir ce que vous avez fait), et qui ne contiendra
+	  <b>aucune</b> information de style.
+	 </li>
+	 <li>
+	  Le fichier <b>compte-rendu-tp2.css</b>, qui contient toutes les
+	  informations de style utilisées pour l'affichage du fichier
+	  <b>compte-rendu-tp2.html</b> (et des compte-rendus qui viendront
+	  lors des prochaines séances).
+	 </li>
+	 <li>
+	  De façon optionnelle, le fichier <b>compte-rendu.css</b>, qui contient toutes les
+	  informations de style utilisées pour l'affichage des compte-rendus qui viendront
+	  lors des prochaines séances.
+	  Si vous ne rendez pas ce fichier cette semaine, ce ne sera pas grave,
+	  mais il sera attendu que vous le rendiez avec les prochains TP, donc
+	  autant créer dès que possible un fichier de style simple et fonctionnel&nbsp;!
+	 </li>
+	</ul>
+        Comme les TPs précédents, nous allons utiliser le compte-rendu en HTML
+        de ce TP comme base sur laquelle nous allons appliquer différents
+        styles. <br> Ouvrez un terminal, puis créez le répertoire "tp2"
+        dans le répertoire "progweb", puis dans le répertoire "tp2", utilisez
+        "gedit" pour ouvrir un document <span class="tt">compte-rendu-tp2.html</span>.
+ 	<br>
+	Ajoutez la structure de base d'un document HTML à votre
+        compte-rendu, c'est-à-dire, la déclaration DOCTYPE, les balises html, head
+        et body puis ajouter les balises nécessaires pour indiquer qu'il s'agit du
+        compte-rendu du tp2 et pour indiquer votre nom. <br> Pour la suite
+        du compte-rendu de TP, vous utiliserez &lt;h2&gt; pour le titre d'un
+        exercice, et &lt;ol&gt; et &lt;li&gt; pour les items d'un exercice.
+      </div>
+      <br>
 
-      <p>Au moment de rendre votre rapport, pensez que vous devez aussi
-        rendre l'image correspondant à l'arbre du document.</p>
-      <br />
-
-      <h3>Exercice 1&nbsp;: Document HTML de base, le retour&nbsp;!</h3>
+      <h3>Exercice 1&nbsp;: Feuille de style externe, liste et table</h3>
+      <div>Cet exercice propose de changer le style d'une liste et d'une
+        table.</div>
+      <br>
       <ol>
-        <li>Copiez-collez le rapport que vous avez écrit au TP précédent
-        pour en reprendre l'en-tête et la structure générale,
-        mais en l'adaptant aux exercices de ce nouveau TP.
+        <li>
+          Reprendre le compte-rendu HTML créé au TP précédent, pour n'en conserver que
+          l'en-tête et le dernier exercice, que vous renommerez 
+          <span class="tt">Exercice 0&nbsp;: Mon compte-rendu est trop stylé&nbsp;!</span>
+          et dont vous supprimerez les informations de style.
         On devrait donc avoir quelque chose comme&nbsp;: <pre class="full-width">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="fr"&gt;
   &lt;head&gt;
    &lt;meta charset="UTF-8"&gt;
-   &lt;title&gt;Compte-rendu de TP2&lt;/title&gt;
+   &lt;title&gt;Compte-rendu du tp2&lt;/title&gt;
+   &lt;style&gt;
+     &hellip;
+   &lt;/style&gt;
   &lt;/head&gt;
   &lt;body&gt;
-   &lt;h1&gt;Compte-rendu de TP2&lt;/h1&gt;
+   &lt;h1&gt;Compte-rendu de tp2&lt;/h1&gt;
    &lt;p&gt;Vincent Jugé&lt;/p&gt;
-   &lt;h2&gt;Exercice 1&amp;nbsp;: Document de base, le retour&amp;nbsp;!&lt;/h2&gt;
-  &hellip;
+   &lt;h2&gt;Exercice 0&amp;nbsp;: Mon compte-rendu est trop stylé&amp;nbsp;!&lt;/h2&gt;
+   &hellip;
+   &lt;h2&gt;Exercice 1&amp;nbsp;: Feuille de style externe, liste et table&lt;/h2&gt;
+   &hellip;
  &lt;/body&gt;
 &lt;/html&gt;
 </pre> <br>
-        <li>Ajoutez à votre compte-rendu la phrase suivante : <pre
-            class="full-width"
-          >Les tags HTML commencent par une balise ouvrante &lt;foo&gt; et finissent par une balise fermante &lt;/foo&gt;.
-	    </pre> <br> Note&nbsp;: pour votre compte rendu, il vous faudra surement utiliser
-          les entités &amp;lt; qui correspond à &lt; et &amp;gt; qui correspond
-          à &gt;.
         </li>
-        <li>Comment mettre en <b>gras</b> ou en <i>italique</i> ? <br>
-          Astuce&nbsp;: ouvrez le fichier HTML correspondant au sujet de TP dans le
-          navigateur avec un click bouton droit "View Page Source" puis cherchez le
-          mot Shibboleet avec un Ctrl-F, cela devrait être juste au dessus.
-        </li>
-        <li>Et comment faire pour mettre un mot à la fois en gras et en
-          italique ?</li>
-        <li>En fait, votre compte rendu est pas vraiment en HTML, vous
-          devriez organiser les questions pour qu'elles soient automatiquement
-          numérotées par le navigateur. <br> Comment faire ? <br>
-          Modifier votre compte-rendu en conséquence.
-        </li>
-        <li>Pourquoi avoir écrit "Compte-rendu de TP 2"
-        dans l'en-tête puis dans le corps du document&nbsp;?
-        </li>
-        <li>Ajoutez un lien (le tag <span class="tt">a</span>) vers le
-          cours avec comme titre <span class="tt">cours de programmation
-            web</span>.
-        </li>
-        <li>Prenez une feuille de papier puis dessinez l'arbre des
-          différents tags correspondant à votre compte rendu. <br>
-          Attention à bien respecter quel tag se trouve déclaré dans tel autre.
-        </li>
-        <li>Avec votre smartphone (ou celui du voisin), prenez une photo de
-          la feuille de papier sur laquelle vous avez dessiné l'arbre et
-          envoyez-la vous par mail. Puis allez dans vos mails pour récupérer
-          l'image et la sauvegarder sous le nom de <span class="tt">mon-super-arbre.jpg</span>
-          dans le répertoire tp2. <br> Utilisez ensuite le tag <span
+        <li>On veut maintenant créer une feuille de style externe,
+          c'est-à-dire une feuille de style déclarée non pas à l'intérieur de <span
           class="tt"
-        >img</span> pour inclure l'image dans votre compte rendu. <br> Attention,
-          cela risque d'être un peu gros visuellement, il vous faudra sûrement
-          jouer avec les attributs <span class="tt">width</span> et <span
+        >compte-rendu-tp2.html</span> mais dans un fichier externe nommé <span
           class="tt"
-        >height</span> de <span class="tt">img</span> pour avoir une image de
-          dimensions acceptables. <br> PS : N'oubliez pas l'attribut <span
-          class="tt"
-        >alt</span> du tag <span class="tt">img</span> !
+        >compte-rendu-tp2.css</span>. <br> Modifiez votre travail pour que le
+          compte-rendu utilise ce fichier de style. <br> Testez le fichier
+          <span class="tt">compte-rendu-tp2.css</span> en mettant en commentaire
+          toutes les informations de style <span class="tt">compte-rendu-tp2.html</span>
+          et recopiez celles-ci dans <span class="tt">compte-rendu-tp2.css</span>.
+          <br/>
+          Attention aux balises &lt;style&gt; !
         </li>
-      </ol>
-
-      <h3>Exercice 2&nbsp;: Les listes et les tables</h3>
-      <ol>
-        <li>Dans votre compte-rendu, écrivez la liste suivante sous forme
-          d'une liste numérotée <pre class="full-width">
-- maths
-- physique
-- français
-	    </pre>
+        <li>Pour la suite du TP, nous ne modifierons plus la balise style
+          du compte-rendu mais le fichier <span class="tt">compte-rendu-tp2.css</span>
+          <br> Faites en sorte que la liste des questions de cet exercice
+          et de l'exercice précédent utilise les chiffres romains (en minuscules)
+          plutôt que les traditionnels chiffres 1, 2, 3, etc.
         </li>
-        <li>Recopiez le code de la liste de la question précédente et
-          modifiez-le pour que la liste ne soit plus une liste numérotée mais
-          une liste à puces. Les <i>items</i> seront dont précédés de petits
-          cercles au lieu de chiffres.
+        <li>Le site <a
+          href="https://en.wikipedia.org/wiki/List_of_2021_box_office_number-one_films_in_the_United_States"
+        >https://en.wikipedia.org/wiki/List_of_2021_box_office_number-one_films_in_the_United_States</a>
+          contient un tableau des films au box office. <br> On souhaite
+          recopier le titre et le montant des recettes pour les 5 plus gros succès
+          (il y a des flèches pour trier) pour les mettre dans une table dont nous allons
+          changer l'aspect. <br> Donc dans un premier temps, créez la table
+          HTML dans votre compte-rendu, par exemple en utilisant des balises telles que
+          <span class="tt">table</span>, <span class="tt">tr</span>, <span
+          class="tt">th</span>, <span class="tt">td</span> &hellip;
         </li>
-        <li>Dans votre compte rendu, écrivez la table de multiplication
-          suivante sous forme d'une table HTML <pre class="full-width">
-   1  2  3  4
-1  1  2  3  4
-2  2  4  6  8
-3  3  6  9 12
-4  4  8 12 16
-	    </pre>
+        <li>Faites en sorte que la table occupe toute la largeur du compte
+          rendu.</li>
+        <li>Centrez les titres et changer la police de caractères des
+          titres pour utiliser des petites majuscules (<span class="tt">small
+            caps</span>).
         </li>
-        <li>Modifiez la table pour que la première ligne et la première
-          colonne soient considérées comme des titres (respectivement de
-          colonnes ou de lignes).</li>
-        <li>On souhaite ajouter une case faisant 2 colonnes et une case
-          faisant deux lignes dans une nouvelle table. <br> Allez chercher
-          dans la spécification du <a href="https://www.w3.org/TR/html5/">Standard
-            HTML5</a> comment faire pour avoir de telles cases et expliquez dans
-          votre rapport comment vous avez fait pour trouver l'information.
+        <li>Aérez la table avec la propriété <span class="tt">padding</span>
+          pour que le texte ne soit pas collé aux bordures des cases
+          (qui sont invisibles a priori, mais que vous pouvez toujours rendre visibles si ça vous aide).
+        </li>
+        <li>Faites en sorte que les valeurs du tableau soient alignées à gauche,
+          sauf celles de la dernière colonne, qui doivent être centrées.</li>
+        <li>Changez la couleur de fond des lignes paires (<span class="tt">even</span>)
+          pour mettre du bleu (80% de rouge, 80% de vert et 90% de bleu) en
+          utilisant la pseudo-classe <span class="tt">:nth-child</span>.
+        </li>
+        <li>Faites en sorte que si l'on survole une ligne avec la souris la
+          couleur du fond corresponde à 28 sur 255 de rouge, 120 sur 255 de vert
+          et 12 sur 255 de bleu en utilisant un codage hexadécimal. <br>
+          Note: 26 en décimal correspond à 1A en hexadecimal car pour les
+          dizaines, 26 / 16 = 1, et pour les unités 26 - 1 * 16 = 10 (qui
+          s'écrit 'A').
         </li>
       </ol>
       
-      <h3>Exercice 3&nbsp;: Mon compte-rendu est trop stylé&nbsp;!</h3>
-      <div>Voici un petit exercice pour voir comment appliquer des styles
-        s'appuyant sur les balises du document.</div>
+      <h3>Exercice 2&nbsp;: La ferme des animaux</h3>
+      <div>Pour ce second exercice, on souhaite afficher des images
+        d'animaux sous forme de vignettes. 
       <br>
       <ol>
-        <li>Le titre de l'exercice courant se trouve normalement dans une balise
-          balise <span class="tt">h2</span>. Ajoutez à cette balise
-          un attribut <span class="tt">style</span> qui permet de mettre le
-          titre de l'exercice en orange.
+        <li>Récupérez <a href="src/td02/animaux.zip">six images d'animaux dans un fichier zippé</a>
+          ainsi que le fichier <a href="src/td02/exo2.html">exo2.html</a>.
+          <br> Vérifiez que les images s'affichent
+          correctement lorsque vous visualisez le document. <br> Note 1&nbsp;: On
+	  rappelle que le
+          fichier <b>exo2.html</b> ne doit être modifié que en
+          ajoutant des classes aux boîtes, et des informations de style,
+          la structure du document doit rester
+          la même. <br> Note 2&nbsp;: Le fichier <a
+          href="src/td02/resultat-exo2.png"
+        >resultat-exo2.png</a> correspond à l'affichage que l'on souhaite avoir à la fin
+          de cet exercice.
         </li>
-        <li>Déclarez une balise <span class="tt">style</span> à l'intérieur
-          des balises <span class="tt">head</span> du document, puis faites en
-          sorte que tout le document utilise une police sans-serif.
+        <li>Faites en sorte que toutes les images à l'intérieur des boîtes
+          (pas les autres) aient une largeur (<b>width</b>) de 180 pixels. <br>
+          Note&nbsp;: on suppose que l'on peut ajouter des images pas dans les boîtes
+          par la suite.
         </li>
-        <li>Faites en sorte que la balise <span class="tt">h1</span> corresponde à une police de 24
-          points, la balise <span class="tt">h2</span> à une police de 18 points et
-          la balise <span class="tt">h3</span> à une police 16 points.
+        <li>Au lieu d'afficher les images verticalement, on souhaite les
+          afficher horizontalement. <br> Utilisez pour cela l'attribut <b>float</b>.
         </li>
-        <li>Faites en sorte que les balises <span class="tt">h2</span>
-          soient affichées en bleu marine, à part le titre de cet exercice (qui doit
-          rester en orange).
+        <li>Que se passe-t-il si l'on fait varier la taille de la fenêtre
+          du navigateur horizontalement ?</li>
+        <li>Vérifiez que vous pouvez aussi mettre toutes les images à
+          droite en changeant juste un mot dans la partie CSS du document. <br>
+          Puis remettez les images alignées à gauche.
         </li>
-        <li>Faites en sorte que le titre du compte-rendu de TP soit centré.
-          <br> Pour cela, vous allez créer une classe <span class="tt">"centered"</span>
-          et ajouter un attribut <span class="tt">class</span> à la balise
-          englobant le titre du compte-rendu. Déclarez ensuite que le style pour
-          la classe <span class="tt">"centered"</span> est centré.
+        <li>Faites en sorte que les titres (animal1, animal2, etc.) soient
+          affichés en blanc sur fond noir et soient centrés horizontalement par
+          rapport à la boîte qui les contient. <br> Jouez de plus avec la
+          propriété <b>padding</b> pour avoir un espacement convenable.
         </li>
-        <li>On veut que votre nom soit aligné à droite. Commencez par
-          déclarer votre nom entre des balises <span class="tt">div</span> puis
-          ajoutez une classe <span class="tt">right</span> permettant d'aligner
-          le texte à droite.
+        <li>Espacez les unes des autres les six boîtes contenant les images
+          avec la propriété <b>margin</b>. <br>
+          Attention&nbsp;: on ne veut pas ajouter de marge aux six boîtes ne contenant pas d'image,
+          par exemple les six boîtes contenantles titres des images.
         </li>
-        <li>Faites en sorte que le
-          lien vers le cours de programmation web (que vous avez créé à l'exercice 1)
-          soit en 
-          <b style="color: red;">rouge</b> si la souris n'est pas sur le lien et en
-          <b style="color: teal;">bleu canard</b>
-          si la souris survole le lien. <br> Conseil&nbsp;: Vous utiliserez pour
-          cela les pseudo-classes des liens.
+        <li>Faites en sorte que les images à l'intérieur des boîtes aient
+          une bordure de trois pixels de largeur de couleur <b>#aaaaaa</b>.
+        </li>
+        <li>Changez l'opacité (propriété <b>opacity</b>) lorsque
+          l'utilisateur passe sa souris au-dessus d'une image dans une boîte.
+        </li>
+        <li>Faites en sorte que les titres soient accolés par le bas à
+          l'image et mordent légèrement sur l'image (de 5 pixels par exemple). <br>
+          Note: l'idée est de placer la boîte contenant le texte relativement
+          par rapport à la boîte contenant l'image.
+        </li>
+        <li>
+          Faites en sorte que le <b>texte à mettre après</b> soit situé
+          en-dessous des images et de leurs titres, et non pas à leur droite.
         </li>
       </ol>
+      
+      <h3>Exercice 3&nbsp;: Barre de menu</h3>
+      <div>
+        Cet exercice propose d'afficher une liste HTML (<b>ul</b>/<b>li</b>)
+        sous forme d'une barre de menu horizontal. <br> Le
+        fichier <a
+          href="src/td02/resultat-exo3.png"
+        >resultat-exo3.png</a> correspond à l'affichage que l'on souhaite avoir à
+        la fin de cet exercice.
+        Vous travaillerez à partir du fichier <a href="src/td02/exo3.html">exo3.html</a>.
+      </div>
+      <br>
+      <ol>
+        <li>Faites en sorte que la liste ait une <b>position</b> fixe, en
+          haut à gauche de la partie affichage du navigateur.
+        </li>
+        <li>Retirez le style par défaut des items de liste (avec <b>list-style-type</b>)
+          pour qu'il n'y ait pas de style par défaut.
+        </li>
+        <li>Affichez les items en gras et avec une police Arial (ou sinon
+          sans-serif).</li>
+        <li>Faites en sorte que les items soient affichés horizontalement
+          collés à gauche et non plus verticalement.</li>
+        <li>Faites en sorte que les items aient une largeur de 100 pixels
+          et ajoutez un espacement d'une dizaine de pixel entre les items.</li>
+        <li>Changez le fond du menu pour qu'il soit de couleur violette 
+	    (<b>purple</b>), en chantant purple rain, et changez la couleur des items pour
+          qu'ils soient blancs.
+        </li>
+        <li>Fixez la hauteur (<b>height</b>) du menu à 50 pixels puis
+          faites en sorte que le menu occupe toute la largeur (<b>width</b>).
+        </li>
+        <li>Faites en sorte que l'item 'About' soit affiché à droite de la
+          barre de menu.</li>
+        <li>Affichez une ligne de 2 pixels en bas du menu. <br>
+          L'astuce est de mettre une bordure de 2 pixels seulement en bas.
+        </li>
+      </ol>
+
+      <h3>Exercice 4&nbsp;: Faites vous plaisir (optionnel &mdash; à la maison)</h3>
+      <div>
+        On cherche à créer une feuille de style que l'on pourra réutiliser pour
+        les compte-rendus de TP suivant (on utilisera pas cette feuille de style
+        pour le compte-rendu du tp2). <br> Créez un fichier <span
+          class="tt"
+        >compte-rendu-tp.css</span> à partir d'une copie du fichier <span class="tt">compte-rendu-tp2.css</span>.
+        <br> Modifiez ce document pour personnaliser vos styles (polices,
+        couleurs&hellip;) pour les titres (les balises h), les sections, les
+        paragraphes, les listes, les liens, les tables, etc.
+      </div>
+      <br>
       <hr>
       <div class="copyright noprint">© Université Gustave Eiffel</div>
     </div>

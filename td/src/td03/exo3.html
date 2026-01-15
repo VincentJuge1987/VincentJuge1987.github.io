@@ -1,25 +1,92 @@
 <!DOCTYPE html>
 <html>
- <meta charset="utf-8">
  <head>
+  <meta charset="utf-8">
+  <title>PGCD et nombres premiers</title>
   <style>
-   //TODO
+   textarea{
+     display:inline-block;
+   }
+   .large{
+     font-size:16pt;
+   }
+   .button{
+     border:solid;
+     border-color:teal;
+     background-color:color-mix(in srgb,teal,white);
+     width:fit-content;
+     padding:4pt;
+     border-radius:10pt;
+     cursor:pointer;
+   }
+   .box{
+     border:solid;
+     border-color:blue;
+     background-color:color-mix(in srgb,color-mix(in srgb,blue,white),white);
+     width:fit-content;
+     padding:1pt 4pt 1pt 4pt;
+     margin:2pt;
+   }
+   .non{
+     font-weight:bold;
+     color:red;
+   }
+   .oui{
+     font-weight:bold;
+     color:green;
+   }
   </style>
+  <script src="graph.js" type="text/javascript"></script>
+  <!-- C'est rigolo, il y a un script à l'adresse https://vincentjuge1987.github.io/td/src/td04/graph.js -->
+  <script>
+   "use strict";
+   
+   const sum = function(a, b) {
+     return a + b;
+   }
+   const pgcd = function(a, b) {
+     // Écrire le corps de la fonction ici.
+   };
+   const isPrime = function(a) {
+     // Écrire le corps de la fonction ici.
+   };
+   const listPrimes = function(n) {
+     // Écrire le corps de la fonction ici.
+   };
+   </script>
  </head>
  <body>
-   <div>
-    <ul>
-     <li>
-       Web
-       <!-- ul>
-        <li>Test1</li>
-        <li>Test2</li>
-       </ul -->
-     </li>
-     <li>HTML</li>
-     <li>CSS</li>
-     <li>About</li>
-    </ul>
-   </div>
+  <h2>Somme</h2>
+  <p class="large">
+    <textarea id="area1" rows="1" cols="6"></textarea>&nbsp;+&nbsp;<textarea id="area2" rows="1" cols="6"></textarea>&nbsp; = <span id="area3"></span>
+  </p>
+  <p class="large button" id="button1">
+    C'est parti !
+  </p>
+  <br>
+  <h2>PGCD</h2>
+  <p class="large">
+    PGCD(&nbsp;<textarea id="area4" rows="1" cols="6"></textarea>&nbsp;,&nbsp;<textarea id="area5" rows="1" cols="6"></textarea>&nbsp;) = <span id="area6"></span>
+  </p>
+  <p class="large button" id="button2">
+    C'est parti !
+  </p>
+  <br>
+  <h2>Premier ou pas ?</h2>
+  <p class="large">
+    <textarea id="area7" rows="1" cols="6"></textarea>&nbsp;est-il un nombre premier ? <span id="area8"></span>
+  </p>
+  <p class="large button" id="button3">
+    C'est parti !
+  </p>
+  <br>
+  <h2>Liste des nombres premiers</h2>
+  <p class="large">
+    Nombres premiers jusqu'à&nbsp;<textarea id="area9" rows="1" cols="6"></textarea>&nbsp;:&nbsp;&nbsp;<span id="area10"></span>
+  </p>
+  <p class="large button" id="button4">
+    C'est parti !
+  </p>
+  <br>
  </body>
 </html>

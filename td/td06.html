@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Fonctions et tableaux</title>
+<title>Manipulation du DOM, objet JavaScript</title>
 <link rel="stylesheet" type="text/css" href="css/stylesheet-td.css" media="screen">
 <link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
   media="print"
@@ -16,213 +16,115 @@
         <tbody>
           <tr style="vertical-align: center;">
             <td><img class="print" src="css/UGE.png" alt="[LOGO]" height="30"></td>
-            <td><h1>Fonctions et tableaux</h1></td>
+            <td><h1>Manipulation du DOM, objet JavaScript</h1></td>
           </tr>
         </tbody>
       </table>
       <hr>
 
-      <div>Comme pour les TPs précédents, on vous demande de créer un
-        répertoire <span class="tt">tp6</span> qui contiendra les exercices de cette feuille de TP et de
+      <div>Comme pour les TP précédents, on vous demande de créer un
+        répertoire tp6 qui contiendra les exercices de cette feuille de TP et de
         faire un compte rendu de TP en HTML.</div>
       <br>
-    
-      <h3>Exercice 1&nbsp;: Retour vers le futur &mdash; Seuls ceux qui passent les tests compteront&nbsp;!</h3>
-      <div>
-        Cet exercice est une reprise de <a href="td05.html/#exo-3">l'exercice 3 du TP 5</a>.
-        Si vous aviez déjà fait cet exercice, vous pouvez passer directement à l'exercice suivant.
-        <br>
-        Cet exercice est l'occasion d'écrire des fonctions qui prennent d'autres fonctions en argument, et/ou qui renvoient une fonction.
-        Comme d'habitude, on n'oubliera pas de tester chacune des fonctions que l'on aura écrites.
-      </div>
-      <ol start="0">
-        <li>Recopiez la page Web <a href="src/td06/exo1.html">exo1.html</a> dans votre répertoire <span class="tt">tp6</span>.
-        <li>
-          Écrire une fonction <span class="tt">estPair</span> qui, étant donné un entier <span class="tt">k</span>, renvoie <span class="tt">true</span> si <span class="tt">k</span> est pair, et <span class="tt">false</span> sinon.
-        </li>
-        <li>
-          Écrire une fonction <span class="tt">estCarré</span> qui, étant donné un entier <span class="tt">k</span>, renvoie <span class="tt">true</span> si <span class="tt">k</span> est un <a href="https://fr.wikipedia.org/wiki/Carr%C3%A9_parfait">carré parfait</a>, et <span class="tt">false</span> sinon.
-        </li>
-        <li>
-          Écrire une fonction <span class="tt">comptePairs</span> qui, étant donné un entier <span class="tt">n</span> strictement positif, énumère les entiers de 1 à <span class="tt">n</span>, compte combien d'entre eux sont pairs, et renvoie le résultat de son décompte.
-        </li>
-        <li>
-          Écrire une fonction <span class="tt">compteCarrés</span> qui, étant donné un entier <span class="tt">n</span> strictement positif, énumère les entiers de 1 à <span class="tt">n</span>, compte combien d'entre eux sont des carrés parfaits, et renvoie le résultat de son décompte.
-        </li>
-      </ol>
-      <div>
-        Ci-dessus, on a écrit deux fois la même chose, à ceci près qu'on a décompté les entiers pairs dans notre première fonction, et les carrés parfaits dans notre deuxième fonction.
-        Comme <a href="https://fr.wikipedia.org/wiki/Duplication_de_code">la duplication de code</a> est une erreur critique en programmation, il faut revoir les choses.
-        <br>
-        On va donc réécrire de manière plus professionnelle les fonctions <span class="tt">comptePairs</span> et <span class="tt">compteCarrés</span>, en créant une fonction <span class="tt">compte</span> qui prend un argument <span class="tt">test</span> et dont le comportement sera le suivant&nbsp;:
-      </div>
-      <ul>
-        <li> L'argument <span class="tt">test</span> sera une fonction qui, à chaque entier <span class="tt">k</span>, associe un booléen (c'est-à-dire <span class="tt">true</span> ou <span class="tt">false</span>)&nbsp;; les fonctions <span class="tt">estPair</span> et <span class="tt">estCarré</span> sont deux exemples de telles fonctions.</li>
-        <li> Le résultat de <span class="tt">compte(test)</span> devra être une fonction qui, étant donné un entier <span class="tt">n</span> strictement positif, énumère les entiers de 1 à <span class="tt">n</span>, compte combien d'entre eux ont été associés au booléen <span class="tt">true</span> par la fonction <span class="tt">test</span>, et renvoie le résultat de son décompte&nbsp;;
-        par exemple, la fonction <span class="tt">comptePairs</span> peut désormais se réécrire <span class="tt">const comptePairs2 = compte(estPair)</span>.</li>
-      </ul>
-      <ol start="5">
-        <li> Comment écrire la fonction <span class="tt">compteCarrés2</span>, qui fait la même chose que <span class="tt">compteCarrés</span>, à partir des fonctions <span class="tt">test</span> et <span class="tt">estCarré</span>&nbsp;? 
-        Cette réécriture est censée prendre <span class="caution">une seule ligne de code</span>.</li>
-        <li> Écrire la fonction <span class="tt">compte</span>.
-        <br> Bien vérifier que les fonctions <span class="tt">comptePairs2</span> et <span class="tt">compteCarrés2</span> réécrites à partir de la fonction <span class="tt">compte</span> se comportent comme les fonctions <span class="tt">comptePairs</span> et <span class="tt">compteCarrés</span>.</li>
-        <li> Écrire, <span class="caution">en une seule ligne de code</span>, une fonction <span class="tt">compte1mod3</span> qui, étant donné un entier <span class="tt">n</span> strictement positif, énumère les entiers de 1 à <span class="tt">n</span>, compte combien d'entre eux sont congrus à 1 modulo 3, et renvoie le résultat de son décompte. </li>
-      </ol>
 
-      <h3>Exercice 2&nbsp;: Tableaux</h3>
-      <div>Manipulations simples de tableau</div>
+      <h3>Exercice 1&nbsp;: Memory</h3>
+      <div>Le but de ce premier exercice est d'écrire un programme de jeu
+        de memory. Le memory se joue avec des paires de carte ayant la même
+        image. Au début du jeu, toutes les cartes sont retournées (face non
+        visible), puis on choisit deux cartes, que l'on retourne, si les deux
+        cartes ont la même image, on a trouvé une paire, et les 2 cartes restent
+        face visible avec leur image, si les 2 cartes choisies ne correspondent
+        pas à la même image, les cartes sont retournées (face non visible). Le
+        but du memory est de trouver toutes les paires d'images.</div>
       <br>
       <ol>
-        <li>Recopiez la page Web <a href="src/td06/exo2.html">exo2.html</a> dans votre répertoire <span class="tt">tp6</span>. <br>
-          Expliquez ce que fait le code sans pour autant regarder le code de
-          <span class="tt">graph.js</span>.
-          <br> Note&nbsp;: pour tester, vous devez récupérer aussi le
-          fichier <span class="tt">graph.js</span> et le placer correctement par
-          rapport au fichier <span class="tt">exo2.html</span> que vous venez de
-          récupérer (Une piste pour le trouver&nbsp;: regarder la source&hellip;)
-        </li>
-        <li>La suite de cet exercice consiste à compléter chaque question
-          en écrivant un code à l'endroit des 'TODO'. <br> On cherche à
-          écrire une fonction <span class="tt">addThree</span> qui prend en
-          paramètre un tableau et retourne un nouveau tableau qui contient le
-          même nombre de cases que le tableau pris en paramètre et dont les
-          valeurs des cases est la valeur de la case de même index du tableau
-          pris en paramètre augmentée de trois. <br> Par exemple, si le
-          tableau initial contient <span class="tt">[11, 21, 5, -13, 2,
-            12, 19, 5]</span>, alors le résultat de l'appel à <span class="tt">addThree</span>
-          doit être un nouveau tableau avec les valeurs <span class="tt">[14,
-            24, 8, -10, 5, 15, 22, 8]</span>. <br> Si cela vous aide, vous pouvez
-          dans un premier temps écrire l'algorithme en pseudo-code, puis dans un
-          deuxième temps, transformez le pseudo-code en JavaScript. <br>
-          <span class="caution">Attention&nbsp;!</span> Votre fonction ne doit pas
-          modifier le tableau d'origine.
-        </li>
-        <li>En fait, le code que l'on a écrit n'est pas très générique&nbsp;:
-          si l'on doit ajouter 4 à chaque case ou alors multiplier la valeur des
-          cases par 2, il faut dupliquer le code avec un copier/coller et
-          changer l'opération à effectuer. <br> Comme on n'est pas des
-          barbares, on se dit que l'on pourrait réutiliser la même fonction pour
-          tous ces cas. On va pour cela créer une fonction intermédiaire. <br>
-          Donc dans un premier temps, écrivez une fonction <span class="tt">applyForEachElement</span>
-          qui prend deux arguments (un tableau et une fonction) et qui, pour
-          chaque élément du tableau, appelle la fonction en lui donnant
-          l'élement en guise de paramètre. <br> Une fois que <span class="tt">applyForEachElement</span>
-          marche, écrivez une nouvelle version de <span class="tt">addThree</span>,
-          <span class="tt">addThree2</span> qui va utiliser <span class="tt">applyForEachElement</span>,
-          vérifiez que le résultat est identique.
-        </li>
-      </ol>
-      Les questions qui suivent utilisent les fonctions sur les tableaux que vous avez vues ce lundi en cous magistral.
-      Comme c'est tout récent, elles sont donc facultatives.
-      <ol start="4">
-        <li>
-          Il y a toutes les chances que votre fonction <span class="tt">applyForEachElement</span>
-          contienne une boucle <span class="tt">for</span>. Cependant,
-          on peut éviter d'écrire cette boucle explicitement, en utilisant
-          la méthode <span class="tt">forEach</span> sur un tableau&nbsp;: écrire la fonction <span
-          class="tt"
-        >applyForEachElement2</span> pour utiliser la méthode <span class="tt">forEach</span>,
-        puis l'utiliser pour écrire une nouvelle version de <span class="tt">addThree</span>,
-        nommée <span class="tt">addThree3</span>.
-        </li>
-        <li>Que fait la méthode <span class="tt">map</span> si on l'appelle
-          sur un tableau&nbsp;? <br> Comment peut-on l'utiliser pour écrire <span
-          class="tt"
-        >addThree</span>&nbsp;? <br> Écrivez <span class="tt">addThree</span> en
-          utilisant la méthode <span class="tt">map</span> et vérifiez que l'on
-          obtient le même résultat que précédemment.
-        </li>
-        <li>On souhaite afficher les valeurs du tableau trié en utilisant
-          la méthode <span class="tt">sort</span> sur un tableau. <br>
-          Rappelez en quoi la méthode <span class="tt">sort</span> est
-          différente des méthodes <span class="tt">map</span> et <span
-          class="tt"
-        >filter</span>. <br> Écrivez la fonction <span
-          class="tt"
-        >sortedArray</span> qui renvoie un nouveau tableau avec les valeurs triées (Attention&nbsp;! Le
-          tableau pris en paramètre ne doit pas être modifié).
-        </li>
-        <li>On veut afficher les valeurs du tableau seulement si celles-ci
-          sont positives ou nulles. <br> Sachant que l'on peut utiliser la méthode <span
-          class="tt"
-        >filter</span> sur un tableau, écrivez la fonction <span class="tt">positiveArray</span>
-          qui renvoie un tableau ne contenant que les valeurs positives ou nulles du
-          tableau pris en paramètre.
-        </li>
-      </ol>
-
-      <h3>Exercice 3&nbsp;: MinMax, génération aléatoire et calcul rapide</h3>
-      <div>
-        On cherche à calculer le minimum et le maximum d'un tableau sans
-        parcourir le tableau plusieurs fois. <br> Avant de commencer,
-        recopiez la page Web <a
-          href="src/td06/exo3.html"
-        >exo3.html</a> dans votre répertoire <span class="tt">tp6</span> .
-      </div>
-      <br>
-      <ol>
-        <li>On cherche à écrire une fonction <span class="tt">minmax</span>
-          qui prend en paramètre un tableau, calcule le minimum et le maximum de
-          ce tableau et renvoie les deux valeurs sous forme d'un nouveau tableau
-          à 2 cases dont la première case est le minimum et la seconde case est
-          le maximum. <br> Pour des questions d'efficacité, on veut que le
-          calcul du minimum et du maximum soit fait lors du même parcours du
-          tableau. <br> Écrivez, dans un premier temps, l'algorithme que
-          vous allez implanter en pseudo-code, puis écrivez le code JavaScript
-          correspondant. <br> Note&nbsp;: il existe les fonctions <span
-          class="tt"
-        >Math.min</span> et <span class="tt">Math.max</span>.
-        </li>
-        <li>Au lieu d'écrire la boucle à la main, on peut vouloir directement
-          utiliser l'opérateur <span class="tt">spread</span> (&hellip;) pour calculer
-          le minimum et le maximum du tableu. <br>
-          Écrivez le code de <span class="tt">minmax2</span>
-          qui utilise cet opérateur. Si l'on utilise cette fonction,
-          combien de fois aura-t-on parcouru le tableau&nbsp;? Cela satisfait-il les
-          contraintes posées en début d'exercice&nbsp;?          
+        <li>Recopiez l'ensemble <a
+          href="src/td06/td06.zip"
+        >des ressources</a>, c'est-à-dire, la page Web <span class="tt">memory.html</span>,
+          le fichier JavaScript <span class="tt">memory.js</span> ainsi que les
+          images dans votre répertoire <span class="tt">tp6</span>.
         </li>
       </ol>
       <div>
-        On peut améliorer le code obtenu à plusieurs endroits.<br>
-        Au lieu de tester avec un tableau écrit &laquo;&nbsp;en dur&nbsp;&raquo;, tirer aléatoirement un
-        tableau permettrait de tester avec davantage de tableaux différents. <br>
-        De plus, l'algorithme <span class="tt">minmax</span> écrit précédemment
-        n'est pas le plus efficace. Il existe une version qui fait moins de
-        comparaisons (et qui est bien sûr plus compliquée à écrire).
+        Dans la suite, nous allons stocker toutes les informations nécessaires au bon déroulement du jeu dans un objet <span class="tt">game</span>.
+        Parmi les champs de cet objet figureront à la fois les informations statiques, telles que la liste des images, mais également des fonctions
+        décrivant la dynamique du jeu.
       </div>
-      <ol start="3">
-        <li>On souhaite pouvoir mélanger les cases d'un tableau dans le but
-          de tester plus de combinaisons. <br> L'idée de l'algorithme de
-          mélange est la suivante&nbsp;: pour chaque case i, on tire un nombre
-          aléatoire entre i et n - 1 (n étant le nombre de cases du tableau) et
-          l'on va permuter (échanger si vous préférez) la case courante avec la
-          case à l'index du nombre que l'on vient de tirer aléatoirement. <br>
-          Si l'on fait cela pour toutes les cases, le tableau sera mélangé
-          (et on peut même s'offrir la joie de démontrer que ce tableau est bien
-          échantillonné uniformément au hasard parmi tous les tableaux
-          possibles). <br>
-          Écrivez dans un premier temps une fonction <span class="tt">swap</span>
-          qui permet d'échanger deux cases du tableau. <br> Puis écrivez la
-          fonction <span class="tt">randomArray</span> qui mélange les valeurs
-          du tableau pris en paramètre. <br> Note&nbsp;: tirer un nombre
-          aléatoire entre 0 (inclus) et n (exclu) en JavaScript se fait avec la fonction suivante&nbsp;: <pre
-            class="full-width"
-          >const random = n => Math.floor(n * Math.random());</pre>
+      <ol start="2">
+        <li>Écrivez le code de la fonction <code>create</code>
+          pour stocker le tableau des sources des images et l'image de dos de carte. <br>
+          Écrivez ensuite le code de la méthode <code>build</code> afin
+          que le nombre d'images soit affiché à l'intérieur de la balise div
+          prise en paramètre. <br> Note&nbsp;: les élements du DOM possèdent un
+          attribut <code>innerHTML</code>.
         </li>
-        <li>Il est possible de diminuer le nombre de tests fait par la
-          fonction <span class="tt">minmax</span>. En effet, si au lieu de faire
-          évoluer le min et le max pour chaque case du tableau, on commence par
-          lire deux valeurs de cases consécutives, regarder quelle est la plus
-          grande puis la comparer avec le max, dans ce cas, la valeur la plus
-          petite ne doit être comparée qu'avec le min donc chaque case n'a pas
-          besoin d'être comparée et avec le max et avec le min. <br>
-          Écrivez dans un premier temps l'algorithme en pseudo-code. <br>
-          Note&nbsp;: pour éviter de dupliquer le code, on peut écrire le code si une
-          valeur est plus grande que l'autre et dans l'autre cas, permuter les
-          valeurs (attention, les valeurs, pas les cases du tableau) pour se
-          retrouver dans le même cas. <br> Vérifiez que votre algo
-          fonctionne que le nombre de cases soit pair ou impair. <br>
-          Enfin, écrivez la fonction <span class="tt">minmax3</span>.
+        <li>Pour notre jeu de memory, nous allons créer des paires de cartes, une
+          paire par image. Pour stocker ces cartes, on va créer un tableau <code>cards</code>
+          qui va contenir pour chaque carte l'index de l'image correspondante. <br>
+          Dans un vrai memory, ce tableau des index des images est permuté lors
+          de la création du jeu&nbsp;; sinon, ce n'est pas très drole. Pour l'instant,
+          nous allons utiliser la fonction <code>shuffleCards</code>
+          qui vous a été donnée car cela sera plus facile pour la mise au point
+          du programme. <br> Que fait la fonction <code>shuffleCards</code>,
+          et en quoi cela aide-t-il pour la mise au point du programme&nbsp;?
+        </li>
+        <li>Modifiez la fonction <code>create</code> pour 
+          que <code>game</code> contienne également un tableau <code>positions</code> fourni par
+          la fonction <code>shuffleCards</code>.
+          Modifiez ensuite la méthode <code>build</code> pour afficher
+          autant de cartes que de cases du tableau <code>cards</code>
+          qu'a renvoyé la fonction <code>shuffleCards</code> (ici, 16 cartes). Chaque carte sera
+          représentée par un div contenant une image (voir le CSS de <code>memory.html</code>). 
+          Pour l'instant, chaque carte affichera le même dos d'image. <br> Rappel&nbsp;: l'élement DOM
+          correspondant à une image possède une propriété src.
+        </li>
+        <li>On souhaite ajouter une fonction permettant de savoir lorsque
+          l'utilisateur a cliqué sur une carte. <br> Note&nbsp;: tout élément
+          est être muni d'une fonction <code>onclick</code> qui permet d'exécuter une fonction
+          quand on clique sur la zone correspondant à cette balise.
+          Le code JavaScript à utiliser pour munir un élément <code>elt</code>
+          d'une fonction <code>fun()</code> ou bien <code>fun(event)</code>
+          qui sera déclenchée lors d'un clic sera alors
+          <pre class="full-width"><code>elt.onclick = fun;</code></pre> 
+          <br> Comment faire pour savoir sur quelle carte un utilisateur a
+          cliqué&nbsp;? <br> Implantez la solution retenue pour que, lorsque
+          l'on clique sur une carte, son index dans le tableau des cartes (entre 0 inclus et 16 exclu) 
+          et le numéro de carte correspondante (entre 0 inclus et 8 exclu) soient affichés
+          dans la console du nagivateur.
+        </li>
+        <li>On souhaite maintenant pouvoir afficher l'image correspondant à
+          une carte lorsque l'on clique sur la carte. <br> Comment faire pour que le tableau
+          des sources des images soit accessible lors d'un clic&nbsp;? Et pour que les images
+          effectivement affichées changent de source si nécessaire&nbsp;? <br> Implantez votre
+          solution pour que, lorsque l'on clique sur une carte, l'image
+          correspondante s'affiche.
+        </li>
+        <li>Il faut maintenant implanter la mécanique du jeu. <br>
+          Comme on découvre les cartes, une par une, il faut se souvenir de la
+          carte précédente (si elle existe) pour savoir si le jeu est dans l'un
+          des états suivants&nbsp;:
+          <ol>
+            <li>on doit découvrir 2 cartes&nbsp;;</li>
+            <li>on doit découvrir 1 carte (l'autre est déjà connue)&nbsp;;</li>
+            <li>deux cartes ont été découvertes.</li>
+          </ol> <br> Sachant que l'on appelle <code>selection</code> la carte dont on se
+          souvient, écrivez en pseudo-code l'algorithme qui prend en paramètre
+          la carte sur laquelle on vient de cliquer et qui implante la mécanique
+          de jeu. <br> Implantez ensuite votre algorithme en JavaScript.
+          <br>
+          Comment faire pour ne pas prendre en compte les cartes déjà
+          retournées (il y a deux cas)&nbsp;? <br> Modifiez votre programme en
+          conséquence.
+        </li>
+        <li>Si les images des deux cartes ne sont pas identiques, on souhaite avoir le temps de
+          voir la face de la seconde carte avant de les retourner face cachée. Pour cela, le
+          plus simple est d'attendre 500 ms avant de retourner les cartes.
+          Comment écrire cela en JavaScript&nbsp;? <br> Note&nbsp;: attention à ce que
+          vous appelez <code>this</code>&nbsp;!
+        </li>
+        <li>Enfin, modifiez <code>shuffleCards</code> pour que
+          le tableau des cartes soit mélangé de façon aléatoire (comme dans la
+          question 1 de l'exercice 3 du TP4).
         </li>
       </ol>
 

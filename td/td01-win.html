@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Internet, World Wide Web et HTTP</title>
+<title>HTML et CSS</title>
 <link rel="stylesheet" type="text/css" href="css/stylesheet-td.css" media="screen">
 <link rel="stylesheet" type="text/css" href="css/printstylesheet.css"
   media="print"
@@ -16,51 +16,48 @@
         <tbody>
           <tr style="vertical-align: center;">
             <td><img class="print" src="css/UGE.png" alt="[LOGO]" height="30"></td>
-            <td><h1>Internet, World Wide Web et HTTP</h1></td>
+            <td><h1>HTML et CSS</h1></td>
           </tr>
         </tbody>
       </table>
       <hr>
 
-      <div>
+      <p>
         Le but de ce premier TP est double&nbsp;:
         <ol>
           <li>
-            comprendre ce qu'est Internet, le Web et
-            comment on peut interagir avec une machine distante à l'aide du
-            plusieurs outils (clients) comme netcat (la commande <span class="tt">nc</span>)
-            ou un navigateur Web (browser)&nbsp;;
+            créer sa première page web&nbsp;;
           </li>
           <li>
-            créer sa première page web.
+            se familiariser avec la syntaxe du HTML et du CSS
           </li>
         </ol>
-      </div>
-      <br/>
-      <div>
-        Le compte-rendu de ce TP devra être déposé sur la plateforme de elearning d'ici au
-        <span class="tt">dimanche 02/02 à 22:00</span> au plus tard.
-      </div>
-      <br>
+      </p>
+      <br />
       <div>
         Cette semaine comme toutes celles qui suivront, il est fortement recommandé de
         commencer par lire l'intégralité du sujet (ou au moins de l'exercice en cours)
         avant de répondre au question&nbsp;: cela vous permettra de mieux comprendre là
         où les exercices vont vous emmener&nbsp;!
         <br><br>
-        Par ailleurs, si vous avez TP le jeudi ou le vendredi, il est aussi recommandé
+        Il est également recommandé
         de lire les sujets de TP à la maison avant la séance, et de commencer à faire
         les questions jusqu'à ce que cela devienne difficile, pour être prêts à profiter
         de la présence de vos enseignants pendant la séance de TP&nbsp;!
-      </div>
-      <br/>
-      <div>Cette version du TP est spécialement adaptée aux élèves dont le système d'exploitation
+        <br>
+        Ce conseil est particulièrement important si vous avez TP le jeudi ou le vendredi.
+        En effet, le compte-rendu de ce TP devra être déposé sur la plateforme de elearning d'ici au
+        <span class="tt">dimanche 01/02 à 22:00</span> au plus tard.
+        <br><br>
+        Au moment de rendre votre rapport, pensez que vous devez aussi
+        rendre l'image correspondant à l'arbre du document.
+        <br><br>
+        Cette version du TP est spécialement adaptée aux élèves dont le système d'exploitation
         est <span class="tt">Windows</span>. Une autre version
         est disponible si votre ordinateur utilise le système d'exploitation
         <a href="td01.html"><span class="tt">Linux</span></a> ou
         <a href="td01.html"><span class="tt">Mac OS</span></a>.
       </div>
-      <br>
 
       <h3>Exercice 0&nbsp;: On sort un papier et un crayon</h3>
       <div>
@@ -168,107 +165,131 @@
         sections (une par exercice du TP) et de compléter votre compte-rendu.
       </div>
       <br>
-          
-      <h3>Exercice 3&nbsp;: Uniform Resource Locator</h3>
-      <div>On cherche à savoir où est hébergée une page d'actualités sportives.</div>
+
+      <h3>Exercice 3&nbsp;: Document HTML de base, le retour&nbsp;!</h3>
       <ol>
-        <li>Ouvrez un navigateur Web et allez à l'URL suivante: <pre
+        <li>Ajoutez à votre compte-rendu la phrase suivante : <pre
             class="full-width"
-          >http://www.w3.org/standards/</pre>
-          Quel est le nom de la machine à laquelle vous accédez ? <br>
-          Quel est le nom de domaine auquel vous accédez ?
+          >Les tags HTML commencent par une balise ouvrante &lt;foo&gt; et finissent par une balise fermante &lt;/foo&gt;.
+	    </pre>
+	  Note&nbsp;: pour votre compte rendu, il vous faudra surement utiliser
+          les entités &amp;lt; qui correspond à &lt; et &amp;gt; qui correspond
+          à &gt;.
         </li>
-        <li>Si l'on exécute <pre class="full-width">nslookup w3.org</pre>
-          À quoi correspond la première ligne de la réponse ? <br> À quoi
-          correspond la deuxième ligne de la réponse ?<br> Et la troisième ?
+        <li>Comment mettre en <b>gras</b> ou en <i>italique</i> ? <br>
+          Astuce&nbsp;: ouvrez le fichier HTML correspondant au sujet de TP dans le
+          navigateur avec un click bouton droit "View Page Source" puis cherchez le
+          mot Shibboleet avec un Ctrl-F, cela devrait être juste au dessus.
         </li>
-        <li>Dans le navigateur Web, dans la barre contenant l'URL,
-          remplacez le nom de la machine par son adresse IP pour vérifier que
-          cela fonctionne toujours. <br> Si ça ne marche pas, que se passe-t-il ? Essayez avec google.fr. <br> À votre avis, pourquoi
-          utilise-t-on des noms pour les machines plutôt que des adresses IP ?
+        <li>Et comment faire pour mettre un mot à la fois en gras et en
+          italique ?</li>
+        <li>En fait, votre compte rendu est pas vraiment en HTML, vous
+          devriez organiser les questions pour qu'elles soient automatiquement
+          numérotées par le navigateur. <br> Comment faire ? <br>
+          Modifier votre compte-rendu en conséquence.
         </li>
-        <li>Exécutez la commande <span class="tt">tracert</span> sur
-          une de ces adresses IP. <br> Qu'affiche cette commande ? <br> 
-          Comment s'appelle le réseau sur lequel est connectée l'université (ou votre domicile) ? <br>
-          Quels sont les autres réseaux qui sont traversés ?
+        <li>Pourquoi avoir écrit "Compte-rendu de TP 2"
+        dans l'en-tête puis dans le corps du document&nbsp;?
         </li>
-        <li>
-          Actualité du jour&nbsp;: le cours de programmation web a commencé&nbsp;!
-          Pour le découvrir, on souhaite consulter la page
-          <span class="tt">http://vincentjuge1987.github.io/</span>.
-          <br> Utiliser la commande <span class="tt">nslookup</span> pour
-          récupérer l'adresse IP correspondant à cette machine.
+        <li>Ajoutez un lien (le tag <span class="tt">a</span>) vers le
+          cours avec comme titre <span class="tt">cours de programmation
+            web</span>.
         </li>
+        <li>Prenez une feuille de papier puis dessinez l'arbre des
+          différents tags correspondant à votre compte rendu. <br>
+          Attention à bien respecter quel tag se trouve déclaré dans tel autre.
         </li>
-        <li>On cherche maintenant à voir l'ancienne version du cours, que donnait Rémi Forax. Pour ce faire, on souhaite consulter
-          la page <span class="tt">https://forax.github.io/course/progweb/</span>.
-	  <br>Lancer la commande <span class="tt">nslookup</span> pour
-          récupérer l'adresse IP correspondant à cette machine. Qu'observe-t-on ?          
-          <br>
-          Que se passe-t-il si on essaye d'accéder à cette page dans le navigateur
-          en remplaçant le nom de la machine par l'adresse IP trouvée
-          précédemment ? <br> Et si on remplaçait <span class="tt">forax.github.io</span> par
-          <span class="tt">vincentjuge1987.github.io</span> au début de l'URL ? Expliquer pourquoi.
+        <li>Avec votre smartphone (ou celui du voisin), prenez une photo de
+          la feuille de papier sur laquelle vous avez dessiné l'arbre et
+          envoyez-la vous par mail. Puis allez dans vos mails pour récupérer
+          l'image et la sauvegarder sous le nom de <span class="tt">mon-super-arbre.jpg</span>
+          dans le répertoire tp2. <br> Utilisez ensuite le tag <span
+          class="tt"
+        >img</span> pour inclure l'image dans votre compte rendu. <br> Attention,
+          cela risque d'être un peu gros visuellement, il vous faudra sûrement
+          jouer avec les attributs <span class="tt">width</span> et <span
+          class="tt"
+        >height</span> de <span class="tt">img</span> pour avoir une image de
+          dimensions acceptables. <br> PS : N'oubliez pas l'attribut <span
+          class="tt"
+        >alt</span> du tag <span class="tt">img</span> !
         </li>
       </ol>
 
-      <h3>Exercice 4&nbsp;: Service HTTP</h3>
-      <div>On a vu en cours comment utiliser <span class="tt">netcat</span> (commande <span class="tt">nc</span> suivie de l'option
-        <span class="tt">-C</span> pour éviter les problèmes d'encodage) pour appeler un
-        service sur une machine distante. Nous allons pouvoir utiliser la même
-        technique pour interroger un serveur Web.</div>
+      <h3>Exercice 4&nbsp;: Les listes et les tables</h3>
+      <ol>
+        <li>Dans votre compte-rendu, écrivez la liste suivante sous forme
+          d'une liste numérotée <pre class="full-width">
+- maths
+- physique
+- français
+	    </pre>
+        </li>
+        <li>Recopiez le code de la liste de la question précédente et
+          modifiez-le pour que la liste ne soit plus une liste numérotée mais
+          une liste à puces. Les <i>items</i> seront dont précédés de petits
+          cercles au lieu de chiffres.
+        </li>
+        <li>Dans votre compte rendu, écrivez la table de multiplication
+          suivante sous forme d'une table HTML <pre class="full-width">
+   1  2  3  4
+1  1  2  3  4
+2  2  4  6  8
+3  3  6  9 12
+4  4  8 12 16
+	    </pre>
+        </li>
+        <li>Modifiez la table pour que la première ligne et la première
+          colonne soient considérées comme des titres (respectivement de
+          colonnes ou de lignes).</li>
+        <li>On souhaite ajouter une case faisant 2 colonnes et une case
+          faisant deux lignes dans une nouvelle table. <br> Allez chercher
+          dans la spécification du <a href="https://www.w3.org/TR/html5/">Standard
+            HTML5</a> comment faire pour avoir de telles cases et expliquez dans
+          votre rapport comment vous avez fait pour trouver l'information.
+        </li>
+      </ol>
+      
+      <h3>Exercice 5&nbsp;: Mon compte-rendu est trop stylé&nbsp;!</h3>
+      <div>Voici un petit exercice pour voir comment appliquer des styles
+        s'appuyant sur les balises du document.</div>
       <br>
       <ol>
-        <li>Téléchargez le script python <a href="src/td01/netcat.py">netcat.py</a> pour Windows
-           et enregistrez-le dans votre répertoire <span class="tt">progweb</span>. </li>
-        <li>Vérifiez que vous disposez bien d'un utilitaire <span class="tt">python</span> utilisable
-           en ligne de commande. Pour cela, il suffit de taper <span class="tt">python.exe</span>.
-           Normalement, soit Windows vous proposera de télécharger <span class="tt">python</span>
-           (et alors il faut le faire), soit vous verrez quelque chose comme :
-            <br><br>
-          <img src="src/td01/python.png" height="70" ></img> <br><br>
-           Dans second ce cas, écrivez simplement <span class="tt">exit()</span> puis revenez à la ligne.</li>
-        <li>On souhaite utiliser <span class="tt">netcat</span> pour se connecter au
-          serveur Web de la machine <span class="tt">monge.univ-mlv.fr</span>. Sous Windows, la commande à utiliser
-          est <span class="tt">python.exe&nbsp;netcat.py&nbsp;-C&nbsp;NOM-DE-MACHINE&nbsp;PORT</span>, où <span class="tt">NOM-DE-MACHINE</span> est
-          le nom de la machine à laquelle on souhaite se connecter, et <span class="tt">PORT</span> est le port correspondant
-          au protocole HTTP. <br/> 
-          Une fois <span class="tt">netcat</span> lancé, il faudra taper la requête suivante et appuyer deux fois sur "Entrée" : <pre
-            class="full-width"
-          >GET /ens/ HTTP/1.0</pre>
-          Quel est le port TCP correspondant au protocole HTTP ? <br/>
-          Quel est le <span class="tt">header</span> (l'en-tête, en
-          français) de la réponse ? <br> <i>Note :</i> le serveur envoie une
-          réponse composée de deux parties, séparées par une ligne vide :
-          <ol>
-            <li>le <span class="tt">header</span>, qui est ce qui nous
-              intéresse pour le moment,
-            </li>
-            <li>une page HTML, à laquelle nous nous intéresserons plus
-              tard.</li>
-          </ol>
+        <li>Le titre de l'exercice courant se trouve normalement dans une balise
+          balise <span class="tt">h2</span>. Ajoutez à cette balise
+          un attribut <span class="tt">style</span> qui permet de mettre le
+          titre de l'exercice en orange.
         </li>
-        <li>À quoi correspondent les 3 valeurs sur la première ligne de
-          l'en-tête ?</li>
-        <li>Quel est le nom du serveur Web ?</li>
-        <li>À quoi correspond la valeur de <span class="tt">Content-Type</span>
-          ?
+        <li>Déclarez une balise <span class="tt">style</span> à l'intérieur
+          des balises <span class="tt">head</span> du document, puis faites en
+          sorte que tout le document utilise une police sans-serif.
         </li>
-        <li>À quoi correspond la valeur de <span class="tt">Content-Length</span>
-          ?
+        <li>Faites en sorte que la balise <span class="tt">h1</span> corresponde à une police de 24
+          points, la balise <span class="tt">h2</span> à une police de 18 points et
+          la balise <span class="tt">h3</span> à une police 16 points.
         </li>
-        <li>Faites la même analyse mais avec la requête <pre
-            class="full-width"
-          >GET /ens/toto.txt HTTP/1.0</pre>
+        <li>Faites en sorte que les balises <span class="tt">h2</span>
+          soient affichées en bleu marine, à part le titre de cet exercice (qui doit
+          rester en orange).
         </li>
-        <li>Enfin, faites la même analyse avec la requête <pre
-            class="full-width"
-          >GET /index.html HTTP/1.0</pre> À quoi correspond la valeur de <span class="tt">Location</span> ?
+        <li>Faites en sorte que le titre du compte-rendu de TP soit centré.
+          <br> Pour cela, vous allez créer une classe <span class="tt">"centered"</span>
+          et ajouter un attribut <span class="tt">class</span> à la balise
+          englobant le titre du compte-rendu. Déclarez ensuite que le style pour
+          la classe <span class="tt">"centered"</span> est centré.
         </li>
-        <li>
-          Que se passe-t-il lorsque je lance la commande <span class="tt">wget monge.univ-mlv.fr/index.html</span>&nbsp;?
-          <br>
-          Expliquer la signification des lignes qui apparaissent sur la ligne de commande.
+        <li>On veut que votre nom soit aligné à droite. Commencez par
+          déclarer votre nom entre des balises <span class="tt">div</span> puis
+          ajoutez une classe <span class="tt">right</span> permettant d'aligner
+          le texte à droite.
+        </li>
+        <li>Faites en sorte que le
+          lien vers le cours de programmation web (que vous avez créé à l'exercice 1)
+          soit en 
+          <b style="color: red;">rouge</b> si la souris n'est pas sur le lien et en
+          <b style="color: teal;">bleu canard</b>
+          si la souris survole le lien. <br> Conseil&nbsp;: Vous utiliserez pour
+          cela les pseudo-classes des liens.
         </li>
       </ol>
       <hr>
