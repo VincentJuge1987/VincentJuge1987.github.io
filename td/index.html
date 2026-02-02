@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="css/printstylesheet.css" media="print">
   <link rel="stylesheet" type="text/css" href="css/sh_ide-eclipse.css">
   <link rel="stylesheet" type="text/css" href="../css/custom.css">
-   <script>
+   <!--script>
      "use strict";
      const year = 126;
      const months = [1,1,2,2,2,3,3,3,4]
@@ -21,10 +21,10 @@
      const td = function(id, y, m, d) {
        if (y < 0 || (y == 0 && m < 0) || (y == 0 && m == 0 && d <= 0)) {
          const elt = document.getElementById(id);
-         elt.classList.toggle("hidden");
+         elt.classList.toggle("not-hidden");
        }
      }
-   </script>
+   </script-->
 </head>
 <body>
   <div class="conteneur">
@@ -32,7 +32,7 @@
       <p style="text-align: left;" class="noprint">
         :: <a href="http://monge.univ-mlv.fr/ens/index.php"> Enseignements </a>:: Licence ::
           L1 ::
-         2024-2025 ::<a
+         2025-2026 ::<a
           href=""
         > Programmation Web </a>
       </p>
@@ -82,8 +82,8 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
   </div>
 <br>
 
-  <ul>
-    <li class="hidden" id="td01">
+  <ol>
+    <li id="td01">
 <a href="td01.html">
    HTML et CSS 
  </a><br>
@@ -98,7 +98,7 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 		[Mon compte-rendu est trop stylé !]
 	</li>
     
- <li class="hidden" id="td02">
+ <li id="td02">
 <a href="td02.html">
    Feuille de style CSS &amp; boîtes
  </a><br>
@@ -110,7 +110,7 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 	
 		[Faites vous plaisir (Optionnel &mdash; à la maison)]
 	</li>
-        <li class="hidden" id="td03">
+        <li id="td03">
 <a href="td03.html">
    Premiers pas en Javascript
  </a><br>
@@ -120,7 +120,7 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 	
 		[Nombres premiers et PGCD]
 	</li>
-        <li class="hidden" id="td04">
+        <li id="td04">
 <a href="td04.html">
    Boucles et fonctions en Javascript
  </a><br>
@@ -128,7 +128,7 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 	
 		[Le lièvre et la tortue]
 	</li>
-        <li class="hidden" id="td05">
+        <li id="td05">
 <a href="td05.html">
    Fonctions et tableaux
  </a><br>
@@ -138,14 +138,14 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 	
 		[MinMax, génération aléatoire et calcul rapide]
 	</li>
-	  <li class="hidden" id="td06">
+	  <li id="td06">
 <a href="td06.html">
    Manipulation du DOM, Objet JavaScript 
  </a><br>
 		[Memory]
 	  </li>
 
-    <li class="hidden" id="td07">
+    <li id="td07">
 <a href="td07.html">
    Internet, World Wide Web et HTTP 
  </a><br>		
@@ -153,7 +153,7 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 	
 		[Service HTTP]
     </li>
-    <li class="hidden" id="td08">
+    <li id="td08">
 <a href="td08.html">
    Requêtes AJAX 
  </a><br>
@@ -163,13 +163,13 @@ Philippe Yvonnet &ndash; <a href="mailto:philippe.yvonnet@univ-eiffel.fr">@</a><
 	
 		[Les promesses n'engagent que ceux qui y croient]
 	</li>
-	   <li class="hidden" id="td09">
+	   <li id="td09">
 <a href="td09.html">
    Mon CV en Responsive Web Design
  </a><br>
 		[Mon super CV]
 	   </li>
-    </ul>
+    </ol>
 
 <h2>Références</h2>
 <div>
